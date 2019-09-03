@@ -17,7 +17,7 @@ public class HowToStopThreadDemo {
     }
 
     private static class StoppableAction implements Runnable {
-        private boolean stoppable;
+        private volatile boolean stoppable;
 
         public void run() {
             if (stoppable) {
