@@ -1,0 +1,15 @@
+server:
+  port: 9005 #提供者的端口
+spring:
+  application:
+    name: spring-cloud-nacos-producer
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 101.132.64.239:8848
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
