@@ -1,12 +1,15 @@
-server:
-  port: 8005 #提供者的端口
 spring:
   application:
-    name: spring-cloud-nacos-producer
+    name: nacos-provider
   cloud:
     nacos:
-      discovery:
+      config:
         server-addr: 101.132.64.239:8848
+        file-extension: yaml
+        prefix: nacos-provider
+  profiles:
+    active: dev
+
 
 management:
   endpoints:
