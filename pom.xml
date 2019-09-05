@@ -13,10 +13,10 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.xq</groupId>
-	<artifactId>discovers</artifactId>
+	<artifactId>webmu</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
-	<name>discovers</name>
+	<name>webmu</name>
 
 	<description>Demo project for Spring Boot</description>
 

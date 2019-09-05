@@ -9,6 +9,6 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 @SpringBootApplication
 public class SpringCloudLidongProviderApplication {
     public static void main(String[] args) {
-        SpringApplication.run(SpringCloudLidongProviderApplication.class,args);
+        SpringApplication.run(SpringCloudLidongProviderApplication.class, args);
     }
 }

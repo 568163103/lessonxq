@@ -15,12 +15,13 @@ public class NacosProducerController {
 
     /**
      * 服务接口
+     *
      * @param name
      * @return
      */
     @RequestMapping("/hello")
-    public String sayHello(@RequestParam("name")String name) {
-        return "hello ---> "+name+" port -->"+port;
+    public String sayHello(@RequestParam("name") String name) {
+        return "hello ---> " + name + " port -->" + port;
     }
 
 }
