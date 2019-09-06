@@ -6,6 +6,7 @@
 	<modules>
 		<module>spring- producer</module>
 		<module>spring-config</module>
+		<module>spring-gateway</module>
 	</modules>
 	<parent>
 		<groupId>org.springframework.boot</groupId>
