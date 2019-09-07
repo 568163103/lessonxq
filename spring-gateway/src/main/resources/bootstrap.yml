@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: nacos-gateway-spring
+  cloud:
+    nacos:
+      config:
+        server-addr: 101.132.64.239:8848
+        file-extension: yaml
+        prefix: nacos-gateway
+  profiles:
+    active: dev
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
