@@ -12,8 +12,8 @@ import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
  */
 @EnableDiscoveryClient
 @SpringBootApplication
-public class SpringCloudLidongProviderApplication {
+public class SpringCloudProviderApplication {
     public static void main(String[] args) {
-        SpringApplication.run(SpringCloudLidongProviderApplication.class, args);
+        SpringApplication.run(SpringCloudProviderApplication.class, args);
     }
 }
