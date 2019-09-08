@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.OperationLogMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.OperationLog">
+    <!--@mbg.generated-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="user_id" jdbcType="CHAR" property="userId" />
+    <result column="user_name" jdbcType="CHAR" property="userName" />
+    <result column="terminal_ip" jdbcType="CHAR" property="terminalIp" />
+    <result column="time" jdbcType="VARCHAR" property="time" />
+    <result column="operation" jdbcType="CHAR" property="operation" />
+    <result column="object_id" jdbcType="CHAR" property="objectId" />
+    <result column="object_time" jdbcType="VARCHAR" property="objectTime" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, user_id, user_name, terminal_ip, `time`, `operation`, object_id, object_time, 
+    description
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from operation_log
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from operation_log
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.xq.domain.OperationLog" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into operation_log (user_id, user_name, terminal_ip, 
+      `time`, `operation`, object_id, 
+      object_time, description)
+    values (#{userId,jdbcType=CHAR}, #{userName,jdbcType=CHAR}, #{terminalIp,jdbcType=CHAR}, 
+      #{time,jdbcType=VARCHAR}, #{operation,jdbcType=CHAR}, #{objectId,jdbcType=CHAR}, 
+      #{objectTime,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.xq.domain.OperationLog" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into operation_log
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="terminalIp != null">
+        terminal_ip,
+      </if>
+      <if test="time != null">
+        `time`,
+      </if>
+      <if test="operation != null">
+        `operation`,
+      </if>
+      <if test="objectId != null">
+        object_id,
+      </if>
+      <if test="objectTime != null">
+        object_time,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=CHAR},
+      </if>
+      <if test="userName != null">
+        #{userName,jdbcType=CHAR},
+      </if>
+      <if test="terminalIp != null">
+        #{terminalIp,jdbcType=CHAR},
+      </if>
+      <if test="time != null">
+        #{time,jdbcType=VARCHAR},
+      </if>
+      <if test="operation != null">
+        #{operation,jdbcType=CHAR},
+      </if>
+      <if test="objectId != null">
+        #{objectId,jdbcType=CHAR},
+      </if>
+      <if test="objectTime != null">
+        #{objectTime,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.OperationLog">
+    <!--@mbg.generated-->
+    update operation_log
+    <set>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=CHAR},
+      </if>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=CHAR},
+      </if>
+      <if test="terminalIp != null">
+        terminal_ip = #{terminalIp,jdbcType=CHAR},
+      </if>
+      <if test="time != null">
+        `time` = #{time,jdbcType=VARCHAR},
+      </if>
+      <if test="operation != null">
+        `operation` = #{operation,jdbcType=CHAR},
+      </if>
+      <if test="objectId != null">
+        object_id = #{objectId,jdbcType=CHAR},
+      </if>
+      <if test="objectTime != null">
+        object_time = #{objectTime,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.OperationLog">
+    <!--@mbg.generated-->
+    update operation_log
+    set user_id = #{userId,jdbcType=CHAR},
+      user_name = #{userName,jdbcType=CHAR},
+      terminal_ip = #{terminalIp,jdbcType=CHAR},
+      `time` = #{time,jdbcType=VARCHAR},
+      `operation` = #{operation,jdbcType=CHAR},
+      object_id = #{objectId,jdbcType=CHAR},
+      object_time = #{objectTime,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

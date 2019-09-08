@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.ServerStateRecordDiskMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.ServerStateRecordDisk">
+    <!--@mbg.generated-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="recordid" jdbcType="BIGINT" property="recordid" />
+    <result column="driver" jdbcType="VARCHAR" property="driver" />
+    <result column="total" jdbcType="VARCHAR" property="total" />
+    <result column="used" jdbcType="VARCHAR" property="used" />
+    <result column="leftdisk" jdbcType="VARCHAR" property="leftdisk" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, recordid, driver, total, used, leftdisk
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from server_state_record_disk
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from server_state_record_disk
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.xq.domain.ServerStateRecordDisk" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into server_state_record_disk (recordid, driver, total, 
+      used, leftdisk)
+    values (#{recordid,jdbcType=BIGINT}, #{driver,jdbcType=VARCHAR}, #{total,jdbcType=VARCHAR}, 
+      #{used,jdbcType=VARCHAR}, #{leftdisk,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.xq.domain.ServerStateRecordDisk" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into server_state_record_disk
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="recordid != null">
+        recordid,
+      </if>
+      <if test="driver != null">
+        driver,
+      </if>
+      <if test="total != null">
+        total,
+      </if>
+      <if test="used != null">
+        used,
+      </if>
+      <if test="leftdisk != null">
+        leftdisk,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="recordid != null">
+        #{recordid,jdbcType=BIGINT},
+      </if>
+      <if test="driver != null">
+        #{driver,jdbcType=VARCHAR},
+      </if>
+      <if test="total != null">
+        #{total,jdbcType=VARCHAR},
+      </if>
+      <if test="used != null">
+        #{used,jdbcType=VARCHAR},
+      </if>
+      <if test="leftdisk != null">
+        #{leftdisk,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.ServerStateRecordDisk">
+    <!--@mbg.generated-->
+    update server_state_record_disk
+    <set>
+      <if test="recordid != null">
+        recordid = #{recordid,jdbcType=BIGINT},
+      </if>
+      <if test="driver != null">
+        driver = #{driver,jdbcType=VARCHAR},
+      </if>
+      <if test="total != null">
+        total = #{total,jdbcType=VARCHAR},
+      </if>
+      <if test="used != null">
+        used = #{used,jdbcType=VARCHAR},
+      </if>
+      <if test="leftdisk != null">
+        leftdisk = #{leftdisk,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.ServerStateRecordDisk">
+    <!--@mbg.generated-->
+    update server_state_record_disk
+    set recordid = #{recordid,jdbcType=BIGINT},
+      driver = #{driver,jdbcType=VARCHAR},
+      total = #{total,jdbcType=VARCHAR},
+      used = #{used,jdbcType=VARCHAR},
+      leftdisk = #{leftdisk,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

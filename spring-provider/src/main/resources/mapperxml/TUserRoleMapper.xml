@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.TUserRoleMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.TUserRole">
+    <!--@mbg.generated-->
+    <id column="rid" jdbcType="INTEGER" property="rid" />
+    <id column="amid" jdbcType="CHAR" property="amid" />
+    <result column="dmlflag" jdbcType="TINYINT" property="dmlflag" />
+    <result column="dmltime" jdbcType="TIMESTAMP" property="dmltime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    rid, amid, dmlflag, dmltime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from t_user_role
+    where rid = #{rid,jdbcType=INTEGER}
+      and amid = #{amid,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    <!--@mbg.generated-->
+    delete from t_user_role
+    where rid = #{rid,jdbcType=INTEGER}
+      and amid = #{amid,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.TUserRole">
+    <!--@mbg.generated-->
+    insert into t_user_role (rid, amid, dmlflag, 
+      dmltime)
+    values (#{rid,jdbcType=INTEGER}, #{amid,jdbcType=CHAR}, #{dmlflag,jdbcType=TINYINT}, 
+      #{dmltime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.TUserRole">
+    <!--@mbg.generated-->
+    insert into t_user_role
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="rid != null">
+        rid,
+      </if>
+      <if test="amid != null">
+        amid,
+      </if>
+      <if test="dmlflag != null">
+        dmlflag,
+      </if>
+      <if test="dmltime != null">
+        dmltime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="rid != null">
+        #{rid,jdbcType=INTEGER},
+      </if>
+      <if test="amid != null">
+        #{amid,jdbcType=CHAR},
+      </if>
+      <if test="dmlflag != null">
+        #{dmlflag,jdbcType=TINYINT},
+      </if>
+      <if test="dmltime != null">
+        #{dmltime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.TUserRole">
+    <!--@mbg.generated-->
+    update t_user_role
+    <set>
+      <if test="dmlflag != null">
+        dmlflag = #{dmlflag,jdbcType=TINYINT},
+      </if>
+      <if test="dmltime != null">
+        dmltime = #{dmltime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where rid = #{rid,jdbcType=INTEGER}
+      and amid = #{amid,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.TUserRole">
+    <!--@mbg.generated-->
+    update t_user_role
+    set dmlflag = #{dmlflag,jdbcType=TINYINT},
+      dmltime = #{dmltime,jdbcType=TIMESTAMP}
+    where rid = #{rid,jdbcType=INTEGER}
+      and amid = #{amid,jdbcType=CHAR}
+  </update>
+</mapper>

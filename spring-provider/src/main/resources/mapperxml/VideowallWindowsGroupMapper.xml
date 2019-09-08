@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.VideowallWindowsGroupMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.VideowallWindowsGroup">
+    <!--@mbg.generated-->
+    <id column="video_wall_id" jdbcType="INTEGER" property="videoWallId" />
+    <id column="windows_num" jdbcType="INTEGER" property="windowsNum" />
+    <id column="sub_windows_num" jdbcType="INTEGER" property="subWindowsNum" />
+    <result column="turn_channel_group_id" jdbcType="INTEGER" property="turnChannelGroupId" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    video_wall_id, windows_num, sub_windows_num, turn_channel_group_id, description
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from videowall_windows_group
+    where video_wall_id = #{videoWallId,jdbcType=INTEGER}
+      and windows_num = #{windowsNum,jdbcType=INTEGER}
+      and sub_windows_num = #{subWindowsNum,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    <!--@mbg.generated-->
+    delete from videowall_windows_group
+    where video_wall_id = #{videoWallId,jdbcType=INTEGER}
+      and windows_num = #{windowsNum,jdbcType=INTEGER}
+      and sub_windows_num = #{subWindowsNum,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.VideowallWindowsGroup">
+    <!--@mbg.generated-->
+    insert into videowall_windows_group (video_wall_id, windows_num, sub_windows_num, 
+      turn_channel_group_id, description)
+    values (#{videoWallId,jdbcType=INTEGER}, #{windowsNum,jdbcType=INTEGER}, #{subWindowsNum,jdbcType=INTEGER}, 
+      #{turnChannelGroupId,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.VideowallWindowsGroup">
+    <!--@mbg.generated-->
+    insert into videowall_windows_group
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="videoWallId != null">
+        video_wall_id,
+      </if>
+      <if test="windowsNum != null">
+        windows_num,
+      </if>
+      <if test="subWindowsNum != null">
+        sub_windows_num,
+      </if>
+      <if test="turnChannelGroupId != null">
+        turn_channel_group_id,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="videoWallId != null">
+        #{videoWallId,jdbcType=INTEGER},
+      </if>
+      <if test="windowsNum != null">
+        #{windowsNum,jdbcType=INTEGER},
+      </if>
+      <if test="subWindowsNum != null">
+        #{subWindowsNum,jdbcType=INTEGER},
+      </if>
+      <if test="turnChannelGroupId != null">
+        #{turnChannelGroupId,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.VideowallWindowsGroup">
+    <!--@mbg.generated-->
+    update videowall_windows_group
+    <set>
+      <if test="turnChannelGroupId != null">
+        turn_channel_group_id = #{turnChannelGroupId,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where video_wall_id = #{videoWallId,jdbcType=INTEGER}
+      and windows_num = #{windowsNum,jdbcType=INTEGER}
+      and sub_windows_num = #{subWindowsNum,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.VideowallWindowsGroup">
+    <!--@mbg.generated-->
+    update videowall_windows_group
+    set turn_channel_group_id = #{turnChannelGroupId,jdbcType=INTEGER},
+      description = #{description,jdbcType=VARCHAR}
+    where video_wall_id = #{videoWallId,jdbcType=INTEGER}
+      and windows_num = #{windowsNum,jdbcType=INTEGER}
+      and sub_windows_num = #{subWindowsNum,jdbcType=INTEGER}
+  </update>
+</mapper>

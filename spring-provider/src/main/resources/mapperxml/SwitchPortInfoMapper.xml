@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.SwitchPortInfoMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.SwitchPortInfo">
+    <!--@mbg.generated-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="switchid" jdbcType="VARCHAR" property="switchid" />
+    <result column="port" jdbcType="INTEGER" property="port" />
+    <result column="ip" jdbcType="VARCHAR" property="ip" />
+    <result column="mac" jdbcType="VARCHAR" property="mac" />
+    <result column="deviceid" jdbcType="VARCHAR" property="deviceid" />
+    <result column="master" jdbcType="VARCHAR" property="master" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, switchid, port, ip, mac, deviceid, master
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from switch_port_info
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from switch_port_info
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.xq.domain.SwitchPortInfo" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into switch_port_info (switchid, port, ip, 
+      mac, deviceid, master
+      )
+    values (#{switchid,jdbcType=VARCHAR}, #{port,jdbcType=INTEGER}, #{ip,jdbcType=VARCHAR}, 
+      #{mac,jdbcType=VARCHAR}, #{deviceid,jdbcType=VARCHAR}, #{master,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.xq.domain.SwitchPortInfo" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into switch_port_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="switchid != null">
+        switchid,
+      </if>
+      <if test="port != null">
+        port,
+      </if>
+      <if test="ip != null">
+        ip,
+      </if>
+      <if test="mac != null">
+        mac,
+      </if>
+      <if test="deviceid != null">
+        deviceid,
+      </if>
+      <if test="master != null">
+        master,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="switchid != null">
+        #{switchid,jdbcType=VARCHAR},
+      </if>
+      <if test="port != null">
+        #{port,jdbcType=INTEGER},
+      </if>
+      <if test="ip != null">
+        #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="mac != null">
+        #{mac,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceid != null">
+        #{deviceid,jdbcType=VARCHAR},
+      </if>
+      <if test="master != null">
+        #{master,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.SwitchPortInfo">
+    <!--@mbg.generated-->
+    update switch_port_info
+    <set>
+      <if test="switchid != null">
+        switchid = #{switchid,jdbcType=VARCHAR},
+      </if>
+      <if test="port != null">
+        port = #{port,jdbcType=INTEGER},
+      </if>
+      <if test="ip != null">
+        ip = #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="mac != null">
+        mac = #{mac,jdbcType=VARCHAR},
+      </if>
+      <if test="deviceid != null">
+        deviceid = #{deviceid,jdbcType=VARCHAR},
+      </if>
+      <if test="master != null">
+        master = #{master,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.SwitchPortInfo">
+    <!--@mbg.generated-->
+    update switch_port_info
+    set switchid = #{switchid,jdbcType=VARCHAR},
+      port = #{port,jdbcType=INTEGER},
+      ip = #{ip,jdbcType=VARCHAR},
+      mac = #{mac,jdbcType=VARCHAR},
+      deviceid = #{deviceid,jdbcType=VARCHAR},
+      master = #{master,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

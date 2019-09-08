@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.ServerStateRecordCpuMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.ServerStateRecordCpu">
+    <!--@mbg.generated-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="recordid" jdbcType="BIGINT" property="recordid" />
+    <result column="cpuPercent" jdbcType="VARCHAR" property="cpupercent" />
+    <result column="cpuTemp" jdbcType="VARCHAR" property="cputemp" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, recordid, cpuPercent, cpuTemp
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from server_state_record_cpu
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from server_state_record_cpu
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.xq.domain.ServerStateRecordCpu" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into server_state_record_cpu (recordid, cpuPercent, cpuTemp
+      )
+    values (#{recordid,jdbcType=BIGINT}, #{cpupercent,jdbcType=VARCHAR}, #{cputemp,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.xq.domain.ServerStateRecordCpu" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into server_state_record_cpu
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="recordid != null">
+        recordid,
+      </if>
+      <if test="cpupercent != null">
+        cpuPercent,
+      </if>
+      <if test="cputemp != null">
+        cpuTemp,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="recordid != null">
+        #{recordid,jdbcType=BIGINT},
+      </if>
+      <if test="cpupercent != null">
+        #{cpupercent,jdbcType=VARCHAR},
+      </if>
+      <if test="cputemp != null">
+        #{cputemp,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.ServerStateRecordCpu">
+    <!--@mbg.generated-->
+    update server_state_record_cpu
+    <set>
+      <if test="recordid != null">
+        recordid = #{recordid,jdbcType=BIGINT},
+      </if>
+      <if test="cpupercent != null">
+        cpuPercent = #{cpupercent,jdbcType=VARCHAR},
+      </if>
+      <if test="cputemp != null">
+        cpuTemp = #{cputemp,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.ServerStateRecordCpu">
+    <!--@mbg.generated-->
+    update server_state_record_cpu
+    set recordid = #{recordid,jdbcType=BIGINT},
+      cpuPercent = #{cpupercent,jdbcType=VARCHAR},
+      cpuTemp = #{cputemp,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

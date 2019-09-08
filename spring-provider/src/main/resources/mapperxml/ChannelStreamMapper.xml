@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.ChannelStreamMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.ChannelStream">
+    <!--@mbg.generated-->
+    <id column="channel_id" jdbcType="CHAR" property="channelId" />
+    <id column="num" jdbcType="INTEGER" property="num" />
+    <result column="codec" jdbcType="INTEGER" property="codec" />
+    <result column="width" jdbcType="INTEGER" property="width" />
+    <result column="height" jdbcType="INTEGER" property="height" />
+    <result column="fps" jdbcType="DOUBLE" property="fps" />
+    <result column="bps" jdbcType="INTEGER" property="bps" />
+    <result column="iframe" jdbcType="INTEGER" property="iframe" />
+    <result column="audio_codec" jdbcType="INTEGER" property="audioCodec" />
+    <result column="audio_channel" jdbcType="INTEGER" property="audioChannel" />
+    <result column="audio_sample" jdbcType="INTEGER" property="audioSample" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    channel_id, num, codec, width, height, fps, bps, iframe, audio_codec, audio_channel, 
+    audio_sample
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from channel_stream
+    where channel_id = #{channelId,jdbcType=CHAR}
+      and num = #{num,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    <!--@mbg.generated-->
+    delete from channel_stream
+    where channel_id = #{channelId,jdbcType=CHAR}
+      and num = #{num,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.ChannelStream">
+    <!--@mbg.generated-->
+    insert into channel_stream (channel_id, num, codec, 
+      width, height, fps, 
+      bps, iframe, audio_codec, 
+      audio_channel, audio_sample)
+    values (#{channelId,jdbcType=CHAR}, #{num,jdbcType=INTEGER}, #{codec,jdbcType=INTEGER}, 
+      #{width,jdbcType=INTEGER}, #{height,jdbcType=INTEGER}, #{fps,jdbcType=DOUBLE}, 
+      #{bps,jdbcType=INTEGER}, #{iframe,jdbcType=INTEGER}, #{audioCodec,jdbcType=INTEGER}, 
+      #{audioChannel,jdbcType=INTEGER}, #{audioSample,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.ChannelStream">
+    <!--@mbg.generated-->
+    insert into channel_stream
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="channelId != null">
+        channel_id,
+      </if>
+      <if test="num != null">
+        num,
+      </if>
+      <if test="codec != null">
+        codec,
+      </if>
+      <if test="width != null">
+        width,
+      </if>
+      <if test="height != null">
+        height,
+      </if>
+      <if test="fps != null">
+        fps,
+      </if>
+      <if test="bps != null">
+        bps,
+      </if>
+      <if test="iframe != null">
+        iframe,
+      </if>
+      <if test="audioCodec != null">
+        audio_codec,
+      </if>
+      <if test="audioChannel != null">
+        audio_channel,
+      </if>
+      <if test="audioSample != null">
+        audio_sample,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="channelId != null">
+        #{channelId,jdbcType=CHAR},
+      </if>
+      <if test="num != null">
+        #{num,jdbcType=INTEGER},
+      </if>
+      <if test="codec != null">
+        #{codec,jdbcType=INTEGER},
+      </if>
+      <if test="width != null">
+        #{width,jdbcType=INTEGER},
+      </if>
+      <if test="height != null">
+        #{height,jdbcType=INTEGER},
+      </if>
+      <if test="fps != null">
+        #{fps,jdbcType=DOUBLE},
+      </if>
+      <if test="bps != null">
+        #{bps,jdbcType=INTEGER},
+      </if>
+      <if test="iframe != null">
+        #{iframe,jdbcType=INTEGER},
+      </if>
+      <if test="audioCodec != null">
+        #{audioCodec,jdbcType=INTEGER},
+      </if>
+      <if test="audioChannel != null">
+        #{audioChannel,jdbcType=INTEGER},
+      </if>
+      <if test="audioSample != null">
+        #{audioSample,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.ChannelStream">
+    <!--@mbg.generated-->
+    update channel_stream
+    <set>
+      <if test="codec != null">
+        codec = #{codec,jdbcType=INTEGER},
+      </if>
+      <if test="width != null">
+        width = #{width,jdbcType=INTEGER},
+      </if>
+      <if test="height != null">
+        height = #{height,jdbcType=INTEGER},
+      </if>
+      <if test="fps != null">
+        fps = #{fps,jdbcType=DOUBLE},
+      </if>
+      <if test="bps != null">
+        bps = #{bps,jdbcType=INTEGER},
+      </if>
+      <if test="iframe != null">
+        iframe = #{iframe,jdbcType=INTEGER},
+      </if>
+      <if test="audioCodec != null">
+        audio_codec = #{audioCodec,jdbcType=INTEGER},
+      </if>
+      <if test="audioChannel != null">
+        audio_channel = #{audioChannel,jdbcType=INTEGER},
+      </if>
+      <if test="audioSample != null">
+        audio_sample = #{audioSample,jdbcType=INTEGER},
+      </if>
+    </set>
+    where channel_id = #{channelId,jdbcType=CHAR}
+      and num = #{num,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.ChannelStream">
+    <!--@mbg.generated-->
+    update channel_stream
+    set codec = #{codec,jdbcType=INTEGER},
+      width = #{width,jdbcType=INTEGER},
+      height = #{height,jdbcType=INTEGER},
+      fps = #{fps,jdbcType=DOUBLE},
+      bps = #{bps,jdbcType=INTEGER},
+      iframe = #{iframe,jdbcType=INTEGER},
+      audio_codec = #{audioCodec,jdbcType=INTEGER},
+      audio_channel = #{audioChannel,jdbcType=INTEGER},
+      audio_sample = #{audioSample,jdbcType=INTEGER}
+    where channel_id = #{channelId,jdbcType=CHAR}
+      and num = #{num,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.DmuAlarmInfoMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.DmuAlarmInfo">
+    <!--@mbg.generated-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="source_id" jdbcType="CHAR" property="sourceId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="alarm_type" jdbcType="CHAR" property="alarmType" />
+    <result column="begin_time" jdbcType="VARCHAR" property="beginTime" />
+    <result column="end_time" jdbcType="VARCHAR" property="endTime" />
+    <result column="alarm_level" jdbcType="INTEGER" property="alarmLevel" />
+    <result column="state" jdbcType="INTEGER" property="state" />
+    <result column="description" jdbcType="LONGVARCHAR" property="description" />
+    <result column="target_info" jdbcType="VARCHAR" property="targetInfo" />
+    <result column="status" jdbcType="VARCHAR" property="status" />
+    <result column="eventid" jdbcType="BIGINT" property="eventid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, source_id, `name`, alarm_type, begin_time, end_time, alarm_level, `state`, description, 
+    target_info, `status`, eventid
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from dmu_alarm_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from dmu_alarm_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.xq.domain.DmuAlarmInfo" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into dmu_alarm_info (source_id, `name`, alarm_type, 
+      begin_time, end_time, alarm_level, 
+      `state`, description, target_info, 
+      `status`, eventid)
+    values (#{sourceId,jdbcType=CHAR}, #{name,jdbcType=VARCHAR}, #{alarmType,jdbcType=CHAR}, 
+      #{beginTime,jdbcType=VARCHAR}, #{endTime,jdbcType=VARCHAR}, #{alarmLevel,jdbcType=INTEGER}, 
+      #{state,jdbcType=INTEGER}, #{description,jdbcType=LONGVARCHAR}, #{targetInfo,jdbcType=VARCHAR}, 
+      #{status,jdbcType=VARCHAR}, #{eventid,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.xq.domain.DmuAlarmInfo" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into dmu_alarm_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sourceId != null">
+        source_id,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="alarmType != null">
+        alarm_type,
+      </if>
+      <if test="beginTime != null">
+        begin_time,
+      </if>
+      <if test="endTime != null">
+        end_time,
+      </if>
+      <if test="alarmLevel != null">
+        alarm_level,
+      </if>
+      <if test="state != null">
+        `state`,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="targetInfo != null">
+        target_info,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="eventid != null">
+        eventid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sourceId != null">
+        #{sourceId,jdbcType=CHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="alarmType != null">
+        #{alarmType,jdbcType=CHAR},
+      </if>
+      <if test="beginTime != null">
+        #{beginTime,jdbcType=VARCHAR},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=VARCHAR},
+      </if>
+      <if test="alarmLevel != null">
+        #{alarmLevel,jdbcType=INTEGER},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="targetInfo != null">
+        #{targetInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="eventid != null">
+        #{eventid,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.DmuAlarmInfo">
+    <!--@mbg.generated-->
+    update dmu_alarm_info
+    <set>
+      <if test="sourceId != null">
+        source_id = #{sourceId,jdbcType=CHAR},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="alarmType != null">
+        alarm_type = #{alarmType,jdbcType=CHAR},
+      </if>
+      <if test="beginTime != null">
+        begin_time = #{beginTime,jdbcType=VARCHAR},
+      </if>
+      <if test="endTime != null">
+        end_time = #{endTime,jdbcType=VARCHAR},
+      </if>
+      <if test="alarmLevel != null">
+        alarm_level = #{alarmLevel,jdbcType=INTEGER},
+      </if>
+      <if test="state != null">
+        `state` = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="targetInfo != null">
+        target_info = #{targetInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=VARCHAR},
+      </if>
+      <if test="eventid != null">
+        eventid = #{eventid,jdbcType=BIGINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.DmuAlarmInfo">
+    <!--@mbg.generated-->
+    update dmu_alarm_info
+    set source_id = #{sourceId,jdbcType=CHAR},
+      `name` = #{name,jdbcType=VARCHAR},
+      alarm_type = #{alarmType,jdbcType=CHAR},
+      begin_time = #{beginTime,jdbcType=VARCHAR},
+      end_time = #{endTime,jdbcType=VARCHAR},
+      alarm_level = #{alarmLevel,jdbcType=INTEGER},
+      `state` = #{state,jdbcType=INTEGER},
+      description = #{description,jdbcType=LONGVARCHAR},
+      target_info = #{targetInfo,jdbcType=VARCHAR},
+      `status` = #{status,jdbcType=VARCHAR},
+      eventid = #{eventid,jdbcType=BIGINT}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

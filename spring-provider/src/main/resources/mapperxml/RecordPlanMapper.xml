@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.RecordPlanMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.RecordPlan">
+    <!--@mbg.generated-->
+    <id column="name" jdbcType="CHAR" property="name" />
+    <result column="resolution" jdbcType="INTEGER" property="resolution" />
+    <result column="frametype" jdbcType="INTEGER" property="frametype" />
+    <result column="timespan" jdbcType="CHAR" property="timespan" />
+    <result column="cycle_date" jdbcType="INTEGER" property="cycleDate" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    `name`, resolution, frametype, timespan, cycle_date, description
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from record_plan
+    where `name` = #{name,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from record_plan
+    where `name` = #{name,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.RecordPlan">
+    <!--@mbg.generated-->
+    insert into record_plan (`name`, resolution, frametype, 
+      timespan, cycle_date, description
+      )
+    values (#{name,jdbcType=CHAR}, #{resolution,jdbcType=INTEGER}, #{frametype,jdbcType=INTEGER}, 
+      #{timespan,jdbcType=CHAR}, #{cycleDate,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.RecordPlan">
+    <!--@mbg.generated-->
+    insert into record_plan
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="resolution != null">
+        resolution,
+      </if>
+      <if test="frametype != null">
+        frametype,
+      </if>
+      <if test="timespan != null">
+        timespan,
+      </if>
+      <if test="cycleDate != null">
+        cycle_date,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=CHAR},
+      </if>
+      <if test="resolution != null">
+        #{resolution,jdbcType=INTEGER},
+      </if>
+      <if test="frametype != null">
+        #{frametype,jdbcType=INTEGER},
+      </if>
+      <if test="timespan != null">
+        #{timespan,jdbcType=CHAR},
+      </if>
+      <if test="cycleDate != null">
+        #{cycleDate,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.RecordPlan">
+    <!--@mbg.generated-->
+    update record_plan
+    <set>
+      <if test="resolution != null">
+        resolution = #{resolution,jdbcType=INTEGER},
+      </if>
+      <if test="frametype != null">
+        frametype = #{frametype,jdbcType=INTEGER},
+      </if>
+      <if test="timespan != null">
+        timespan = #{timespan,jdbcType=CHAR},
+      </if>
+      <if test="cycleDate != null">
+        cycle_date = #{cycleDate,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where `name` = #{name,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.RecordPlan">
+    <!--@mbg.generated-->
+    update record_plan
+    set resolution = #{resolution,jdbcType=INTEGER},
+      frametype = #{frametype,jdbcType=INTEGER},
+      timespan = #{timespan,jdbcType=CHAR},
+      cycle_date = #{cycleDate,jdbcType=INTEGER},
+      description = #{description,jdbcType=VARCHAR}
+    where `name` = #{name,jdbcType=CHAR}
+  </update>
+</mapper>

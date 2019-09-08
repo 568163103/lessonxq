@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.ImsGisInfoMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.ImsGisInfo">
+    <!--@mbg.generated-->
+    <id column="channel_id" jdbcType="CHAR" property="channelId" />
+    <result column="recvtime" jdbcType="CHAR" property="recvtime" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="longitude" jdbcType="DOUBLE" property="longitude" />
+    <result column="latitude" jdbcType="DOUBLE" property="latitude" />
+    <result column="direction" jdbcType="DOUBLE" property="direction" />
+    <result column="dpitch" jdbcType="DOUBLE" property="dpitch" />
+    <result column="angle" jdbcType="DOUBLE" property="angle" />
+    <result column="cur_range" jdbcType="DOUBLE" property="curRange" />
+    <result column="speed" jdbcType="DOUBLE" property="speed" />
+    <result column="height" jdbcType="DOUBLE" property="height" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    channel_id, recvtime, `status`, longitude, latitude, direction, dpitch, angle, cur_range, 
+    speed, height
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from ims_gis_info
+    where channel_id = #{channelId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from ims_gis_info
+    where channel_id = #{channelId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.ImsGisInfo">
+    <!--@mbg.generated-->
+    insert into ims_gis_info (channel_id, recvtime, `status`, 
+      longitude, latitude, direction, 
+      dpitch, angle, cur_range, 
+      speed, height)
+    values (#{channelId,jdbcType=CHAR}, #{recvtime,jdbcType=CHAR}, #{status,jdbcType=INTEGER}, 
+      #{longitude,jdbcType=DOUBLE}, #{latitude,jdbcType=DOUBLE}, #{direction,jdbcType=DOUBLE}, 
+      #{dpitch,jdbcType=DOUBLE}, #{angle,jdbcType=DOUBLE}, #{curRange,jdbcType=DOUBLE}, 
+      #{speed,jdbcType=DOUBLE}, #{height,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.ImsGisInfo">
+    <!--@mbg.generated-->
+    insert into ims_gis_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="channelId != null">
+        channel_id,
+      </if>
+      <if test="recvtime != null">
+        recvtime,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="longitude != null">
+        longitude,
+      </if>
+      <if test="latitude != null">
+        latitude,
+      </if>
+      <if test="direction != null">
+        direction,
+      </if>
+      <if test="dpitch != null">
+        dpitch,
+      </if>
+      <if test="angle != null">
+        angle,
+      </if>
+      <if test="curRange != null">
+        cur_range,
+      </if>
+      <if test="speed != null">
+        speed,
+      </if>
+      <if test="height != null">
+        height,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="channelId != null">
+        #{channelId,jdbcType=CHAR},
+      </if>
+      <if test="recvtime != null">
+        #{recvtime,jdbcType=CHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="longitude != null">
+        #{longitude,jdbcType=DOUBLE},
+      </if>
+      <if test="latitude != null">
+        #{latitude,jdbcType=DOUBLE},
+      </if>
+      <if test="direction != null">
+        #{direction,jdbcType=DOUBLE},
+      </if>
+      <if test="dpitch != null">
+        #{dpitch,jdbcType=DOUBLE},
+      </if>
+      <if test="angle != null">
+        #{angle,jdbcType=DOUBLE},
+      </if>
+      <if test="curRange != null">
+        #{curRange,jdbcType=DOUBLE},
+      </if>
+      <if test="speed != null">
+        #{speed,jdbcType=DOUBLE},
+      </if>
+      <if test="height != null">
+        #{height,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.ImsGisInfo">
+    <!--@mbg.generated-->
+    update ims_gis_info
+    <set>
+      <if test="recvtime != null">
+        recvtime = #{recvtime,jdbcType=CHAR},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="longitude != null">
+        longitude = #{longitude,jdbcType=DOUBLE},
+      </if>
+      <if test="latitude != null">
+        latitude = #{latitude,jdbcType=DOUBLE},
+      </if>
+      <if test="direction != null">
+        direction = #{direction,jdbcType=DOUBLE},
+      </if>
+      <if test="dpitch != null">
+        dpitch = #{dpitch,jdbcType=DOUBLE},
+      </if>
+      <if test="angle != null">
+        angle = #{angle,jdbcType=DOUBLE},
+      </if>
+      <if test="curRange != null">
+        cur_range = #{curRange,jdbcType=DOUBLE},
+      </if>
+      <if test="speed != null">
+        speed = #{speed,jdbcType=DOUBLE},
+      </if>
+      <if test="height != null">
+        height = #{height,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where channel_id = #{channelId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.ImsGisInfo">
+    <!--@mbg.generated-->
+    update ims_gis_info
+    set recvtime = #{recvtime,jdbcType=CHAR},
+      `status` = #{status,jdbcType=INTEGER},
+      longitude = #{longitude,jdbcType=DOUBLE},
+      latitude = #{latitude,jdbcType=DOUBLE},
+      direction = #{direction,jdbcType=DOUBLE},
+      dpitch = #{dpitch,jdbcType=DOUBLE},
+      angle = #{angle,jdbcType=DOUBLE},
+      cur_range = #{curRange,jdbcType=DOUBLE},
+      speed = #{speed,jdbcType=DOUBLE},
+      height = #{height,jdbcType=DOUBLE}
+    where channel_id = #{channelId,jdbcType=CHAR}
+  </update>
+</mapper>

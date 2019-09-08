@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.DbVersionMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.DbVersion">
+    <!--@mbg.generated-->
+    <id column="version" jdbcType="CHAR" property="version" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    version, description
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from db_version
+    where version = #{version,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from db_version
+    where version = #{version,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.DbVersion">
+    <!--@mbg.generated-->
+    insert into db_version (version, description)
+    values (#{version,jdbcType=CHAR}, #{description,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.DbVersion">
+    <!--@mbg.generated-->
+    insert into db_version
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="version != null">
+        version,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="version != null">
+        #{version,jdbcType=CHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.DbVersion">
+    <!--@mbg.generated-->
+    update db_version
+    <set>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where version = #{version,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.DbVersion">
+    <!--@mbg.generated-->
+    update db_version
+    set description = #{description,jdbcType=VARCHAR}
+    where version = #{version,jdbcType=CHAR}
+  </update>
+</mapper>

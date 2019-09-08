@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.AlarmDeviceChannelMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.AlarmDeviceChannel">
+    <!--@mbg.generated-->
+    <id column="num" jdbcType="INTEGER" property="num" />
+    <id column="device_id" jdbcType="CHAR" property="deviceId" />
+    <result column="channel_id" jdbcType="CHAR" property="channelId" />
+    <result column="name" jdbcType="CHAR" property="name" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    num, device_id, channel_id, `name`, description
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from alarm_device_channel
+    where num = #{num,jdbcType=INTEGER}
+      and device_id = #{deviceId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    <!--@mbg.generated-->
+    delete from alarm_device_channel
+    where num = #{num,jdbcType=INTEGER}
+      and device_id = #{deviceId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.AlarmDeviceChannel">
+    <!--@mbg.generated-->
+    insert into alarm_device_channel (num, device_id, channel_id, 
+      `name`, description)
+    values (#{num,jdbcType=INTEGER}, #{deviceId,jdbcType=CHAR}, #{channelId,jdbcType=CHAR}, 
+      #{name,jdbcType=CHAR}, #{description,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.AlarmDeviceChannel">
+    <!--@mbg.generated-->
+    insert into alarm_device_channel
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="num != null">
+        num,
+      </if>
+      <if test="deviceId != null">
+        device_id,
+      </if>
+      <if test="channelId != null">
+        channel_id,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="num != null">
+        #{num,jdbcType=INTEGER},
+      </if>
+      <if test="deviceId != null">
+        #{deviceId,jdbcType=CHAR},
+      </if>
+      <if test="channelId != null">
+        #{channelId,jdbcType=CHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=CHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.AlarmDeviceChannel">
+    <!--@mbg.generated-->
+    update alarm_device_channel
+    <set>
+      <if test="channelId != null">
+        channel_id = #{channelId,jdbcType=CHAR},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=CHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where num = #{num,jdbcType=INTEGER}
+      and device_id = #{deviceId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.AlarmDeviceChannel">
+    <!--@mbg.generated-->
+    update alarm_device_channel
+    set channel_id = #{channelId,jdbcType=CHAR},
+      `name` = #{name,jdbcType=CHAR},
+      description = #{description,jdbcType=VARCHAR}
+    where num = #{num,jdbcType=INTEGER}
+      and device_id = #{deviceId,jdbcType=CHAR}
+  </update>
+</mapper>

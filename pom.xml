@@ -3,11 +3,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<packaging>pom</packaging>
-	<modules>
-		<module>spring- producer</module>
-		<module>spring-config</module>
-		<module>spring-consumer</module>
-	</modules>
+
 	<parent>
 		<groupId>org.springframework.boot</groupId>
 		<artifactId>spring-boot-starter-parent</artifactId>
@@ -17,7 +13,11 @@
 	<groupId>com.xq</groupId>
 	<artifactId>webmu</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-
+    <modules>
+		<module>spring-gateway</module>
+		<module>spring-provider</module>
+		<module>spring-consumer</module>
+	</modules>
 	<name>webmu</name>
 
 	<description>Demo project for Spring Boot</description>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.UserGroupRelationMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.UserGroupRelation">
+    <!--@mbg.generated-->
+    <id column="user_group_id" jdbcType="INTEGER" property="userGroupId" />
+    <id column="group_id" jdbcType="VARCHAR" property="groupId" />
+    <result column="group_right" jdbcType="INTEGER" property="groupRight" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    user_group_id, group_id, group_right
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from user_group_relation
+    where user_group_id = #{userGroupId,jdbcType=INTEGER}
+      and group_id = #{groupId,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    <!--@mbg.generated-->
+    delete from user_group_relation
+    where user_group_id = #{userGroupId,jdbcType=INTEGER}
+      and group_id = #{groupId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.UserGroupRelation">
+    <!--@mbg.generated-->
+    insert into user_group_relation (user_group_id, group_id, group_right
+      )
+    values (#{userGroupId,jdbcType=INTEGER}, #{groupId,jdbcType=VARCHAR}, #{groupRight,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.UserGroupRelation">
+    <!--@mbg.generated-->
+    insert into user_group_relation
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userGroupId != null">
+        user_group_id,
+      </if>
+      <if test="groupId != null">
+        group_id,
+      </if>
+      <if test="groupRight != null">
+        group_right,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userGroupId != null">
+        #{userGroupId,jdbcType=INTEGER},
+      </if>
+      <if test="groupId != null">
+        #{groupId,jdbcType=VARCHAR},
+      </if>
+      <if test="groupRight != null">
+        #{groupRight,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.UserGroupRelation">
+    <!--@mbg.generated-->
+    update user_group_relation
+    <set>
+      <if test="groupRight != null">
+        group_right = #{groupRight,jdbcType=INTEGER},
+      </if>
+    </set>
+    where user_group_id = #{userGroupId,jdbcType=INTEGER}
+      and group_id = #{groupId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.UserGroupRelation">
+    <!--@mbg.generated-->
+    update user_group_relation
+    set group_right = #{groupRight,jdbcType=INTEGER}
+    where user_group_id = #{userGroupId,jdbcType=INTEGER}
+      and group_id = #{groupId,jdbcType=VARCHAR}
+  </update>
+</mapper>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.ResAlarmTypeMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.ResAlarmType">
+    <!--@mbg.generated-->
+    <id column="id" jdbcType="CHAR" property="id" />
+    <result column="source_id" jdbcType="CHAR" property="sourceId" />
+    <result column="alarm_type" jdbcType="INTEGER" property="alarmType" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, source_id, alarm_type, description
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from res_alarm_type
+    where id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from res_alarm_type
+    where id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.ResAlarmType">
+    <!--@mbg.generated-->
+    insert into res_alarm_type (id, source_id, alarm_type, 
+      description)
+    values (#{id,jdbcType=CHAR}, #{sourceId,jdbcType=CHAR}, #{alarmType,jdbcType=INTEGER}, 
+      #{description,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.ResAlarmType">
+    <!--@mbg.generated-->
+    insert into res_alarm_type
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="sourceId != null">
+        source_id,
+      </if>
+      <if test="alarmType != null">
+        alarm_type,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="sourceId != null">
+        #{sourceId,jdbcType=CHAR},
+      </if>
+      <if test="alarmType != null">
+        #{alarmType,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.ResAlarmType">
+    <!--@mbg.generated-->
+    update res_alarm_type
+    <set>
+      <if test="sourceId != null">
+        source_id = #{sourceId,jdbcType=CHAR},
+      </if>
+      <if test="alarmType != null">
+        alarm_type = #{alarmType,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.ResAlarmType">
+    <!--@mbg.generated-->
+    update res_alarm_type
+    set source_id = #{sourceId,jdbcType=CHAR},
+      alarm_type = #{alarmType,jdbcType=INTEGER},
+      description = #{description,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=CHAR}
+  </update>
+</mapper>

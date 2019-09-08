@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.ResAlarmChannelMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.ResAlarmChannel">
+    <!--@mbg.generated-->
+    <id column="alarm_channel_id" jdbcType="CHAR" property="alarmChannelId" />
+    <id column="channel_id" jdbcType="CHAR" property="channelId" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    <!--@mbg.generated-->
+    delete from res_alarm_channel
+    where alarm_channel_id = #{alarmChannelId,jdbcType=CHAR}
+      and channel_id = #{channelId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.ResAlarmChannel">
+    <!--@mbg.generated-->
+    insert into res_alarm_channel (alarm_channel_id, channel_id)
+    values (#{alarmChannelId,jdbcType=CHAR}, #{channelId,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.ResAlarmChannel">
+    <!--@mbg.generated-->
+    insert into res_alarm_channel
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="alarmChannelId != null">
+        alarm_channel_id,
+      </if>
+      <if test="channelId != null">
+        channel_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="alarmChannelId != null">
+        #{alarmChannelId,jdbcType=CHAR},
+      </if>
+      <if test="channelId != null">
+        #{channelId,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

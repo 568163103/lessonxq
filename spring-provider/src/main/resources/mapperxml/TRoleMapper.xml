@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.TRoleMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.TRole">
+    <!--@mbg.generated-->
+    <id column="rid" jdbcType="INTEGER" property="rid" />
+    <result column="app_code" jdbcType="VARCHAR" property="appCode" />
+    <result column="rname" jdbcType="VARCHAR" property="rname" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="role_type" jdbcType="TINYINT" property="roleType" />
+    <result column="is_public" jdbcType="TINYINT" property="isPublic" />
+    <result column="dmlflag" jdbcType="TINYINT" property="dmlflag" />
+    <result column="dmltime" jdbcType="TIMESTAMP" property="dmltime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    rid, app_code, rname, `status`, role_type, is_public, dmlflag, dmltime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from t_role
+    where rid = #{rid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from t_role
+    where rid = #{rid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="rid" keyProperty="rid" parameterType="com.xq.domain.TRole" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_role (app_code, rname, `status`, 
+      role_type, is_public, dmlflag, 
+      dmltime)
+    values (#{appCode,jdbcType=VARCHAR}, #{rname,jdbcType=VARCHAR}, #{status,jdbcType=TINYINT}, 
+      #{roleType,jdbcType=TINYINT}, #{isPublic,jdbcType=TINYINT}, #{dmlflag,jdbcType=TINYINT}, 
+      #{dmltime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="rid" keyProperty="rid" parameterType="com.xq.domain.TRole" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_role
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="appCode != null">
+        app_code,
+      </if>
+      <if test="rname != null">
+        rname,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="roleType != null">
+        role_type,
+      </if>
+      <if test="isPublic != null">
+        is_public,
+      </if>
+      <if test="dmlflag != null">
+        dmlflag,
+      </if>
+      <if test="dmltime != null">
+        dmltime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="appCode != null">
+        #{appCode,jdbcType=VARCHAR},
+      </if>
+      <if test="rname != null">
+        #{rname,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="roleType != null">
+        #{roleType,jdbcType=TINYINT},
+      </if>
+      <if test="isPublic != null">
+        #{isPublic,jdbcType=TINYINT},
+      </if>
+      <if test="dmlflag != null">
+        #{dmlflag,jdbcType=TINYINT},
+      </if>
+      <if test="dmltime != null">
+        #{dmltime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.TRole">
+    <!--@mbg.generated-->
+    update t_role
+    <set>
+      <if test="appCode != null">
+        app_code = #{appCode,jdbcType=VARCHAR},
+      </if>
+      <if test="rname != null">
+        rname = #{rname,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="roleType != null">
+        role_type = #{roleType,jdbcType=TINYINT},
+      </if>
+      <if test="isPublic != null">
+        is_public = #{isPublic,jdbcType=TINYINT},
+      </if>
+      <if test="dmlflag != null">
+        dmlflag = #{dmlflag,jdbcType=TINYINT},
+      </if>
+      <if test="dmltime != null">
+        dmltime = #{dmltime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where rid = #{rid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.TRole">
+    <!--@mbg.generated-->
+    update t_role
+    set app_code = #{appCode,jdbcType=VARCHAR},
+      rname = #{rname,jdbcType=VARCHAR},
+      `status` = #{status,jdbcType=TINYINT},
+      role_type = #{roleType,jdbcType=TINYINT},
+      is_public = #{isPublic,jdbcType=TINYINT},
+      dmlflag = #{dmlflag,jdbcType=TINYINT},
+      dmltime = #{dmltime,jdbcType=TIMESTAMP}
+    where rid = #{rid,jdbcType=INTEGER}
+  </update>
+</mapper>

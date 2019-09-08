@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.PositionCodeMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.PositionCode">
+    <!--@mbg.generated-->
+    <id column="code" jdbcType="CHAR" property="code" />
+    <result column="name" jdbcType="CHAR" property="name" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    code, `name`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from position_code
+    where code = #{code,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from position_code
+    where code = #{code,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.PositionCode">
+    <!--@mbg.generated-->
+    insert into position_code (code, `name`)
+    values (#{code,jdbcType=CHAR}, #{name,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.PositionCode">
+    <!--@mbg.generated-->
+    insert into position_code
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="code != null">
+        code,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="code != null">
+        #{code,jdbcType=CHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.PositionCode">
+    <!--@mbg.generated-->
+    update position_code
+    <set>
+      <if test="name != null">
+        `name` = #{name,jdbcType=CHAR},
+      </if>
+    </set>
+    where code = #{code,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.PositionCode">
+    <!--@mbg.generated-->
+    update position_code
+    set `name` = #{name,jdbcType=CHAR}
+    where code = #{code,jdbcType=CHAR}
+  </update>
+</mapper>

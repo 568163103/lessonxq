@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.ServerStautsMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.ServerStauts">
+    <!--@mbg.generated-->
+    <id column="server_id" jdbcType="CHAR" property="serverId" />
+    <result column="cpu" jdbcType="VARCHAR" property="cpu" />
+    <result column="cpu_total" jdbcType="VARCHAR" property="cpuTotal" />
+    <result column="memory" jdbcType="VARCHAR" property="memory" />
+    <result column="memory_free" jdbcType="VARCHAR" property="memoryFree" />
+    <result column="memory_total" jdbcType="VARCHAR" property="memoryTotal" />
+    <result column="network_in" jdbcType="VARCHAR" property="networkIn" />
+    <result column="network_out" jdbcType="VARCHAR" property="networkOut" />
+    <result column="online_client" jdbcType="VARCHAR" property="onlineClient" />
+    <result column="online_server" jdbcType="VARCHAR" property="onlineServer" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    server_id, cpu, cpu_total, memory, memory_free, memory_total, network_in, network_out, 
+    online_client, online_server, create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from server_stauts
+    where server_id = #{serverId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from server_stauts
+    where server_id = #{serverId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.ServerStauts">
+    <!--@mbg.generated-->
+    insert into server_stauts (server_id, cpu, cpu_total, 
+      memory, memory_free, memory_total, 
+      network_in, network_out, online_client, 
+      online_server, create_time)
+    values (#{serverId,jdbcType=CHAR}, #{cpu,jdbcType=VARCHAR}, #{cpuTotal,jdbcType=VARCHAR}, 
+      #{memory,jdbcType=VARCHAR}, #{memoryFree,jdbcType=VARCHAR}, #{memoryTotal,jdbcType=VARCHAR}, 
+      #{networkIn,jdbcType=VARCHAR}, #{networkOut,jdbcType=VARCHAR}, #{onlineClient,jdbcType=VARCHAR}, 
+      #{onlineServer,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.ServerStauts">
+    <!--@mbg.generated-->
+    insert into server_stauts
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="serverId != null">
+        server_id,
+      </if>
+      <if test="cpu != null">
+        cpu,
+      </if>
+      <if test="cpuTotal != null">
+        cpu_total,
+      </if>
+      <if test="memory != null">
+        memory,
+      </if>
+      <if test="memoryFree != null">
+        memory_free,
+      </if>
+      <if test="memoryTotal != null">
+        memory_total,
+      </if>
+      <if test="networkIn != null">
+        network_in,
+      </if>
+      <if test="networkOut != null">
+        network_out,
+      </if>
+      <if test="onlineClient != null">
+        online_client,
+      </if>
+      <if test="onlineServer != null">
+        online_server,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="serverId != null">
+        #{serverId,jdbcType=CHAR},
+      </if>
+      <if test="cpu != null">
+        #{cpu,jdbcType=VARCHAR},
+      </if>
+      <if test="cpuTotal != null">
+        #{cpuTotal,jdbcType=VARCHAR},
+      </if>
+      <if test="memory != null">
+        #{memory,jdbcType=VARCHAR},
+      </if>
+      <if test="memoryFree != null">
+        #{memoryFree,jdbcType=VARCHAR},
+      </if>
+      <if test="memoryTotal != null">
+        #{memoryTotal,jdbcType=VARCHAR},
+      </if>
+      <if test="networkIn != null">
+        #{networkIn,jdbcType=VARCHAR},
+      </if>
+      <if test="networkOut != null">
+        #{networkOut,jdbcType=VARCHAR},
+      </if>
+      <if test="onlineClient != null">
+        #{onlineClient,jdbcType=VARCHAR},
+      </if>
+      <if test="onlineServer != null">
+        #{onlineServer,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.ServerStauts">
+    <!--@mbg.generated-->
+    update server_stauts
+    <set>
+      <if test="cpu != null">
+        cpu = #{cpu,jdbcType=VARCHAR},
+      </if>
+      <if test="cpuTotal != null">
+        cpu_total = #{cpuTotal,jdbcType=VARCHAR},
+      </if>
+      <if test="memory != null">
+        memory = #{memory,jdbcType=VARCHAR},
+      </if>
+      <if test="memoryFree != null">
+        memory_free = #{memoryFree,jdbcType=VARCHAR},
+      </if>
+      <if test="memoryTotal != null">
+        memory_total = #{memoryTotal,jdbcType=VARCHAR},
+      </if>
+      <if test="networkIn != null">
+        network_in = #{networkIn,jdbcType=VARCHAR},
+      </if>
+      <if test="networkOut != null">
+        network_out = #{networkOut,jdbcType=VARCHAR},
+      </if>
+      <if test="onlineClient != null">
+        online_client = #{onlineClient,jdbcType=VARCHAR},
+      </if>
+      <if test="onlineServer != null">
+        online_server = #{onlineServer,jdbcType=VARCHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where server_id = #{serverId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.ServerStauts">
+    <!--@mbg.generated-->
+    update server_stauts
+    set cpu = #{cpu,jdbcType=VARCHAR},
+      cpu_total = #{cpuTotal,jdbcType=VARCHAR},
+      memory = #{memory,jdbcType=VARCHAR},
+      memory_free = #{memoryFree,jdbcType=VARCHAR},
+      memory_total = #{memoryTotal,jdbcType=VARCHAR},
+      network_in = #{networkIn,jdbcType=VARCHAR},
+      network_out = #{networkOut,jdbcType=VARCHAR},
+      online_client = #{onlineClient,jdbcType=VARCHAR},
+      online_server = #{onlineServer,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where server_id = #{serverId,jdbcType=CHAR}
+  </update>
+</mapper>

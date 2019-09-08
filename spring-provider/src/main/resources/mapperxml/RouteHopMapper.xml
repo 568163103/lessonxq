@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.RouteHopMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.RouteHop">
+    <!--@mbg.generated-->
+    <result column="route_id" jdbcType="INTEGER" property="routeId" />
+    <result column="hop_num" jdbcType="INTEGER" property="hopNum" />
+    <result column="server_id" jdbcType="CHAR" property="serverId" />
+  </resultMap>
+  <insert id="insert" parameterType="com.xq.domain.RouteHop">
+    <!--@mbg.generated-->
+    insert into route_hop (route_id, hop_num, server_id
+      )
+    values (#{routeId,jdbcType=INTEGER}, #{hopNum,jdbcType=INTEGER}, #{serverId,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.RouteHop">
+    <!--@mbg.generated-->
+    insert into route_hop
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="routeId != null">
+        route_id,
+      </if>
+      <if test="hopNum != null">
+        hop_num,
+      </if>
+      <if test="serverId != null">
+        server_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="routeId != null">
+        #{routeId,jdbcType=INTEGER},
+      </if>
+      <if test="hopNum != null">
+        #{hopNum,jdbcType=INTEGER},
+      </if>
+      <if test="serverId != null">
+        #{serverId,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.ChannelRecordPlanMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.ChannelRecordPlan">
+    <!--@mbg.generated-->
+    <id column="channel_id" jdbcType="CHAR" property="channelId" />
+    <id column="plan_name" jdbcType="CHAR" property="planName" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    <!--@mbg.generated-->
+    delete from channel_record_plan
+    where channel_id = #{channelId,jdbcType=CHAR}
+      and plan_name = #{planName,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.ChannelRecordPlan">
+    <!--@mbg.generated-->
+    insert into channel_record_plan (channel_id, plan_name)
+    values (#{channelId,jdbcType=CHAR}, #{planName,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.ChannelRecordPlan">
+    <!--@mbg.generated-->
+    insert into channel_record_plan
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="channelId != null">
+        channel_id,
+      </if>
+      <if test="planName != null">
+        plan_name,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="channelId != null">
+        #{channelId,jdbcType=CHAR},
+      </if>
+      <if test="planName != null">
+        #{planName,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

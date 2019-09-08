@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.AlarmInfoMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.AlarmInfo">
+    <!--@mbg.generated-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="source_id" jdbcType="CHAR" property="sourceId" />
+    <result column="alarm_type" jdbcType="INTEGER" property="alarmType" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="begin_time" jdbcType="VARCHAR" property="beginTime" />
+    <result column="end_time" jdbcType="VARCHAR" property="endTime" />
+    <result column="state" jdbcType="INTEGER" property="state" />
+    <result column="storage_server_id" jdbcType="CHAR" property="storageServerId" />
+    <result column="deal_state" jdbcType="INTEGER" property="dealState" />
+    <result column="deal_user_id" jdbcType="CHAR" property="dealUserId" />
+    <result column="deal_time" jdbcType="VARCHAR" property="dealTime" />
+    <result column="storage_res_id" jdbcType="CHAR" property="storageResId" />
+    <result column="storage_size" jdbcType="CHAR" property="storageSize" />
+    <result column="storage_begin_time" jdbcType="VARCHAR" property="storageBeginTime" />
+    <result column="storage_end_time" jdbcType="VARCHAR" property="storageEndTime" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="memo" jdbcType="VARCHAR" property="memo" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, source_id, alarm_type, `name`, begin_time, end_time, `state`, storage_server_id, 
+    deal_state, deal_user_id, deal_time, storage_res_id, storage_size, storage_begin_time, 
+    storage_end_time, description, memo
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from alarm_info
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from alarm_info
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.xq.domain.AlarmInfo" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into alarm_info (source_id, alarm_type, `name`, 
+      begin_time, end_time, `state`, 
+      storage_server_id, deal_state, deal_user_id, 
+      deal_time, storage_res_id, storage_size, 
+      storage_begin_time, storage_end_time, description, 
+      memo)
+    values (#{sourceId,jdbcType=CHAR}, #{alarmType,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{beginTime,jdbcType=VARCHAR}, #{endTime,jdbcType=VARCHAR}, #{state,jdbcType=INTEGER}, 
+      #{storageServerId,jdbcType=CHAR}, #{dealState,jdbcType=INTEGER}, #{dealUserId,jdbcType=CHAR}, 
+      #{dealTime,jdbcType=VARCHAR}, #{storageResId,jdbcType=CHAR}, #{storageSize,jdbcType=CHAR}, 
+      #{storageBeginTime,jdbcType=VARCHAR}, #{storageEndTime,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR}, 
+      #{memo,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.xq.domain.AlarmInfo" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into alarm_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sourceId != null">
+        source_id,
+      </if>
+      <if test="alarmType != null">
+        alarm_type,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="beginTime != null">
+        begin_time,
+      </if>
+      <if test="endTime != null">
+        end_time,
+      </if>
+      <if test="state != null">
+        `state`,
+      </if>
+      <if test="storageServerId != null">
+        storage_server_id,
+      </if>
+      <if test="dealState != null">
+        deal_state,
+      </if>
+      <if test="dealUserId != null">
+        deal_user_id,
+      </if>
+      <if test="dealTime != null">
+        deal_time,
+      </if>
+      <if test="storageResId != null">
+        storage_res_id,
+      </if>
+      <if test="storageSize != null">
+        storage_size,
+      </if>
+      <if test="storageBeginTime != null">
+        storage_begin_time,
+      </if>
+      <if test="storageEndTime != null">
+        storage_end_time,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="memo != null">
+        memo,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sourceId != null">
+        #{sourceId,jdbcType=CHAR},
+      </if>
+      <if test="alarmType != null">
+        #{alarmType,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="beginTime != null">
+        #{beginTime,jdbcType=VARCHAR},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="storageServerId != null">
+        #{storageServerId,jdbcType=CHAR},
+      </if>
+      <if test="dealState != null">
+        #{dealState,jdbcType=INTEGER},
+      </if>
+      <if test="dealUserId != null">
+        #{dealUserId,jdbcType=CHAR},
+      </if>
+      <if test="dealTime != null">
+        #{dealTime,jdbcType=VARCHAR},
+      </if>
+      <if test="storageResId != null">
+        #{storageResId,jdbcType=CHAR},
+      </if>
+      <if test="storageSize != null">
+        #{storageSize,jdbcType=CHAR},
+      </if>
+      <if test="storageBeginTime != null">
+        #{storageBeginTime,jdbcType=VARCHAR},
+      </if>
+      <if test="storageEndTime != null">
+        #{storageEndTime,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="memo != null">
+        #{memo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.AlarmInfo">
+    <!--@mbg.generated-->
+    update alarm_info
+    <set>
+      <if test="sourceId != null">
+        source_id = #{sourceId,jdbcType=CHAR},
+      </if>
+      <if test="alarmType != null">
+        alarm_type = #{alarmType,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="beginTime != null">
+        begin_time = #{beginTime,jdbcType=VARCHAR},
+      </if>
+      <if test="endTime != null">
+        end_time = #{endTime,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        `state` = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="storageServerId != null">
+        storage_server_id = #{storageServerId,jdbcType=CHAR},
+      </if>
+      <if test="dealState != null">
+        deal_state = #{dealState,jdbcType=INTEGER},
+      </if>
+      <if test="dealUserId != null">
+        deal_user_id = #{dealUserId,jdbcType=CHAR},
+      </if>
+      <if test="dealTime != null">
+        deal_time = #{dealTime,jdbcType=VARCHAR},
+      </if>
+      <if test="storageResId != null">
+        storage_res_id = #{storageResId,jdbcType=CHAR},
+      </if>
+      <if test="storageSize != null">
+        storage_size = #{storageSize,jdbcType=CHAR},
+      </if>
+      <if test="storageBeginTime != null">
+        storage_begin_time = #{storageBeginTime,jdbcType=VARCHAR},
+      </if>
+      <if test="storageEndTime != null">
+        storage_end_time = #{storageEndTime,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="memo != null">
+        memo = #{memo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.AlarmInfo">
+    <!--@mbg.generated-->
+    update alarm_info
+    set source_id = #{sourceId,jdbcType=CHAR},
+      alarm_type = #{alarmType,jdbcType=INTEGER},
+      `name` = #{name,jdbcType=VARCHAR},
+      begin_time = #{beginTime,jdbcType=VARCHAR},
+      end_time = #{endTime,jdbcType=VARCHAR},
+      `state` = #{state,jdbcType=INTEGER},
+      storage_server_id = #{storageServerId,jdbcType=CHAR},
+      deal_state = #{dealState,jdbcType=INTEGER},
+      deal_user_id = #{dealUserId,jdbcType=CHAR},
+      deal_time = #{dealTime,jdbcType=VARCHAR},
+      storage_res_id = #{storageResId,jdbcType=CHAR},
+      storage_size = #{storageSize,jdbcType=CHAR},
+      storage_begin_time = #{storageBeginTime,jdbcType=VARCHAR},
+      storage_end_time = #{storageEndTime,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR},
+      memo = #{memo,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

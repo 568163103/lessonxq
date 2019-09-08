@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.DmuEquipmentMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.DmuEquipment">
+    <!--@mbg.generated-->
+    <id column="id" jdbcType="CHAR" property="id" />
+    <result column="name" jdbcType="CHAR" property="name" />
+    <result column="corp" jdbcType="CHAR" property="corp" />
+    <result column="type" jdbcType="CHAR" property="type" />
+    <result column="version" jdbcType="CHAR" property="version" />
+    <result column="pos" jdbcType="CHAR" property="pos" />
+    <result column="ip" jdbcType="CHAR" property="ip" />
+    <result column="mac" jdbcType="CHAR" property="mac" />
+    <result column="port" jdbcType="SMALLINT" property="port" />
+    <result column="master" jdbcType="VARCHAR" property="master" />
+    <result column="remark" jdbcType="VARCHAR" property="remark" />
+    <result column="status" jdbcType="BOOLEAN" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, `name`, corp, `type`, version, pos, ip, mac, port, master, remark, `status`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from dmu_equipment
+    where id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from dmu_equipment
+    where id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.DmuEquipment">
+    <!--@mbg.generated-->
+    insert into dmu_equipment (id, `name`, corp, `type`, 
+      version, pos, ip, mac, 
+      port, master, remark, 
+      `status`)
+    values (#{id,jdbcType=CHAR}, #{name,jdbcType=CHAR}, #{corp,jdbcType=CHAR}, #{type,jdbcType=CHAR}, 
+      #{version,jdbcType=CHAR}, #{pos,jdbcType=CHAR}, #{ip,jdbcType=CHAR}, #{mac,jdbcType=CHAR}, 
+      #{port,jdbcType=SMALLINT}, #{master,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
+      #{status,jdbcType=BOOLEAN})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.DmuEquipment">
+    <!--@mbg.generated-->
+    insert into dmu_equipment
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="corp != null">
+        corp,
+      </if>
+      <if test="type != null">
+        `type`,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+      <if test="pos != null">
+        pos,
+      </if>
+      <if test="ip != null">
+        ip,
+      </if>
+      <if test="mac != null">
+        mac,
+      </if>
+      <if test="port != null">
+        port,
+      </if>
+      <if test="master != null">
+        master,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=CHAR},
+      </if>
+      <if test="corp != null">
+        #{corp,jdbcType=CHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=CHAR},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=CHAR},
+      </if>
+      <if test="pos != null">
+        #{pos,jdbcType=CHAR},
+      </if>
+      <if test="ip != null">
+        #{ip,jdbcType=CHAR},
+      </if>
+      <if test="mac != null">
+        #{mac,jdbcType=CHAR},
+      </if>
+      <if test="port != null">
+        #{port,jdbcType=SMALLINT},
+      </if>
+      <if test="master != null">
+        #{master,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=BOOLEAN},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.DmuEquipment">
+    <!--@mbg.generated-->
+    update dmu_equipment
+    <set>
+      <if test="name != null">
+        `name` = #{name,jdbcType=CHAR},
+      </if>
+      <if test="corp != null">
+        corp = #{corp,jdbcType=CHAR},
+      </if>
+      <if test="type != null">
+        `type` = #{type,jdbcType=CHAR},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=CHAR},
+      </if>
+      <if test="pos != null">
+        pos = #{pos,jdbcType=CHAR},
+      </if>
+      <if test="ip != null">
+        ip = #{ip,jdbcType=CHAR},
+      </if>
+      <if test="mac != null">
+        mac = #{mac,jdbcType=CHAR},
+      </if>
+      <if test="port != null">
+        port = #{port,jdbcType=SMALLINT},
+      </if>
+      <if test="master != null">
+        master = #{master,jdbcType=VARCHAR},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=BOOLEAN},
+      </if>
+    </set>
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.DmuEquipment">
+    <!--@mbg.generated-->
+    update dmu_equipment
+    set `name` = #{name,jdbcType=CHAR},
+      corp = #{corp,jdbcType=CHAR},
+      `type` = #{type,jdbcType=CHAR},
+      version = #{version,jdbcType=CHAR},
+      pos = #{pos,jdbcType=CHAR},
+      ip = #{ip,jdbcType=CHAR},
+      mac = #{mac,jdbcType=CHAR},
+      port = #{port,jdbcType=SMALLINT},
+      master = #{master,jdbcType=VARCHAR},
+      remark = #{remark,jdbcType=VARCHAR},
+      `status` = #{status,jdbcType=BOOLEAN}
+    where id = #{id,jdbcType=CHAR}
+  </update>
+</mapper>

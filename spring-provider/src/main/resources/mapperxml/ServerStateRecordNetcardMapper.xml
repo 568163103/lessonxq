@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.ServerStateRecordNetcardMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.ServerStateRecordNetcard">
+    <!--@mbg.generated-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="recordid" jdbcType="BIGINT" property="recordid" />
+    <result column="port" jdbcType="VARCHAR" property="port" />
+    <result column="portState" jdbcType="VARCHAR" property="portstate" />
+    <result column="bandwidth" jdbcType="VARCHAR" property="bandwidth" />
+    <result column="dataFlow" jdbcType="VARCHAR" property="dataflow" />
+    <result column="ip" jdbcType="VARCHAR" property="ip" />
+    <result column="mac" jdbcType="VARCHAR" property="mac" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, recordid, port, portState, bandwidth, dataFlow, ip, mac
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from server_state_record_netcard
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from server_state_record_netcard
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.xq.domain.ServerStateRecordNetcard" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into server_state_record_netcard (recordid, port, portState, 
+      bandwidth, dataFlow, ip, 
+      mac)
+    values (#{recordid,jdbcType=BIGINT}, #{port,jdbcType=VARCHAR}, #{portstate,jdbcType=VARCHAR}, 
+      #{bandwidth,jdbcType=VARCHAR}, #{dataflow,jdbcType=VARCHAR}, #{ip,jdbcType=VARCHAR}, 
+      #{mac,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.xq.domain.ServerStateRecordNetcard" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into server_state_record_netcard
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="recordid != null">
+        recordid,
+      </if>
+      <if test="port != null">
+        port,
+      </if>
+      <if test="portstate != null">
+        portState,
+      </if>
+      <if test="bandwidth != null">
+        bandwidth,
+      </if>
+      <if test="dataflow != null">
+        dataFlow,
+      </if>
+      <if test="ip != null">
+        ip,
+      </if>
+      <if test="mac != null">
+        mac,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="recordid != null">
+        #{recordid,jdbcType=BIGINT},
+      </if>
+      <if test="port != null">
+        #{port,jdbcType=VARCHAR},
+      </if>
+      <if test="portstate != null">
+        #{portstate,jdbcType=VARCHAR},
+      </if>
+      <if test="bandwidth != null">
+        #{bandwidth,jdbcType=VARCHAR},
+      </if>
+      <if test="dataflow != null">
+        #{dataflow,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null">
+        #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="mac != null">
+        #{mac,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.ServerStateRecordNetcard">
+    <!--@mbg.generated-->
+    update server_state_record_netcard
+    <set>
+      <if test="recordid != null">
+        recordid = #{recordid,jdbcType=BIGINT},
+      </if>
+      <if test="port != null">
+        port = #{port,jdbcType=VARCHAR},
+      </if>
+      <if test="portstate != null">
+        portState = #{portstate,jdbcType=VARCHAR},
+      </if>
+      <if test="bandwidth != null">
+        bandwidth = #{bandwidth,jdbcType=VARCHAR},
+      </if>
+      <if test="dataflow != null">
+        dataFlow = #{dataflow,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null">
+        ip = #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="mac != null">
+        mac = #{mac,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.ServerStateRecordNetcard">
+    <!--@mbg.generated-->
+    update server_state_record_netcard
+    set recordid = #{recordid,jdbcType=BIGINT},
+      port = #{port,jdbcType=VARCHAR},
+      portState = #{portstate,jdbcType=VARCHAR},
+      bandwidth = #{bandwidth,jdbcType=VARCHAR},
+      dataFlow = #{dataflow,jdbcType=VARCHAR},
+      ip = #{ip,jdbcType=VARCHAR},
+      mac = #{mac,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

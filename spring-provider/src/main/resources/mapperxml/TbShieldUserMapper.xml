@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.TbShieldUserMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.TbShieldUser">
+    <!--@mbg.generated-->
+    <id column="shield_id" jdbcType="INTEGER" property="shieldId" />
+    <id column="user_id" jdbcType="VARCHAR" property="userId" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    <!--@mbg.generated-->
+    delete from tb_shield_user
+    where shield_id = #{shieldId,jdbcType=INTEGER}
+      and user_id = #{userId,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.TbShieldUser">
+    <!--@mbg.generated-->
+    insert into tb_shield_user (shield_id, user_id)
+    values (#{shieldId,jdbcType=INTEGER}, #{userId,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.TbShieldUser">
+    <!--@mbg.generated-->
+    insert into tb_shield_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="shieldId != null">
+        shield_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="shieldId != null">
+        #{shieldId,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

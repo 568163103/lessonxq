@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.ServerStateRecordMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.ServerStateRecord">
+    <!--@mbg.generated-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="serverid" jdbcType="CHAR" property="serverid" />
+    <result column="systemInfo" jdbcType="VARCHAR" property="systeminfo" />
+    <result column="diskNum" jdbcType="VARCHAR" property="disknum" />
+    <result column="totalMem" jdbcType="VARCHAR" property="totalmem" />
+    <result column="usedMem" jdbcType="VARCHAR" property="usedmem" />
+    <result column="leftMem" jdbcType="VARCHAR" property="leftmem" />
+    <result column="cpuNum" jdbcType="VARCHAR" property="cpunum" />
+    <result column="networkCard" jdbcType="VARCHAR" property="networkcard" />
+    <result column="recordTime" jdbcType="CHAR" property="recordtime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, serverid, systemInfo, diskNum, totalMem, usedMem, leftMem, cpuNum, networkCard, 
+    recordTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from server_state_record
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from server_state_record
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.xq.domain.ServerStateRecord" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into server_state_record (serverid, systemInfo, diskNum, 
+      totalMem, usedMem, leftMem, 
+      cpuNum, networkCard, recordTime
+      )
+    values (#{serverid,jdbcType=CHAR}, #{systeminfo,jdbcType=VARCHAR}, #{disknum,jdbcType=VARCHAR}, 
+      #{totalmem,jdbcType=VARCHAR}, #{usedmem,jdbcType=VARCHAR}, #{leftmem,jdbcType=VARCHAR}, 
+      #{cpunum,jdbcType=VARCHAR}, #{networkcard,jdbcType=VARCHAR}, #{recordtime,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.xq.domain.ServerStateRecord" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into server_state_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="serverid != null">
+        serverid,
+      </if>
+      <if test="systeminfo != null">
+        systemInfo,
+      </if>
+      <if test="disknum != null">
+        diskNum,
+      </if>
+      <if test="totalmem != null">
+        totalMem,
+      </if>
+      <if test="usedmem != null">
+        usedMem,
+      </if>
+      <if test="leftmem != null">
+        leftMem,
+      </if>
+      <if test="cpunum != null">
+        cpuNum,
+      </if>
+      <if test="networkcard != null">
+        networkCard,
+      </if>
+      <if test="recordtime != null">
+        recordTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="serverid != null">
+        #{serverid,jdbcType=CHAR},
+      </if>
+      <if test="systeminfo != null">
+        #{systeminfo,jdbcType=VARCHAR},
+      </if>
+      <if test="disknum != null">
+        #{disknum,jdbcType=VARCHAR},
+      </if>
+      <if test="totalmem != null">
+        #{totalmem,jdbcType=VARCHAR},
+      </if>
+      <if test="usedmem != null">
+        #{usedmem,jdbcType=VARCHAR},
+      </if>
+      <if test="leftmem != null">
+        #{leftmem,jdbcType=VARCHAR},
+      </if>
+      <if test="cpunum != null">
+        #{cpunum,jdbcType=VARCHAR},
+      </if>
+      <if test="networkcard != null">
+        #{networkcard,jdbcType=VARCHAR},
+      </if>
+      <if test="recordtime != null">
+        #{recordtime,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.ServerStateRecord">
+    <!--@mbg.generated-->
+    update server_state_record
+    <set>
+      <if test="serverid != null">
+        serverid = #{serverid,jdbcType=CHAR},
+      </if>
+      <if test="systeminfo != null">
+        systemInfo = #{systeminfo,jdbcType=VARCHAR},
+      </if>
+      <if test="disknum != null">
+        diskNum = #{disknum,jdbcType=VARCHAR},
+      </if>
+      <if test="totalmem != null">
+        totalMem = #{totalmem,jdbcType=VARCHAR},
+      </if>
+      <if test="usedmem != null">
+        usedMem = #{usedmem,jdbcType=VARCHAR},
+      </if>
+      <if test="leftmem != null">
+        leftMem = #{leftmem,jdbcType=VARCHAR},
+      </if>
+      <if test="cpunum != null">
+        cpuNum = #{cpunum,jdbcType=VARCHAR},
+      </if>
+      <if test="networkcard != null">
+        networkCard = #{networkcard,jdbcType=VARCHAR},
+      </if>
+      <if test="recordtime != null">
+        recordTime = #{recordtime,jdbcType=CHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.ServerStateRecord">
+    <!--@mbg.generated-->
+    update server_state_record
+    set serverid = #{serverid,jdbcType=CHAR},
+      systemInfo = #{systeminfo,jdbcType=VARCHAR},
+      diskNum = #{disknum,jdbcType=VARCHAR},
+      totalMem = #{totalmem,jdbcType=VARCHAR},
+      usedMem = #{usedmem,jdbcType=VARCHAR},
+      leftMem = #{leftmem,jdbcType=VARCHAR},
+      cpuNum = #{cpunum,jdbcType=VARCHAR},
+      networkCard = #{networkcard,jdbcType=VARCHAR},
+      recordTime = #{recordtime,jdbcType=CHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.EncoderDiskMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.EncoderDisk">
+    <!--@mbg.generated-->
+    <id column="id" jdbcType="CHAR" property="id" />
+    <result column="disk_info" jdbcType="VARCHAR" property="diskInfo" />
+    <result column="lasttime" jdbcType="VARCHAR" property="lasttime" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, disk_info, lasttime, description
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from encoder_disk
+    where id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from encoder_disk
+    where id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.EncoderDisk">
+    <!--@mbg.generated-->
+    insert into encoder_disk (id, disk_info, lasttime, 
+      description)
+    values (#{id,jdbcType=CHAR}, #{diskInfo,jdbcType=VARCHAR}, #{lasttime,jdbcType=VARCHAR}, 
+      #{description,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.EncoderDisk">
+    <!--@mbg.generated-->
+    insert into encoder_disk
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="diskInfo != null">
+        disk_info,
+      </if>
+      <if test="lasttime != null">
+        lasttime,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="diskInfo != null">
+        #{diskInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="lasttime != null">
+        #{lasttime,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.EncoderDisk">
+    <!--@mbg.generated-->
+    update encoder_disk
+    <set>
+      <if test="diskInfo != null">
+        disk_info = #{diskInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="lasttime != null">
+        lasttime = #{lasttime,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.EncoderDisk">
+    <!--@mbg.generated-->
+    update encoder_disk
+    set disk_info = #{diskInfo,jdbcType=VARCHAR},
+      lasttime = #{lasttime,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=CHAR}
+  </update>
+</mapper>

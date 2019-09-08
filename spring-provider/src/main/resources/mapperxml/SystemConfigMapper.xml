@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.SystemConfigMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.SystemConfig">
+    <!--@mbg.generated-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="max_error_count" jdbcType="INTEGER" property="maxErrorCount" />
+    <result column="error_login_config" jdbcType="INTEGER" property="errorLoginConfig" />
+    <result column="user_lock_time" jdbcType="INTEGER" property="userLockTime" />
+    <result column="pwd_reset_flag" jdbcType="INTEGER" property="pwdResetFlag" />
+    <result column="keep_password_time" jdbcType="INTEGER" property="keepPasswordTime" />
+    <result column="pwd_remaind_time" jdbcType="INTEGER" property="pwdRemaindTime" />
+    <result column="exception_user" jdbcType="VARCHAR" property="exceptionUser" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, max_error_count, error_login_config, user_lock_time, pwd_reset_flag, keep_password_time, 
+    pwd_remaind_time, exception_user
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from system_config
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from system_config
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.xq.domain.SystemConfig" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into system_config (max_error_count, error_login_config, 
+      user_lock_time, pwd_reset_flag, keep_password_time, 
+      pwd_remaind_time, exception_user)
+    values (#{maxErrorCount,jdbcType=INTEGER}, #{errorLoginConfig,jdbcType=INTEGER}, 
+      #{userLockTime,jdbcType=INTEGER}, #{pwdResetFlag,jdbcType=INTEGER}, #{keepPasswordTime,jdbcType=INTEGER}, 
+      #{pwdRemaindTime,jdbcType=INTEGER}, #{exceptionUser,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.xq.domain.SystemConfig" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into system_config
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="maxErrorCount != null">
+        max_error_count,
+      </if>
+      <if test="errorLoginConfig != null">
+        error_login_config,
+      </if>
+      <if test="userLockTime != null">
+        user_lock_time,
+      </if>
+      <if test="pwdResetFlag != null">
+        pwd_reset_flag,
+      </if>
+      <if test="keepPasswordTime != null">
+        keep_password_time,
+      </if>
+      <if test="pwdRemaindTime != null">
+        pwd_remaind_time,
+      </if>
+      <if test="exceptionUser != null">
+        exception_user,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="maxErrorCount != null">
+        #{maxErrorCount,jdbcType=INTEGER},
+      </if>
+      <if test="errorLoginConfig != null">
+        #{errorLoginConfig,jdbcType=INTEGER},
+      </if>
+      <if test="userLockTime != null">
+        #{userLockTime,jdbcType=INTEGER},
+      </if>
+      <if test="pwdResetFlag != null">
+        #{pwdResetFlag,jdbcType=INTEGER},
+      </if>
+      <if test="keepPasswordTime != null">
+        #{keepPasswordTime,jdbcType=INTEGER},
+      </if>
+      <if test="pwdRemaindTime != null">
+        #{pwdRemaindTime,jdbcType=INTEGER},
+      </if>
+      <if test="exceptionUser != null">
+        #{exceptionUser,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.SystemConfig">
+    <!--@mbg.generated-->
+    update system_config
+    <set>
+      <if test="maxErrorCount != null">
+        max_error_count = #{maxErrorCount,jdbcType=INTEGER},
+      </if>
+      <if test="errorLoginConfig != null">
+        error_login_config = #{errorLoginConfig,jdbcType=INTEGER},
+      </if>
+      <if test="userLockTime != null">
+        user_lock_time = #{userLockTime,jdbcType=INTEGER},
+      </if>
+      <if test="pwdResetFlag != null">
+        pwd_reset_flag = #{pwdResetFlag,jdbcType=INTEGER},
+      </if>
+      <if test="keepPasswordTime != null">
+        keep_password_time = #{keepPasswordTime,jdbcType=INTEGER},
+      </if>
+      <if test="pwdRemaindTime != null">
+        pwd_remaind_time = #{pwdRemaindTime,jdbcType=INTEGER},
+      </if>
+      <if test="exceptionUser != null">
+        exception_user = #{exceptionUser,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.SystemConfig">
+    <!--@mbg.generated-->
+    update system_config
+    set max_error_count = #{maxErrorCount,jdbcType=INTEGER},
+      error_login_config = #{errorLoginConfig,jdbcType=INTEGER},
+      user_lock_time = #{userLockTime,jdbcType=INTEGER},
+      pwd_reset_flag = #{pwdResetFlag,jdbcType=INTEGER},
+      keep_password_time = #{keepPasswordTime,jdbcType=INTEGER},
+      pwd_remaind_time = #{pwdRemaindTime,jdbcType=INTEGER},
+      exception_user = #{exceptionUser,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

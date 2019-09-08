@@ -1,0 +1,42 @@
+package com.xq.domain;
+
+public class TurnChannelGroup {
+    /**
+    * turn_channel_group ID
+    */
+    private Integer id;
+
+    /**
+    * config info
+    */
+    private String configInfo;
+
+    /**
+    * description
+    */
+    private String description;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
+
+    public String getConfigInfo() {
+        return configInfo;
+    }
+
+    public void setConfigInfo(String configInfo) {
+        this.configInfo = configInfo;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+}

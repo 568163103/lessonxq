@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.DefenceAreaMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.DefenceArea">
+    <!--@mbg.generated-->
+    <id column="user_id" jdbcType="CHAR" property="userId" />
+    <result column="config_info" jdbcType="VARCHAR" property="configInfo" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    user_id, config_info
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from defence_area
+    where user_id = #{userId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from defence_area
+    where user_id = #{userId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.DefenceArea">
+    <!--@mbg.generated-->
+    insert into defence_area (user_id, config_info)
+    values (#{userId,jdbcType=CHAR}, #{configInfo,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.DefenceArea">
+    <!--@mbg.generated-->
+    insert into defence_area
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="configInfo != null">
+        config_info,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=CHAR},
+      </if>
+      <if test="configInfo != null">
+        #{configInfo,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.DefenceArea">
+    <!--@mbg.generated-->
+    update defence_area
+    <set>
+      <if test="configInfo != null">
+        config_info = #{configInfo,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.DefenceArea">
+    <!--@mbg.generated-->
+    update defence_area
+    set config_info = #{configInfo,jdbcType=VARCHAR}
+    where user_id = #{userId,jdbcType=CHAR}
+  </update>
+</mapper>

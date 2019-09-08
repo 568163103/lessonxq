@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.TbAlarmsubcriTypeMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.TbAlarmsubcriType">
+    <!--@mbg.generated-->
+    <id column="alarm_type" jdbcType="CHAR" property="alarmType" />
+    <result column="begin_time" jdbcType="VARCHAR" property="beginTime" />
+    <result column="end_time" jdbcType="VARCHAR" property="endTime" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    alarm_type, begin_time, end_time, description
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from tb_alarmsubcri_type
+    where alarm_type = #{alarmType,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from tb_alarmsubcri_type
+    where alarm_type = #{alarmType,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.TbAlarmsubcriType">
+    <!--@mbg.generated-->
+    insert into tb_alarmsubcri_type (alarm_type, begin_time, end_time, 
+      description)
+    values (#{alarmType,jdbcType=CHAR}, #{beginTime,jdbcType=VARCHAR}, #{endTime,jdbcType=VARCHAR}, 
+      #{description,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.TbAlarmsubcriType">
+    <!--@mbg.generated-->
+    insert into tb_alarmsubcri_type
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="alarmType != null">
+        alarm_type,
+      </if>
+      <if test="beginTime != null">
+        begin_time,
+      </if>
+      <if test="endTime != null">
+        end_time,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="alarmType != null">
+        #{alarmType,jdbcType=CHAR},
+      </if>
+      <if test="beginTime != null">
+        #{beginTime,jdbcType=VARCHAR},
+      </if>
+      <if test="endTime != null">
+        #{endTime,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.TbAlarmsubcriType">
+    <!--@mbg.generated-->
+    update tb_alarmsubcri_type
+    <set>
+      <if test="beginTime != null">
+        begin_time = #{beginTime,jdbcType=VARCHAR},
+      </if>
+      <if test="endTime != null">
+        end_time = #{endTime,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where alarm_type = #{alarmType,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.TbAlarmsubcriType">
+    <!--@mbg.generated-->
+    update tb_alarmsubcri_type
+    set begin_time = #{beginTime,jdbcType=VARCHAR},
+      end_time = #{endTime,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR}
+    where alarm_type = #{alarmType,jdbcType=CHAR}
+  </update>
+</mapper>

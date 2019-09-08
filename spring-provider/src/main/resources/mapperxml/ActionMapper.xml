@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.ActionMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.Action">
+    <!--@mbg.generated-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="CHAR" property="name" />
+    <result column="type" jdbcType="CHAR" property="type" />
+    <result column="target" jdbcType="CHAR" property="target" />
+    <result column="duration" jdbcType="INTEGER" property="duration" />
+    <result column="ahead_of_time" jdbcType="INTEGER" property="aheadOfTime" />
+    <result column="data" jdbcType="VARCHAR" property="data" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, `name`, `type`, target, duration, ahead_of_time, `data`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from action
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from action
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.xq.domain.Action" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into action (`name`, `type`, target, duration, 
+      ahead_of_time, `data`)
+    values (#{name,jdbcType=CHAR}, #{type,jdbcType=CHAR}, #{target,jdbcType=CHAR}, #{duration,jdbcType=INTEGER}, 
+      #{aheadOfTime,jdbcType=INTEGER}, #{data,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.xq.domain.Action" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into action
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="type != null">
+        `type`,
+      </if>
+      <if test="target != null">
+        target,
+      </if>
+      <if test="duration != null">
+        duration,
+      </if>
+      <if test="aheadOfTime != null">
+        ahead_of_time,
+      </if>
+      <if test="data != null">
+        `data`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="name != null">
+        #{name,jdbcType=CHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=CHAR},
+      </if>
+      <if test="target != null">
+        #{target,jdbcType=CHAR},
+      </if>
+      <if test="duration != null">
+        #{duration,jdbcType=INTEGER},
+      </if>
+      <if test="aheadOfTime != null">
+        #{aheadOfTime,jdbcType=INTEGER},
+      </if>
+      <if test="data != null">
+        #{data,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.Action">
+    <!--@mbg.generated-->
+    update action
+    <set>
+      <if test="name != null">
+        `name` = #{name,jdbcType=CHAR},
+      </if>
+      <if test="type != null">
+        `type` = #{type,jdbcType=CHAR},
+      </if>
+      <if test="target != null">
+        target = #{target,jdbcType=CHAR},
+      </if>
+      <if test="duration != null">
+        duration = #{duration,jdbcType=INTEGER},
+      </if>
+      <if test="aheadOfTime != null">
+        ahead_of_time = #{aheadOfTime,jdbcType=INTEGER},
+      </if>
+      <if test="data != null">
+        `data` = #{data,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.Action">
+    <!--@mbg.generated-->
+    update action
+    set `name` = #{name,jdbcType=CHAR},
+      `type` = #{type,jdbcType=CHAR},
+      target = #{target,jdbcType=CHAR},
+      duration = #{duration,jdbcType=INTEGER},
+      ahead_of_time = #{aheadOfTime,jdbcType=INTEGER},
+      `data` = #{data,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

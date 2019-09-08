@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.GroupResourceMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.GroupResource">
+    <!--@mbg.generated-->
+    <id column="group_id" jdbcType="CHAR" property="groupId" />
+    <id column="resource_id" jdbcType="CHAR" property="resourceId" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    <!--@mbg.generated-->
+    delete from group_resource
+    where group_id = #{groupId,jdbcType=CHAR}
+      and resource_id = #{resourceId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.GroupResource">
+    <!--@mbg.generated-->
+    insert into group_resource (group_id, resource_id)
+    values (#{groupId,jdbcType=CHAR}, #{resourceId,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.GroupResource">
+    <!--@mbg.generated-->
+    insert into group_resource
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="groupId != null">
+        group_id,
+      </if>
+      <if test="resourceId != null">
+        resource_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="groupId != null">
+        #{groupId,jdbcType=CHAR},
+      </if>
+      <if test="resourceId != null">
+        #{resourceId,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>
