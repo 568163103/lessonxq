@@ -1,0 +1,71 @@
+{
+  "name": "webmu",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "serve": "vue-cli-service serve",
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "apollo": "vue-cli-service apollo:dev --generate-schema",
+    "apollo:schema:generate": "vue-cli-service apollo:schema:generate",
+    "apollo:schema:publish": "vue-cli-service apollo:schema:publish",
+    "apollo:start": "vue-cli-service apollo:start"
+  },
+  "dependencies": {
+    "core-js": "^2.6.5",
+    "graphql-type-json": "^0.2.1",
+    "lowdb": "^1.0.0",
+    "mkdirp": "^0.5.1",
+    "shortid": "^2.2.8",
+    "vue": "^2.6.10",
+    "vue-apollo": "^3.0.0-beta.11",
+    "vue-router": "^3.0.3",
+    "vuex": "^3.0.1"
+  },
+  "devDependencies": {
+    "@vue/cli-plugin-babel": "^3.11.0",
+    "@vue/cli-service": "^3.11.0",
+    "axios": "^0.18.0",
+    "babel-eslint": "^10.0.1",
+    "eslint-plugin-vue": "^5.0.0",
+    "graphql-tag": "^2.9.0",
+    "vue-cli-plugin-apollo": "^0.21.0",
+    "vue-cli-plugin-axios": "0.0.4",
+    "vue-template-compiler": "^2.6.10"
+  },
+  "eslintConfig": {
+    "root": true,
+    "env": {
+      "node": true
+    },
+    "extends": [
+      "plugin:vue/essential",
+      "eslint:recommended"
+    ],
+    "rules": {
+      "graphql/template-strings": [
+        "error",
+        {
+          "env": "literal",
+          "projectName": "app",
+          "schemaJsonFilepath": "node_modules/.temp/graphql/schema.json"
+        }
+      ]
+    },
+    "parserOptions": {
+      "parser": "babel-eslint"
+    },
+    "plugins": [
+      "graphql"
+    ]
+  },
+  "postcss": {
+    "plugins": {
+      "autoprefixer": {}
+    }
+  },
+  "browserslist": [
+    "> 1%",
+    "last 2 versions"
+  ]
+}
