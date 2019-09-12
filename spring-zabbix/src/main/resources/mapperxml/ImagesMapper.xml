@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.ImagesMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.Images">
+    <!--@mbg.generated-->
+    <id column="imageid" jdbcType="BIGINT" property="imageid" />
+    <result column="imagetype" jdbcType="INTEGER" property="imagetype" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="image" jdbcType="BLOB" property="image" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    imageid, imagetype, `name`, image
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from images
+    where imageid = #{imageid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from images
+    where imageid = #{imageid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.Images">
+    <!--@mbg.generated-->
+    insert into images (imageid, imagetype, `name`, 
+      image)
+    values (#{imageid,jdbcType=BIGINT}, #{imagetype,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, 
+      #{image,jdbcType=BLOB})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.Images">
+    <!--@mbg.generated-->
+    insert into images
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="imageid != null">
+        imageid,
+      </if>
+      <if test="imagetype != null">
+        imagetype,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="image != null">
+        image,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="imageid != null">
+        #{imageid,jdbcType=BIGINT},
+      </if>
+      <if test="imagetype != null">
+        #{imagetype,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null">
+        #{image,jdbcType=BLOB},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.Images">
+    <!--@mbg.generated-->
+    update images
+    <set>
+      <if test="imagetype != null">
+        imagetype = #{imagetype,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="image != null">
+        image = #{image,jdbcType=BLOB},
+      </if>
+    </set>
+    where imageid = #{imageid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.Images">
+    <!--@mbg.generated-->
+    update images
+    set imagetype = #{imagetype,jdbcType=INTEGER},
+      `name` = #{name,jdbcType=VARCHAR},
+      image = #{image,jdbcType=BLOB}
+    where imageid = #{imageid,jdbcType=BIGINT}
+  </update>
+</mapper>

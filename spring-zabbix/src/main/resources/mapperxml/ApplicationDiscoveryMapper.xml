@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.ApplicationDiscoveryMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.ApplicationDiscovery">
+    <!--@mbg.generated-->
+    <id column="application_discoveryid" jdbcType="BIGINT" property="applicationDiscoveryid" />
+    <result column="applicationid" jdbcType="BIGINT" property="applicationid" />
+    <result column="application_prototypeid" jdbcType="BIGINT" property="applicationPrototypeid" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="lastcheck" jdbcType="INTEGER" property="lastcheck" />
+    <result column="ts_delete" jdbcType="INTEGER" property="tsDelete" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    application_discoveryid, applicationid, application_prototypeid, `name`, lastcheck, 
+    ts_delete
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from application_discovery
+    where application_discoveryid = #{applicationDiscoveryid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from application_discovery
+    where application_discoveryid = #{applicationDiscoveryid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.ApplicationDiscovery">
+    <!--@mbg.generated-->
+    insert into application_discovery (application_discoveryid, applicationid, 
+      application_prototypeid, `name`, lastcheck, 
+      ts_delete)
+    values (#{applicationDiscoveryid,jdbcType=BIGINT}, #{applicationid,jdbcType=BIGINT}, 
+      #{applicationPrototypeid,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{lastcheck,jdbcType=INTEGER}, 
+      #{tsDelete,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.ApplicationDiscovery">
+    <!--@mbg.generated-->
+    insert into application_discovery
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="applicationDiscoveryid != null">
+        application_discoveryid,
+      </if>
+      <if test="applicationid != null">
+        applicationid,
+      </if>
+      <if test="applicationPrototypeid != null">
+        application_prototypeid,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="lastcheck != null">
+        lastcheck,
+      </if>
+      <if test="tsDelete != null">
+        ts_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="applicationDiscoveryid != null">
+        #{applicationDiscoveryid,jdbcType=BIGINT},
+      </if>
+      <if test="applicationid != null">
+        #{applicationid,jdbcType=BIGINT},
+      </if>
+      <if test="applicationPrototypeid != null">
+        #{applicationPrototypeid,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="lastcheck != null">
+        #{lastcheck,jdbcType=INTEGER},
+      </if>
+      <if test="tsDelete != null">
+        #{tsDelete,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.ApplicationDiscovery">
+    <!--@mbg.generated-->
+    update application_discovery
+    <set>
+      <if test="applicationid != null">
+        applicationid = #{applicationid,jdbcType=BIGINT},
+      </if>
+      <if test="applicationPrototypeid != null">
+        application_prototypeid = #{applicationPrototypeid,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="lastcheck != null">
+        lastcheck = #{lastcheck,jdbcType=INTEGER},
+      </if>
+      <if test="tsDelete != null">
+        ts_delete = #{tsDelete,jdbcType=INTEGER},
+      </if>
+    </set>
+    where application_discoveryid = #{applicationDiscoveryid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.ApplicationDiscovery">
+    <!--@mbg.generated-->
+    update application_discovery
+    set applicationid = #{applicationid,jdbcType=BIGINT},
+      application_prototypeid = #{applicationPrototypeid,jdbcType=BIGINT},
+      `name` = #{name,jdbcType=VARCHAR},
+      lastcheck = #{lastcheck,jdbcType=INTEGER},
+      ts_delete = #{tsDelete,jdbcType=INTEGER}
+    where application_discoveryid = #{applicationDiscoveryid,jdbcType=BIGINT}
+  </update>
+</mapper>

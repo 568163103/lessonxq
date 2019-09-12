@@ -1,0 +1,892 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.HostInventoryMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.HostInventory">
+    <!--@mbg.generated-->
+    <id column="hostid" jdbcType="BIGINT" property="hostid" />
+    <result column="inventory_mode" jdbcType="INTEGER" property="inventoryMode" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="type_full" jdbcType="VARCHAR" property="typeFull" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="alias" jdbcType="VARCHAR" property="alias" />
+    <result column="os" jdbcType="VARCHAR" property="os" />
+    <result column="os_full" jdbcType="VARCHAR" property="osFull" />
+    <result column="os_short" jdbcType="VARCHAR" property="osShort" />
+    <result column="serialno_a" jdbcType="VARCHAR" property="serialnoA" />
+    <result column="serialno_b" jdbcType="VARCHAR" property="serialnoB" />
+    <result column="tag" jdbcType="VARCHAR" property="tag" />
+    <result column="asset_tag" jdbcType="VARCHAR" property="assetTag" />
+    <result column="macaddress_a" jdbcType="VARCHAR" property="macaddressA" />
+    <result column="macaddress_b" jdbcType="VARCHAR" property="macaddressB" />
+    <result column="hardware" jdbcType="VARCHAR" property="hardware" />
+    <result column="hardware_full" jdbcType="LONGVARCHAR" property="hardwareFull" />
+    <result column="software" jdbcType="VARCHAR" property="software" />
+    <result column="software_full" jdbcType="LONGVARCHAR" property="softwareFull" />
+    <result column="software_app_a" jdbcType="VARCHAR" property="softwareAppA" />
+    <result column="software_app_b" jdbcType="VARCHAR" property="softwareAppB" />
+    <result column="software_app_c" jdbcType="VARCHAR" property="softwareAppC" />
+    <result column="software_app_d" jdbcType="VARCHAR" property="softwareAppD" />
+    <result column="software_app_e" jdbcType="VARCHAR" property="softwareAppE" />
+    <result column="contact" jdbcType="LONGVARCHAR" property="contact" />
+    <result column="location" jdbcType="LONGVARCHAR" property="location" />
+    <result column="location_lat" jdbcType="VARCHAR" property="locationLat" />
+    <result column="location_lon" jdbcType="VARCHAR" property="locationLon" />
+    <result column="notes" jdbcType="LONGVARCHAR" property="notes" />
+    <result column="chassis" jdbcType="VARCHAR" property="chassis" />
+    <result column="model" jdbcType="VARCHAR" property="model" />
+    <result column="hw_arch" jdbcType="VARCHAR" property="hwArch" />
+    <result column="vendor" jdbcType="VARCHAR" property="vendor" />
+    <result column="contract_number" jdbcType="VARCHAR" property="contractNumber" />
+    <result column="installer_name" jdbcType="VARCHAR" property="installerName" />
+    <result column="deployment_status" jdbcType="VARCHAR" property="deploymentStatus" />
+    <result column="url_a" jdbcType="VARCHAR" property="urlA" />
+    <result column="url_b" jdbcType="VARCHAR" property="urlB" />
+    <result column="url_c" jdbcType="VARCHAR" property="urlC" />
+    <result column="host_networks" jdbcType="LONGVARCHAR" property="hostNetworks" />
+    <result column="host_netmask" jdbcType="VARCHAR" property="hostNetmask" />
+    <result column="host_router" jdbcType="VARCHAR" property="hostRouter" />
+    <result column="oob_ip" jdbcType="VARCHAR" property="oobIp" />
+    <result column="oob_netmask" jdbcType="VARCHAR" property="oobNetmask" />
+    <result column="oob_router" jdbcType="VARCHAR" property="oobRouter" />
+    <result column="date_hw_purchase" jdbcType="VARCHAR" property="dateHwPurchase" />
+    <result column="date_hw_install" jdbcType="VARCHAR" property="dateHwInstall" />
+    <result column="date_hw_expiry" jdbcType="VARCHAR" property="dateHwExpiry" />
+    <result column="date_hw_decomm" jdbcType="VARCHAR" property="dateHwDecomm" />
+    <result column="site_address_a" jdbcType="VARCHAR" property="siteAddressA" />
+    <result column="site_address_b" jdbcType="VARCHAR" property="siteAddressB" />
+    <result column="site_address_c" jdbcType="VARCHAR" property="siteAddressC" />
+    <result column="site_city" jdbcType="VARCHAR" property="siteCity" />
+    <result column="site_state" jdbcType="VARCHAR" property="siteState" />
+    <result column="site_country" jdbcType="VARCHAR" property="siteCountry" />
+    <result column="site_zip" jdbcType="VARCHAR" property="siteZip" />
+    <result column="site_rack" jdbcType="VARCHAR" property="siteRack" />
+    <result column="site_notes" jdbcType="LONGVARCHAR" property="siteNotes" />
+    <result column="poc_1_name" jdbcType="VARCHAR" property="poc1Name" />
+    <result column="poc_1_email" jdbcType="VARCHAR" property="poc1Email" />
+    <result column="poc_1_phone_a" jdbcType="VARCHAR" property="poc1PhoneA" />
+    <result column="poc_1_phone_b" jdbcType="VARCHAR" property="poc1PhoneB" />
+    <result column="poc_1_cell" jdbcType="VARCHAR" property="poc1Cell" />
+    <result column="poc_1_screen" jdbcType="VARCHAR" property="poc1Screen" />
+    <result column="poc_1_notes" jdbcType="LONGVARCHAR" property="poc1Notes" />
+    <result column="poc_2_name" jdbcType="VARCHAR" property="poc2Name" />
+    <result column="poc_2_email" jdbcType="VARCHAR" property="poc2Email" />
+    <result column="poc_2_phone_a" jdbcType="VARCHAR" property="poc2PhoneA" />
+    <result column="poc_2_phone_b" jdbcType="VARCHAR" property="poc2PhoneB" />
+    <result column="poc_2_cell" jdbcType="VARCHAR" property="poc2Cell" />
+    <result column="poc_2_screen" jdbcType="VARCHAR" property="poc2Screen" />
+    <result column="poc_2_notes" jdbcType="LONGVARCHAR" property="poc2Notes" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    hostid, inventory_mode, `type`, type_full, `name`, `alias`, os, os_full, os_short, 
+    serialno_a, serialno_b, tag, asset_tag, macaddress_a, macaddress_b, hardware, hardware_full, 
+    software, software_full, software_app_a, software_app_b, software_app_c, software_app_d, 
+    software_app_e, contact, `location`, location_lat, location_lon, notes, chassis, 
+    model, hw_arch, vendor, contract_number, installer_name, deployment_status, url_a, 
+    url_b, url_c, host_networks, host_netmask, host_router, oob_ip, oob_netmask, oob_router, 
+    date_hw_purchase, date_hw_install, date_hw_expiry, date_hw_decomm, site_address_a, 
+    site_address_b, site_address_c, site_city, site_state, site_country, site_zip, site_rack, 
+    site_notes, poc_1_name, poc_1_email, poc_1_phone_a, poc_1_phone_b, poc_1_cell, poc_1_screen, 
+    poc_1_notes, poc_2_name, poc_2_email, poc_2_phone_a, poc_2_phone_b, poc_2_cell, poc_2_screen, 
+    poc_2_notes
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from host_inventory
+    where hostid = #{hostid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from host_inventory
+    where hostid = #{hostid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.HostInventory">
+    <!--@mbg.generated-->
+    insert into host_inventory (hostid, inventory_mode, `type`, 
+      type_full, `name`, `alias`, 
+      os, os_full, os_short, 
+      serialno_a, serialno_b, tag, 
+      asset_tag, macaddress_a, macaddress_b, 
+      hardware, hardware_full, software, 
+      software_full, software_app_a, software_app_b, 
+      software_app_c, software_app_d, software_app_e, 
+      contact, `location`, location_lat, 
+      location_lon, notes, chassis, 
+      model, hw_arch, vendor, 
+      contract_number, installer_name, deployment_status, 
+      url_a, url_b, url_c, host_networks, 
+      host_netmask, host_router, oob_ip, 
+      oob_netmask, oob_router, date_hw_purchase, 
+      date_hw_install, date_hw_expiry, date_hw_decomm, 
+      site_address_a, site_address_b, site_address_c, 
+      site_city, site_state, site_country, 
+      site_zip, site_rack, site_notes, 
+      poc_1_name, poc_1_email, poc_1_phone_a, 
+      poc_1_phone_b, poc_1_cell, poc_1_screen, 
+      poc_1_notes, poc_2_name, poc_2_email, 
+      poc_2_phone_a, poc_2_phone_b, poc_2_cell, 
+      poc_2_screen, poc_2_notes)
+    values (#{hostid,jdbcType=BIGINT}, #{inventoryMode,jdbcType=INTEGER}, #{type,jdbcType=VARCHAR}, 
+      #{typeFull,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, #{alias,jdbcType=VARCHAR}, 
+      #{os,jdbcType=VARCHAR}, #{osFull,jdbcType=VARCHAR}, #{osShort,jdbcType=VARCHAR}, 
+      #{serialnoA,jdbcType=VARCHAR}, #{serialnoB,jdbcType=VARCHAR}, #{tag,jdbcType=VARCHAR}, 
+      #{assetTag,jdbcType=VARCHAR}, #{macaddressA,jdbcType=VARCHAR}, #{macaddressB,jdbcType=VARCHAR}, 
+      #{hardware,jdbcType=VARCHAR}, #{hardwareFull,jdbcType=LONGVARCHAR}, #{software,jdbcType=VARCHAR}, 
+      #{softwareFull,jdbcType=LONGVARCHAR}, #{softwareAppA,jdbcType=VARCHAR}, #{softwareAppB,jdbcType=VARCHAR}, 
+      #{softwareAppC,jdbcType=VARCHAR}, #{softwareAppD,jdbcType=VARCHAR}, #{softwareAppE,jdbcType=VARCHAR}, 
+      #{contact,jdbcType=LONGVARCHAR}, #{location,jdbcType=LONGVARCHAR}, #{locationLat,jdbcType=VARCHAR}, 
+      #{locationLon,jdbcType=VARCHAR}, #{notes,jdbcType=LONGVARCHAR}, #{chassis,jdbcType=VARCHAR}, 
+      #{model,jdbcType=VARCHAR}, #{hwArch,jdbcType=VARCHAR}, #{vendor,jdbcType=VARCHAR}, 
+      #{contractNumber,jdbcType=VARCHAR}, #{installerName,jdbcType=VARCHAR}, #{deploymentStatus,jdbcType=VARCHAR}, 
+      #{urlA,jdbcType=VARCHAR}, #{urlB,jdbcType=VARCHAR}, #{urlC,jdbcType=VARCHAR}, #{hostNetworks,jdbcType=LONGVARCHAR}, 
+      #{hostNetmask,jdbcType=VARCHAR}, #{hostRouter,jdbcType=VARCHAR}, #{oobIp,jdbcType=VARCHAR}, 
+      #{oobNetmask,jdbcType=VARCHAR}, #{oobRouter,jdbcType=VARCHAR}, #{dateHwPurchase,jdbcType=VARCHAR}, 
+      #{dateHwInstall,jdbcType=VARCHAR}, #{dateHwExpiry,jdbcType=VARCHAR}, #{dateHwDecomm,jdbcType=VARCHAR}, 
+      #{siteAddressA,jdbcType=VARCHAR}, #{siteAddressB,jdbcType=VARCHAR}, #{siteAddressC,jdbcType=VARCHAR}, 
+      #{siteCity,jdbcType=VARCHAR}, #{siteState,jdbcType=VARCHAR}, #{siteCountry,jdbcType=VARCHAR}, 
+      #{siteZip,jdbcType=VARCHAR}, #{siteRack,jdbcType=VARCHAR}, #{siteNotes,jdbcType=LONGVARCHAR}, 
+      #{poc1Name,jdbcType=VARCHAR}, #{poc1Email,jdbcType=VARCHAR}, #{poc1PhoneA,jdbcType=VARCHAR}, 
+      #{poc1PhoneB,jdbcType=VARCHAR}, #{poc1Cell,jdbcType=VARCHAR}, #{poc1Screen,jdbcType=VARCHAR}, 
+      #{poc1Notes,jdbcType=LONGVARCHAR}, #{poc2Name,jdbcType=VARCHAR}, #{poc2Email,jdbcType=VARCHAR}, 
+      #{poc2PhoneA,jdbcType=VARCHAR}, #{poc2PhoneB,jdbcType=VARCHAR}, #{poc2Cell,jdbcType=VARCHAR}, 
+      #{poc2Screen,jdbcType=VARCHAR}, #{poc2Notes,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.HostInventory">
+    <!--@mbg.generated-->
+    insert into host_inventory
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="hostid != null">
+        hostid,
+      </if>
+      <if test="inventoryMode != null">
+        inventory_mode,
+      </if>
+      <if test="type != null">
+        `type`,
+      </if>
+      <if test="typeFull != null">
+        type_full,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="alias != null">
+        `alias`,
+      </if>
+      <if test="os != null">
+        os,
+      </if>
+      <if test="osFull != null">
+        os_full,
+      </if>
+      <if test="osShort != null">
+        os_short,
+      </if>
+      <if test="serialnoA != null">
+        serialno_a,
+      </if>
+      <if test="serialnoB != null">
+        serialno_b,
+      </if>
+      <if test="tag != null">
+        tag,
+      </if>
+      <if test="assetTag != null">
+        asset_tag,
+      </if>
+      <if test="macaddressA != null">
+        macaddress_a,
+      </if>
+      <if test="macaddressB != null">
+        macaddress_b,
+      </if>
+      <if test="hardware != null">
+        hardware,
+      </if>
+      <if test="hardwareFull != null">
+        hardware_full,
+      </if>
+      <if test="software != null">
+        software,
+      </if>
+      <if test="softwareFull != null">
+        software_full,
+      </if>
+      <if test="softwareAppA != null">
+        software_app_a,
+      </if>
+      <if test="softwareAppB != null">
+        software_app_b,
+      </if>
+      <if test="softwareAppC != null">
+        software_app_c,
+      </if>
+      <if test="softwareAppD != null">
+        software_app_d,
+      </if>
+      <if test="softwareAppE != null">
+        software_app_e,
+      </if>
+      <if test="contact != null">
+        contact,
+      </if>
+      <if test="location != null">
+        `location`,
+      </if>
+      <if test="locationLat != null">
+        location_lat,
+      </if>
+      <if test="locationLon != null">
+        location_lon,
+      </if>
+      <if test="notes != null">
+        notes,
+      </if>
+      <if test="chassis != null">
+        chassis,
+      </if>
+      <if test="model != null">
+        model,
+      </if>
+      <if test="hwArch != null">
+        hw_arch,
+      </if>
+      <if test="vendor != null">
+        vendor,
+      </if>
+      <if test="contractNumber != null">
+        contract_number,
+      </if>
+      <if test="installerName != null">
+        installer_name,
+      </if>
+      <if test="deploymentStatus != null">
+        deployment_status,
+      </if>
+      <if test="urlA != null">
+        url_a,
+      </if>
+      <if test="urlB != null">
+        url_b,
+      </if>
+      <if test="urlC != null">
+        url_c,
+      </if>
+      <if test="hostNetworks != null">
+        host_networks,
+      </if>
+      <if test="hostNetmask != null">
+        host_netmask,
+      </if>
+      <if test="hostRouter != null">
+        host_router,
+      </if>
+      <if test="oobIp != null">
+        oob_ip,
+      </if>
+      <if test="oobNetmask != null">
+        oob_netmask,
+      </if>
+      <if test="oobRouter != null">
+        oob_router,
+      </if>
+      <if test="dateHwPurchase != null">
+        date_hw_purchase,
+      </if>
+      <if test="dateHwInstall != null">
+        date_hw_install,
+      </if>
+      <if test="dateHwExpiry != null">
+        date_hw_expiry,
+      </if>
+      <if test="dateHwDecomm != null">
+        date_hw_decomm,
+      </if>
+      <if test="siteAddressA != null">
+        site_address_a,
+      </if>
+      <if test="siteAddressB != null">
+        site_address_b,
+      </if>
+      <if test="siteAddressC != null">
+        site_address_c,
+      </if>
+      <if test="siteCity != null">
+        site_city,
+      </if>
+      <if test="siteState != null">
+        site_state,
+      </if>
+      <if test="siteCountry != null">
+        site_country,
+      </if>
+      <if test="siteZip != null">
+        site_zip,
+      </if>
+      <if test="siteRack != null">
+        site_rack,
+      </if>
+      <if test="siteNotes != null">
+        site_notes,
+      </if>
+      <if test="poc1Name != null">
+        poc_1_name,
+      </if>
+      <if test="poc1Email != null">
+        poc_1_email,
+      </if>
+      <if test="poc1PhoneA != null">
+        poc_1_phone_a,
+      </if>
+      <if test="poc1PhoneB != null">
+        poc_1_phone_b,
+      </if>
+      <if test="poc1Cell != null">
+        poc_1_cell,
+      </if>
+      <if test="poc1Screen != null">
+        poc_1_screen,
+      </if>
+      <if test="poc1Notes != null">
+        poc_1_notes,
+      </if>
+      <if test="poc2Name != null">
+        poc_2_name,
+      </if>
+      <if test="poc2Email != null">
+        poc_2_email,
+      </if>
+      <if test="poc2PhoneA != null">
+        poc_2_phone_a,
+      </if>
+      <if test="poc2PhoneB != null">
+        poc_2_phone_b,
+      </if>
+      <if test="poc2Cell != null">
+        poc_2_cell,
+      </if>
+      <if test="poc2Screen != null">
+        poc_2_screen,
+      </if>
+      <if test="poc2Notes != null">
+        poc_2_notes,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="hostid != null">
+        #{hostid,jdbcType=BIGINT},
+      </if>
+      <if test="inventoryMode != null">
+        #{inventoryMode,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="typeFull != null">
+        #{typeFull,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="alias != null">
+        #{alias,jdbcType=VARCHAR},
+      </if>
+      <if test="os != null">
+        #{os,jdbcType=VARCHAR},
+      </if>
+      <if test="osFull != null">
+        #{osFull,jdbcType=VARCHAR},
+      </if>
+      <if test="osShort != null">
+        #{osShort,jdbcType=VARCHAR},
+      </if>
+      <if test="serialnoA != null">
+        #{serialnoA,jdbcType=VARCHAR},
+      </if>
+      <if test="serialnoB != null">
+        #{serialnoB,jdbcType=VARCHAR},
+      </if>
+      <if test="tag != null">
+        #{tag,jdbcType=VARCHAR},
+      </if>
+      <if test="assetTag != null">
+        #{assetTag,jdbcType=VARCHAR},
+      </if>
+      <if test="macaddressA != null">
+        #{macaddressA,jdbcType=VARCHAR},
+      </if>
+      <if test="macaddressB != null">
+        #{macaddressB,jdbcType=VARCHAR},
+      </if>
+      <if test="hardware != null">
+        #{hardware,jdbcType=VARCHAR},
+      </if>
+      <if test="hardwareFull != null">
+        #{hardwareFull,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="software != null">
+        #{software,jdbcType=VARCHAR},
+      </if>
+      <if test="softwareFull != null">
+        #{softwareFull,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="softwareAppA != null">
+        #{softwareAppA,jdbcType=VARCHAR},
+      </if>
+      <if test="softwareAppB != null">
+        #{softwareAppB,jdbcType=VARCHAR},
+      </if>
+      <if test="softwareAppC != null">
+        #{softwareAppC,jdbcType=VARCHAR},
+      </if>
+      <if test="softwareAppD != null">
+        #{softwareAppD,jdbcType=VARCHAR},
+      </if>
+      <if test="softwareAppE != null">
+        #{softwareAppE,jdbcType=VARCHAR},
+      </if>
+      <if test="contact != null">
+        #{contact,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="location != null">
+        #{location,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="locationLat != null">
+        #{locationLat,jdbcType=VARCHAR},
+      </if>
+      <if test="locationLon != null">
+        #{locationLon,jdbcType=VARCHAR},
+      </if>
+      <if test="notes != null">
+        #{notes,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="chassis != null">
+        #{chassis,jdbcType=VARCHAR},
+      </if>
+      <if test="model != null">
+        #{model,jdbcType=VARCHAR},
+      </if>
+      <if test="hwArch != null">
+        #{hwArch,jdbcType=VARCHAR},
+      </if>
+      <if test="vendor != null">
+        #{vendor,jdbcType=VARCHAR},
+      </if>
+      <if test="contractNumber != null">
+        #{contractNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="installerName != null">
+        #{installerName,jdbcType=VARCHAR},
+      </if>
+      <if test="deploymentStatus != null">
+        #{deploymentStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="urlA != null">
+        #{urlA,jdbcType=VARCHAR},
+      </if>
+      <if test="urlB != null">
+        #{urlB,jdbcType=VARCHAR},
+      </if>
+      <if test="urlC != null">
+        #{urlC,jdbcType=VARCHAR},
+      </if>
+      <if test="hostNetworks != null">
+        #{hostNetworks,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="hostNetmask != null">
+        #{hostNetmask,jdbcType=VARCHAR},
+      </if>
+      <if test="hostRouter != null">
+        #{hostRouter,jdbcType=VARCHAR},
+      </if>
+      <if test="oobIp != null">
+        #{oobIp,jdbcType=VARCHAR},
+      </if>
+      <if test="oobNetmask != null">
+        #{oobNetmask,jdbcType=VARCHAR},
+      </if>
+      <if test="oobRouter != null">
+        #{oobRouter,jdbcType=VARCHAR},
+      </if>
+      <if test="dateHwPurchase != null">
+        #{dateHwPurchase,jdbcType=VARCHAR},
+      </if>
+      <if test="dateHwInstall != null">
+        #{dateHwInstall,jdbcType=VARCHAR},
+      </if>
+      <if test="dateHwExpiry != null">
+        #{dateHwExpiry,jdbcType=VARCHAR},
+      </if>
+      <if test="dateHwDecomm != null">
+        #{dateHwDecomm,jdbcType=VARCHAR},
+      </if>
+      <if test="siteAddressA != null">
+        #{siteAddressA,jdbcType=VARCHAR},
+      </if>
+      <if test="siteAddressB != null">
+        #{siteAddressB,jdbcType=VARCHAR},
+      </if>
+      <if test="siteAddressC != null">
+        #{siteAddressC,jdbcType=VARCHAR},
+      </if>
+      <if test="siteCity != null">
+        #{siteCity,jdbcType=VARCHAR},
+      </if>
+      <if test="siteState != null">
+        #{siteState,jdbcType=VARCHAR},
+      </if>
+      <if test="siteCountry != null">
+        #{siteCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="siteZip != null">
+        #{siteZip,jdbcType=VARCHAR},
+      </if>
+      <if test="siteRack != null">
+        #{siteRack,jdbcType=VARCHAR},
+      </if>
+      <if test="siteNotes != null">
+        #{siteNotes,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="poc1Name != null">
+        #{poc1Name,jdbcType=VARCHAR},
+      </if>
+      <if test="poc1Email != null">
+        #{poc1Email,jdbcType=VARCHAR},
+      </if>
+      <if test="poc1PhoneA != null">
+        #{poc1PhoneA,jdbcType=VARCHAR},
+      </if>
+      <if test="poc1PhoneB != null">
+        #{poc1PhoneB,jdbcType=VARCHAR},
+      </if>
+      <if test="poc1Cell != null">
+        #{poc1Cell,jdbcType=VARCHAR},
+      </if>
+      <if test="poc1Screen != null">
+        #{poc1Screen,jdbcType=VARCHAR},
+      </if>
+      <if test="poc1Notes != null">
+        #{poc1Notes,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="poc2Name != null">
+        #{poc2Name,jdbcType=VARCHAR},
+      </if>
+      <if test="poc2Email != null">
+        #{poc2Email,jdbcType=VARCHAR},
+      </if>
+      <if test="poc2PhoneA != null">
+        #{poc2PhoneA,jdbcType=VARCHAR},
+      </if>
+      <if test="poc2PhoneB != null">
+        #{poc2PhoneB,jdbcType=VARCHAR},
+      </if>
+      <if test="poc2Cell != null">
+        #{poc2Cell,jdbcType=VARCHAR},
+      </if>
+      <if test="poc2Screen != null">
+        #{poc2Screen,jdbcType=VARCHAR},
+      </if>
+      <if test="poc2Notes != null">
+        #{poc2Notes,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.HostInventory">
+    <!--@mbg.generated-->
+    update host_inventory
+    <set>
+      <if test="inventoryMode != null">
+        inventory_mode = #{inventoryMode,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        `type` = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="typeFull != null">
+        type_full = #{typeFull,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="alias != null">
+        `alias` = #{alias,jdbcType=VARCHAR},
+      </if>
+      <if test="os != null">
+        os = #{os,jdbcType=VARCHAR},
+      </if>
+      <if test="osFull != null">
+        os_full = #{osFull,jdbcType=VARCHAR},
+      </if>
+      <if test="osShort != null">
+        os_short = #{osShort,jdbcType=VARCHAR},
+      </if>
+      <if test="serialnoA != null">
+        serialno_a = #{serialnoA,jdbcType=VARCHAR},
+      </if>
+      <if test="serialnoB != null">
+        serialno_b = #{serialnoB,jdbcType=VARCHAR},
+      </if>
+      <if test="tag != null">
+        tag = #{tag,jdbcType=VARCHAR},
+      </if>
+      <if test="assetTag != null">
+        asset_tag = #{assetTag,jdbcType=VARCHAR},
+      </if>
+      <if test="macaddressA != null">
+        macaddress_a = #{macaddressA,jdbcType=VARCHAR},
+      </if>
+      <if test="macaddressB != null">
+        macaddress_b = #{macaddressB,jdbcType=VARCHAR},
+      </if>
+      <if test="hardware != null">
+        hardware = #{hardware,jdbcType=VARCHAR},
+      </if>
+      <if test="hardwareFull != null">
+        hardware_full = #{hardwareFull,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="software != null">
+        software = #{software,jdbcType=VARCHAR},
+      </if>
+      <if test="softwareFull != null">
+        software_full = #{softwareFull,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="softwareAppA != null">
+        software_app_a = #{softwareAppA,jdbcType=VARCHAR},
+      </if>
+      <if test="softwareAppB != null">
+        software_app_b = #{softwareAppB,jdbcType=VARCHAR},
+      </if>
+      <if test="softwareAppC != null">
+        software_app_c = #{softwareAppC,jdbcType=VARCHAR},
+      </if>
+      <if test="softwareAppD != null">
+        software_app_d = #{softwareAppD,jdbcType=VARCHAR},
+      </if>
+      <if test="softwareAppE != null">
+        software_app_e = #{softwareAppE,jdbcType=VARCHAR},
+      </if>
+      <if test="contact != null">
+        contact = #{contact,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="location != null">
+        `location` = #{location,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="locationLat != null">
+        location_lat = #{locationLat,jdbcType=VARCHAR},
+      </if>
+      <if test="locationLon != null">
+        location_lon = #{locationLon,jdbcType=VARCHAR},
+      </if>
+      <if test="notes != null">
+        notes = #{notes,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="chassis != null">
+        chassis = #{chassis,jdbcType=VARCHAR},
+      </if>
+      <if test="model != null">
+        model = #{model,jdbcType=VARCHAR},
+      </if>
+      <if test="hwArch != null">
+        hw_arch = #{hwArch,jdbcType=VARCHAR},
+      </if>
+      <if test="vendor != null">
+        vendor = #{vendor,jdbcType=VARCHAR},
+      </if>
+      <if test="contractNumber != null">
+        contract_number = #{contractNumber,jdbcType=VARCHAR},
+      </if>
+      <if test="installerName != null">
+        installer_name = #{installerName,jdbcType=VARCHAR},
+      </if>
+      <if test="deploymentStatus != null">
+        deployment_status = #{deploymentStatus,jdbcType=VARCHAR},
+      </if>
+      <if test="urlA != null">
+        url_a = #{urlA,jdbcType=VARCHAR},
+      </if>
+      <if test="urlB != null">
+        url_b = #{urlB,jdbcType=VARCHAR},
+      </if>
+      <if test="urlC != null">
+        url_c = #{urlC,jdbcType=VARCHAR},
+      </if>
+      <if test="hostNetworks != null">
+        host_networks = #{hostNetworks,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="hostNetmask != null">
+        host_netmask = #{hostNetmask,jdbcType=VARCHAR},
+      </if>
+      <if test="hostRouter != null">
+        host_router = #{hostRouter,jdbcType=VARCHAR},
+      </if>
+      <if test="oobIp != null">
+        oob_ip = #{oobIp,jdbcType=VARCHAR},
+      </if>
+      <if test="oobNetmask != null">
+        oob_netmask = #{oobNetmask,jdbcType=VARCHAR},
+      </if>
+      <if test="oobRouter != null">
+        oob_router = #{oobRouter,jdbcType=VARCHAR},
+      </if>
+      <if test="dateHwPurchase != null">
+        date_hw_purchase = #{dateHwPurchase,jdbcType=VARCHAR},
+      </if>
+      <if test="dateHwInstall != null">
+        date_hw_install = #{dateHwInstall,jdbcType=VARCHAR},
+      </if>
+      <if test="dateHwExpiry != null">
+        date_hw_expiry = #{dateHwExpiry,jdbcType=VARCHAR},
+      </if>
+      <if test="dateHwDecomm != null">
+        date_hw_decomm = #{dateHwDecomm,jdbcType=VARCHAR},
+      </if>
+      <if test="siteAddressA != null">
+        site_address_a = #{siteAddressA,jdbcType=VARCHAR},
+      </if>
+      <if test="siteAddressB != null">
+        site_address_b = #{siteAddressB,jdbcType=VARCHAR},
+      </if>
+      <if test="siteAddressC != null">
+        site_address_c = #{siteAddressC,jdbcType=VARCHAR},
+      </if>
+      <if test="siteCity != null">
+        site_city = #{siteCity,jdbcType=VARCHAR},
+      </if>
+      <if test="siteState != null">
+        site_state = #{siteState,jdbcType=VARCHAR},
+      </if>
+      <if test="siteCountry != null">
+        site_country = #{siteCountry,jdbcType=VARCHAR},
+      </if>
+      <if test="siteZip != null">
+        site_zip = #{siteZip,jdbcType=VARCHAR},
+      </if>
+      <if test="siteRack != null">
+        site_rack = #{siteRack,jdbcType=VARCHAR},
+      </if>
+      <if test="siteNotes != null">
+        site_notes = #{siteNotes,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="poc1Name != null">
+        poc_1_name = #{poc1Name,jdbcType=VARCHAR},
+      </if>
+      <if test="poc1Email != null">
+        poc_1_email = #{poc1Email,jdbcType=VARCHAR},
+      </if>
+      <if test="poc1PhoneA != null">
+        poc_1_phone_a = #{poc1PhoneA,jdbcType=VARCHAR},
+      </if>
+      <if test="poc1PhoneB != null">
+        poc_1_phone_b = #{poc1PhoneB,jdbcType=VARCHAR},
+      </if>
+      <if test="poc1Cell != null">
+        poc_1_cell = #{poc1Cell,jdbcType=VARCHAR},
+      </if>
+      <if test="poc1Screen != null">
+        poc_1_screen = #{poc1Screen,jdbcType=VARCHAR},
+      </if>
+      <if test="poc1Notes != null">
+        poc_1_notes = #{poc1Notes,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="poc2Name != null">
+        poc_2_name = #{poc2Name,jdbcType=VARCHAR},
+      </if>
+      <if test="poc2Email != null">
+        poc_2_email = #{poc2Email,jdbcType=VARCHAR},
+      </if>
+      <if test="poc2PhoneA != null">
+        poc_2_phone_a = #{poc2PhoneA,jdbcType=VARCHAR},
+      </if>
+      <if test="poc2PhoneB != null">
+        poc_2_phone_b = #{poc2PhoneB,jdbcType=VARCHAR},
+      </if>
+      <if test="poc2Cell != null">
+        poc_2_cell = #{poc2Cell,jdbcType=VARCHAR},
+      </if>
+      <if test="poc2Screen != null">
+        poc_2_screen = #{poc2Screen,jdbcType=VARCHAR},
+      </if>
+      <if test="poc2Notes != null">
+        poc_2_notes = #{poc2Notes,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where hostid = #{hostid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.HostInventory">
+    <!--@mbg.generated-->
+    update host_inventory
+    set inventory_mode = #{inventoryMode,jdbcType=INTEGER},
+      `type` = #{type,jdbcType=VARCHAR},
+      type_full = #{typeFull,jdbcType=VARCHAR},
+      `name` = #{name,jdbcType=VARCHAR},
+      `alias` = #{alias,jdbcType=VARCHAR},
+      os = #{os,jdbcType=VARCHAR},
+      os_full = #{osFull,jdbcType=VARCHAR},
+      os_short = #{osShort,jdbcType=VARCHAR},
+      serialno_a = #{serialnoA,jdbcType=VARCHAR},
+      serialno_b = #{serialnoB,jdbcType=VARCHAR},
+      tag = #{tag,jdbcType=VARCHAR},
+      asset_tag = #{assetTag,jdbcType=VARCHAR},
+      macaddress_a = #{macaddressA,jdbcType=VARCHAR},
+      macaddress_b = #{macaddressB,jdbcType=VARCHAR},
+      hardware = #{hardware,jdbcType=VARCHAR},
+      hardware_full = #{hardwareFull,jdbcType=LONGVARCHAR},
+      software = #{software,jdbcType=VARCHAR},
+      software_full = #{softwareFull,jdbcType=LONGVARCHAR},
+      software_app_a = #{softwareAppA,jdbcType=VARCHAR},
+      software_app_b = #{softwareAppB,jdbcType=VARCHAR},
+      software_app_c = #{softwareAppC,jdbcType=VARCHAR},
+      software_app_d = #{softwareAppD,jdbcType=VARCHAR},
+      software_app_e = #{softwareAppE,jdbcType=VARCHAR},
+      contact = #{contact,jdbcType=LONGVARCHAR},
+      `location` = #{location,jdbcType=LONGVARCHAR},
+      location_lat = #{locationLat,jdbcType=VARCHAR},
+      location_lon = #{locationLon,jdbcType=VARCHAR},
+      notes = #{notes,jdbcType=LONGVARCHAR},
+      chassis = #{chassis,jdbcType=VARCHAR},
+      model = #{model,jdbcType=VARCHAR},
+      hw_arch = #{hwArch,jdbcType=VARCHAR},
+      vendor = #{vendor,jdbcType=VARCHAR},
+      contract_number = #{contractNumber,jdbcType=VARCHAR},
+      installer_name = #{installerName,jdbcType=VARCHAR},
+      deployment_status = #{deploymentStatus,jdbcType=VARCHAR},
+      url_a = #{urlA,jdbcType=VARCHAR},
+      url_b = #{urlB,jdbcType=VARCHAR},
+      url_c = #{urlC,jdbcType=VARCHAR},
+      host_networks = #{hostNetworks,jdbcType=LONGVARCHAR},
+      host_netmask = #{hostNetmask,jdbcType=VARCHAR},
+      host_router = #{hostRouter,jdbcType=VARCHAR},
+      oob_ip = #{oobIp,jdbcType=VARCHAR},
+      oob_netmask = #{oobNetmask,jdbcType=VARCHAR},
+      oob_router = #{oobRouter,jdbcType=VARCHAR},
+      date_hw_purchase = #{dateHwPurchase,jdbcType=VARCHAR},
+      date_hw_install = #{dateHwInstall,jdbcType=VARCHAR},
+      date_hw_expiry = #{dateHwExpiry,jdbcType=VARCHAR},
+      date_hw_decomm = #{dateHwDecomm,jdbcType=VARCHAR},
+      site_address_a = #{siteAddressA,jdbcType=VARCHAR},
+      site_address_b = #{siteAddressB,jdbcType=VARCHAR},
+      site_address_c = #{siteAddressC,jdbcType=VARCHAR},
+      site_city = #{siteCity,jdbcType=VARCHAR},
+      site_state = #{siteState,jdbcType=VARCHAR},
+      site_country = #{siteCountry,jdbcType=VARCHAR},
+      site_zip = #{siteZip,jdbcType=VARCHAR},
+      site_rack = #{siteRack,jdbcType=VARCHAR},
+      site_notes = #{siteNotes,jdbcType=LONGVARCHAR},
+      poc_1_name = #{poc1Name,jdbcType=VARCHAR},
+      poc_1_email = #{poc1Email,jdbcType=VARCHAR},
+      poc_1_phone_a = #{poc1PhoneA,jdbcType=VARCHAR},
+      poc_1_phone_b = #{poc1PhoneB,jdbcType=VARCHAR},
+      poc_1_cell = #{poc1Cell,jdbcType=VARCHAR},
+      poc_1_screen = #{poc1Screen,jdbcType=VARCHAR},
+      poc_1_notes = #{poc1Notes,jdbcType=LONGVARCHAR},
+      poc_2_name = #{poc2Name,jdbcType=VARCHAR},
+      poc_2_email = #{poc2Email,jdbcType=VARCHAR},
+      poc_2_phone_a = #{poc2PhoneA,jdbcType=VARCHAR},
+      poc_2_phone_b = #{poc2PhoneB,jdbcType=VARCHAR},
+      poc_2_cell = #{poc2Cell,jdbcType=VARCHAR},
+      poc_2_screen = #{poc2Screen,jdbcType=VARCHAR},
+      poc_2_notes = #{poc2Notes,jdbcType=LONGVARCHAR}
+    where hostid = #{hostid,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.GraphsMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.Graphs">
+    <!--@mbg.generated-->
+    <id column="graphid" jdbcType="BIGINT" property="graphid" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="width" jdbcType="INTEGER" property="width" />
+    <result column="height" jdbcType="INTEGER" property="height" />
+    <result column="yaxismin" jdbcType="DOUBLE" property="yaxismin" />
+    <result column="yaxismax" jdbcType="DOUBLE" property="yaxismax" />
+    <result column="templateid" jdbcType="BIGINT" property="templateid" />
+    <result column="show_work_period" jdbcType="INTEGER" property="showWorkPeriod" />
+    <result column="show_triggers" jdbcType="INTEGER" property="showTriggers" />
+    <result column="graphtype" jdbcType="INTEGER" property="graphtype" />
+    <result column="show_legend" jdbcType="INTEGER" property="showLegend" />
+    <result column="show_3d" jdbcType="INTEGER" property="show3d" />
+    <result column="percent_left" jdbcType="DOUBLE" property="percentLeft" />
+    <result column="percent_right" jdbcType="DOUBLE" property="percentRight" />
+    <result column="ymin_type" jdbcType="INTEGER" property="yminType" />
+    <result column="ymax_type" jdbcType="INTEGER" property="ymaxType" />
+    <result column="ymin_itemid" jdbcType="BIGINT" property="yminItemid" />
+    <result column="ymax_itemid" jdbcType="BIGINT" property="ymaxItemid" />
+    <result column="flags" jdbcType="INTEGER" property="flags" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    graphid, `name`, width, height, yaxismin, yaxismax, templateid, show_work_period, 
+    show_triggers, graphtype, show_legend, show_3d, percent_left, percent_right, ymin_type, 
+    ymax_type, ymin_itemid, ymax_itemid, flags
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from graphs
+    where graphid = #{graphid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from graphs
+    where graphid = #{graphid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.Graphs">
+    <!--@mbg.generated-->
+    insert into graphs (graphid, `name`, width, 
+      height, yaxismin, yaxismax, 
+      templateid, show_work_period, show_triggers, 
+      graphtype, show_legend, show_3d, 
+      percent_left, percent_right, ymin_type, 
+      ymax_type, ymin_itemid, ymax_itemid, 
+      flags)
+    values (#{graphid,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{width,jdbcType=INTEGER}, 
+      #{height,jdbcType=INTEGER}, #{yaxismin,jdbcType=DOUBLE}, #{yaxismax,jdbcType=DOUBLE}, 
+      #{templateid,jdbcType=BIGINT}, #{showWorkPeriod,jdbcType=INTEGER}, #{showTriggers,jdbcType=INTEGER}, 
+      #{graphtype,jdbcType=INTEGER}, #{showLegend,jdbcType=INTEGER}, #{show3d,jdbcType=INTEGER}, 
+      #{percentLeft,jdbcType=DOUBLE}, #{percentRight,jdbcType=DOUBLE}, #{yminType,jdbcType=INTEGER}, 
+      #{ymaxType,jdbcType=INTEGER}, #{yminItemid,jdbcType=BIGINT}, #{ymaxItemid,jdbcType=BIGINT}, 
+      #{flags,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.Graphs">
+    <!--@mbg.generated-->
+    insert into graphs
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="graphid != null">
+        graphid,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="width != null">
+        width,
+      </if>
+      <if test="height != null">
+        height,
+      </if>
+      <if test="yaxismin != null">
+        yaxismin,
+      </if>
+      <if test="yaxismax != null">
+        yaxismax,
+      </if>
+      <if test="templateid != null">
+        templateid,
+      </if>
+      <if test="showWorkPeriod != null">
+        show_work_period,
+      </if>
+      <if test="showTriggers != null">
+        show_triggers,
+      </if>
+      <if test="graphtype != null">
+        graphtype,
+      </if>
+      <if test="showLegend != null">
+        show_legend,
+      </if>
+      <if test="show3d != null">
+        show_3d,
+      </if>
+      <if test="percentLeft != null">
+        percent_left,
+      </if>
+      <if test="percentRight != null">
+        percent_right,
+      </if>
+      <if test="yminType != null">
+        ymin_type,
+      </if>
+      <if test="ymaxType != null">
+        ymax_type,
+      </if>
+      <if test="yminItemid != null">
+        ymin_itemid,
+      </if>
+      <if test="ymaxItemid != null">
+        ymax_itemid,
+      </if>
+      <if test="flags != null">
+        flags,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="graphid != null">
+        #{graphid,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="width != null">
+        #{width,jdbcType=INTEGER},
+      </if>
+      <if test="height != null">
+        #{height,jdbcType=INTEGER},
+      </if>
+      <if test="yaxismin != null">
+        #{yaxismin,jdbcType=DOUBLE},
+      </if>
+      <if test="yaxismax != null">
+        #{yaxismax,jdbcType=DOUBLE},
+      </if>
+      <if test="templateid != null">
+        #{templateid,jdbcType=BIGINT},
+      </if>
+      <if test="showWorkPeriod != null">
+        #{showWorkPeriod,jdbcType=INTEGER},
+      </if>
+      <if test="showTriggers != null">
+        #{showTriggers,jdbcType=INTEGER},
+      </if>
+      <if test="graphtype != null">
+        #{graphtype,jdbcType=INTEGER},
+      </if>
+      <if test="showLegend != null">
+        #{showLegend,jdbcType=INTEGER},
+      </if>
+      <if test="show3d != null">
+        #{show3d,jdbcType=INTEGER},
+      </if>
+      <if test="percentLeft != null">
+        #{percentLeft,jdbcType=DOUBLE},
+      </if>
+      <if test="percentRight != null">
+        #{percentRight,jdbcType=DOUBLE},
+      </if>
+      <if test="yminType != null">
+        #{yminType,jdbcType=INTEGER},
+      </if>
+      <if test="ymaxType != null">
+        #{ymaxType,jdbcType=INTEGER},
+      </if>
+      <if test="yminItemid != null">
+        #{yminItemid,jdbcType=BIGINT},
+      </if>
+      <if test="ymaxItemid != null">
+        #{ymaxItemid,jdbcType=BIGINT},
+      </if>
+      <if test="flags != null">
+        #{flags,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.Graphs">
+    <!--@mbg.generated-->
+    update graphs
+    <set>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="width != null">
+        width = #{width,jdbcType=INTEGER},
+      </if>
+      <if test="height != null">
+        height = #{height,jdbcType=INTEGER},
+      </if>
+      <if test="yaxismin != null">
+        yaxismin = #{yaxismin,jdbcType=DOUBLE},
+      </if>
+      <if test="yaxismax != null">
+        yaxismax = #{yaxismax,jdbcType=DOUBLE},
+      </if>
+      <if test="templateid != null">
+        templateid = #{templateid,jdbcType=BIGINT},
+      </if>
+      <if test="showWorkPeriod != null">
+        show_work_period = #{showWorkPeriod,jdbcType=INTEGER},
+      </if>
+      <if test="showTriggers != null">
+        show_triggers = #{showTriggers,jdbcType=INTEGER},
+      </if>
+      <if test="graphtype != null">
+        graphtype = #{graphtype,jdbcType=INTEGER},
+      </if>
+      <if test="showLegend != null">
+        show_legend = #{showLegend,jdbcType=INTEGER},
+      </if>
+      <if test="show3d != null">
+        show_3d = #{show3d,jdbcType=INTEGER},
+      </if>
+      <if test="percentLeft != null">
+        percent_left = #{percentLeft,jdbcType=DOUBLE},
+      </if>
+      <if test="percentRight != null">
+        percent_right = #{percentRight,jdbcType=DOUBLE},
+      </if>
+      <if test="yminType != null">
+        ymin_type = #{yminType,jdbcType=INTEGER},
+      </if>
+      <if test="ymaxType != null">
+        ymax_type = #{ymaxType,jdbcType=INTEGER},
+      </if>
+      <if test="yminItemid != null">
+        ymin_itemid = #{yminItemid,jdbcType=BIGINT},
+      </if>
+      <if test="ymaxItemid != null">
+        ymax_itemid = #{ymaxItemid,jdbcType=BIGINT},
+      </if>
+      <if test="flags != null">
+        flags = #{flags,jdbcType=INTEGER},
+      </if>
+    </set>
+    where graphid = #{graphid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.Graphs">
+    <!--@mbg.generated-->
+    update graphs
+    set `name` = #{name,jdbcType=VARCHAR},
+      width = #{width,jdbcType=INTEGER},
+      height = #{height,jdbcType=INTEGER},
+      yaxismin = #{yaxismin,jdbcType=DOUBLE},
+      yaxismax = #{yaxismax,jdbcType=DOUBLE},
+      templateid = #{templateid,jdbcType=BIGINT},
+      show_work_period = #{showWorkPeriod,jdbcType=INTEGER},
+      show_triggers = #{showTriggers,jdbcType=INTEGER},
+      graphtype = #{graphtype,jdbcType=INTEGER},
+      show_legend = #{showLegend,jdbcType=INTEGER},
+      show_3d = #{show3d,jdbcType=INTEGER},
+      percent_left = #{percentLeft,jdbcType=DOUBLE},
+      percent_right = #{percentRight,jdbcType=DOUBLE},
+      ymin_type = #{yminType,jdbcType=INTEGER},
+      ymax_type = #{ymaxType,jdbcType=INTEGER},
+      ymin_itemid = #{yminItemid,jdbcType=BIGINT},
+      ymax_itemid = #{ymaxItemid,jdbcType=BIGINT},
+      flags = #{flags,jdbcType=INTEGER}
+    where graphid = #{graphid,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.HttpstepMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.Httpstep">
+    <!--@mbg.generated-->
+    <id column="httpstepid" jdbcType="BIGINT" property="httpstepid" />
+    <result column="httptestid" jdbcType="BIGINT" property="httptestid" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="no" jdbcType="INTEGER" property="no" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="timeout" jdbcType="INTEGER" property="timeout" />
+    <result column="posts" jdbcType="LONGVARCHAR" property="posts" />
+    <result column="required" jdbcType="VARCHAR" property="required" />
+    <result column="status_codes" jdbcType="VARCHAR" property="statusCodes" />
+    <result column="variables" jdbcType="LONGVARCHAR" property="variables" />
+    <result column="follow_redirects" jdbcType="INTEGER" property="followRedirects" />
+    <result column="retrieve_mode" jdbcType="INTEGER" property="retrieveMode" />
+    <result column="headers" jdbcType="LONGVARCHAR" property="headers" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    httpstepid, httptestid, `name`, `no`, url, timeout, posts, required, status_codes, 
+    `variables`, follow_redirects, retrieve_mode, headers
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from httpstep
+    where httpstepid = #{httpstepid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from httpstep
+    where httpstepid = #{httpstepid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.Httpstep">
+    <!--@mbg.generated-->
+    insert into httpstep (httpstepid, httptestid, `name`, 
+      `no`, url, timeout, posts, 
+      required, status_codes, `variables`, 
+      follow_redirects, retrieve_mode, headers
+      )
+    values (#{httpstepid,jdbcType=BIGINT}, #{httptestid,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, 
+      #{no,jdbcType=INTEGER}, #{url,jdbcType=VARCHAR}, #{timeout,jdbcType=INTEGER}, #{posts,jdbcType=LONGVARCHAR}, 
+      #{required,jdbcType=VARCHAR}, #{statusCodes,jdbcType=VARCHAR}, #{variables,jdbcType=LONGVARCHAR}, 
+      #{followRedirects,jdbcType=INTEGER}, #{retrieveMode,jdbcType=INTEGER}, #{headers,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.Httpstep">
+    <!--@mbg.generated-->
+    insert into httpstep
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="httpstepid != null">
+        httpstepid,
+      </if>
+      <if test="httptestid != null">
+        httptestid,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="no != null">
+        `no`,
+      </if>
+      <if test="url != null">
+        url,
+      </if>
+      <if test="timeout != null">
+        timeout,
+      </if>
+      <if test="posts != null">
+        posts,
+      </if>
+      <if test="required != null">
+        required,
+      </if>
+      <if test="statusCodes != null">
+        status_codes,
+      </if>
+      <if test="variables != null">
+        `variables`,
+      </if>
+      <if test="followRedirects != null">
+        follow_redirects,
+      </if>
+      <if test="retrieveMode != null">
+        retrieve_mode,
+      </if>
+      <if test="headers != null">
+        headers,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="httpstepid != null">
+        #{httpstepid,jdbcType=BIGINT},
+      </if>
+      <if test="httptestid != null">
+        #{httptestid,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="no != null">
+        #{no,jdbcType=INTEGER},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="timeout != null">
+        #{timeout,jdbcType=INTEGER},
+      </if>
+      <if test="posts != null">
+        #{posts,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="required != null">
+        #{required,jdbcType=VARCHAR},
+      </if>
+      <if test="statusCodes != null">
+        #{statusCodes,jdbcType=VARCHAR},
+      </if>
+      <if test="variables != null">
+        #{variables,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="followRedirects != null">
+        #{followRedirects,jdbcType=INTEGER},
+      </if>
+      <if test="retrieveMode != null">
+        #{retrieveMode,jdbcType=INTEGER},
+      </if>
+      <if test="headers != null">
+        #{headers,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.Httpstep">
+    <!--@mbg.generated-->
+    update httpstep
+    <set>
+      <if test="httptestid != null">
+        httptestid = #{httptestid,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="no != null">
+        `no` = #{no,jdbcType=INTEGER},
+      </if>
+      <if test="url != null">
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="timeout != null">
+        timeout = #{timeout,jdbcType=INTEGER},
+      </if>
+      <if test="posts != null">
+        posts = #{posts,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="required != null">
+        required = #{required,jdbcType=VARCHAR},
+      </if>
+      <if test="statusCodes != null">
+        status_codes = #{statusCodes,jdbcType=VARCHAR},
+      </if>
+      <if test="variables != null">
+        `variables` = #{variables,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="followRedirects != null">
+        follow_redirects = #{followRedirects,jdbcType=INTEGER},
+      </if>
+      <if test="retrieveMode != null">
+        retrieve_mode = #{retrieveMode,jdbcType=INTEGER},
+      </if>
+      <if test="headers != null">
+        headers = #{headers,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where httpstepid = #{httpstepid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.Httpstep">
+    <!--@mbg.generated-->
+    update httpstep
+    set httptestid = #{httptestid,jdbcType=BIGINT},
+      `name` = #{name,jdbcType=VARCHAR},
+      `no` = #{no,jdbcType=INTEGER},
+      url = #{url,jdbcType=VARCHAR},
+      timeout = #{timeout,jdbcType=INTEGER},
+      posts = #{posts,jdbcType=LONGVARCHAR},
+      required = #{required,jdbcType=VARCHAR},
+      status_codes = #{statusCodes,jdbcType=VARCHAR},
+      `variables` = #{variables,jdbcType=LONGVARCHAR},
+      follow_redirects = #{followRedirects,jdbcType=INTEGER},
+      retrieve_mode = #{retrieveMode,jdbcType=INTEGER},
+      headers = #{headers,jdbcType=LONGVARCHAR}
+    where httpstepid = #{httpstepid,jdbcType=BIGINT}
+  </update>
+</mapper>

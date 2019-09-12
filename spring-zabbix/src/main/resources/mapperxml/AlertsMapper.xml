@@ -1,0 +1,207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.AlertsMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.Alerts">
+    <!--@mbg.generated-->
+    <id column="alertid" jdbcType="BIGINT" property="alertid" />
+    <result column="actionid" jdbcType="BIGINT" property="actionid" />
+    <result column="eventid" jdbcType="BIGINT" property="eventid" />
+    <result column="userid" jdbcType="BIGINT" property="userid" />
+    <result column="clock" jdbcType="INTEGER" property="clock" />
+    <result column="mediatypeid" jdbcType="BIGINT" property="mediatypeid" />
+    <result column="sendto" jdbcType="VARCHAR" property="sendto" />
+    <result column="subject" jdbcType="VARCHAR" property="subject" />
+    <result column="message" jdbcType="LONGVARCHAR" property="message" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="retries" jdbcType="INTEGER" property="retries" />
+    <result column="error" jdbcType="VARCHAR" property="error" />
+    <result column="esc_step" jdbcType="INTEGER" property="escStep" />
+    <result column="alerttype" jdbcType="INTEGER" property="alerttype" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    alertid, actionid, eventid, userid, clock, mediatypeid, sendto, subject, message, 
+    `status`, retries, error, esc_step, alerttype
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from alerts
+    where alertid = #{alertid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from alerts
+    where alertid = #{alertid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.Alerts">
+    <!--@mbg.generated-->
+    insert into alerts (alertid, actionid, eventid, 
+      userid, clock, mediatypeid, 
+      sendto, subject, message, 
+      `status`, retries, error, 
+      esc_step, alerttype)
+    values (#{alertid,jdbcType=BIGINT}, #{actionid,jdbcType=BIGINT}, #{eventid,jdbcType=BIGINT}, 
+      #{userid,jdbcType=BIGINT}, #{clock,jdbcType=INTEGER}, #{mediatypeid,jdbcType=BIGINT}, 
+      #{sendto,jdbcType=VARCHAR}, #{subject,jdbcType=VARCHAR}, #{message,jdbcType=LONGVARCHAR}, 
+      #{status,jdbcType=INTEGER}, #{retries,jdbcType=INTEGER}, #{error,jdbcType=VARCHAR}, 
+      #{escStep,jdbcType=INTEGER}, #{alerttype,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.Alerts">
+    <!--@mbg.generated-->
+    insert into alerts
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="alertid != null">
+        alertid,
+      </if>
+      <if test="actionid != null">
+        actionid,
+      </if>
+      <if test="eventid != null">
+        eventid,
+      </if>
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="clock != null">
+        clock,
+      </if>
+      <if test="mediatypeid != null">
+        mediatypeid,
+      </if>
+      <if test="sendto != null">
+        sendto,
+      </if>
+      <if test="subject != null">
+        subject,
+      </if>
+      <if test="message != null">
+        message,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="retries != null">
+        retries,
+      </if>
+      <if test="error != null">
+        error,
+      </if>
+      <if test="escStep != null">
+        esc_step,
+      </if>
+      <if test="alerttype != null">
+        alerttype,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="alertid != null">
+        #{alertid,jdbcType=BIGINT},
+      </if>
+      <if test="actionid != null">
+        #{actionid,jdbcType=BIGINT},
+      </if>
+      <if test="eventid != null">
+        #{eventid,jdbcType=BIGINT},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=BIGINT},
+      </if>
+      <if test="clock != null">
+        #{clock,jdbcType=INTEGER},
+      </if>
+      <if test="mediatypeid != null">
+        #{mediatypeid,jdbcType=BIGINT},
+      </if>
+      <if test="sendto != null">
+        #{sendto,jdbcType=VARCHAR},
+      </if>
+      <if test="subject != null">
+        #{subject,jdbcType=VARCHAR},
+      </if>
+      <if test="message != null">
+        #{message,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="retries != null">
+        #{retries,jdbcType=INTEGER},
+      </if>
+      <if test="error != null">
+        #{error,jdbcType=VARCHAR},
+      </if>
+      <if test="escStep != null">
+        #{escStep,jdbcType=INTEGER},
+      </if>
+      <if test="alerttype != null">
+        #{alerttype,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.Alerts">
+    <!--@mbg.generated-->
+    update alerts
+    <set>
+      <if test="actionid != null">
+        actionid = #{actionid,jdbcType=BIGINT},
+      </if>
+      <if test="eventid != null">
+        eventid = #{eventid,jdbcType=BIGINT},
+      </if>
+      <if test="userid != null">
+        userid = #{userid,jdbcType=BIGINT},
+      </if>
+      <if test="clock != null">
+        clock = #{clock,jdbcType=INTEGER},
+      </if>
+      <if test="mediatypeid != null">
+        mediatypeid = #{mediatypeid,jdbcType=BIGINT},
+      </if>
+      <if test="sendto != null">
+        sendto = #{sendto,jdbcType=VARCHAR},
+      </if>
+      <if test="subject != null">
+        subject = #{subject,jdbcType=VARCHAR},
+      </if>
+      <if test="message != null">
+        message = #{message,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="retries != null">
+        retries = #{retries,jdbcType=INTEGER},
+      </if>
+      <if test="error != null">
+        error = #{error,jdbcType=VARCHAR},
+      </if>
+      <if test="escStep != null">
+        esc_step = #{escStep,jdbcType=INTEGER},
+      </if>
+      <if test="alerttype != null">
+        alerttype = #{alerttype,jdbcType=INTEGER},
+      </if>
+    </set>
+    where alertid = #{alertid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.Alerts">
+    <!--@mbg.generated-->
+    update alerts
+    set actionid = #{actionid,jdbcType=BIGINT},
+      eventid = #{eventid,jdbcType=BIGINT},
+      userid = #{userid,jdbcType=BIGINT},
+      clock = #{clock,jdbcType=INTEGER},
+      mediatypeid = #{mediatypeid,jdbcType=BIGINT},
+      sendto = #{sendto,jdbcType=VARCHAR},
+      subject = #{subject,jdbcType=VARCHAR},
+      message = #{message,jdbcType=LONGVARCHAR},
+      `status` = #{status,jdbcType=INTEGER},
+      retries = #{retries,jdbcType=INTEGER},
+      error = #{error,jdbcType=VARCHAR},
+      esc_step = #{escStep,jdbcType=INTEGER},
+      alerttype = #{alerttype,jdbcType=INTEGER}
+    where alertid = #{alertid,jdbcType=BIGINT}
+  </update>
+</mapper>

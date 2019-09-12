@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.InterfaceDiscoveryMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.InterfaceDiscovery">
+    <!--@mbg.generated-->
+    <id column="interfaceid" jdbcType="BIGINT" property="interfaceid" />
+    <result column="parent_interfaceid" jdbcType="BIGINT" property="parentInterfaceid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    interfaceid, parent_interfaceid
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from interface_discovery
+    where interfaceid = #{interfaceid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from interface_discovery
+    where interfaceid = #{interfaceid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.InterfaceDiscovery">
+    <!--@mbg.generated-->
+    insert into interface_discovery (interfaceid, parent_interfaceid)
+    values (#{interfaceid,jdbcType=BIGINT}, #{parentInterfaceid,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.InterfaceDiscovery">
+    <!--@mbg.generated-->
+    insert into interface_discovery
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="interfaceid != null">
+        interfaceid,
+      </if>
+      <if test="parentInterfaceid != null">
+        parent_interfaceid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="interfaceid != null">
+        #{interfaceid,jdbcType=BIGINT},
+      </if>
+      <if test="parentInterfaceid != null">
+        #{parentInterfaceid,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.InterfaceDiscovery">
+    <!--@mbg.generated-->
+    update interface_discovery
+    <set>
+      <if test="parentInterfaceid != null">
+        parent_interfaceid = #{parentInterfaceid,jdbcType=BIGINT},
+      </if>
+    </set>
+    where interfaceid = #{interfaceid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.InterfaceDiscovery">
+    <!--@mbg.generated-->
+    update interface_discovery
+    set parent_interfaceid = #{parentInterfaceid,jdbcType=BIGINT}
+    where interfaceid = #{interfaceid,jdbcType=BIGINT}
+  </update>
+</mapper>

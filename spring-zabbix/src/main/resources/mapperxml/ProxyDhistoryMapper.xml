@@ -1,0 +1,165 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.ProxyDhistoryMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.ProxyDhistory">
+    <!--@mbg.generated-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="clock" jdbcType="INTEGER" property="clock" />
+    <result column="druleid" jdbcType="BIGINT" property="druleid" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="ip" jdbcType="VARCHAR" property="ip" />
+    <result column="port" jdbcType="INTEGER" property="port" />
+    <result column="key_" jdbcType="VARCHAR" property="key" />
+    <result column="value" jdbcType="VARCHAR" property="value" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="dcheckid" jdbcType="BIGINT" property="dcheckid" />
+    <result column="dns" jdbcType="VARCHAR" property="dns" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, clock, druleid, `type`, ip, port, key_, `value`, `status`, dcheckid, dns
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from proxy_dhistory
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from proxy_dhistory
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.xq.domain.ProxyDhistory" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into proxy_dhistory (clock, druleid, `type`, 
+      ip, port, key_, `value`, 
+      `status`, dcheckid, dns
+      )
+    values (#{clock,jdbcType=INTEGER}, #{druleid,jdbcType=BIGINT}, #{type,jdbcType=INTEGER}, 
+      #{ip,jdbcType=VARCHAR}, #{port,jdbcType=INTEGER}, #{key,jdbcType=VARCHAR}, #{value,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER}, #{dcheckid,jdbcType=BIGINT}, #{dns,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.xq.domain.ProxyDhistory" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into proxy_dhistory
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="clock != null">
+        clock,
+      </if>
+      <if test="druleid != null">
+        druleid,
+      </if>
+      <if test="type != null">
+        `type`,
+      </if>
+      <if test="ip != null">
+        ip,
+      </if>
+      <if test="port != null">
+        port,
+      </if>
+      <if test="key != null">
+        key_,
+      </if>
+      <if test="value != null">
+        `value`,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="dcheckid != null">
+        dcheckid,
+      </if>
+      <if test="dns != null">
+        dns,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="clock != null">
+        #{clock,jdbcType=INTEGER},
+      </if>
+      <if test="druleid != null">
+        #{druleid,jdbcType=BIGINT},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="ip != null">
+        #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="port != null">
+        #{port,jdbcType=INTEGER},
+      </if>
+      <if test="key != null">
+        #{key,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null">
+        #{value,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="dcheckid != null">
+        #{dcheckid,jdbcType=BIGINT},
+      </if>
+      <if test="dns != null">
+        #{dns,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.ProxyDhistory">
+    <!--@mbg.generated-->
+    update proxy_dhistory
+    <set>
+      <if test="clock != null">
+        clock = #{clock,jdbcType=INTEGER},
+      </if>
+      <if test="druleid != null">
+        druleid = #{druleid,jdbcType=BIGINT},
+      </if>
+      <if test="type != null">
+        `type` = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="ip != null">
+        ip = #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="port != null">
+        port = #{port,jdbcType=INTEGER},
+      </if>
+      <if test="key != null">
+        key_ = #{key,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null">
+        `value` = #{value,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="dcheckid != null">
+        dcheckid = #{dcheckid,jdbcType=BIGINT},
+      </if>
+      <if test="dns != null">
+        dns = #{dns,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.ProxyDhistory">
+    <!--@mbg.generated-->
+    update proxy_dhistory
+    set clock = #{clock,jdbcType=INTEGER},
+      druleid = #{druleid,jdbcType=BIGINT},
+      `type` = #{type,jdbcType=INTEGER},
+      ip = #{ip,jdbcType=VARCHAR},
+      port = #{port,jdbcType=INTEGER},
+      key_ = #{key,jdbcType=VARCHAR},
+      `value` = #{value,jdbcType=VARCHAR},
+      `status` = #{status,jdbcType=INTEGER},
+      dcheckid = #{dcheckid,jdbcType=BIGINT},
+      dns = #{dns,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

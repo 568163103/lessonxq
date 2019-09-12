@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.ApplicationTemplateMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.ApplicationTemplate">
+    <!--@mbg.generated-->
+    <id column="application_templateid" jdbcType="BIGINT" property="applicationTemplateid" />
+    <result column="applicationid" jdbcType="BIGINT" property="applicationid" />
+    <result column="templateid" jdbcType="BIGINT" property="templateid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    application_templateid, applicationid, templateid
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from application_template
+    where application_templateid = #{applicationTemplateid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from application_template
+    where application_templateid = #{applicationTemplateid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.ApplicationTemplate">
+    <!--@mbg.generated-->
+    insert into application_template (application_templateid, applicationid, 
+      templateid)
+    values (#{applicationTemplateid,jdbcType=BIGINT}, #{applicationid,jdbcType=BIGINT}, 
+      #{templateid,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.ApplicationTemplate">
+    <!--@mbg.generated-->
+    insert into application_template
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="applicationTemplateid != null">
+        application_templateid,
+      </if>
+      <if test="applicationid != null">
+        applicationid,
+      </if>
+      <if test="templateid != null">
+        templateid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="applicationTemplateid != null">
+        #{applicationTemplateid,jdbcType=BIGINT},
+      </if>
+      <if test="applicationid != null">
+        #{applicationid,jdbcType=BIGINT},
+      </if>
+      <if test="templateid != null">
+        #{templateid,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.ApplicationTemplate">
+    <!--@mbg.generated-->
+    update application_template
+    <set>
+      <if test="applicationid != null">
+        applicationid = #{applicationid,jdbcType=BIGINT},
+      </if>
+      <if test="templateid != null">
+        templateid = #{templateid,jdbcType=BIGINT},
+      </if>
+    </set>
+    where application_templateid = #{applicationTemplateid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.ApplicationTemplate">
+    <!--@mbg.generated-->
+    update application_template
+    set applicationid = #{applicationid,jdbcType=BIGINT},
+      templateid = #{templateid,jdbcType=BIGINT}
+    where application_templateid = #{applicationTemplateid,jdbcType=BIGINT}
+  </update>
+</mapper>

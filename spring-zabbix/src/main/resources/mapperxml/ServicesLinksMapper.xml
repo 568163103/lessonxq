@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.ServicesLinksMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.ServicesLinks">
+    <!--@mbg.generated-->
+    <id column="linkid" jdbcType="BIGINT" property="linkid" />
+    <result column="serviceupid" jdbcType="BIGINT" property="serviceupid" />
+    <result column="servicedownid" jdbcType="BIGINT" property="servicedownid" />
+    <result column="soft" jdbcType="INTEGER" property="soft" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    linkid, serviceupid, servicedownid, soft
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from services_links
+    where linkid = #{linkid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from services_links
+    where linkid = #{linkid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.ServicesLinks">
+    <!--@mbg.generated-->
+    insert into services_links (linkid, serviceupid, servicedownid, 
+      soft)
+    values (#{linkid,jdbcType=BIGINT}, #{serviceupid,jdbcType=BIGINT}, #{servicedownid,jdbcType=BIGINT}, 
+      #{soft,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.ServicesLinks">
+    <!--@mbg.generated-->
+    insert into services_links
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="linkid != null">
+        linkid,
+      </if>
+      <if test="serviceupid != null">
+        serviceupid,
+      </if>
+      <if test="servicedownid != null">
+        servicedownid,
+      </if>
+      <if test="soft != null">
+        soft,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="linkid != null">
+        #{linkid,jdbcType=BIGINT},
+      </if>
+      <if test="serviceupid != null">
+        #{serviceupid,jdbcType=BIGINT},
+      </if>
+      <if test="servicedownid != null">
+        #{servicedownid,jdbcType=BIGINT},
+      </if>
+      <if test="soft != null">
+        #{soft,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.ServicesLinks">
+    <!--@mbg.generated-->
+    update services_links
+    <set>
+      <if test="serviceupid != null">
+        serviceupid = #{serviceupid,jdbcType=BIGINT},
+      </if>
+      <if test="servicedownid != null">
+        servicedownid = #{servicedownid,jdbcType=BIGINT},
+      </if>
+      <if test="soft != null">
+        soft = #{soft,jdbcType=INTEGER},
+      </if>
+    </set>
+    where linkid = #{linkid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.ServicesLinks">
+    <!--@mbg.generated-->
+    update services_links
+    set serviceupid = #{serviceupid,jdbcType=BIGINT},
+      servicedownid = #{servicedownid,jdbcType=BIGINT},
+      soft = #{soft,jdbcType=INTEGER}
+    where linkid = #{linkid,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.TriggerDependsMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.TriggerDepends">
+    <!--@mbg.generated-->
+    <id column="triggerdepid" jdbcType="BIGINT" property="triggerdepid" />
+    <result column="triggerid_down" jdbcType="BIGINT" property="triggeridDown" />
+    <result column="triggerid_up" jdbcType="BIGINT" property="triggeridUp" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    triggerdepid, triggerid_down, triggerid_up
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from trigger_depends
+    where triggerdepid = #{triggerdepid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from trigger_depends
+    where triggerdepid = #{triggerdepid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.TriggerDepends">
+    <!--@mbg.generated-->
+    insert into trigger_depends (triggerdepid, triggerid_down, triggerid_up
+      )
+    values (#{triggerdepid,jdbcType=BIGINT}, #{triggeridDown,jdbcType=BIGINT}, #{triggeridUp,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.TriggerDepends">
+    <!--@mbg.generated-->
+    insert into trigger_depends
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="triggerdepid != null">
+        triggerdepid,
+      </if>
+      <if test="triggeridDown != null">
+        triggerid_down,
+      </if>
+      <if test="triggeridUp != null">
+        triggerid_up,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="triggerdepid != null">
+        #{triggerdepid,jdbcType=BIGINT},
+      </if>
+      <if test="triggeridDown != null">
+        #{triggeridDown,jdbcType=BIGINT},
+      </if>
+      <if test="triggeridUp != null">
+        #{triggeridUp,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.TriggerDepends">
+    <!--@mbg.generated-->
+    update trigger_depends
+    <set>
+      <if test="triggeridDown != null">
+        triggerid_down = #{triggeridDown,jdbcType=BIGINT},
+      </if>
+      <if test="triggeridUp != null">
+        triggerid_up = #{triggeridUp,jdbcType=BIGINT},
+      </if>
+    </set>
+    where triggerdepid = #{triggerdepid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.TriggerDepends">
+    <!--@mbg.generated-->
+    update trigger_depends
+    set triggerid_down = #{triggeridDown,jdbcType=BIGINT},
+      triggerid_up = #{triggeridUp,jdbcType=BIGINT}
+    where triggerdepid = #{triggerdepid,jdbcType=BIGINT}
+  </update>
+</mapper>

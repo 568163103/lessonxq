@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.GroupPrototypeMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.GroupPrototype">
+    <!--@mbg.generated-->
+    <id column="group_prototypeid" jdbcType="BIGINT" property="groupPrototypeid" />
+    <result column="hostid" jdbcType="BIGINT" property="hostid" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="groupid" jdbcType="BIGINT" property="groupid" />
+    <result column="templateid" jdbcType="BIGINT" property="templateid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    group_prototypeid, hostid, `name`, groupid, templateid
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from group_prototype
+    where group_prototypeid = #{groupPrototypeid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from group_prototype
+    where group_prototypeid = #{groupPrototypeid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.GroupPrototype">
+    <!--@mbg.generated-->
+    insert into group_prototype (group_prototypeid, hostid, `name`, 
+      groupid, templateid)
+    values (#{groupPrototypeid,jdbcType=BIGINT}, #{hostid,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, 
+      #{groupid,jdbcType=BIGINT}, #{templateid,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.GroupPrototype">
+    <!--@mbg.generated-->
+    insert into group_prototype
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="groupPrototypeid != null">
+        group_prototypeid,
+      </if>
+      <if test="hostid != null">
+        hostid,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="groupid != null">
+        groupid,
+      </if>
+      <if test="templateid != null">
+        templateid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="groupPrototypeid != null">
+        #{groupPrototypeid,jdbcType=BIGINT},
+      </if>
+      <if test="hostid != null">
+        #{hostid,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="groupid != null">
+        #{groupid,jdbcType=BIGINT},
+      </if>
+      <if test="templateid != null">
+        #{templateid,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.GroupPrototype">
+    <!--@mbg.generated-->
+    update group_prototype
+    <set>
+      <if test="hostid != null">
+        hostid = #{hostid,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="groupid != null">
+        groupid = #{groupid,jdbcType=BIGINT},
+      </if>
+      <if test="templateid != null">
+        templateid = #{templateid,jdbcType=BIGINT},
+      </if>
+    </set>
+    where group_prototypeid = #{groupPrototypeid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.GroupPrototype">
+    <!--@mbg.generated-->
+    update group_prototype
+    set hostid = #{hostid,jdbcType=BIGINT},
+      `name` = #{name,jdbcType=VARCHAR},
+      groupid = #{groupid,jdbcType=BIGINT},
+      templateid = #{templateid,jdbcType=BIGINT}
+    where group_prototypeid = #{groupPrototypeid,jdbcType=BIGINT}
+  </update>
+</mapper>

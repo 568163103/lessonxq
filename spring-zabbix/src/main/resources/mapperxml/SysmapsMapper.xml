@@ -1,0 +1,398 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.SysmapsMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.Sysmaps">
+    <!--@mbg.generated-->
+    <id column="sysmapid" jdbcType="BIGINT" property="sysmapid" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="width" jdbcType="INTEGER" property="width" />
+    <result column="height" jdbcType="INTEGER" property="height" />
+    <result column="backgroundid" jdbcType="BIGINT" property="backgroundid" />
+    <result column="label_type" jdbcType="INTEGER" property="labelType" />
+    <result column="label_location" jdbcType="INTEGER" property="labelLocation" />
+    <result column="highlight" jdbcType="INTEGER" property="highlight" />
+    <result column="expandproblem" jdbcType="INTEGER" property="expandproblem" />
+    <result column="markelements" jdbcType="INTEGER" property="markelements" />
+    <result column="show_unack" jdbcType="INTEGER" property="showUnack" />
+    <result column="grid_size" jdbcType="INTEGER" property="gridSize" />
+    <result column="grid_show" jdbcType="INTEGER" property="gridShow" />
+    <result column="grid_align" jdbcType="INTEGER" property="gridAlign" />
+    <result column="label_format" jdbcType="INTEGER" property="labelFormat" />
+    <result column="label_type_host" jdbcType="INTEGER" property="labelTypeHost" />
+    <result column="label_type_hostgroup" jdbcType="INTEGER" property="labelTypeHostgroup" />
+    <result column="label_type_trigger" jdbcType="INTEGER" property="labelTypeTrigger" />
+    <result column="label_type_map" jdbcType="INTEGER" property="labelTypeMap" />
+    <result column="label_type_image" jdbcType="INTEGER" property="labelTypeImage" />
+    <result column="label_string_host" jdbcType="VARCHAR" property="labelStringHost" />
+    <result column="label_string_hostgroup" jdbcType="VARCHAR" property="labelStringHostgroup" />
+    <result column="label_string_trigger" jdbcType="VARCHAR" property="labelStringTrigger" />
+    <result column="label_string_map" jdbcType="VARCHAR" property="labelStringMap" />
+    <result column="label_string_image" jdbcType="VARCHAR" property="labelStringImage" />
+    <result column="iconmapid" jdbcType="BIGINT" property="iconmapid" />
+    <result column="expand_macros" jdbcType="INTEGER" property="expandMacros" />
+    <result column="severity_min" jdbcType="INTEGER" property="severityMin" />
+    <result column="userid" jdbcType="BIGINT" property="userid" />
+    <result column="private" jdbcType="INTEGER" property="private1" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    sysmapid, `name`, width, height, backgroundid, label_type, label_location, highlight, 
+    expandproblem, markelements, show_unack, grid_size, grid_show, grid_align, label_format, 
+    label_type_host, label_type_hostgroup, label_type_trigger, label_type_map, label_type_image, 
+    label_string_host, label_string_hostgroup, label_string_trigger, label_string_map, 
+    label_string_image, iconmapid, expand_macros, severity_min, userid, private
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from sysmaps
+    where sysmapid = #{sysmapid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from sysmaps
+    where sysmapid = #{sysmapid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.Sysmaps">
+    <!--@mbg.generated-->
+    insert into sysmaps (sysmapid, `name`, width, 
+      height, backgroundid, label_type, 
+      label_location, highlight, expandproblem, 
+      markelements, show_unack, grid_size, 
+      grid_show, grid_align, label_format, 
+      label_type_host, label_type_hostgroup, label_type_trigger, 
+      label_type_map, label_type_image, label_string_host, 
+      label_string_hostgroup, label_string_trigger, 
+      label_string_map, label_string_image, iconmapid, 
+      expand_macros, severity_min, userid, 
+      private)
+    values (#{sysmapid,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{width,jdbcType=INTEGER}, 
+      #{height,jdbcType=INTEGER}, #{backgroundid,jdbcType=BIGINT}, #{labelType,jdbcType=INTEGER}, 
+      #{labelLocation,jdbcType=INTEGER}, #{highlight,jdbcType=INTEGER}, #{expandproblem,jdbcType=INTEGER}, 
+      #{markelements,jdbcType=INTEGER}, #{showUnack,jdbcType=INTEGER}, #{gridSize,jdbcType=INTEGER}, 
+      #{gridShow,jdbcType=INTEGER}, #{gridAlign,jdbcType=INTEGER}, #{labelFormat,jdbcType=INTEGER}, 
+      #{labelTypeHost,jdbcType=INTEGER}, #{labelTypeHostgroup,jdbcType=INTEGER}, #{labelTypeTrigger,jdbcType=INTEGER}, 
+      #{labelTypeMap,jdbcType=INTEGER}, #{labelTypeImage,jdbcType=INTEGER}, #{labelStringHost,jdbcType=VARCHAR}, 
+      #{labelStringHostgroup,jdbcType=VARCHAR}, #{labelStringTrigger,jdbcType=VARCHAR}, 
+      #{labelStringMap,jdbcType=VARCHAR}, #{labelStringImage,jdbcType=VARCHAR}, #{iconmapid,jdbcType=BIGINT}, 
+      #{expandMacros,jdbcType=INTEGER}, #{severityMin,jdbcType=INTEGER}, #{userid,jdbcType=BIGINT}, 
+      #{private1,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.Sysmaps">
+    <!--@mbg.generated-->
+    insert into sysmaps
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sysmapid != null">
+        sysmapid,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="width != null">
+        width,
+      </if>
+      <if test="height != null">
+        height,
+      </if>
+      <if test="backgroundid != null">
+        backgroundid,
+      </if>
+      <if test="labelType != null">
+        label_type,
+      </if>
+      <if test="labelLocation != null">
+        label_location,
+      </if>
+      <if test="highlight != null">
+        highlight,
+      </if>
+      <if test="expandproblem != null">
+        expandproblem,
+      </if>
+      <if test="markelements != null">
+        markelements,
+      </if>
+      <if test="showUnack != null">
+        show_unack,
+      </if>
+      <if test="gridSize != null">
+        grid_size,
+      </if>
+      <if test="gridShow != null">
+        grid_show,
+      </if>
+      <if test="gridAlign != null">
+        grid_align,
+      </if>
+      <if test="labelFormat != null">
+        label_format,
+      </if>
+      <if test="labelTypeHost != null">
+        label_type_host,
+      </if>
+      <if test="labelTypeHostgroup != null">
+        label_type_hostgroup,
+      </if>
+      <if test="labelTypeTrigger != null">
+        label_type_trigger,
+      </if>
+      <if test="labelTypeMap != null">
+        label_type_map,
+      </if>
+      <if test="labelTypeImage != null">
+        label_type_image,
+      </if>
+      <if test="labelStringHost != null">
+        label_string_host,
+      </if>
+      <if test="labelStringHostgroup != null">
+        label_string_hostgroup,
+      </if>
+      <if test="labelStringTrigger != null">
+        label_string_trigger,
+      </if>
+      <if test="labelStringMap != null">
+        label_string_map,
+      </if>
+      <if test="labelStringImage != null">
+        label_string_image,
+      </if>
+      <if test="iconmapid != null">
+        iconmapid,
+      </if>
+      <if test="expandMacros != null">
+        expand_macros,
+      </if>
+      <if test="severityMin != null">
+        severity_min,
+      </if>
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="private1 != null">
+        private,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sysmapid != null">
+        #{sysmapid,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="width != null">
+        #{width,jdbcType=INTEGER},
+      </if>
+      <if test="height != null">
+        #{height,jdbcType=INTEGER},
+      </if>
+      <if test="backgroundid != null">
+        #{backgroundid,jdbcType=BIGINT},
+      </if>
+      <if test="labelType != null">
+        #{labelType,jdbcType=INTEGER},
+      </if>
+      <if test="labelLocation != null">
+        #{labelLocation,jdbcType=INTEGER},
+      </if>
+      <if test="highlight != null">
+        #{highlight,jdbcType=INTEGER},
+      </if>
+      <if test="expandproblem != null">
+        #{expandproblem,jdbcType=INTEGER},
+      </if>
+      <if test="markelements != null">
+        #{markelements,jdbcType=INTEGER},
+      </if>
+      <if test="showUnack != null">
+        #{showUnack,jdbcType=INTEGER},
+      </if>
+      <if test="gridSize != null">
+        #{gridSize,jdbcType=INTEGER},
+      </if>
+      <if test="gridShow != null">
+        #{gridShow,jdbcType=INTEGER},
+      </if>
+      <if test="gridAlign != null">
+        #{gridAlign,jdbcType=INTEGER},
+      </if>
+      <if test="labelFormat != null">
+        #{labelFormat,jdbcType=INTEGER},
+      </if>
+      <if test="labelTypeHost != null">
+        #{labelTypeHost,jdbcType=INTEGER},
+      </if>
+      <if test="labelTypeHostgroup != null">
+        #{labelTypeHostgroup,jdbcType=INTEGER},
+      </if>
+      <if test="labelTypeTrigger != null">
+        #{labelTypeTrigger,jdbcType=INTEGER},
+      </if>
+      <if test="labelTypeMap != null">
+        #{labelTypeMap,jdbcType=INTEGER},
+      </if>
+      <if test="labelTypeImage != null">
+        #{labelTypeImage,jdbcType=INTEGER},
+      </if>
+      <if test="labelStringHost != null">
+        #{labelStringHost,jdbcType=VARCHAR},
+      </if>
+      <if test="labelStringHostgroup != null">
+        #{labelStringHostgroup,jdbcType=VARCHAR},
+      </if>
+      <if test="labelStringTrigger != null">
+        #{labelStringTrigger,jdbcType=VARCHAR},
+      </if>
+      <if test="labelStringMap != null">
+        #{labelStringMap,jdbcType=VARCHAR},
+      </if>
+      <if test="labelStringImage != null">
+        #{labelStringImage,jdbcType=VARCHAR},
+      </if>
+      <if test="iconmapid != null">
+        #{iconmapid,jdbcType=BIGINT},
+      </if>
+      <if test="expandMacros != null">
+        #{expandMacros,jdbcType=INTEGER},
+      </if>
+      <if test="severityMin != null">
+        #{severityMin,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=BIGINT},
+      </if>
+      <if test="private1 != null">
+        #{private1,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.Sysmaps">
+    <!--@mbg.generated-->
+    update sysmaps
+    <set>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="width != null">
+        width = #{width,jdbcType=INTEGER},
+      </if>
+      <if test="height != null">
+        height = #{height,jdbcType=INTEGER},
+      </if>
+      <if test="backgroundid != null">
+        backgroundid = #{backgroundid,jdbcType=BIGINT},
+      </if>
+      <if test="labelType != null">
+        label_type = #{labelType,jdbcType=INTEGER},
+      </if>
+      <if test="labelLocation != null">
+        label_location = #{labelLocation,jdbcType=INTEGER},
+      </if>
+      <if test="highlight != null">
+        highlight = #{highlight,jdbcType=INTEGER},
+      </if>
+      <if test="expandproblem != null">
+        expandproblem = #{expandproblem,jdbcType=INTEGER},
+      </if>
+      <if test="markelements != null">
+        markelements = #{markelements,jdbcType=INTEGER},
+      </if>
+      <if test="showUnack != null">
+        show_unack = #{showUnack,jdbcType=INTEGER},
+      </if>
+      <if test="gridSize != null">
+        grid_size = #{gridSize,jdbcType=INTEGER},
+      </if>
+      <if test="gridShow != null">
+        grid_show = #{gridShow,jdbcType=INTEGER},
+      </if>
+      <if test="gridAlign != null">
+        grid_align = #{gridAlign,jdbcType=INTEGER},
+      </if>
+      <if test="labelFormat != null">
+        label_format = #{labelFormat,jdbcType=INTEGER},
+      </if>
+      <if test="labelTypeHost != null">
+        label_type_host = #{labelTypeHost,jdbcType=INTEGER},
+      </if>
+      <if test="labelTypeHostgroup != null">
+        label_type_hostgroup = #{labelTypeHostgroup,jdbcType=INTEGER},
+      </if>
+      <if test="labelTypeTrigger != null">
+        label_type_trigger = #{labelTypeTrigger,jdbcType=INTEGER},
+      </if>
+      <if test="labelTypeMap != null">
+        label_type_map = #{labelTypeMap,jdbcType=INTEGER},
+      </if>
+      <if test="labelTypeImage != null">
+        label_type_image = #{labelTypeImage,jdbcType=INTEGER},
+      </if>
+      <if test="labelStringHost != null">
+        label_string_host = #{labelStringHost,jdbcType=VARCHAR},
+      </if>
+      <if test="labelStringHostgroup != null">
+        label_string_hostgroup = #{labelStringHostgroup,jdbcType=VARCHAR},
+      </if>
+      <if test="labelStringTrigger != null">
+        label_string_trigger = #{labelStringTrigger,jdbcType=VARCHAR},
+      </if>
+      <if test="labelStringMap != null">
+        label_string_map = #{labelStringMap,jdbcType=VARCHAR},
+      </if>
+      <if test="labelStringImage != null">
+        label_string_image = #{labelStringImage,jdbcType=VARCHAR},
+      </if>
+      <if test="iconmapid != null">
+        iconmapid = #{iconmapid,jdbcType=BIGINT},
+      </if>
+      <if test="expandMacros != null">
+        expand_macros = #{expandMacros,jdbcType=INTEGER},
+      </if>
+      <if test="severityMin != null">
+        severity_min = #{severityMin,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        userid = #{userid,jdbcType=BIGINT},
+      </if>
+      <if test="private1 != null">
+        private = #{private1,jdbcType=INTEGER},
+      </if>
+    </set>
+    where sysmapid = #{sysmapid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.Sysmaps">
+    <!--@mbg.generated-->
+    update sysmaps
+    set `name` = #{name,jdbcType=VARCHAR},
+      width = #{width,jdbcType=INTEGER},
+      height = #{height,jdbcType=INTEGER},
+      backgroundid = #{backgroundid,jdbcType=BIGINT},
+      label_type = #{labelType,jdbcType=INTEGER},
+      label_location = #{labelLocation,jdbcType=INTEGER},
+      highlight = #{highlight,jdbcType=INTEGER},
+      expandproblem = #{expandproblem,jdbcType=INTEGER},
+      markelements = #{markelements,jdbcType=INTEGER},
+      show_unack = #{showUnack,jdbcType=INTEGER},
+      grid_size = #{gridSize,jdbcType=INTEGER},
+      grid_show = #{gridShow,jdbcType=INTEGER},
+      grid_align = #{gridAlign,jdbcType=INTEGER},
+      label_format = #{labelFormat,jdbcType=INTEGER},
+      label_type_host = #{labelTypeHost,jdbcType=INTEGER},
+      label_type_hostgroup = #{labelTypeHostgroup,jdbcType=INTEGER},
+      label_type_trigger = #{labelTypeTrigger,jdbcType=INTEGER},
+      label_type_map = #{labelTypeMap,jdbcType=INTEGER},
+      label_type_image = #{labelTypeImage,jdbcType=INTEGER},
+      label_string_host = #{labelStringHost,jdbcType=VARCHAR},
+      label_string_hostgroup = #{labelStringHostgroup,jdbcType=VARCHAR},
+      label_string_trigger = #{labelStringTrigger,jdbcType=VARCHAR},
+      label_string_map = #{labelStringMap,jdbcType=VARCHAR},
+      label_string_image = #{labelStringImage,jdbcType=VARCHAR},
+      iconmapid = #{iconmapid,jdbcType=BIGINT},
+      expand_macros = #{expandMacros,jdbcType=INTEGER},
+      severity_min = #{severityMin,jdbcType=INTEGER},
+      userid = #{userid,jdbcType=BIGINT},
+      private = #{private1,jdbcType=INTEGER}
+    where sysmapid = #{sysmapid,jdbcType=BIGINT}
+  </update>
+</mapper>

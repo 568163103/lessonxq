@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.ServicesTimesMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.ServicesTimes">
+    <!--@mbg.generated-->
+    <id column="timeid" jdbcType="BIGINT" property="timeid" />
+    <result column="serviceid" jdbcType="BIGINT" property="serviceid" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="ts_from" jdbcType="INTEGER" property="tsFrom" />
+    <result column="ts_to" jdbcType="INTEGER" property="tsTo" />
+    <result column="note" jdbcType="VARCHAR" property="note" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    timeid, serviceid, `type`, ts_from, ts_to, note
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from services_times
+    where timeid = #{timeid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from services_times
+    where timeid = #{timeid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.ServicesTimes">
+    <!--@mbg.generated-->
+    insert into services_times (timeid, serviceid, `type`, 
+      ts_from, ts_to, note)
+    values (#{timeid,jdbcType=BIGINT}, #{serviceid,jdbcType=BIGINT}, #{type,jdbcType=INTEGER}, 
+      #{tsFrom,jdbcType=INTEGER}, #{tsTo,jdbcType=INTEGER}, #{note,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.ServicesTimes">
+    <!--@mbg.generated-->
+    insert into services_times
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="timeid != null">
+        timeid,
+      </if>
+      <if test="serviceid != null">
+        serviceid,
+      </if>
+      <if test="type != null">
+        `type`,
+      </if>
+      <if test="tsFrom != null">
+        ts_from,
+      </if>
+      <if test="tsTo != null">
+        ts_to,
+      </if>
+      <if test="note != null">
+        note,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="timeid != null">
+        #{timeid,jdbcType=BIGINT},
+      </if>
+      <if test="serviceid != null">
+        #{serviceid,jdbcType=BIGINT},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="tsFrom != null">
+        #{tsFrom,jdbcType=INTEGER},
+      </if>
+      <if test="tsTo != null">
+        #{tsTo,jdbcType=INTEGER},
+      </if>
+      <if test="note != null">
+        #{note,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.ServicesTimes">
+    <!--@mbg.generated-->
+    update services_times
+    <set>
+      <if test="serviceid != null">
+        serviceid = #{serviceid,jdbcType=BIGINT},
+      </if>
+      <if test="type != null">
+        `type` = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="tsFrom != null">
+        ts_from = #{tsFrom,jdbcType=INTEGER},
+      </if>
+      <if test="tsTo != null">
+        ts_to = #{tsTo,jdbcType=INTEGER},
+      </if>
+      <if test="note != null">
+        note = #{note,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where timeid = #{timeid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.ServicesTimes">
+    <!--@mbg.generated-->
+    update services_times
+    set serviceid = #{serviceid,jdbcType=BIGINT},
+      `type` = #{type,jdbcType=INTEGER},
+      ts_from = #{tsFrom,jdbcType=INTEGER},
+      ts_to = #{tsTo,jdbcType=INTEGER},
+      note = #{note,jdbcType=VARCHAR}
+    where timeid = #{timeid,jdbcType=BIGINT}
+  </update>
+</mapper>

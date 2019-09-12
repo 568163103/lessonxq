@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.AutoregHostMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.AutoregHost">
+    <!--@mbg.generated-->
+    <id column="autoreg_hostid" jdbcType="BIGINT" property="autoregHostid" />
+    <result column="proxy_hostid" jdbcType="BIGINT" property="proxyHostid" />
+    <result column="host" jdbcType="VARCHAR" property="host" />
+    <result column="listen_ip" jdbcType="VARCHAR" property="listenIp" />
+    <result column="listen_port" jdbcType="INTEGER" property="listenPort" />
+    <result column="listen_dns" jdbcType="VARCHAR" property="listenDns" />
+    <result column="host_metadata" jdbcType="VARCHAR" property="hostMetadata" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    autoreg_hostid, proxy_hostid, `host`, listen_ip, listen_port, listen_dns, host_metadata
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from autoreg_host
+    where autoreg_hostid = #{autoregHostid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from autoreg_host
+    where autoreg_hostid = #{autoregHostid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.AutoregHost">
+    <!--@mbg.generated-->
+    insert into autoreg_host (autoreg_hostid, proxy_hostid, `host`, 
+      listen_ip, listen_port, listen_dns, 
+      host_metadata)
+    values (#{autoregHostid,jdbcType=BIGINT}, #{proxyHostid,jdbcType=BIGINT}, #{host,jdbcType=VARCHAR}, 
+      #{listenIp,jdbcType=VARCHAR}, #{listenPort,jdbcType=INTEGER}, #{listenDns,jdbcType=VARCHAR}, 
+      #{hostMetadata,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.AutoregHost">
+    <!--@mbg.generated-->
+    insert into autoreg_host
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="autoregHostid != null">
+        autoreg_hostid,
+      </if>
+      <if test="proxyHostid != null">
+        proxy_hostid,
+      </if>
+      <if test="host != null">
+        `host`,
+      </if>
+      <if test="listenIp != null">
+        listen_ip,
+      </if>
+      <if test="listenPort != null">
+        listen_port,
+      </if>
+      <if test="listenDns != null">
+        listen_dns,
+      </if>
+      <if test="hostMetadata != null">
+        host_metadata,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="autoregHostid != null">
+        #{autoregHostid,jdbcType=BIGINT},
+      </if>
+      <if test="proxyHostid != null">
+        #{proxyHostid,jdbcType=BIGINT},
+      </if>
+      <if test="host != null">
+        #{host,jdbcType=VARCHAR},
+      </if>
+      <if test="listenIp != null">
+        #{listenIp,jdbcType=VARCHAR},
+      </if>
+      <if test="listenPort != null">
+        #{listenPort,jdbcType=INTEGER},
+      </if>
+      <if test="listenDns != null">
+        #{listenDns,jdbcType=VARCHAR},
+      </if>
+      <if test="hostMetadata != null">
+        #{hostMetadata,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.AutoregHost">
+    <!--@mbg.generated-->
+    update autoreg_host
+    <set>
+      <if test="proxyHostid != null">
+        proxy_hostid = #{proxyHostid,jdbcType=BIGINT},
+      </if>
+      <if test="host != null">
+        `host` = #{host,jdbcType=VARCHAR},
+      </if>
+      <if test="listenIp != null">
+        listen_ip = #{listenIp,jdbcType=VARCHAR},
+      </if>
+      <if test="listenPort != null">
+        listen_port = #{listenPort,jdbcType=INTEGER},
+      </if>
+      <if test="listenDns != null">
+        listen_dns = #{listenDns,jdbcType=VARCHAR},
+      </if>
+      <if test="hostMetadata != null">
+        host_metadata = #{hostMetadata,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where autoreg_hostid = #{autoregHostid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.AutoregHost">
+    <!--@mbg.generated-->
+    update autoreg_host
+    set proxy_hostid = #{proxyHostid,jdbcType=BIGINT},
+      `host` = #{host,jdbcType=VARCHAR},
+      listen_ip = #{listenIp,jdbcType=VARCHAR},
+      listen_port = #{listenPort,jdbcType=INTEGER},
+      listen_dns = #{listenDns,jdbcType=VARCHAR},
+      host_metadata = #{hostMetadata,jdbcType=VARCHAR}
+    where autoreg_hostid = #{autoregHostid,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.UsersMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.Users">
+    <!--@mbg.generated-->
+    <id column="userid" jdbcType="BIGINT" property="userid" />
+    <result column="alias" jdbcType="VARCHAR" property="alias" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="surname" jdbcType="VARCHAR" property="surname" />
+    <result column="passwd" jdbcType="CHAR" property="passwd" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="autologin" jdbcType="INTEGER" property="autologin" />
+    <result column="autologout" jdbcType="INTEGER" property="autologout" />
+    <result column="lang" jdbcType="VARCHAR" property="lang" />
+    <result column="refresh" jdbcType="INTEGER" property="refresh" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="theme" jdbcType="VARCHAR" property="theme" />
+    <result column="attempt_failed" jdbcType="INTEGER" property="attemptFailed" />
+    <result column="attempt_ip" jdbcType="VARCHAR" property="attemptIp" />
+    <result column="attempt_clock" jdbcType="INTEGER" property="attemptClock" />
+    <result column="rows_per_page" jdbcType="INTEGER" property="rowsPerPage" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    userid, `alias`, `name`, surname, passwd, url, autologin, autologout, lang, refresh, 
+    `type`, theme, attempt_failed, attempt_ip, attempt_clock, rows_per_page
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from users
+    where userid = #{userid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from users
+    where userid = #{userid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.Users">
+    <!--@mbg.generated-->
+    insert into users (userid, `alias`, `name`, 
+      surname, passwd, url, 
+      autologin, autologout, lang, 
+      refresh, `type`, theme, 
+      attempt_failed, attempt_ip, attempt_clock, 
+      rows_per_page)
+    values (#{userid,jdbcType=BIGINT}, #{alias,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{surname,jdbcType=VARCHAR}, #{passwd,jdbcType=CHAR}, #{url,jdbcType=VARCHAR}, 
+      #{autologin,jdbcType=INTEGER}, #{autologout,jdbcType=INTEGER}, #{lang,jdbcType=VARCHAR}, 
+      #{refresh,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, #{theme,jdbcType=VARCHAR}, 
+      #{attemptFailed,jdbcType=INTEGER}, #{attemptIp,jdbcType=VARCHAR}, #{attemptClock,jdbcType=INTEGER}, 
+      #{rowsPerPage,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.Users">
+    <!--@mbg.generated-->
+    insert into users
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="alias != null">
+        `alias`,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="surname != null">
+        surname,
+      </if>
+      <if test="passwd != null">
+        passwd,
+      </if>
+      <if test="url != null">
+        url,
+      </if>
+      <if test="autologin != null">
+        autologin,
+      </if>
+      <if test="autologout != null">
+        autologout,
+      </if>
+      <if test="lang != null">
+        lang,
+      </if>
+      <if test="refresh != null">
+        refresh,
+      </if>
+      <if test="type != null">
+        `type`,
+      </if>
+      <if test="theme != null">
+        theme,
+      </if>
+      <if test="attemptFailed != null">
+        attempt_failed,
+      </if>
+      <if test="attemptIp != null">
+        attempt_ip,
+      </if>
+      <if test="attemptClock != null">
+        attempt_clock,
+      </if>
+      <if test="rowsPerPage != null">
+        rows_per_page,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userid != null">
+        #{userid,jdbcType=BIGINT},
+      </if>
+      <if test="alias != null">
+        #{alias,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="surname != null">
+        #{surname,jdbcType=VARCHAR},
+      </if>
+      <if test="passwd != null">
+        #{passwd,jdbcType=CHAR},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="autologin != null">
+        #{autologin,jdbcType=INTEGER},
+      </if>
+      <if test="autologout != null">
+        #{autologout,jdbcType=INTEGER},
+      </if>
+      <if test="lang != null">
+        #{lang,jdbcType=VARCHAR},
+      </if>
+      <if test="refresh != null">
+        #{refresh,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="theme != null">
+        #{theme,jdbcType=VARCHAR},
+      </if>
+      <if test="attemptFailed != null">
+        #{attemptFailed,jdbcType=INTEGER},
+      </if>
+      <if test="attemptIp != null">
+        #{attemptIp,jdbcType=VARCHAR},
+      </if>
+      <if test="attemptClock != null">
+        #{attemptClock,jdbcType=INTEGER},
+      </if>
+      <if test="rowsPerPage != null">
+        #{rowsPerPage,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.Users">
+    <!--@mbg.generated-->
+    update users
+    <set>
+      <if test="alias != null">
+        `alias` = #{alias,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="surname != null">
+        surname = #{surname,jdbcType=VARCHAR},
+      </if>
+      <if test="passwd != null">
+        passwd = #{passwd,jdbcType=CHAR},
+      </if>
+      <if test="url != null">
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="autologin != null">
+        autologin = #{autologin,jdbcType=INTEGER},
+      </if>
+      <if test="autologout != null">
+        autologout = #{autologout,jdbcType=INTEGER},
+      </if>
+      <if test="lang != null">
+        lang = #{lang,jdbcType=VARCHAR},
+      </if>
+      <if test="refresh != null">
+        refresh = #{refresh,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        `type` = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="theme != null">
+        theme = #{theme,jdbcType=VARCHAR},
+      </if>
+      <if test="attemptFailed != null">
+        attempt_failed = #{attemptFailed,jdbcType=INTEGER},
+      </if>
+      <if test="attemptIp != null">
+        attempt_ip = #{attemptIp,jdbcType=VARCHAR},
+      </if>
+      <if test="attemptClock != null">
+        attempt_clock = #{attemptClock,jdbcType=INTEGER},
+      </if>
+      <if test="rowsPerPage != null">
+        rows_per_page = #{rowsPerPage,jdbcType=INTEGER},
+      </if>
+    </set>
+    where userid = #{userid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.Users">
+    <!--@mbg.generated-->
+    update users
+    set `alias` = #{alias,jdbcType=VARCHAR},
+      `name` = #{name,jdbcType=VARCHAR},
+      surname = #{surname,jdbcType=VARCHAR},
+      passwd = #{passwd,jdbcType=CHAR},
+      url = #{url,jdbcType=VARCHAR},
+      autologin = #{autologin,jdbcType=INTEGER},
+      autologout = #{autologout,jdbcType=INTEGER},
+      lang = #{lang,jdbcType=VARCHAR},
+      refresh = #{refresh,jdbcType=INTEGER},
+      `type` = #{type,jdbcType=INTEGER},
+      theme = #{theme,jdbcType=VARCHAR},
+      attempt_failed = #{attemptFailed,jdbcType=INTEGER},
+      attempt_ip = #{attemptIp,jdbcType=VARCHAR},
+      attempt_clock = #{attemptClock,jdbcType=INTEGER},
+      rows_per_page = #{rowsPerPage,jdbcType=INTEGER}
+    where userid = #{userid,jdbcType=BIGINT}
+  </update>
+</mapper>

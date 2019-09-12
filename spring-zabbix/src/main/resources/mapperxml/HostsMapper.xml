@@ -1,0 +1,505 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.HostsMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.Hosts">
+    <!--@mbg.generated-->
+    <id column="hostid" jdbcType="BIGINT" property="hostid" />
+    <result column="proxy_hostid" jdbcType="BIGINT" property="proxyHostid" />
+    <result column="host" jdbcType="VARCHAR" property="host" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="disable_until" jdbcType="INTEGER" property="disableUntil" />
+    <result column="error" jdbcType="VARCHAR" property="error" />
+    <result column="available" jdbcType="INTEGER" property="available" />
+    <result column="errors_from" jdbcType="INTEGER" property="errorsFrom" />
+    <result column="lastaccess" jdbcType="INTEGER" property="lastaccess" />
+    <result column="ipmi_authtype" jdbcType="INTEGER" property="ipmiAuthtype" />
+    <result column="ipmi_privilege" jdbcType="INTEGER" property="ipmiPrivilege" />
+    <result column="ipmi_username" jdbcType="VARCHAR" property="ipmiUsername" />
+    <result column="ipmi_password" jdbcType="VARCHAR" property="ipmiPassword" />
+    <result column="ipmi_disable_until" jdbcType="INTEGER" property="ipmiDisableUntil" />
+    <result column="ipmi_available" jdbcType="INTEGER" property="ipmiAvailable" />
+    <result column="snmp_disable_until" jdbcType="INTEGER" property="snmpDisableUntil" />
+    <result column="snmp_available" jdbcType="INTEGER" property="snmpAvailable" />
+    <result column="maintenanceid" jdbcType="BIGINT" property="maintenanceid" />
+    <result column="maintenance_status" jdbcType="INTEGER" property="maintenanceStatus" />
+    <result column="maintenance_type" jdbcType="INTEGER" property="maintenanceType" />
+    <result column="maintenance_from" jdbcType="INTEGER" property="maintenanceFrom" />
+    <result column="ipmi_errors_from" jdbcType="INTEGER" property="ipmiErrorsFrom" />
+    <result column="snmp_errors_from" jdbcType="INTEGER" property="snmpErrorsFrom" />
+    <result column="ipmi_error" jdbcType="VARCHAR" property="ipmiError" />
+    <result column="snmp_error" jdbcType="VARCHAR" property="snmpError" />
+    <result column="jmx_disable_until" jdbcType="INTEGER" property="jmxDisableUntil" />
+    <result column="jmx_available" jdbcType="INTEGER" property="jmxAvailable" />
+    <result column="jmx_errors_from" jdbcType="INTEGER" property="jmxErrorsFrom" />
+    <result column="jmx_error" jdbcType="VARCHAR" property="jmxError" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="flags" jdbcType="INTEGER" property="flags" />
+    <result column="templateid" jdbcType="BIGINT" property="templateid" />
+    <result column="description" jdbcType="LONGVARCHAR" property="description" />
+    <result column="tls_connect" jdbcType="INTEGER" property="tlsConnect" />
+    <result column="tls_accept" jdbcType="INTEGER" property="tlsAccept" />
+    <result column="tls_issuer" jdbcType="VARCHAR" property="tlsIssuer" />
+    <result column="tls_subject" jdbcType="VARCHAR" property="tlsSubject" />
+    <result column="tls_psk_identity" jdbcType="VARCHAR" property="tlsPskIdentity" />
+    <result column="tls_psk" jdbcType="VARCHAR" property="tlsPsk" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    hostid, proxy_hostid, `host`, `status`, disable_until, error, available, errors_from, 
+    lastaccess, ipmi_authtype, ipmi_privilege, ipmi_username, ipmi_password, ipmi_disable_until, 
+    ipmi_available, snmp_disable_until, snmp_available, maintenanceid, maintenance_status, 
+    maintenance_type, maintenance_from, ipmi_errors_from, snmp_errors_from, ipmi_error, 
+    snmp_error, jmx_disable_until, jmx_available, jmx_errors_from, jmx_error, `name`, 
+    flags, templateid, description, tls_connect, tls_accept, tls_issuer, tls_subject, 
+    tls_psk_identity, tls_psk
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from hosts
+    where hostid = #{hostid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from hosts
+    where hostid = #{hostid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.Hosts">
+    <!--@mbg.generated-->
+    insert into hosts (hostid, proxy_hostid, `host`, 
+      `status`, disable_until, error, 
+      available, errors_from, lastaccess, 
+      ipmi_authtype, ipmi_privilege, ipmi_username, 
+      ipmi_password, ipmi_disable_until, ipmi_available, 
+      snmp_disable_until, snmp_available, maintenanceid, 
+      maintenance_status, maintenance_type, maintenance_from, 
+      ipmi_errors_from, snmp_errors_from, ipmi_error, 
+      snmp_error, jmx_disable_until, jmx_available, 
+      jmx_errors_from, jmx_error, `name`, 
+      flags, templateid, description, 
+      tls_connect, tls_accept, tls_issuer, 
+      tls_subject, tls_psk_identity, tls_psk
+      )
+    values (#{hostid,jdbcType=BIGINT}, #{proxyHostid,jdbcType=BIGINT}, #{host,jdbcType=VARCHAR}, 
+      #{status,jdbcType=INTEGER}, #{disableUntil,jdbcType=INTEGER}, #{error,jdbcType=VARCHAR}, 
+      #{available,jdbcType=INTEGER}, #{errorsFrom,jdbcType=INTEGER}, #{lastaccess,jdbcType=INTEGER}, 
+      #{ipmiAuthtype,jdbcType=INTEGER}, #{ipmiPrivilege,jdbcType=INTEGER}, #{ipmiUsername,jdbcType=VARCHAR}, 
+      #{ipmiPassword,jdbcType=VARCHAR}, #{ipmiDisableUntil,jdbcType=INTEGER}, #{ipmiAvailable,jdbcType=INTEGER}, 
+      #{snmpDisableUntil,jdbcType=INTEGER}, #{snmpAvailable,jdbcType=INTEGER}, #{maintenanceid,jdbcType=BIGINT}, 
+      #{maintenanceStatus,jdbcType=INTEGER}, #{maintenanceType,jdbcType=INTEGER}, #{maintenanceFrom,jdbcType=INTEGER}, 
+      #{ipmiErrorsFrom,jdbcType=INTEGER}, #{snmpErrorsFrom,jdbcType=INTEGER}, #{ipmiError,jdbcType=VARCHAR}, 
+      #{snmpError,jdbcType=VARCHAR}, #{jmxDisableUntil,jdbcType=INTEGER}, #{jmxAvailable,jdbcType=INTEGER}, 
+      #{jmxErrorsFrom,jdbcType=INTEGER}, #{jmxError,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{flags,jdbcType=INTEGER}, #{templateid,jdbcType=BIGINT}, #{description,jdbcType=LONGVARCHAR}, 
+      #{tlsConnect,jdbcType=INTEGER}, #{tlsAccept,jdbcType=INTEGER}, #{tlsIssuer,jdbcType=VARCHAR}, 
+      #{tlsSubject,jdbcType=VARCHAR}, #{tlsPskIdentity,jdbcType=VARCHAR}, #{tlsPsk,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.Hosts">
+    <!--@mbg.generated-->
+    insert into hosts
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="hostid != null">
+        hostid,
+      </if>
+      <if test="proxyHostid != null">
+        proxy_hostid,
+      </if>
+      <if test="host != null">
+        `host`,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="disableUntil != null">
+        disable_until,
+      </if>
+      <if test="error != null">
+        error,
+      </if>
+      <if test="available != null">
+        available,
+      </if>
+      <if test="errorsFrom != null">
+        errors_from,
+      </if>
+      <if test="lastaccess != null">
+        lastaccess,
+      </if>
+      <if test="ipmiAuthtype != null">
+        ipmi_authtype,
+      </if>
+      <if test="ipmiPrivilege != null">
+        ipmi_privilege,
+      </if>
+      <if test="ipmiUsername != null">
+        ipmi_username,
+      </if>
+      <if test="ipmiPassword != null">
+        ipmi_password,
+      </if>
+      <if test="ipmiDisableUntil != null">
+        ipmi_disable_until,
+      </if>
+      <if test="ipmiAvailable != null">
+        ipmi_available,
+      </if>
+      <if test="snmpDisableUntil != null">
+        snmp_disable_until,
+      </if>
+      <if test="snmpAvailable != null">
+        snmp_available,
+      </if>
+      <if test="maintenanceid != null">
+        maintenanceid,
+      </if>
+      <if test="maintenanceStatus != null">
+        maintenance_status,
+      </if>
+      <if test="maintenanceType != null">
+        maintenance_type,
+      </if>
+      <if test="maintenanceFrom != null">
+        maintenance_from,
+      </if>
+      <if test="ipmiErrorsFrom != null">
+        ipmi_errors_from,
+      </if>
+      <if test="snmpErrorsFrom != null">
+        snmp_errors_from,
+      </if>
+      <if test="ipmiError != null">
+        ipmi_error,
+      </if>
+      <if test="snmpError != null">
+        snmp_error,
+      </if>
+      <if test="jmxDisableUntil != null">
+        jmx_disable_until,
+      </if>
+      <if test="jmxAvailable != null">
+        jmx_available,
+      </if>
+      <if test="jmxErrorsFrom != null">
+        jmx_errors_from,
+      </if>
+      <if test="jmxError != null">
+        jmx_error,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="flags != null">
+        flags,
+      </if>
+      <if test="templateid != null">
+        templateid,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="tlsConnect != null">
+        tls_connect,
+      </if>
+      <if test="tlsAccept != null">
+        tls_accept,
+      </if>
+      <if test="tlsIssuer != null">
+        tls_issuer,
+      </if>
+      <if test="tlsSubject != null">
+        tls_subject,
+      </if>
+      <if test="tlsPskIdentity != null">
+        tls_psk_identity,
+      </if>
+      <if test="tlsPsk != null">
+        tls_psk,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="hostid != null">
+        #{hostid,jdbcType=BIGINT},
+      </if>
+      <if test="proxyHostid != null">
+        #{proxyHostid,jdbcType=BIGINT},
+      </if>
+      <if test="host != null">
+        #{host,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="disableUntil != null">
+        #{disableUntil,jdbcType=INTEGER},
+      </if>
+      <if test="error != null">
+        #{error,jdbcType=VARCHAR},
+      </if>
+      <if test="available != null">
+        #{available,jdbcType=INTEGER},
+      </if>
+      <if test="errorsFrom != null">
+        #{errorsFrom,jdbcType=INTEGER},
+      </if>
+      <if test="lastaccess != null">
+        #{lastaccess,jdbcType=INTEGER},
+      </if>
+      <if test="ipmiAuthtype != null">
+        #{ipmiAuthtype,jdbcType=INTEGER},
+      </if>
+      <if test="ipmiPrivilege != null">
+        #{ipmiPrivilege,jdbcType=INTEGER},
+      </if>
+      <if test="ipmiUsername != null">
+        #{ipmiUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="ipmiPassword != null">
+        #{ipmiPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="ipmiDisableUntil != null">
+        #{ipmiDisableUntil,jdbcType=INTEGER},
+      </if>
+      <if test="ipmiAvailable != null">
+        #{ipmiAvailable,jdbcType=INTEGER},
+      </if>
+      <if test="snmpDisableUntil != null">
+        #{snmpDisableUntil,jdbcType=INTEGER},
+      </if>
+      <if test="snmpAvailable != null">
+        #{snmpAvailable,jdbcType=INTEGER},
+      </if>
+      <if test="maintenanceid != null">
+        #{maintenanceid,jdbcType=BIGINT},
+      </if>
+      <if test="maintenanceStatus != null">
+        #{maintenanceStatus,jdbcType=INTEGER},
+      </if>
+      <if test="maintenanceType != null">
+        #{maintenanceType,jdbcType=INTEGER},
+      </if>
+      <if test="maintenanceFrom != null">
+        #{maintenanceFrom,jdbcType=INTEGER},
+      </if>
+      <if test="ipmiErrorsFrom != null">
+        #{ipmiErrorsFrom,jdbcType=INTEGER},
+      </if>
+      <if test="snmpErrorsFrom != null">
+        #{snmpErrorsFrom,jdbcType=INTEGER},
+      </if>
+      <if test="ipmiError != null">
+        #{ipmiError,jdbcType=VARCHAR},
+      </if>
+      <if test="snmpError != null">
+        #{snmpError,jdbcType=VARCHAR},
+      </if>
+      <if test="jmxDisableUntil != null">
+        #{jmxDisableUntil,jdbcType=INTEGER},
+      </if>
+      <if test="jmxAvailable != null">
+        #{jmxAvailable,jdbcType=INTEGER},
+      </if>
+      <if test="jmxErrorsFrom != null">
+        #{jmxErrorsFrom,jdbcType=INTEGER},
+      </if>
+      <if test="jmxError != null">
+        #{jmxError,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="flags != null">
+        #{flags,jdbcType=INTEGER},
+      </if>
+      <if test="templateid != null">
+        #{templateid,jdbcType=BIGINT},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="tlsConnect != null">
+        #{tlsConnect,jdbcType=INTEGER},
+      </if>
+      <if test="tlsAccept != null">
+        #{tlsAccept,jdbcType=INTEGER},
+      </if>
+      <if test="tlsIssuer != null">
+        #{tlsIssuer,jdbcType=VARCHAR},
+      </if>
+      <if test="tlsSubject != null">
+        #{tlsSubject,jdbcType=VARCHAR},
+      </if>
+      <if test="tlsPskIdentity != null">
+        #{tlsPskIdentity,jdbcType=VARCHAR},
+      </if>
+      <if test="tlsPsk != null">
+        #{tlsPsk,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.Hosts">
+    <!--@mbg.generated-->
+    update hosts
+    <set>
+      <if test="proxyHostid != null">
+        proxy_hostid = #{proxyHostid,jdbcType=BIGINT},
+      </if>
+      <if test="host != null">
+        `host` = #{host,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="disableUntil != null">
+        disable_until = #{disableUntil,jdbcType=INTEGER},
+      </if>
+      <if test="error != null">
+        error = #{error,jdbcType=VARCHAR},
+      </if>
+      <if test="available != null">
+        available = #{available,jdbcType=INTEGER},
+      </if>
+      <if test="errorsFrom != null">
+        errors_from = #{errorsFrom,jdbcType=INTEGER},
+      </if>
+      <if test="lastaccess != null">
+        lastaccess = #{lastaccess,jdbcType=INTEGER},
+      </if>
+      <if test="ipmiAuthtype != null">
+        ipmi_authtype = #{ipmiAuthtype,jdbcType=INTEGER},
+      </if>
+      <if test="ipmiPrivilege != null">
+        ipmi_privilege = #{ipmiPrivilege,jdbcType=INTEGER},
+      </if>
+      <if test="ipmiUsername != null">
+        ipmi_username = #{ipmiUsername,jdbcType=VARCHAR},
+      </if>
+      <if test="ipmiPassword != null">
+        ipmi_password = #{ipmiPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="ipmiDisableUntil != null">
+        ipmi_disable_until = #{ipmiDisableUntil,jdbcType=INTEGER},
+      </if>
+      <if test="ipmiAvailable != null">
+        ipmi_available = #{ipmiAvailable,jdbcType=INTEGER},
+      </if>
+      <if test="snmpDisableUntil != null">
+        snmp_disable_until = #{snmpDisableUntil,jdbcType=INTEGER},
+      </if>
+      <if test="snmpAvailable != null">
+        snmp_available = #{snmpAvailable,jdbcType=INTEGER},
+      </if>
+      <if test="maintenanceid != null">
+        maintenanceid = #{maintenanceid,jdbcType=BIGINT},
+      </if>
+      <if test="maintenanceStatus != null">
+        maintenance_status = #{maintenanceStatus,jdbcType=INTEGER},
+      </if>
+      <if test="maintenanceType != null">
+        maintenance_type = #{maintenanceType,jdbcType=INTEGER},
+      </if>
+      <if test="maintenanceFrom != null">
+        maintenance_from = #{maintenanceFrom,jdbcType=INTEGER},
+      </if>
+      <if test="ipmiErrorsFrom != null">
+        ipmi_errors_from = #{ipmiErrorsFrom,jdbcType=INTEGER},
+      </if>
+      <if test="snmpErrorsFrom != null">
+        snmp_errors_from = #{snmpErrorsFrom,jdbcType=INTEGER},
+      </if>
+      <if test="ipmiError != null">
+        ipmi_error = #{ipmiError,jdbcType=VARCHAR},
+      </if>
+      <if test="snmpError != null">
+        snmp_error = #{snmpError,jdbcType=VARCHAR},
+      </if>
+      <if test="jmxDisableUntil != null">
+        jmx_disable_until = #{jmxDisableUntil,jdbcType=INTEGER},
+      </if>
+      <if test="jmxAvailable != null">
+        jmx_available = #{jmxAvailable,jdbcType=INTEGER},
+      </if>
+      <if test="jmxErrorsFrom != null">
+        jmx_errors_from = #{jmxErrorsFrom,jdbcType=INTEGER},
+      </if>
+      <if test="jmxError != null">
+        jmx_error = #{jmxError,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="flags != null">
+        flags = #{flags,jdbcType=INTEGER},
+      </if>
+      <if test="templateid != null">
+        templateid = #{templateid,jdbcType=BIGINT},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="tlsConnect != null">
+        tls_connect = #{tlsConnect,jdbcType=INTEGER},
+      </if>
+      <if test="tlsAccept != null">
+        tls_accept = #{tlsAccept,jdbcType=INTEGER},
+      </if>
+      <if test="tlsIssuer != null">
+        tls_issuer = #{tlsIssuer,jdbcType=VARCHAR},
+      </if>
+      <if test="tlsSubject != null">
+        tls_subject = #{tlsSubject,jdbcType=VARCHAR},
+      </if>
+      <if test="tlsPskIdentity != null">
+        tls_psk_identity = #{tlsPskIdentity,jdbcType=VARCHAR},
+      </if>
+      <if test="tlsPsk != null">
+        tls_psk = #{tlsPsk,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where hostid = #{hostid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.Hosts">
+    <!--@mbg.generated-->
+    update hosts
+    set proxy_hostid = #{proxyHostid,jdbcType=BIGINT},
+      `host` = #{host,jdbcType=VARCHAR},
+      `status` = #{status,jdbcType=INTEGER},
+      disable_until = #{disableUntil,jdbcType=INTEGER},
+      error = #{error,jdbcType=VARCHAR},
+      available = #{available,jdbcType=INTEGER},
+      errors_from = #{errorsFrom,jdbcType=INTEGER},
+      lastaccess = #{lastaccess,jdbcType=INTEGER},
+      ipmi_authtype = #{ipmiAuthtype,jdbcType=INTEGER},
+      ipmi_privilege = #{ipmiPrivilege,jdbcType=INTEGER},
+      ipmi_username = #{ipmiUsername,jdbcType=VARCHAR},
+      ipmi_password = #{ipmiPassword,jdbcType=VARCHAR},
+      ipmi_disable_until = #{ipmiDisableUntil,jdbcType=INTEGER},
+      ipmi_available = #{ipmiAvailable,jdbcType=INTEGER},
+      snmp_disable_until = #{snmpDisableUntil,jdbcType=INTEGER},
+      snmp_available = #{snmpAvailable,jdbcType=INTEGER},
+      maintenanceid = #{maintenanceid,jdbcType=BIGINT},
+      maintenance_status = #{maintenanceStatus,jdbcType=INTEGER},
+      maintenance_type = #{maintenanceType,jdbcType=INTEGER},
+      maintenance_from = #{maintenanceFrom,jdbcType=INTEGER},
+      ipmi_errors_from = #{ipmiErrorsFrom,jdbcType=INTEGER},
+      snmp_errors_from = #{snmpErrorsFrom,jdbcType=INTEGER},
+      ipmi_error = #{ipmiError,jdbcType=VARCHAR},
+      snmp_error = #{snmpError,jdbcType=VARCHAR},
+      jmx_disable_until = #{jmxDisableUntil,jdbcType=INTEGER},
+      jmx_available = #{jmxAvailable,jdbcType=INTEGER},
+      jmx_errors_from = #{jmxErrorsFrom,jdbcType=INTEGER},
+      jmx_error = #{jmxError,jdbcType=VARCHAR},
+      `name` = #{name,jdbcType=VARCHAR},
+      flags = #{flags,jdbcType=INTEGER},
+      templateid = #{templateid,jdbcType=BIGINT},
+      description = #{description,jdbcType=LONGVARCHAR},
+      tls_connect = #{tlsConnect,jdbcType=INTEGER},
+      tls_accept = #{tlsAccept,jdbcType=INTEGER},
+      tls_issuer = #{tlsIssuer,jdbcType=VARCHAR},
+      tls_subject = #{tlsSubject,jdbcType=VARCHAR},
+      tls_psk_identity = #{tlsPskIdentity,jdbcType=VARCHAR},
+      tls_psk = #{tlsPsk,jdbcType=VARCHAR}
+    where hostid = #{hostid,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.GlobalmacroMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.Globalmacro">
+    <!--@mbg.generated-->
+    <id column="globalmacroid" jdbcType="BIGINT" property="globalmacroid" />
+    <result column="macro" jdbcType="VARCHAR" property="macro" />
+    <result column="value" jdbcType="VARCHAR" property="value" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    globalmacroid, macro, `value`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from globalmacro
+    where globalmacroid = #{globalmacroid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from globalmacro
+    where globalmacroid = #{globalmacroid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.Globalmacro">
+    <!--@mbg.generated-->
+    insert into globalmacro (globalmacroid, macro, `value`
+      )
+    values (#{globalmacroid,jdbcType=BIGINT}, #{macro,jdbcType=VARCHAR}, #{value,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.Globalmacro">
+    <!--@mbg.generated-->
+    insert into globalmacro
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="globalmacroid != null">
+        globalmacroid,
+      </if>
+      <if test="macro != null">
+        macro,
+      </if>
+      <if test="value != null">
+        `value`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="globalmacroid != null">
+        #{globalmacroid,jdbcType=BIGINT},
+      </if>
+      <if test="macro != null">
+        #{macro,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null">
+        #{value,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.Globalmacro">
+    <!--@mbg.generated-->
+    update globalmacro
+    <set>
+      <if test="macro != null">
+        macro = #{macro,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null">
+        `value` = #{value,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where globalmacroid = #{globalmacroid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.Globalmacro">
+    <!--@mbg.generated-->
+    update globalmacro
+    set macro = #{macro,jdbcType=VARCHAR},
+      `value` = #{value,jdbcType=VARCHAR}
+    where globalmacroid = #{globalmacroid,jdbcType=BIGINT}
+  </update>
+</mapper>

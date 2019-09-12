@@ -1,0 +1,210 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.DchecksMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.Dchecks">
+    <!--@mbg.generated-->
+    <id column="dcheckid" jdbcType="BIGINT" property="dcheckid" />
+    <result column="druleid" jdbcType="BIGINT" property="druleid" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="key_" jdbcType="VARCHAR" property="key" />
+    <result column="snmp_community" jdbcType="VARCHAR" property="snmpCommunity" />
+    <result column="ports" jdbcType="VARCHAR" property="ports" />
+    <result column="snmpv3_securityname" jdbcType="VARCHAR" property="snmpv3Securityname" />
+    <result column="snmpv3_securitylevel" jdbcType="INTEGER" property="snmpv3Securitylevel" />
+    <result column="snmpv3_authpassphrase" jdbcType="VARCHAR" property="snmpv3Authpassphrase" />
+    <result column="snmpv3_privpassphrase" jdbcType="VARCHAR" property="snmpv3Privpassphrase" />
+    <result column="uniq" jdbcType="INTEGER" property="uniq" />
+    <result column="snmpv3_authprotocol" jdbcType="INTEGER" property="snmpv3Authprotocol" />
+    <result column="snmpv3_privprotocol" jdbcType="INTEGER" property="snmpv3Privprotocol" />
+    <result column="snmpv3_contextname" jdbcType="VARCHAR" property="snmpv3Contextname" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    dcheckid, druleid, `type`, key_, snmp_community, ports, snmpv3_securityname, snmpv3_securitylevel, 
+    snmpv3_authpassphrase, snmpv3_privpassphrase, uniq, snmpv3_authprotocol, snmpv3_privprotocol, 
+    snmpv3_contextname
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from dchecks
+    where dcheckid = #{dcheckid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from dchecks
+    where dcheckid = #{dcheckid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.Dchecks">
+    <!--@mbg.generated-->
+    insert into dchecks (dcheckid, druleid, `type`, 
+      key_, snmp_community, ports, 
+      snmpv3_securityname, snmpv3_securitylevel, 
+      snmpv3_authpassphrase, snmpv3_privpassphrase, 
+      uniq, snmpv3_authprotocol, snmpv3_privprotocol, 
+      snmpv3_contextname)
+    values (#{dcheckid,jdbcType=BIGINT}, #{druleid,jdbcType=BIGINT}, #{type,jdbcType=INTEGER}, 
+      #{key,jdbcType=VARCHAR}, #{snmpCommunity,jdbcType=VARCHAR}, #{ports,jdbcType=VARCHAR}, 
+      #{snmpv3Securityname,jdbcType=VARCHAR}, #{snmpv3Securitylevel,jdbcType=INTEGER}, 
+      #{snmpv3Authpassphrase,jdbcType=VARCHAR}, #{snmpv3Privpassphrase,jdbcType=VARCHAR}, 
+      #{uniq,jdbcType=INTEGER}, #{snmpv3Authprotocol,jdbcType=INTEGER}, #{snmpv3Privprotocol,jdbcType=INTEGER}, 
+      #{snmpv3Contextname,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.Dchecks">
+    <!--@mbg.generated-->
+    insert into dchecks
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="dcheckid != null">
+        dcheckid,
+      </if>
+      <if test="druleid != null">
+        druleid,
+      </if>
+      <if test="type != null">
+        `type`,
+      </if>
+      <if test="key != null">
+        key_,
+      </if>
+      <if test="snmpCommunity != null">
+        snmp_community,
+      </if>
+      <if test="ports != null">
+        ports,
+      </if>
+      <if test="snmpv3Securityname != null">
+        snmpv3_securityname,
+      </if>
+      <if test="snmpv3Securitylevel != null">
+        snmpv3_securitylevel,
+      </if>
+      <if test="snmpv3Authpassphrase != null">
+        snmpv3_authpassphrase,
+      </if>
+      <if test="snmpv3Privpassphrase != null">
+        snmpv3_privpassphrase,
+      </if>
+      <if test="uniq != null">
+        uniq,
+      </if>
+      <if test="snmpv3Authprotocol != null">
+        snmpv3_authprotocol,
+      </if>
+      <if test="snmpv3Privprotocol != null">
+        snmpv3_privprotocol,
+      </if>
+      <if test="snmpv3Contextname != null">
+        snmpv3_contextname,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="dcheckid != null">
+        #{dcheckid,jdbcType=BIGINT},
+      </if>
+      <if test="druleid != null">
+        #{druleid,jdbcType=BIGINT},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="key != null">
+        #{key,jdbcType=VARCHAR},
+      </if>
+      <if test="snmpCommunity != null">
+        #{snmpCommunity,jdbcType=VARCHAR},
+      </if>
+      <if test="ports != null">
+        #{ports,jdbcType=VARCHAR},
+      </if>
+      <if test="snmpv3Securityname != null">
+        #{snmpv3Securityname,jdbcType=VARCHAR},
+      </if>
+      <if test="snmpv3Securitylevel != null">
+        #{snmpv3Securitylevel,jdbcType=INTEGER},
+      </if>
+      <if test="snmpv3Authpassphrase != null">
+        #{snmpv3Authpassphrase,jdbcType=VARCHAR},
+      </if>
+      <if test="snmpv3Privpassphrase != null">
+        #{snmpv3Privpassphrase,jdbcType=VARCHAR},
+      </if>
+      <if test="uniq != null">
+        #{uniq,jdbcType=INTEGER},
+      </if>
+      <if test="snmpv3Authprotocol != null">
+        #{snmpv3Authprotocol,jdbcType=INTEGER},
+      </if>
+      <if test="snmpv3Privprotocol != null">
+        #{snmpv3Privprotocol,jdbcType=INTEGER},
+      </if>
+      <if test="snmpv3Contextname != null">
+        #{snmpv3Contextname,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.Dchecks">
+    <!--@mbg.generated-->
+    update dchecks
+    <set>
+      <if test="druleid != null">
+        druleid = #{druleid,jdbcType=BIGINT},
+      </if>
+      <if test="type != null">
+        `type` = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="key != null">
+        key_ = #{key,jdbcType=VARCHAR},
+      </if>
+      <if test="snmpCommunity != null">
+        snmp_community = #{snmpCommunity,jdbcType=VARCHAR},
+      </if>
+      <if test="ports != null">
+        ports = #{ports,jdbcType=VARCHAR},
+      </if>
+      <if test="snmpv3Securityname != null">
+        snmpv3_securityname = #{snmpv3Securityname,jdbcType=VARCHAR},
+      </if>
+      <if test="snmpv3Securitylevel != null">
+        snmpv3_securitylevel = #{snmpv3Securitylevel,jdbcType=INTEGER},
+      </if>
+      <if test="snmpv3Authpassphrase != null">
+        snmpv3_authpassphrase = #{snmpv3Authpassphrase,jdbcType=VARCHAR},
+      </if>
+      <if test="snmpv3Privpassphrase != null">
+        snmpv3_privpassphrase = #{snmpv3Privpassphrase,jdbcType=VARCHAR},
+      </if>
+      <if test="uniq != null">
+        uniq = #{uniq,jdbcType=INTEGER},
+      </if>
+      <if test="snmpv3Authprotocol != null">
+        snmpv3_authprotocol = #{snmpv3Authprotocol,jdbcType=INTEGER},
+      </if>
+      <if test="snmpv3Privprotocol != null">
+        snmpv3_privprotocol = #{snmpv3Privprotocol,jdbcType=INTEGER},
+      </if>
+      <if test="snmpv3Contextname != null">
+        snmpv3_contextname = #{snmpv3Contextname,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where dcheckid = #{dcheckid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.Dchecks">
+    <!--@mbg.generated-->
+    update dchecks
+    set druleid = #{druleid,jdbcType=BIGINT},
+      `type` = #{type,jdbcType=INTEGER},
+      key_ = #{key,jdbcType=VARCHAR},
+      snmp_community = #{snmpCommunity,jdbcType=VARCHAR},
+      ports = #{ports,jdbcType=VARCHAR},
+      snmpv3_securityname = #{snmpv3Securityname,jdbcType=VARCHAR},
+      snmpv3_securitylevel = #{snmpv3Securitylevel,jdbcType=INTEGER},
+      snmpv3_authpassphrase = #{snmpv3Authpassphrase,jdbcType=VARCHAR},
+      snmpv3_privpassphrase = #{snmpv3Privpassphrase,jdbcType=VARCHAR},
+      uniq = #{uniq,jdbcType=INTEGER},
+      snmpv3_authprotocol = #{snmpv3Authprotocol,jdbcType=INTEGER},
+      snmpv3_privprotocol = #{snmpv3Privprotocol,jdbcType=INTEGER},
+      snmpv3_contextname = #{snmpv3Contextname,jdbcType=VARCHAR}
+    where dcheckid = #{dcheckid,jdbcType=BIGINT}
+  </update>
+</mapper>

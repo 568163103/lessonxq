@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.RightsMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.Rights">
+    <!--@mbg.generated-->
+    <id column="rightid" jdbcType="BIGINT" property="rightid" />
+    <result column="groupid" jdbcType="BIGINT" property="groupid" />
+    <result column="permission" jdbcType="INTEGER" property="permission" />
+    <result column="id" jdbcType="BIGINT" property="id" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    rightid, groupid, permission, id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from rights
+    where rightid = #{rightid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from rights
+    where rightid = #{rightid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.Rights">
+    <!--@mbg.generated-->
+    insert into rights (rightid, groupid, permission, 
+      id)
+    values (#{rightid,jdbcType=BIGINT}, #{groupid,jdbcType=BIGINT}, #{permission,jdbcType=INTEGER}, 
+      #{id,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.Rights">
+    <!--@mbg.generated-->
+    insert into rights
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="rightid != null">
+        rightid,
+      </if>
+      <if test="groupid != null">
+        groupid,
+      </if>
+      <if test="permission != null">
+        permission,
+      </if>
+      <if test="id != null">
+        id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="rightid != null">
+        #{rightid,jdbcType=BIGINT},
+      </if>
+      <if test="groupid != null">
+        #{groupid,jdbcType=BIGINT},
+      </if>
+      <if test="permission != null">
+        #{permission,jdbcType=INTEGER},
+      </if>
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.Rights">
+    <!--@mbg.generated-->
+    update rights
+    <set>
+      <if test="groupid != null">
+        groupid = #{groupid,jdbcType=BIGINT},
+      </if>
+      <if test="permission != null">
+        permission = #{permission,jdbcType=INTEGER},
+      </if>
+      <if test="id != null">
+        id = #{id,jdbcType=BIGINT},
+      </if>
+    </set>
+    where rightid = #{rightid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.Rights">
+    <!--@mbg.generated-->
+    update rights
+    set groupid = #{groupid,jdbcType=BIGINT},
+      permission = #{permission,jdbcType=INTEGER},
+      id = #{id,jdbcType=BIGINT}
+    where rightid = #{rightid,jdbcType=BIGINT}
+  </update>
+</mapper>

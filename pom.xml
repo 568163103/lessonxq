@@ -17,6 +17,7 @@
 		<module>spring-gateway</module>
 		<module>spring-provider</module>
 		<module>spring-consumer</module>
+		<module>spring-zabbix</module>
 	</modules>
 	<name>webmu</name>
 

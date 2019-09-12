@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.SysmapUserMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.SysmapUser">
+    <!--@mbg.generated-->
+    <id column="sysmapuserid" jdbcType="BIGINT" property="sysmapuserid" />
+    <result column="sysmapid" jdbcType="BIGINT" property="sysmapid" />
+    <result column="userid" jdbcType="BIGINT" property="userid" />
+    <result column="permission" jdbcType="INTEGER" property="permission" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    sysmapuserid, sysmapid, userid, permission
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from sysmap_user
+    where sysmapuserid = #{sysmapuserid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from sysmap_user
+    where sysmapuserid = #{sysmapuserid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.SysmapUser">
+    <!--@mbg.generated-->
+    insert into sysmap_user (sysmapuserid, sysmapid, userid, 
+      permission)
+    values (#{sysmapuserid,jdbcType=BIGINT}, #{sysmapid,jdbcType=BIGINT}, #{userid,jdbcType=BIGINT}, 
+      #{permission,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.SysmapUser">
+    <!--@mbg.generated-->
+    insert into sysmap_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sysmapuserid != null">
+        sysmapuserid,
+      </if>
+      <if test="sysmapid != null">
+        sysmapid,
+      </if>
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="permission != null">
+        permission,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sysmapuserid != null">
+        #{sysmapuserid,jdbcType=BIGINT},
+      </if>
+      <if test="sysmapid != null">
+        #{sysmapid,jdbcType=BIGINT},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=BIGINT},
+      </if>
+      <if test="permission != null">
+        #{permission,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.SysmapUser">
+    <!--@mbg.generated-->
+    update sysmap_user
+    <set>
+      <if test="sysmapid != null">
+        sysmapid = #{sysmapid,jdbcType=BIGINT},
+      </if>
+      <if test="userid != null">
+        userid = #{userid,jdbcType=BIGINT},
+      </if>
+      <if test="permission != null">
+        permission = #{permission,jdbcType=INTEGER},
+      </if>
+    </set>
+    where sysmapuserid = #{sysmapuserid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.SysmapUser">
+    <!--@mbg.generated-->
+    update sysmap_user
+    set sysmapid = #{sysmapid,jdbcType=BIGINT},
+      userid = #{userid,jdbcType=BIGINT},
+      permission = #{permission,jdbcType=INTEGER}
+    where sysmapuserid = #{sysmapuserid,jdbcType=BIGINT}
+  </update>
+</mapper>

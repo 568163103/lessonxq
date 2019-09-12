@@ -1,0 +1,183 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.DservicesMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.Dservices">
+    <!--@mbg.generated-->
+    <id column="dserviceid" jdbcType="BIGINT" property="dserviceid" />
+    <result column="dhostid" jdbcType="BIGINT" property="dhostid" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="key_" jdbcType="VARCHAR" property="key" />
+    <result column="value" jdbcType="VARCHAR" property="value" />
+    <result column="port" jdbcType="INTEGER" property="port" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="lastup" jdbcType="INTEGER" property="lastup" />
+    <result column="lastdown" jdbcType="INTEGER" property="lastdown" />
+    <result column="dcheckid" jdbcType="BIGINT" property="dcheckid" />
+    <result column="ip" jdbcType="VARCHAR" property="ip" />
+    <result column="dns" jdbcType="VARCHAR" property="dns" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    dserviceid, dhostid, `type`, key_, `value`, port, `status`, lastup, lastdown, dcheckid, 
+    ip, dns
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from dservices
+    where dserviceid = #{dserviceid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from dservices
+    where dserviceid = #{dserviceid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.Dservices">
+    <!--@mbg.generated-->
+    insert into dservices (dserviceid, dhostid, `type`, 
+      key_, `value`, port, `status`, 
+      lastup, lastdown, dcheckid, 
+      ip, dns)
+    values (#{dserviceid,jdbcType=BIGINT}, #{dhostid,jdbcType=BIGINT}, #{type,jdbcType=INTEGER}, 
+      #{key,jdbcType=VARCHAR}, #{value,jdbcType=VARCHAR}, #{port,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{lastup,jdbcType=INTEGER}, #{lastdown,jdbcType=INTEGER}, #{dcheckid,jdbcType=BIGINT}, 
+      #{ip,jdbcType=VARCHAR}, #{dns,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.Dservices">
+    <!--@mbg.generated-->
+    insert into dservices
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="dserviceid != null">
+        dserviceid,
+      </if>
+      <if test="dhostid != null">
+        dhostid,
+      </if>
+      <if test="type != null">
+        `type`,
+      </if>
+      <if test="key != null">
+        key_,
+      </if>
+      <if test="value != null">
+        `value`,
+      </if>
+      <if test="port != null">
+        port,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="lastup != null">
+        lastup,
+      </if>
+      <if test="lastdown != null">
+        lastdown,
+      </if>
+      <if test="dcheckid != null">
+        dcheckid,
+      </if>
+      <if test="ip != null">
+        ip,
+      </if>
+      <if test="dns != null">
+        dns,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="dserviceid != null">
+        #{dserviceid,jdbcType=BIGINT},
+      </if>
+      <if test="dhostid != null">
+        #{dhostid,jdbcType=BIGINT},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="key != null">
+        #{key,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null">
+        #{value,jdbcType=VARCHAR},
+      </if>
+      <if test="port != null">
+        #{port,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="lastup != null">
+        #{lastup,jdbcType=INTEGER},
+      </if>
+      <if test="lastdown != null">
+        #{lastdown,jdbcType=INTEGER},
+      </if>
+      <if test="dcheckid != null">
+        #{dcheckid,jdbcType=BIGINT},
+      </if>
+      <if test="ip != null">
+        #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="dns != null">
+        #{dns,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.Dservices">
+    <!--@mbg.generated-->
+    update dservices
+    <set>
+      <if test="dhostid != null">
+        dhostid = #{dhostid,jdbcType=BIGINT},
+      </if>
+      <if test="type != null">
+        `type` = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="key != null">
+        key_ = #{key,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null">
+        `value` = #{value,jdbcType=VARCHAR},
+      </if>
+      <if test="port != null">
+        port = #{port,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="lastup != null">
+        lastup = #{lastup,jdbcType=INTEGER},
+      </if>
+      <if test="lastdown != null">
+        lastdown = #{lastdown,jdbcType=INTEGER},
+      </if>
+      <if test="dcheckid != null">
+        dcheckid = #{dcheckid,jdbcType=BIGINT},
+      </if>
+      <if test="ip != null">
+        ip = #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="dns != null">
+        dns = #{dns,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where dserviceid = #{dserviceid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.Dservices">
+    <!--@mbg.generated-->
+    update dservices
+    set dhostid = #{dhostid,jdbcType=BIGINT},
+      `type` = #{type,jdbcType=INTEGER},
+      key_ = #{key,jdbcType=VARCHAR},
+      `value` = #{value,jdbcType=VARCHAR},
+      port = #{port,jdbcType=INTEGER},
+      `status` = #{status,jdbcType=INTEGER},
+      lastup = #{lastup,jdbcType=INTEGER},
+      lastdown = #{lastdown,jdbcType=INTEGER},
+      dcheckid = #{dcheckid,jdbcType=BIGINT},
+      ip = #{ip,jdbcType=VARCHAR},
+      dns = #{dns,jdbcType=VARCHAR}
+    where dserviceid = #{dserviceid,jdbcType=BIGINT}
+  </update>
+</mapper>

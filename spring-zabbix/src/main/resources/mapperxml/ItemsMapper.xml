@@ -1,0 +1,599 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.ItemsMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.Items">
+    <!--@mbg.generated-->
+    <id column="itemid" jdbcType="BIGINT" property="itemid" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="snmp_community" jdbcType="VARCHAR" property="snmpCommunity" />
+    <result column="snmp_oid" jdbcType="VARCHAR" property="snmpOid" />
+    <result column="hostid" jdbcType="BIGINT" property="hostid" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="key_" jdbcType="VARCHAR" property="key" />
+    <result column="delay" jdbcType="INTEGER" property="delay" />
+    <result column="history" jdbcType="INTEGER" property="history" />
+    <result column="trends" jdbcType="INTEGER" property="trends" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="value_type" jdbcType="INTEGER" property="valueType" />
+    <result column="trapper_hosts" jdbcType="VARCHAR" property="trapperHosts" />
+    <result column="units" jdbcType="VARCHAR" property="units" />
+    <result column="multiplier" jdbcType="INTEGER" property="multiplier" />
+    <result column="delta" jdbcType="INTEGER" property="delta" />
+    <result column="snmpv3_securityname" jdbcType="VARCHAR" property="snmpv3Securityname" />
+    <result column="snmpv3_securitylevel" jdbcType="INTEGER" property="snmpv3Securitylevel" />
+    <result column="snmpv3_authpassphrase" jdbcType="VARCHAR" property="snmpv3Authpassphrase" />
+    <result column="snmpv3_privpassphrase" jdbcType="VARCHAR" property="snmpv3Privpassphrase" />
+    <result column="formula" jdbcType="VARCHAR" property="formula" />
+    <result column="error" jdbcType="VARCHAR" property="error" />
+    <result column="lastlogsize" jdbcType="BIGINT" property="lastlogsize" />
+    <result column="logtimefmt" jdbcType="VARCHAR" property="logtimefmt" />
+    <result column="templateid" jdbcType="BIGINT" property="templateid" />
+    <result column="valuemapid" jdbcType="BIGINT" property="valuemapid" />
+    <result column="delay_flex" jdbcType="VARCHAR" property="delayFlex" />
+    <result column="params" jdbcType="LONGVARCHAR" property="params" />
+    <result column="ipmi_sensor" jdbcType="VARCHAR" property="ipmiSensor" />
+    <result column="data_type" jdbcType="INTEGER" property="dataType" />
+    <result column="authtype" jdbcType="INTEGER" property="authtype" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="publickey" jdbcType="VARCHAR" property="publickey" />
+    <result column="privatekey" jdbcType="VARCHAR" property="privatekey" />
+    <result column="mtime" jdbcType="INTEGER" property="mtime" />
+    <result column="flags" jdbcType="INTEGER" property="flags" />
+    <result column="interfaceid" jdbcType="BIGINT" property="interfaceid" />
+    <result column="port" jdbcType="VARCHAR" property="port" />
+    <result column="description" jdbcType="LONGVARCHAR" property="description" />
+    <result column="inventory_link" jdbcType="INTEGER" property="inventoryLink" />
+    <result column="lifetime" jdbcType="VARCHAR" property="lifetime" />
+    <result column="snmpv3_authprotocol" jdbcType="INTEGER" property="snmpv3Authprotocol" />
+    <result column="snmpv3_privprotocol" jdbcType="INTEGER" property="snmpv3Privprotocol" />
+    <result column="state" jdbcType="INTEGER" property="state" />
+    <result column="snmpv3_contextname" jdbcType="VARCHAR" property="snmpv3Contextname" />
+    <result column="evaltype" jdbcType="INTEGER" property="evaltype" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    itemid, `type`, snmp_community, snmp_oid, hostid, `name`, key_, delay, history, trends, 
+    `status`, value_type, trapper_hosts, units, multiplier, delta, snmpv3_securityname, 
+    snmpv3_securitylevel, snmpv3_authpassphrase, snmpv3_privpassphrase, formula, error, 
+    lastlogsize, logtimefmt, templateid, valuemapid, delay_flex, params, ipmi_sensor, 
+    data_type, authtype, username, `password`, publickey, privatekey, mtime, flags, interfaceid, 
+    port, description, inventory_link, lifetime, snmpv3_authprotocol, snmpv3_privprotocol, 
+    `state`, snmpv3_contextname, evaltype
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from items
+    where itemid = #{itemid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from items
+    where itemid = #{itemid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.Items">
+    <!--@mbg.generated-->
+    insert into items (itemid, `type`, snmp_community, 
+      snmp_oid, hostid, `name`, 
+      key_, delay, history, 
+      trends, `status`, value_type, 
+      trapper_hosts, units, multiplier, 
+      delta, snmpv3_securityname, snmpv3_securitylevel, 
+      snmpv3_authpassphrase, snmpv3_privpassphrase, 
+      formula, error, lastlogsize, 
+      logtimefmt, templateid, valuemapid, 
+      delay_flex, params, ipmi_sensor, 
+      data_type, authtype, username, 
+      `password`, publickey, privatekey, 
+      mtime, flags, interfaceid, 
+      port, description, inventory_link, 
+      lifetime, snmpv3_authprotocol, snmpv3_privprotocol, 
+      `state`, snmpv3_contextname, evaltype
+      )
+    values (#{itemid,jdbcType=BIGINT}, #{type,jdbcType=INTEGER}, #{snmpCommunity,jdbcType=VARCHAR}, 
+      #{snmpOid,jdbcType=VARCHAR}, #{hostid,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, 
+      #{key,jdbcType=VARCHAR}, #{delay,jdbcType=INTEGER}, #{history,jdbcType=INTEGER}, 
+      #{trends,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{valueType,jdbcType=INTEGER}, 
+      #{trapperHosts,jdbcType=VARCHAR}, #{units,jdbcType=VARCHAR}, #{multiplier,jdbcType=INTEGER}, 
+      #{delta,jdbcType=INTEGER}, #{snmpv3Securityname,jdbcType=VARCHAR}, #{snmpv3Securitylevel,jdbcType=INTEGER}, 
+      #{snmpv3Authpassphrase,jdbcType=VARCHAR}, #{snmpv3Privpassphrase,jdbcType=VARCHAR}, 
+      #{formula,jdbcType=VARCHAR}, #{error,jdbcType=VARCHAR}, #{lastlogsize,jdbcType=BIGINT}, 
+      #{logtimefmt,jdbcType=VARCHAR}, #{templateid,jdbcType=BIGINT}, #{valuemapid,jdbcType=BIGINT}, 
+      #{delayFlex,jdbcType=VARCHAR}, #{params,jdbcType=LONGVARCHAR}, #{ipmiSensor,jdbcType=VARCHAR}, 
+      #{dataType,jdbcType=INTEGER}, #{authtype,jdbcType=INTEGER}, #{username,jdbcType=VARCHAR}, 
+      #{password,jdbcType=VARCHAR}, #{publickey,jdbcType=VARCHAR}, #{privatekey,jdbcType=VARCHAR}, 
+      #{mtime,jdbcType=INTEGER}, #{flags,jdbcType=INTEGER}, #{interfaceid,jdbcType=BIGINT}, 
+      #{port,jdbcType=VARCHAR}, #{description,jdbcType=LONGVARCHAR}, #{inventoryLink,jdbcType=INTEGER}, 
+      #{lifetime,jdbcType=VARCHAR}, #{snmpv3Authprotocol,jdbcType=INTEGER}, #{snmpv3Privprotocol,jdbcType=INTEGER}, 
+      #{state,jdbcType=INTEGER}, #{snmpv3Contextname,jdbcType=VARCHAR}, #{evaltype,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.Items">
+    <!--@mbg.generated-->
+    insert into items
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="itemid != null">
+        itemid,
+      </if>
+      <if test="type != null">
+        `type`,
+      </if>
+      <if test="snmpCommunity != null">
+        snmp_community,
+      </if>
+      <if test="snmpOid != null">
+        snmp_oid,
+      </if>
+      <if test="hostid != null">
+        hostid,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="key != null">
+        key_,
+      </if>
+      <if test="delay != null">
+        delay,
+      </if>
+      <if test="history != null">
+        history,
+      </if>
+      <if test="trends != null">
+        trends,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="valueType != null">
+        value_type,
+      </if>
+      <if test="trapperHosts != null">
+        trapper_hosts,
+      </if>
+      <if test="units != null">
+        units,
+      </if>
+      <if test="multiplier != null">
+        multiplier,
+      </if>
+      <if test="delta != null">
+        delta,
+      </if>
+      <if test="snmpv3Securityname != null">
+        snmpv3_securityname,
+      </if>
+      <if test="snmpv3Securitylevel != null">
+        snmpv3_securitylevel,
+      </if>
+      <if test="snmpv3Authpassphrase != null">
+        snmpv3_authpassphrase,
+      </if>
+      <if test="snmpv3Privpassphrase != null">
+        snmpv3_privpassphrase,
+      </if>
+      <if test="formula != null">
+        formula,
+      </if>
+      <if test="error != null">
+        error,
+      </if>
+      <if test="lastlogsize != null">
+        lastlogsize,
+      </if>
+      <if test="logtimefmt != null">
+        logtimefmt,
+      </if>
+      <if test="templateid != null">
+        templateid,
+      </if>
+      <if test="valuemapid != null">
+        valuemapid,
+      </if>
+      <if test="delayFlex != null">
+        delay_flex,
+      </if>
+      <if test="params != null">
+        params,
+      </if>
+      <if test="ipmiSensor != null">
+        ipmi_sensor,
+      </if>
+      <if test="dataType != null">
+        data_type,
+      </if>
+      <if test="authtype != null">
+        authtype,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="password != null">
+        `password`,
+      </if>
+      <if test="publickey != null">
+        publickey,
+      </if>
+      <if test="privatekey != null">
+        privatekey,
+      </if>
+      <if test="mtime != null">
+        mtime,
+      </if>
+      <if test="flags != null">
+        flags,
+      </if>
+      <if test="interfaceid != null">
+        interfaceid,
+      </if>
+      <if test="port != null">
+        port,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="inventoryLink != null">
+        inventory_link,
+      </if>
+      <if test="lifetime != null">
+        lifetime,
+      </if>
+      <if test="snmpv3Authprotocol != null">
+        snmpv3_authprotocol,
+      </if>
+      <if test="snmpv3Privprotocol != null">
+        snmpv3_privprotocol,
+      </if>
+      <if test="state != null">
+        `state`,
+      </if>
+      <if test="snmpv3Contextname != null">
+        snmpv3_contextname,
+      </if>
+      <if test="evaltype != null">
+        evaltype,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="itemid != null">
+        #{itemid,jdbcType=BIGINT},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="snmpCommunity != null">
+        #{snmpCommunity,jdbcType=VARCHAR},
+      </if>
+      <if test="snmpOid != null">
+        #{snmpOid,jdbcType=VARCHAR},
+      </if>
+      <if test="hostid != null">
+        #{hostid,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="key != null">
+        #{key,jdbcType=VARCHAR},
+      </if>
+      <if test="delay != null">
+        #{delay,jdbcType=INTEGER},
+      </if>
+      <if test="history != null">
+        #{history,jdbcType=INTEGER},
+      </if>
+      <if test="trends != null">
+        #{trends,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="valueType != null">
+        #{valueType,jdbcType=INTEGER},
+      </if>
+      <if test="trapperHosts != null">
+        #{trapperHosts,jdbcType=VARCHAR},
+      </if>
+      <if test="units != null">
+        #{units,jdbcType=VARCHAR},
+      </if>
+      <if test="multiplier != null">
+        #{multiplier,jdbcType=INTEGER},
+      </if>
+      <if test="delta != null">
+        #{delta,jdbcType=INTEGER},
+      </if>
+      <if test="snmpv3Securityname != null">
+        #{snmpv3Securityname,jdbcType=VARCHAR},
+      </if>
+      <if test="snmpv3Securitylevel != null">
+        #{snmpv3Securitylevel,jdbcType=INTEGER},
+      </if>
+      <if test="snmpv3Authpassphrase != null">
+        #{snmpv3Authpassphrase,jdbcType=VARCHAR},
+      </if>
+      <if test="snmpv3Privpassphrase != null">
+        #{snmpv3Privpassphrase,jdbcType=VARCHAR},
+      </if>
+      <if test="formula != null">
+        #{formula,jdbcType=VARCHAR},
+      </if>
+      <if test="error != null">
+        #{error,jdbcType=VARCHAR},
+      </if>
+      <if test="lastlogsize != null">
+        #{lastlogsize,jdbcType=BIGINT},
+      </if>
+      <if test="logtimefmt != null">
+        #{logtimefmt,jdbcType=VARCHAR},
+      </if>
+      <if test="templateid != null">
+        #{templateid,jdbcType=BIGINT},
+      </if>
+      <if test="valuemapid != null">
+        #{valuemapid,jdbcType=BIGINT},
+      </if>
+      <if test="delayFlex != null">
+        #{delayFlex,jdbcType=VARCHAR},
+      </if>
+      <if test="params != null">
+        #{params,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="ipmiSensor != null">
+        #{ipmiSensor,jdbcType=VARCHAR},
+      </if>
+      <if test="dataType != null">
+        #{dataType,jdbcType=INTEGER},
+      </if>
+      <if test="authtype != null">
+        #{authtype,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="publickey != null">
+        #{publickey,jdbcType=VARCHAR},
+      </if>
+      <if test="privatekey != null">
+        #{privatekey,jdbcType=VARCHAR},
+      </if>
+      <if test="mtime != null">
+        #{mtime,jdbcType=INTEGER},
+      </if>
+      <if test="flags != null">
+        #{flags,jdbcType=INTEGER},
+      </if>
+      <if test="interfaceid != null">
+        #{interfaceid,jdbcType=BIGINT},
+      </if>
+      <if test="port != null">
+        #{port,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="inventoryLink != null">
+        #{inventoryLink,jdbcType=INTEGER},
+      </if>
+      <if test="lifetime != null">
+        #{lifetime,jdbcType=VARCHAR},
+      </if>
+      <if test="snmpv3Authprotocol != null">
+        #{snmpv3Authprotocol,jdbcType=INTEGER},
+      </if>
+      <if test="snmpv3Privprotocol != null">
+        #{snmpv3Privprotocol,jdbcType=INTEGER},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="snmpv3Contextname != null">
+        #{snmpv3Contextname,jdbcType=VARCHAR},
+      </if>
+      <if test="evaltype != null">
+        #{evaltype,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.Items">
+    <!--@mbg.generated-->
+    update items
+    <set>
+      <if test="type != null">
+        `type` = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="snmpCommunity != null">
+        snmp_community = #{snmpCommunity,jdbcType=VARCHAR},
+      </if>
+      <if test="snmpOid != null">
+        snmp_oid = #{snmpOid,jdbcType=VARCHAR},
+      </if>
+      <if test="hostid != null">
+        hostid = #{hostid,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="key != null">
+        key_ = #{key,jdbcType=VARCHAR},
+      </if>
+      <if test="delay != null">
+        delay = #{delay,jdbcType=INTEGER},
+      </if>
+      <if test="history != null">
+        history = #{history,jdbcType=INTEGER},
+      </if>
+      <if test="trends != null">
+        trends = #{trends,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="valueType != null">
+        value_type = #{valueType,jdbcType=INTEGER},
+      </if>
+      <if test="trapperHosts != null">
+        trapper_hosts = #{trapperHosts,jdbcType=VARCHAR},
+      </if>
+      <if test="units != null">
+        units = #{units,jdbcType=VARCHAR},
+      </if>
+      <if test="multiplier != null">
+        multiplier = #{multiplier,jdbcType=INTEGER},
+      </if>
+      <if test="delta != null">
+        delta = #{delta,jdbcType=INTEGER},
+      </if>
+      <if test="snmpv3Securityname != null">
+        snmpv3_securityname = #{snmpv3Securityname,jdbcType=VARCHAR},
+      </if>
+      <if test="snmpv3Securitylevel != null">
+        snmpv3_securitylevel = #{snmpv3Securitylevel,jdbcType=INTEGER},
+      </if>
+      <if test="snmpv3Authpassphrase != null">
+        snmpv3_authpassphrase = #{snmpv3Authpassphrase,jdbcType=VARCHAR},
+      </if>
+      <if test="snmpv3Privpassphrase != null">
+        snmpv3_privpassphrase = #{snmpv3Privpassphrase,jdbcType=VARCHAR},
+      </if>
+      <if test="formula != null">
+        formula = #{formula,jdbcType=VARCHAR},
+      </if>
+      <if test="error != null">
+        error = #{error,jdbcType=VARCHAR},
+      </if>
+      <if test="lastlogsize != null">
+        lastlogsize = #{lastlogsize,jdbcType=BIGINT},
+      </if>
+      <if test="logtimefmt != null">
+        logtimefmt = #{logtimefmt,jdbcType=VARCHAR},
+      </if>
+      <if test="templateid != null">
+        templateid = #{templateid,jdbcType=BIGINT},
+      </if>
+      <if test="valuemapid != null">
+        valuemapid = #{valuemapid,jdbcType=BIGINT},
+      </if>
+      <if test="delayFlex != null">
+        delay_flex = #{delayFlex,jdbcType=VARCHAR},
+      </if>
+      <if test="params != null">
+        params = #{params,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="ipmiSensor != null">
+        ipmi_sensor = #{ipmiSensor,jdbcType=VARCHAR},
+      </if>
+      <if test="dataType != null">
+        data_type = #{dataType,jdbcType=INTEGER},
+      </if>
+      <if test="authtype != null">
+        authtype = #{authtype,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        `password` = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="publickey != null">
+        publickey = #{publickey,jdbcType=VARCHAR},
+      </if>
+      <if test="privatekey != null">
+        privatekey = #{privatekey,jdbcType=VARCHAR},
+      </if>
+      <if test="mtime != null">
+        mtime = #{mtime,jdbcType=INTEGER},
+      </if>
+      <if test="flags != null">
+        flags = #{flags,jdbcType=INTEGER},
+      </if>
+      <if test="interfaceid != null">
+        interfaceid = #{interfaceid,jdbcType=BIGINT},
+      </if>
+      <if test="port != null">
+        port = #{port,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="inventoryLink != null">
+        inventory_link = #{inventoryLink,jdbcType=INTEGER},
+      </if>
+      <if test="lifetime != null">
+        lifetime = #{lifetime,jdbcType=VARCHAR},
+      </if>
+      <if test="snmpv3Authprotocol != null">
+        snmpv3_authprotocol = #{snmpv3Authprotocol,jdbcType=INTEGER},
+      </if>
+      <if test="snmpv3Privprotocol != null">
+        snmpv3_privprotocol = #{snmpv3Privprotocol,jdbcType=INTEGER},
+      </if>
+      <if test="state != null">
+        `state` = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="snmpv3Contextname != null">
+        snmpv3_contextname = #{snmpv3Contextname,jdbcType=VARCHAR},
+      </if>
+      <if test="evaltype != null">
+        evaltype = #{evaltype,jdbcType=INTEGER},
+      </if>
+    </set>
+    where itemid = #{itemid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.Items">
+    <!--@mbg.generated-->
+    update items
+    set `type` = #{type,jdbcType=INTEGER},
+      snmp_community = #{snmpCommunity,jdbcType=VARCHAR},
+      snmp_oid = #{snmpOid,jdbcType=VARCHAR},
+      hostid = #{hostid,jdbcType=BIGINT},
+      `name` = #{name,jdbcType=VARCHAR},
+      key_ = #{key,jdbcType=VARCHAR},
+      delay = #{delay,jdbcType=INTEGER},
+      history = #{history,jdbcType=INTEGER},
+      trends = #{trends,jdbcType=INTEGER},
+      `status` = #{status,jdbcType=INTEGER},
+      value_type = #{valueType,jdbcType=INTEGER},
+      trapper_hosts = #{trapperHosts,jdbcType=VARCHAR},
+      units = #{units,jdbcType=VARCHAR},
+      multiplier = #{multiplier,jdbcType=INTEGER},
+      delta = #{delta,jdbcType=INTEGER},
+      snmpv3_securityname = #{snmpv3Securityname,jdbcType=VARCHAR},
+      snmpv3_securitylevel = #{snmpv3Securitylevel,jdbcType=INTEGER},
+      snmpv3_authpassphrase = #{snmpv3Authpassphrase,jdbcType=VARCHAR},
+      snmpv3_privpassphrase = #{snmpv3Privpassphrase,jdbcType=VARCHAR},
+      formula = #{formula,jdbcType=VARCHAR},
+      error = #{error,jdbcType=VARCHAR},
+      lastlogsize = #{lastlogsize,jdbcType=BIGINT},
+      logtimefmt = #{logtimefmt,jdbcType=VARCHAR},
+      templateid = #{templateid,jdbcType=BIGINT},
+      valuemapid = #{valuemapid,jdbcType=BIGINT},
+      delay_flex = #{delayFlex,jdbcType=VARCHAR},
+      params = #{params,jdbcType=LONGVARCHAR},
+      ipmi_sensor = #{ipmiSensor,jdbcType=VARCHAR},
+      data_type = #{dataType,jdbcType=INTEGER},
+      authtype = #{authtype,jdbcType=INTEGER},
+      username = #{username,jdbcType=VARCHAR},
+      `password` = #{password,jdbcType=VARCHAR},
+      publickey = #{publickey,jdbcType=VARCHAR},
+      privatekey = #{privatekey,jdbcType=VARCHAR},
+      mtime = #{mtime,jdbcType=INTEGER},
+      flags = #{flags,jdbcType=INTEGER},
+      interfaceid = #{interfaceid,jdbcType=BIGINT},
+      port = #{port,jdbcType=VARCHAR},
+      description = #{description,jdbcType=LONGVARCHAR},
+      inventory_link = #{inventoryLink,jdbcType=INTEGER},
+      lifetime = #{lifetime,jdbcType=VARCHAR},
+      snmpv3_authprotocol = #{snmpv3Authprotocol,jdbcType=INTEGER},
+      snmpv3_privprotocol = #{snmpv3Privprotocol,jdbcType=INTEGER},
+      `state` = #{state,jdbcType=INTEGER},
+      snmpv3_contextname = #{snmpv3Contextname,jdbcType=VARCHAR},
+      evaltype = #{evaltype,jdbcType=INTEGER}
+    where itemid = #{itemid,jdbcType=BIGINT}
+  </update>
+</mapper>

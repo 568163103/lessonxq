@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.MaintenancesGroupsMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.MaintenancesGroups">
+    <!--@mbg.generated-->
+    <id column="maintenance_groupid" jdbcType="BIGINT" property="maintenanceGroupid" />
+    <result column="maintenanceid" jdbcType="BIGINT" property="maintenanceid" />
+    <result column="groupid" jdbcType="BIGINT" property="groupid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    maintenance_groupid, maintenanceid, groupid
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from maintenances_groups
+    where maintenance_groupid = #{maintenanceGroupid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from maintenances_groups
+    where maintenance_groupid = #{maintenanceGroupid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.MaintenancesGroups">
+    <!--@mbg.generated-->
+    insert into maintenances_groups (maintenance_groupid, maintenanceid, 
+      groupid)
+    values (#{maintenanceGroupid,jdbcType=BIGINT}, #{maintenanceid,jdbcType=BIGINT}, 
+      #{groupid,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.MaintenancesGroups">
+    <!--@mbg.generated-->
+    insert into maintenances_groups
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="maintenanceGroupid != null">
+        maintenance_groupid,
+      </if>
+      <if test="maintenanceid != null">
+        maintenanceid,
+      </if>
+      <if test="groupid != null">
+        groupid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="maintenanceGroupid != null">
+        #{maintenanceGroupid,jdbcType=BIGINT},
+      </if>
+      <if test="maintenanceid != null">
+        #{maintenanceid,jdbcType=BIGINT},
+      </if>
+      <if test="groupid != null">
+        #{groupid,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.MaintenancesGroups">
+    <!--@mbg.generated-->
+    update maintenances_groups
+    <set>
+      <if test="maintenanceid != null">
+        maintenanceid = #{maintenanceid,jdbcType=BIGINT},
+      </if>
+      <if test="groupid != null">
+        groupid = #{groupid,jdbcType=BIGINT},
+      </if>
+    </set>
+    where maintenance_groupid = #{maintenanceGroupid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.MaintenancesGroups">
+    <!--@mbg.generated-->
+    update maintenances_groups
+    set maintenanceid = #{maintenanceid,jdbcType=BIGINT},
+      groupid = #{groupid,jdbcType=BIGINT}
+    where maintenance_groupid = #{maintenanceGroupid,jdbcType=BIGINT}
+  </update>
+</mapper>

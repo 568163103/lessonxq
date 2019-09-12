@@ -1,0 +1,779 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.ConfigMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.Config">
+    <!--@mbg.generated-->
+    <id column="configid" jdbcType="BIGINT" property="configid" />
+    <result column="refresh_unsupported" jdbcType="INTEGER" property="refreshUnsupported" />
+    <result column="work_period" jdbcType="VARCHAR" property="workPeriod" />
+    <result column="alert_usrgrpid" jdbcType="BIGINT" property="alertUsrgrpid" />
+    <result column="event_ack_enable" jdbcType="INTEGER" property="eventAckEnable" />
+    <result column="event_expire" jdbcType="INTEGER" property="eventExpire" />
+    <result column="event_show_max" jdbcType="INTEGER" property="eventShowMax" />
+    <result column="default_theme" jdbcType="VARCHAR" property="defaultTheme" />
+    <result column="authentication_type" jdbcType="INTEGER" property="authenticationType" />
+    <result column="ldap_host" jdbcType="VARCHAR" property="ldapHost" />
+    <result column="ldap_port" jdbcType="INTEGER" property="ldapPort" />
+    <result column="ldap_base_dn" jdbcType="VARCHAR" property="ldapBaseDn" />
+    <result column="ldap_bind_dn" jdbcType="VARCHAR" property="ldapBindDn" />
+    <result column="ldap_bind_password" jdbcType="VARCHAR" property="ldapBindPassword" />
+    <result column="ldap_search_attribute" jdbcType="VARCHAR" property="ldapSearchAttribute" />
+    <result column="dropdown_first_entry" jdbcType="INTEGER" property="dropdownFirstEntry" />
+    <result column="dropdown_first_remember" jdbcType="INTEGER" property="dropdownFirstRemember" />
+    <result column="discovery_groupid" jdbcType="BIGINT" property="discoveryGroupid" />
+    <result column="max_in_table" jdbcType="INTEGER" property="maxInTable" />
+    <result column="search_limit" jdbcType="INTEGER" property="searchLimit" />
+    <result column="severity_color_0" jdbcType="VARCHAR" property="severityColor0" />
+    <result column="severity_color_1" jdbcType="VARCHAR" property="severityColor1" />
+    <result column="severity_color_2" jdbcType="VARCHAR" property="severityColor2" />
+    <result column="severity_color_3" jdbcType="VARCHAR" property="severityColor3" />
+    <result column="severity_color_4" jdbcType="VARCHAR" property="severityColor4" />
+    <result column="severity_color_5" jdbcType="VARCHAR" property="severityColor5" />
+    <result column="severity_name_0" jdbcType="VARCHAR" property="severityName0" />
+    <result column="severity_name_1" jdbcType="VARCHAR" property="severityName1" />
+    <result column="severity_name_2" jdbcType="VARCHAR" property="severityName2" />
+    <result column="severity_name_3" jdbcType="VARCHAR" property="severityName3" />
+    <result column="severity_name_4" jdbcType="VARCHAR" property="severityName4" />
+    <result column="severity_name_5" jdbcType="VARCHAR" property="severityName5" />
+    <result column="ok_period" jdbcType="INTEGER" property="okPeriod" />
+    <result column="blink_period" jdbcType="INTEGER" property="blinkPeriod" />
+    <result column="problem_unack_color" jdbcType="VARCHAR" property="problemUnackColor" />
+    <result column="problem_ack_color" jdbcType="VARCHAR" property="problemAckColor" />
+    <result column="ok_unack_color" jdbcType="VARCHAR" property="okUnackColor" />
+    <result column="ok_ack_color" jdbcType="VARCHAR" property="okAckColor" />
+    <result column="problem_unack_style" jdbcType="INTEGER" property="problemUnackStyle" />
+    <result column="problem_ack_style" jdbcType="INTEGER" property="problemAckStyle" />
+    <result column="ok_unack_style" jdbcType="INTEGER" property="okUnackStyle" />
+    <result column="ok_ack_style" jdbcType="INTEGER" property="okAckStyle" />
+    <result column="snmptrap_logging" jdbcType="INTEGER" property="snmptrapLogging" />
+    <result column="server_check_interval" jdbcType="INTEGER" property="serverCheckInterval" />
+    <result column="hk_events_mode" jdbcType="INTEGER" property="hkEventsMode" />
+    <result column="hk_events_trigger" jdbcType="INTEGER" property="hkEventsTrigger" />
+    <result column="hk_events_internal" jdbcType="INTEGER" property="hkEventsInternal" />
+    <result column="hk_events_discovery" jdbcType="INTEGER" property="hkEventsDiscovery" />
+    <result column="hk_events_autoreg" jdbcType="INTEGER" property="hkEventsAutoreg" />
+    <result column="hk_services_mode" jdbcType="INTEGER" property="hkServicesMode" />
+    <result column="hk_services" jdbcType="INTEGER" property="hkServices" />
+    <result column="hk_audit_mode" jdbcType="INTEGER" property="hkAuditMode" />
+    <result column="hk_audit" jdbcType="INTEGER" property="hkAudit" />
+    <result column="hk_sessions_mode" jdbcType="INTEGER" property="hkSessionsMode" />
+    <result column="hk_sessions" jdbcType="INTEGER" property="hkSessions" />
+    <result column="hk_history_mode" jdbcType="INTEGER" property="hkHistoryMode" />
+    <result column="hk_history_global" jdbcType="INTEGER" property="hkHistoryGlobal" />
+    <result column="hk_history" jdbcType="INTEGER" property="hkHistory" />
+    <result column="hk_trends_mode" jdbcType="INTEGER" property="hkTrendsMode" />
+    <result column="hk_trends_global" jdbcType="INTEGER" property="hkTrendsGlobal" />
+    <result column="hk_trends" jdbcType="INTEGER" property="hkTrends" />
+    <result column="default_inventory_mode" jdbcType="INTEGER" property="defaultInventoryMode" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    configid, refresh_unsupported, work_period, alert_usrgrpid, event_ack_enable, event_expire, 
+    event_show_max, default_theme, authentication_type, ldap_host, ldap_port, ldap_base_dn, 
+    ldap_bind_dn, ldap_bind_password, ldap_search_attribute, dropdown_first_entry, dropdown_first_remember, 
+    discovery_groupid, max_in_table, search_limit, severity_color_0, severity_color_1, 
+    severity_color_2, severity_color_3, severity_color_4, severity_color_5, severity_name_0, 
+    severity_name_1, severity_name_2, severity_name_3, severity_name_4, severity_name_5, 
+    ok_period, blink_period, problem_unack_color, problem_ack_color, ok_unack_color, 
+    ok_ack_color, problem_unack_style, problem_ack_style, ok_unack_style, ok_ack_style, 
+    snmptrap_logging, server_check_interval, hk_events_mode, hk_events_trigger, hk_events_internal, 
+    hk_events_discovery, hk_events_autoreg, hk_services_mode, hk_services, hk_audit_mode, 
+    hk_audit, hk_sessions_mode, hk_sessions, hk_history_mode, hk_history_global, hk_history, 
+    hk_trends_mode, hk_trends_global, hk_trends, default_inventory_mode
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from config
+    where configid = #{configid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from config
+    where configid = #{configid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.Config">
+    <!--@mbg.generated-->
+    insert into config (configid, refresh_unsupported, work_period, 
+      alert_usrgrpid, event_ack_enable, event_expire, 
+      event_show_max, default_theme, authentication_type, 
+      ldap_host, ldap_port, ldap_base_dn, 
+      ldap_bind_dn, ldap_bind_password, ldap_search_attribute, 
+      dropdown_first_entry, dropdown_first_remember, 
+      discovery_groupid, max_in_table, search_limit, 
+      severity_color_0, severity_color_1, severity_color_2, 
+      severity_color_3, severity_color_4, severity_color_5, 
+      severity_name_0, severity_name_1, severity_name_2, 
+      severity_name_3, severity_name_4, severity_name_5, 
+      ok_period, blink_period, problem_unack_color, 
+      problem_ack_color, ok_unack_color, ok_ack_color, 
+      problem_unack_style, problem_ack_style, ok_unack_style, 
+      ok_ack_style, snmptrap_logging, server_check_interval, 
+      hk_events_mode, hk_events_trigger, hk_events_internal, 
+      hk_events_discovery, hk_events_autoreg, hk_services_mode, 
+      hk_services, hk_audit_mode, hk_audit, 
+      hk_sessions_mode, hk_sessions, hk_history_mode, 
+      hk_history_global, hk_history, hk_trends_mode, 
+      hk_trends_global, hk_trends, default_inventory_mode
+      )
+    values (#{configid,jdbcType=BIGINT}, #{refreshUnsupported,jdbcType=INTEGER}, #{workPeriod,jdbcType=VARCHAR}, 
+      #{alertUsrgrpid,jdbcType=BIGINT}, #{eventAckEnable,jdbcType=INTEGER}, #{eventExpire,jdbcType=INTEGER}, 
+      #{eventShowMax,jdbcType=INTEGER}, #{defaultTheme,jdbcType=VARCHAR}, #{authenticationType,jdbcType=INTEGER}, 
+      #{ldapHost,jdbcType=VARCHAR}, #{ldapPort,jdbcType=INTEGER}, #{ldapBaseDn,jdbcType=VARCHAR}, 
+      #{ldapBindDn,jdbcType=VARCHAR}, #{ldapBindPassword,jdbcType=VARCHAR}, #{ldapSearchAttribute,jdbcType=VARCHAR}, 
+      #{dropdownFirstEntry,jdbcType=INTEGER}, #{dropdownFirstRemember,jdbcType=INTEGER}, 
+      #{discoveryGroupid,jdbcType=BIGINT}, #{maxInTable,jdbcType=INTEGER}, #{searchLimit,jdbcType=INTEGER}, 
+      #{severityColor0,jdbcType=VARCHAR}, #{severityColor1,jdbcType=VARCHAR}, #{severityColor2,jdbcType=VARCHAR}, 
+      #{severityColor3,jdbcType=VARCHAR}, #{severityColor4,jdbcType=VARCHAR}, #{severityColor5,jdbcType=VARCHAR}, 
+      #{severityName0,jdbcType=VARCHAR}, #{severityName1,jdbcType=VARCHAR}, #{severityName2,jdbcType=VARCHAR}, 
+      #{severityName3,jdbcType=VARCHAR}, #{severityName4,jdbcType=VARCHAR}, #{severityName5,jdbcType=VARCHAR}, 
+      #{okPeriod,jdbcType=INTEGER}, #{blinkPeriod,jdbcType=INTEGER}, #{problemUnackColor,jdbcType=VARCHAR}, 
+      #{problemAckColor,jdbcType=VARCHAR}, #{okUnackColor,jdbcType=VARCHAR}, #{okAckColor,jdbcType=VARCHAR}, 
+      #{problemUnackStyle,jdbcType=INTEGER}, #{problemAckStyle,jdbcType=INTEGER}, #{okUnackStyle,jdbcType=INTEGER}, 
+      #{okAckStyle,jdbcType=INTEGER}, #{snmptrapLogging,jdbcType=INTEGER}, #{serverCheckInterval,jdbcType=INTEGER}, 
+      #{hkEventsMode,jdbcType=INTEGER}, #{hkEventsTrigger,jdbcType=INTEGER}, #{hkEventsInternal,jdbcType=INTEGER}, 
+      #{hkEventsDiscovery,jdbcType=INTEGER}, #{hkEventsAutoreg,jdbcType=INTEGER}, #{hkServicesMode,jdbcType=INTEGER}, 
+      #{hkServices,jdbcType=INTEGER}, #{hkAuditMode,jdbcType=INTEGER}, #{hkAudit,jdbcType=INTEGER}, 
+      #{hkSessionsMode,jdbcType=INTEGER}, #{hkSessions,jdbcType=INTEGER}, #{hkHistoryMode,jdbcType=INTEGER}, 
+      #{hkHistoryGlobal,jdbcType=INTEGER}, #{hkHistory,jdbcType=INTEGER}, #{hkTrendsMode,jdbcType=INTEGER}, 
+      #{hkTrendsGlobal,jdbcType=INTEGER}, #{hkTrends,jdbcType=INTEGER}, #{defaultInventoryMode,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.Config">
+    <!--@mbg.generated-->
+    insert into config
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="configid != null">
+        configid,
+      </if>
+      <if test="refreshUnsupported != null">
+        refresh_unsupported,
+      </if>
+      <if test="workPeriod != null">
+        work_period,
+      </if>
+      <if test="alertUsrgrpid != null">
+        alert_usrgrpid,
+      </if>
+      <if test="eventAckEnable != null">
+        event_ack_enable,
+      </if>
+      <if test="eventExpire != null">
+        event_expire,
+      </if>
+      <if test="eventShowMax != null">
+        event_show_max,
+      </if>
+      <if test="defaultTheme != null">
+        default_theme,
+      </if>
+      <if test="authenticationType != null">
+        authentication_type,
+      </if>
+      <if test="ldapHost != null">
+        ldap_host,
+      </if>
+      <if test="ldapPort != null">
+        ldap_port,
+      </if>
+      <if test="ldapBaseDn != null">
+        ldap_base_dn,
+      </if>
+      <if test="ldapBindDn != null">
+        ldap_bind_dn,
+      </if>
+      <if test="ldapBindPassword != null">
+        ldap_bind_password,
+      </if>
+      <if test="ldapSearchAttribute != null">
+        ldap_search_attribute,
+      </if>
+      <if test="dropdownFirstEntry != null">
+        dropdown_first_entry,
+      </if>
+      <if test="dropdownFirstRemember != null">
+        dropdown_first_remember,
+      </if>
+      <if test="discoveryGroupid != null">
+        discovery_groupid,
+      </if>
+      <if test="maxInTable != null">
+        max_in_table,
+      </if>
+      <if test="searchLimit != null">
+        search_limit,
+      </if>
+      <if test="severityColor0 != null">
+        severity_color_0,
+      </if>
+      <if test="severityColor1 != null">
+        severity_color_1,
+      </if>
+      <if test="severityColor2 != null">
+        severity_color_2,
+      </if>
+      <if test="severityColor3 != null">
+        severity_color_3,
+      </if>
+      <if test="severityColor4 != null">
+        severity_color_4,
+      </if>
+      <if test="severityColor5 != null">
+        severity_color_5,
+      </if>
+      <if test="severityName0 != null">
+        severity_name_0,
+      </if>
+      <if test="severityName1 != null">
+        severity_name_1,
+      </if>
+      <if test="severityName2 != null">
+        severity_name_2,
+      </if>
+      <if test="severityName3 != null">
+        severity_name_3,
+      </if>
+      <if test="severityName4 != null">
+        severity_name_4,
+      </if>
+      <if test="severityName5 != null">
+        severity_name_5,
+      </if>
+      <if test="okPeriod != null">
+        ok_period,
+      </if>
+      <if test="blinkPeriod != null">
+        blink_period,
+      </if>
+      <if test="problemUnackColor != null">
+        problem_unack_color,
+      </if>
+      <if test="problemAckColor != null">
+        problem_ack_color,
+      </if>
+      <if test="okUnackColor != null">
+        ok_unack_color,
+      </if>
+      <if test="okAckColor != null">
+        ok_ack_color,
+      </if>
+      <if test="problemUnackStyle != null">
+        problem_unack_style,
+      </if>
+      <if test="problemAckStyle != null">
+        problem_ack_style,
+      </if>
+      <if test="okUnackStyle != null">
+        ok_unack_style,
+      </if>
+      <if test="okAckStyle != null">
+        ok_ack_style,
+      </if>
+      <if test="snmptrapLogging != null">
+        snmptrap_logging,
+      </if>
+      <if test="serverCheckInterval != null">
+        server_check_interval,
+      </if>
+      <if test="hkEventsMode != null">
+        hk_events_mode,
+      </if>
+      <if test="hkEventsTrigger != null">
+        hk_events_trigger,
+      </if>
+      <if test="hkEventsInternal != null">
+        hk_events_internal,
+      </if>
+      <if test="hkEventsDiscovery != null">
+        hk_events_discovery,
+      </if>
+      <if test="hkEventsAutoreg != null">
+        hk_events_autoreg,
+      </if>
+      <if test="hkServicesMode != null">
+        hk_services_mode,
+      </if>
+      <if test="hkServices != null">
+        hk_services,
+      </if>
+      <if test="hkAuditMode != null">
+        hk_audit_mode,
+      </if>
+      <if test="hkAudit != null">
+        hk_audit,
+      </if>
+      <if test="hkSessionsMode != null">
+        hk_sessions_mode,
+      </if>
+      <if test="hkSessions != null">
+        hk_sessions,
+      </if>
+      <if test="hkHistoryMode != null">
+        hk_history_mode,
+      </if>
+      <if test="hkHistoryGlobal != null">
+        hk_history_global,
+      </if>
+      <if test="hkHistory != null">
+        hk_history,
+      </if>
+      <if test="hkTrendsMode != null">
+        hk_trends_mode,
+      </if>
+      <if test="hkTrendsGlobal != null">
+        hk_trends_global,
+      </if>
+      <if test="hkTrends != null">
+        hk_trends,
+      </if>
+      <if test="defaultInventoryMode != null">
+        default_inventory_mode,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="configid != null">
+        #{configid,jdbcType=BIGINT},
+      </if>
+      <if test="refreshUnsupported != null">
+        #{refreshUnsupported,jdbcType=INTEGER},
+      </if>
+      <if test="workPeriod != null">
+        #{workPeriod,jdbcType=VARCHAR},
+      </if>
+      <if test="alertUsrgrpid != null">
+        #{alertUsrgrpid,jdbcType=BIGINT},
+      </if>
+      <if test="eventAckEnable != null">
+        #{eventAckEnable,jdbcType=INTEGER},
+      </if>
+      <if test="eventExpire != null">
+        #{eventExpire,jdbcType=INTEGER},
+      </if>
+      <if test="eventShowMax != null">
+        #{eventShowMax,jdbcType=INTEGER},
+      </if>
+      <if test="defaultTheme != null">
+        #{defaultTheme,jdbcType=VARCHAR},
+      </if>
+      <if test="authenticationType != null">
+        #{authenticationType,jdbcType=INTEGER},
+      </if>
+      <if test="ldapHost != null">
+        #{ldapHost,jdbcType=VARCHAR},
+      </if>
+      <if test="ldapPort != null">
+        #{ldapPort,jdbcType=INTEGER},
+      </if>
+      <if test="ldapBaseDn != null">
+        #{ldapBaseDn,jdbcType=VARCHAR},
+      </if>
+      <if test="ldapBindDn != null">
+        #{ldapBindDn,jdbcType=VARCHAR},
+      </if>
+      <if test="ldapBindPassword != null">
+        #{ldapBindPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="ldapSearchAttribute != null">
+        #{ldapSearchAttribute,jdbcType=VARCHAR},
+      </if>
+      <if test="dropdownFirstEntry != null">
+        #{dropdownFirstEntry,jdbcType=INTEGER},
+      </if>
+      <if test="dropdownFirstRemember != null">
+        #{dropdownFirstRemember,jdbcType=INTEGER},
+      </if>
+      <if test="discoveryGroupid != null">
+        #{discoveryGroupid,jdbcType=BIGINT},
+      </if>
+      <if test="maxInTable != null">
+        #{maxInTable,jdbcType=INTEGER},
+      </if>
+      <if test="searchLimit != null">
+        #{searchLimit,jdbcType=INTEGER},
+      </if>
+      <if test="severityColor0 != null">
+        #{severityColor0,jdbcType=VARCHAR},
+      </if>
+      <if test="severityColor1 != null">
+        #{severityColor1,jdbcType=VARCHAR},
+      </if>
+      <if test="severityColor2 != null">
+        #{severityColor2,jdbcType=VARCHAR},
+      </if>
+      <if test="severityColor3 != null">
+        #{severityColor3,jdbcType=VARCHAR},
+      </if>
+      <if test="severityColor4 != null">
+        #{severityColor4,jdbcType=VARCHAR},
+      </if>
+      <if test="severityColor5 != null">
+        #{severityColor5,jdbcType=VARCHAR},
+      </if>
+      <if test="severityName0 != null">
+        #{severityName0,jdbcType=VARCHAR},
+      </if>
+      <if test="severityName1 != null">
+        #{severityName1,jdbcType=VARCHAR},
+      </if>
+      <if test="severityName2 != null">
+        #{severityName2,jdbcType=VARCHAR},
+      </if>
+      <if test="severityName3 != null">
+        #{severityName3,jdbcType=VARCHAR},
+      </if>
+      <if test="severityName4 != null">
+        #{severityName4,jdbcType=VARCHAR},
+      </if>
+      <if test="severityName5 != null">
+        #{severityName5,jdbcType=VARCHAR},
+      </if>
+      <if test="okPeriod != null">
+        #{okPeriod,jdbcType=INTEGER},
+      </if>
+      <if test="blinkPeriod != null">
+        #{blinkPeriod,jdbcType=INTEGER},
+      </if>
+      <if test="problemUnackColor != null">
+        #{problemUnackColor,jdbcType=VARCHAR},
+      </if>
+      <if test="problemAckColor != null">
+        #{problemAckColor,jdbcType=VARCHAR},
+      </if>
+      <if test="okUnackColor != null">
+        #{okUnackColor,jdbcType=VARCHAR},
+      </if>
+      <if test="okAckColor != null">
+        #{okAckColor,jdbcType=VARCHAR},
+      </if>
+      <if test="problemUnackStyle != null">
+        #{problemUnackStyle,jdbcType=INTEGER},
+      </if>
+      <if test="problemAckStyle != null">
+        #{problemAckStyle,jdbcType=INTEGER},
+      </if>
+      <if test="okUnackStyle != null">
+        #{okUnackStyle,jdbcType=INTEGER},
+      </if>
+      <if test="okAckStyle != null">
+        #{okAckStyle,jdbcType=INTEGER},
+      </if>
+      <if test="snmptrapLogging != null">
+        #{snmptrapLogging,jdbcType=INTEGER},
+      </if>
+      <if test="serverCheckInterval != null">
+        #{serverCheckInterval,jdbcType=INTEGER},
+      </if>
+      <if test="hkEventsMode != null">
+        #{hkEventsMode,jdbcType=INTEGER},
+      </if>
+      <if test="hkEventsTrigger != null">
+        #{hkEventsTrigger,jdbcType=INTEGER},
+      </if>
+      <if test="hkEventsInternal != null">
+        #{hkEventsInternal,jdbcType=INTEGER},
+      </if>
+      <if test="hkEventsDiscovery != null">
+        #{hkEventsDiscovery,jdbcType=INTEGER},
+      </if>
+      <if test="hkEventsAutoreg != null">
+        #{hkEventsAutoreg,jdbcType=INTEGER},
+      </if>
+      <if test="hkServicesMode != null">
+        #{hkServicesMode,jdbcType=INTEGER},
+      </if>
+      <if test="hkServices != null">
+        #{hkServices,jdbcType=INTEGER},
+      </if>
+      <if test="hkAuditMode != null">
+        #{hkAuditMode,jdbcType=INTEGER},
+      </if>
+      <if test="hkAudit != null">
+        #{hkAudit,jdbcType=INTEGER},
+      </if>
+      <if test="hkSessionsMode != null">
+        #{hkSessionsMode,jdbcType=INTEGER},
+      </if>
+      <if test="hkSessions != null">
+        #{hkSessions,jdbcType=INTEGER},
+      </if>
+      <if test="hkHistoryMode != null">
+        #{hkHistoryMode,jdbcType=INTEGER},
+      </if>
+      <if test="hkHistoryGlobal != null">
+        #{hkHistoryGlobal,jdbcType=INTEGER},
+      </if>
+      <if test="hkHistory != null">
+        #{hkHistory,jdbcType=INTEGER},
+      </if>
+      <if test="hkTrendsMode != null">
+        #{hkTrendsMode,jdbcType=INTEGER},
+      </if>
+      <if test="hkTrendsGlobal != null">
+        #{hkTrendsGlobal,jdbcType=INTEGER},
+      </if>
+      <if test="hkTrends != null">
+        #{hkTrends,jdbcType=INTEGER},
+      </if>
+      <if test="defaultInventoryMode != null">
+        #{defaultInventoryMode,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.Config">
+    <!--@mbg.generated-->
+    update config
+    <set>
+      <if test="refreshUnsupported != null">
+        refresh_unsupported = #{refreshUnsupported,jdbcType=INTEGER},
+      </if>
+      <if test="workPeriod != null">
+        work_period = #{workPeriod,jdbcType=VARCHAR},
+      </if>
+      <if test="alertUsrgrpid != null">
+        alert_usrgrpid = #{alertUsrgrpid,jdbcType=BIGINT},
+      </if>
+      <if test="eventAckEnable != null">
+        event_ack_enable = #{eventAckEnable,jdbcType=INTEGER},
+      </if>
+      <if test="eventExpire != null">
+        event_expire = #{eventExpire,jdbcType=INTEGER},
+      </if>
+      <if test="eventShowMax != null">
+        event_show_max = #{eventShowMax,jdbcType=INTEGER},
+      </if>
+      <if test="defaultTheme != null">
+        default_theme = #{defaultTheme,jdbcType=VARCHAR},
+      </if>
+      <if test="authenticationType != null">
+        authentication_type = #{authenticationType,jdbcType=INTEGER},
+      </if>
+      <if test="ldapHost != null">
+        ldap_host = #{ldapHost,jdbcType=VARCHAR},
+      </if>
+      <if test="ldapPort != null">
+        ldap_port = #{ldapPort,jdbcType=INTEGER},
+      </if>
+      <if test="ldapBaseDn != null">
+        ldap_base_dn = #{ldapBaseDn,jdbcType=VARCHAR},
+      </if>
+      <if test="ldapBindDn != null">
+        ldap_bind_dn = #{ldapBindDn,jdbcType=VARCHAR},
+      </if>
+      <if test="ldapBindPassword != null">
+        ldap_bind_password = #{ldapBindPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="ldapSearchAttribute != null">
+        ldap_search_attribute = #{ldapSearchAttribute,jdbcType=VARCHAR},
+      </if>
+      <if test="dropdownFirstEntry != null">
+        dropdown_first_entry = #{dropdownFirstEntry,jdbcType=INTEGER},
+      </if>
+      <if test="dropdownFirstRemember != null">
+        dropdown_first_remember = #{dropdownFirstRemember,jdbcType=INTEGER},
+      </if>
+      <if test="discoveryGroupid != null">
+        discovery_groupid = #{discoveryGroupid,jdbcType=BIGINT},
+      </if>
+      <if test="maxInTable != null">
+        max_in_table = #{maxInTable,jdbcType=INTEGER},
+      </if>
+      <if test="searchLimit != null">
+        search_limit = #{searchLimit,jdbcType=INTEGER},
+      </if>
+      <if test="severityColor0 != null">
+        severity_color_0 = #{severityColor0,jdbcType=VARCHAR},
+      </if>
+      <if test="severityColor1 != null">
+        severity_color_1 = #{severityColor1,jdbcType=VARCHAR},
+      </if>
+      <if test="severityColor2 != null">
+        severity_color_2 = #{severityColor2,jdbcType=VARCHAR},
+      </if>
+      <if test="severityColor3 != null">
+        severity_color_3 = #{severityColor3,jdbcType=VARCHAR},
+      </if>
+      <if test="severityColor4 != null">
+        severity_color_4 = #{severityColor4,jdbcType=VARCHAR},
+      </if>
+      <if test="severityColor5 != null">
+        severity_color_5 = #{severityColor5,jdbcType=VARCHAR},
+      </if>
+      <if test="severityName0 != null">
+        severity_name_0 = #{severityName0,jdbcType=VARCHAR},
+      </if>
+      <if test="severityName1 != null">
+        severity_name_1 = #{severityName1,jdbcType=VARCHAR},
+      </if>
+      <if test="severityName2 != null">
+        severity_name_2 = #{severityName2,jdbcType=VARCHAR},
+      </if>
+      <if test="severityName3 != null">
+        severity_name_3 = #{severityName3,jdbcType=VARCHAR},
+      </if>
+      <if test="severityName4 != null">
+        severity_name_4 = #{severityName4,jdbcType=VARCHAR},
+      </if>
+      <if test="severityName5 != null">
+        severity_name_5 = #{severityName5,jdbcType=VARCHAR},
+      </if>
+      <if test="okPeriod != null">
+        ok_period = #{okPeriod,jdbcType=INTEGER},
+      </if>
+      <if test="blinkPeriod != null">
+        blink_period = #{blinkPeriod,jdbcType=INTEGER},
+      </if>
+      <if test="problemUnackColor != null">
+        problem_unack_color = #{problemUnackColor,jdbcType=VARCHAR},
+      </if>
+      <if test="problemAckColor != null">
+        problem_ack_color = #{problemAckColor,jdbcType=VARCHAR},
+      </if>
+      <if test="okUnackColor != null">
+        ok_unack_color = #{okUnackColor,jdbcType=VARCHAR},
+      </if>
+      <if test="okAckColor != null">
+        ok_ack_color = #{okAckColor,jdbcType=VARCHAR},
+      </if>
+      <if test="problemUnackStyle != null">
+        problem_unack_style = #{problemUnackStyle,jdbcType=INTEGER},
+      </if>
+      <if test="problemAckStyle != null">
+        problem_ack_style = #{problemAckStyle,jdbcType=INTEGER},
+      </if>
+      <if test="okUnackStyle != null">
+        ok_unack_style = #{okUnackStyle,jdbcType=INTEGER},
+      </if>
+      <if test="okAckStyle != null">
+        ok_ack_style = #{okAckStyle,jdbcType=INTEGER},
+      </if>
+      <if test="snmptrapLogging != null">
+        snmptrap_logging = #{snmptrapLogging,jdbcType=INTEGER},
+      </if>
+      <if test="serverCheckInterval != null">
+        server_check_interval = #{serverCheckInterval,jdbcType=INTEGER},
+      </if>
+      <if test="hkEventsMode != null">
+        hk_events_mode = #{hkEventsMode,jdbcType=INTEGER},
+      </if>
+      <if test="hkEventsTrigger != null">
+        hk_events_trigger = #{hkEventsTrigger,jdbcType=INTEGER},
+      </if>
+      <if test="hkEventsInternal != null">
+        hk_events_internal = #{hkEventsInternal,jdbcType=INTEGER},
+      </if>
+      <if test="hkEventsDiscovery != null">
+        hk_events_discovery = #{hkEventsDiscovery,jdbcType=INTEGER},
+      </if>
+      <if test="hkEventsAutoreg != null">
+        hk_events_autoreg = #{hkEventsAutoreg,jdbcType=INTEGER},
+      </if>
+      <if test="hkServicesMode != null">
+        hk_services_mode = #{hkServicesMode,jdbcType=INTEGER},
+      </if>
+      <if test="hkServices != null">
+        hk_services = #{hkServices,jdbcType=INTEGER},
+      </if>
+      <if test="hkAuditMode != null">
+        hk_audit_mode = #{hkAuditMode,jdbcType=INTEGER},
+      </if>
+      <if test="hkAudit != null">
+        hk_audit = #{hkAudit,jdbcType=INTEGER},
+      </if>
+      <if test="hkSessionsMode != null">
+        hk_sessions_mode = #{hkSessionsMode,jdbcType=INTEGER},
+      </if>
+      <if test="hkSessions != null">
+        hk_sessions = #{hkSessions,jdbcType=INTEGER},
+      </if>
+      <if test="hkHistoryMode != null">
+        hk_history_mode = #{hkHistoryMode,jdbcType=INTEGER},
+      </if>
+      <if test="hkHistoryGlobal != null">
+        hk_history_global = #{hkHistoryGlobal,jdbcType=INTEGER},
+      </if>
+      <if test="hkHistory != null">
+        hk_history = #{hkHistory,jdbcType=INTEGER},
+      </if>
+      <if test="hkTrendsMode != null">
+        hk_trends_mode = #{hkTrendsMode,jdbcType=INTEGER},
+      </if>
+      <if test="hkTrendsGlobal != null">
+        hk_trends_global = #{hkTrendsGlobal,jdbcType=INTEGER},
+      </if>
+      <if test="hkTrends != null">
+        hk_trends = #{hkTrends,jdbcType=INTEGER},
+      </if>
+      <if test="defaultInventoryMode != null">
+        default_inventory_mode = #{defaultInventoryMode,jdbcType=INTEGER},
+      </if>
+    </set>
+    where configid = #{configid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.Config">
+    <!--@mbg.generated-->
+    update config
+    set refresh_unsupported = #{refreshUnsupported,jdbcType=INTEGER},
+      work_period = #{workPeriod,jdbcType=VARCHAR},
+      alert_usrgrpid = #{alertUsrgrpid,jdbcType=BIGINT},
+      event_ack_enable = #{eventAckEnable,jdbcType=INTEGER},
+      event_expire = #{eventExpire,jdbcType=INTEGER},
+      event_show_max = #{eventShowMax,jdbcType=INTEGER},
+      default_theme = #{defaultTheme,jdbcType=VARCHAR},
+      authentication_type = #{authenticationType,jdbcType=INTEGER},
+      ldap_host = #{ldapHost,jdbcType=VARCHAR},
+      ldap_port = #{ldapPort,jdbcType=INTEGER},
+      ldap_base_dn = #{ldapBaseDn,jdbcType=VARCHAR},
+      ldap_bind_dn = #{ldapBindDn,jdbcType=VARCHAR},
+      ldap_bind_password = #{ldapBindPassword,jdbcType=VARCHAR},
+      ldap_search_attribute = #{ldapSearchAttribute,jdbcType=VARCHAR},
+      dropdown_first_entry = #{dropdownFirstEntry,jdbcType=INTEGER},
+      dropdown_first_remember = #{dropdownFirstRemember,jdbcType=INTEGER},
+      discovery_groupid = #{discoveryGroupid,jdbcType=BIGINT},
+      max_in_table = #{maxInTable,jdbcType=INTEGER},
+      search_limit = #{searchLimit,jdbcType=INTEGER},
+      severity_color_0 = #{severityColor0,jdbcType=VARCHAR},
+      severity_color_1 = #{severityColor1,jdbcType=VARCHAR},
+      severity_color_2 = #{severityColor2,jdbcType=VARCHAR},
+      severity_color_3 = #{severityColor3,jdbcType=VARCHAR},
+      severity_color_4 = #{severityColor4,jdbcType=VARCHAR},
+      severity_color_5 = #{severityColor5,jdbcType=VARCHAR},
+      severity_name_0 = #{severityName0,jdbcType=VARCHAR},
+      severity_name_1 = #{severityName1,jdbcType=VARCHAR},
+      severity_name_2 = #{severityName2,jdbcType=VARCHAR},
+      severity_name_3 = #{severityName3,jdbcType=VARCHAR},
+      severity_name_4 = #{severityName4,jdbcType=VARCHAR},
+      severity_name_5 = #{severityName5,jdbcType=VARCHAR},
+      ok_period = #{okPeriod,jdbcType=INTEGER},
+      blink_period = #{blinkPeriod,jdbcType=INTEGER},
+      problem_unack_color = #{problemUnackColor,jdbcType=VARCHAR},
+      problem_ack_color = #{problemAckColor,jdbcType=VARCHAR},
+      ok_unack_color = #{okUnackColor,jdbcType=VARCHAR},
+      ok_ack_color = #{okAckColor,jdbcType=VARCHAR},
+      problem_unack_style = #{problemUnackStyle,jdbcType=INTEGER},
+      problem_ack_style = #{problemAckStyle,jdbcType=INTEGER},
+      ok_unack_style = #{okUnackStyle,jdbcType=INTEGER},
+      ok_ack_style = #{okAckStyle,jdbcType=INTEGER},
+      snmptrap_logging = #{snmptrapLogging,jdbcType=INTEGER},
+      server_check_interval = #{serverCheckInterval,jdbcType=INTEGER},
+      hk_events_mode = #{hkEventsMode,jdbcType=INTEGER},
+      hk_events_trigger = #{hkEventsTrigger,jdbcType=INTEGER},
+      hk_events_internal = #{hkEventsInternal,jdbcType=INTEGER},
+      hk_events_discovery = #{hkEventsDiscovery,jdbcType=INTEGER},
+      hk_events_autoreg = #{hkEventsAutoreg,jdbcType=INTEGER},
+      hk_services_mode = #{hkServicesMode,jdbcType=INTEGER},
+      hk_services = #{hkServices,jdbcType=INTEGER},
+      hk_audit_mode = #{hkAuditMode,jdbcType=INTEGER},
+      hk_audit = #{hkAudit,jdbcType=INTEGER},
+      hk_sessions_mode = #{hkSessionsMode,jdbcType=INTEGER},
+      hk_sessions = #{hkSessions,jdbcType=INTEGER},
+      hk_history_mode = #{hkHistoryMode,jdbcType=INTEGER},
+      hk_history_global = #{hkHistoryGlobal,jdbcType=INTEGER},
+      hk_history = #{hkHistory,jdbcType=INTEGER},
+      hk_trends_mode = #{hkTrendsMode,jdbcType=INTEGER},
+      hk_trends_global = #{hkTrendsGlobal,jdbcType=INTEGER},
+      hk_trends = #{hkTrends,jdbcType=INTEGER},
+      default_inventory_mode = #{defaultInventoryMode,jdbcType=INTEGER}
+    where configid = #{configid,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.ConditionsMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.Conditions">
+    <!--@mbg.generated-->
+    <id column="conditionid" jdbcType="BIGINT" property="conditionid" />
+    <result column="actionid" jdbcType="BIGINT" property="actionid" />
+    <result column="conditiontype" jdbcType="INTEGER" property="conditiontype" />
+    <result column="operator" jdbcType="INTEGER" property="operator" />
+    <result column="value" jdbcType="VARCHAR" property="value" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    conditionid, actionid, conditiontype, `operator`, `value`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from conditions
+    where conditionid = #{conditionid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from conditions
+    where conditionid = #{conditionid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.Conditions">
+    <!--@mbg.generated-->
+    insert into conditions (conditionid, actionid, conditiontype, 
+      `operator`, `value`)
+    values (#{conditionid,jdbcType=BIGINT}, #{actionid,jdbcType=BIGINT}, #{conditiontype,jdbcType=INTEGER}, 
+      #{operator,jdbcType=INTEGER}, #{value,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.Conditions">
+    <!--@mbg.generated-->
+    insert into conditions
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="conditionid != null">
+        conditionid,
+      </if>
+      <if test="actionid != null">
+        actionid,
+      </if>
+      <if test="conditiontype != null">
+        conditiontype,
+      </if>
+      <if test="operator != null">
+        `operator`,
+      </if>
+      <if test="value != null">
+        `value`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="conditionid != null">
+        #{conditionid,jdbcType=BIGINT},
+      </if>
+      <if test="actionid != null">
+        #{actionid,jdbcType=BIGINT},
+      </if>
+      <if test="conditiontype != null">
+        #{conditiontype,jdbcType=INTEGER},
+      </if>
+      <if test="operator != null">
+        #{operator,jdbcType=INTEGER},
+      </if>
+      <if test="value != null">
+        #{value,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.Conditions">
+    <!--@mbg.generated-->
+    update conditions
+    <set>
+      <if test="actionid != null">
+        actionid = #{actionid,jdbcType=BIGINT},
+      </if>
+      <if test="conditiontype != null">
+        conditiontype = #{conditiontype,jdbcType=INTEGER},
+      </if>
+      <if test="operator != null">
+        `operator` = #{operator,jdbcType=INTEGER},
+      </if>
+      <if test="value != null">
+        `value` = #{value,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where conditionid = #{conditionid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.Conditions">
+    <!--@mbg.generated-->
+    update conditions
+    set actionid = #{actionid,jdbcType=BIGINT},
+      conditiontype = #{conditiontype,jdbcType=INTEGER},
+      `operator` = #{operator,jdbcType=INTEGER},
+      `value` = #{value,jdbcType=VARCHAR}
+    where conditionid = #{conditionid,jdbcType=BIGINT}
+  </update>
+</mapper>

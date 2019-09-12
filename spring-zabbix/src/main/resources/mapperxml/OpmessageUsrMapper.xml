@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.OpmessageUsrMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.OpmessageUsr">
+    <!--@mbg.generated-->
+    <id column="opmessage_usrid" jdbcType="BIGINT" property="opmessageUsrid" />
+    <result column="operationid" jdbcType="BIGINT" property="operationid" />
+    <result column="userid" jdbcType="BIGINT" property="userid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    opmessage_usrid, operationid, userid
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from opmessage_usr
+    where opmessage_usrid = #{opmessageUsrid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from opmessage_usr
+    where opmessage_usrid = #{opmessageUsrid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.OpmessageUsr">
+    <!--@mbg.generated-->
+    insert into opmessage_usr (opmessage_usrid, operationid, userid
+      )
+    values (#{opmessageUsrid,jdbcType=BIGINT}, #{operationid,jdbcType=BIGINT}, #{userid,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.OpmessageUsr">
+    <!--@mbg.generated-->
+    insert into opmessage_usr
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="opmessageUsrid != null">
+        opmessage_usrid,
+      </if>
+      <if test="operationid != null">
+        operationid,
+      </if>
+      <if test="userid != null">
+        userid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="opmessageUsrid != null">
+        #{opmessageUsrid,jdbcType=BIGINT},
+      </if>
+      <if test="operationid != null">
+        #{operationid,jdbcType=BIGINT},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.OpmessageUsr">
+    <!--@mbg.generated-->
+    update opmessage_usr
+    <set>
+      <if test="operationid != null">
+        operationid = #{operationid,jdbcType=BIGINT},
+      </if>
+      <if test="userid != null">
+        userid = #{userid,jdbcType=BIGINT},
+      </if>
+    </set>
+    where opmessage_usrid = #{opmessageUsrid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.OpmessageUsr">
+    <!--@mbg.generated-->
+    update opmessage_usr
+    set operationid = #{operationid,jdbcType=BIGINT},
+      userid = #{userid,jdbcType=BIGINT}
+    where opmessage_usrid = #{opmessageUsrid,jdbcType=BIGINT}
+  </update>
+</mapper>

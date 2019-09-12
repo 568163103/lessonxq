@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.ProfilesMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.Profiles">
+    <!--@mbg.generated-->
+    <id column="profileid" jdbcType="BIGINT" property="profileid" />
+    <result column="userid" jdbcType="BIGINT" property="userid" />
+    <result column="idx" jdbcType="VARCHAR" property="idx" />
+    <result column="idx2" jdbcType="BIGINT" property="idx2" />
+    <result column="value_id" jdbcType="BIGINT" property="valueId" />
+    <result column="value_int" jdbcType="INTEGER" property="valueInt" />
+    <result column="value_str" jdbcType="VARCHAR" property="valueStr" />
+    <result column="source" jdbcType="VARCHAR" property="source" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    profileid, userid, idx, idx2, value_id, value_int, value_str, `source`, `type`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from profiles
+    where profileid = #{profileid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from profiles
+    where profileid = #{profileid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.Profiles">
+    <!--@mbg.generated-->
+    insert into profiles (profileid, userid, idx, 
+      idx2, value_id, value_int, 
+      value_str, `source`, `type`
+      )
+    values (#{profileid,jdbcType=BIGINT}, #{userid,jdbcType=BIGINT}, #{idx,jdbcType=VARCHAR}, 
+      #{idx2,jdbcType=BIGINT}, #{valueId,jdbcType=BIGINT}, #{valueInt,jdbcType=INTEGER}, 
+      #{valueStr,jdbcType=VARCHAR}, #{source,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.Profiles">
+    <!--@mbg.generated-->
+    insert into profiles
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="profileid != null">
+        profileid,
+      </if>
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="idx != null">
+        idx,
+      </if>
+      <if test="idx2 != null">
+        idx2,
+      </if>
+      <if test="valueId != null">
+        value_id,
+      </if>
+      <if test="valueInt != null">
+        value_int,
+      </if>
+      <if test="valueStr != null">
+        value_str,
+      </if>
+      <if test="source != null">
+        `source`,
+      </if>
+      <if test="type != null">
+        `type`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="profileid != null">
+        #{profileid,jdbcType=BIGINT},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=BIGINT},
+      </if>
+      <if test="idx != null">
+        #{idx,jdbcType=VARCHAR},
+      </if>
+      <if test="idx2 != null">
+        #{idx2,jdbcType=BIGINT},
+      </if>
+      <if test="valueId != null">
+        #{valueId,jdbcType=BIGINT},
+      </if>
+      <if test="valueInt != null">
+        #{valueInt,jdbcType=INTEGER},
+      </if>
+      <if test="valueStr != null">
+        #{valueStr,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.Profiles">
+    <!--@mbg.generated-->
+    update profiles
+    <set>
+      <if test="userid != null">
+        userid = #{userid,jdbcType=BIGINT},
+      </if>
+      <if test="idx != null">
+        idx = #{idx,jdbcType=VARCHAR},
+      </if>
+      <if test="idx2 != null">
+        idx2 = #{idx2,jdbcType=BIGINT},
+      </if>
+      <if test="valueId != null">
+        value_id = #{valueId,jdbcType=BIGINT},
+      </if>
+      <if test="valueInt != null">
+        value_int = #{valueInt,jdbcType=INTEGER},
+      </if>
+      <if test="valueStr != null">
+        value_str = #{valueStr,jdbcType=VARCHAR},
+      </if>
+      <if test="source != null">
+        `source` = #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        `type` = #{type,jdbcType=INTEGER},
+      </if>
+    </set>
+    where profileid = #{profileid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.Profiles">
+    <!--@mbg.generated-->
+    update profiles
+    set userid = #{userid,jdbcType=BIGINT},
+      idx = #{idx,jdbcType=VARCHAR},
+      idx2 = #{idx2,jdbcType=BIGINT},
+      value_id = #{valueId,jdbcType=BIGINT},
+      value_int = #{valueInt,jdbcType=INTEGER},
+      value_str = #{valueStr,jdbcType=VARCHAR},
+      `source` = #{source,jdbcType=VARCHAR},
+      `type` = #{type,jdbcType=INTEGER}
+    where profileid = #{profileid,jdbcType=BIGINT}
+  </update>
+</mapper>

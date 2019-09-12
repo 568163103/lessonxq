@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.SysmapsLinksMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.SysmapsLinks">
+    <!--@mbg.generated-->
+    <id column="linkid" jdbcType="BIGINT" property="linkid" />
+    <result column="sysmapid" jdbcType="BIGINT" property="sysmapid" />
+    <result column="selementid1" jdbcType="BIGINT" property="selementid1" />
+    <result column="selementid2" jdbcType="BIGINT" property="selementid2" />
+    <result column="drawtype" jdbcType="INTEGER" property="drawtype" />
+    <result column="color" jdbcType="VARCHAR" property="color" />
+    <result column="label" jdbcType="VARCHAR" property="label" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    linkid, sysmapid, selementid1, selementid2, drawtype, color, `label`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from sysmaps_links
+    where linkid = #{linkid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from sysmaps_links
+    where linkid = #{linkid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.SysmapsLinks">
+    <!--@mbg.generated-->
+    insert into sysmaps_links (linkid, sysmapid, selementid1, 
+      selementid2, drawtype, color, 
+      `label`)
+    values (#{linkid,jdbcType=BIGINT}, #{sysmapid,jdbcType=BIGINT}, #{selementid1,jdbcType=BIGINT}, 
+      #{selementid2,jdbcType=BIGINT}, #{drawtype,jdbcType=INTEGER}, #{color,jdbcType=VARCHAR}, 
+      #{label,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.SysmapsLinks">
+    <!--@mbg.generated-->
+    insert into sysmaps_links
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="linkid != null">
+        linkid,
+      </if>
+      <if test="sysmapid != null">
+        sysmapid,
+      </if>
+      <if test="selementid1 != null">
+        selementid1,
+      </if>
+      <if test="selementid2 != null">
+        selementid2,
+      </if>
+      <if test="drawtype != null">
+        drawtype,
+      </if>
+      <if test="color != null">
+        color,
+      </if>
+      <if test="label != null">
+        `label`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="linkid != null">
+        #{linkid,jdbcType=BIGINT},
+      </if>
+      <if test="sysmapid != null">
+        #{sysmapid,jdbcType=BIGINT},
+      </if>
+      <if test="selementid1 != null">
+        #{selementid1,jdbcType=BIGINT},
+      </if>
+      <if test="selementid2 != null">
+        #{selementid2,jdbcType=BIGINT},
+      </if>
+      <if test="drawtype != null">
+        #{drawtype,jdbcType=INTEGER},
+      </if>
+      <if test="color != null">
+        #{color,jdbcType=VARCHAR},
+      </if>
+      <if test="label != null">
+        #{label,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.SysmapsLinks">
+    <!--@mbg.generated-->
+    update sysmaps_links
+    <set>
+      <if test="sysmapid != null">
+        sysmapid = #{sysmapid,jdbcType=BIGINT},
+      </if>
+      <if test="selementid1 != null">
+        selementid1 = #{selementid1,jdbcType=BIGINT},
+      </if>
+      <if test="selementid2 != null">
+        selementid2 = #{selementid2,jdbcType=BIGINT},
+      </if>
+      <if test="drawtype != null">
+        drawtype = #{drawtype,jdbcType=INTEGER},
+      </if>
+      <if test="color != null">
+        color = #{color,jdbcType=VARCHAR},
+      </if>
+      <if test="label != null">
+        `label` = #{label,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where linkid = #{linkid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.SysmapsLinks">
+    <!--@mbg.generated-->
+    update sysmaps_links
+    set sysmapid = #{sysmapid,jdbcType=BIGINT},
+      selementid1 = #{selementid1,jdbcType=BIGINT},
+      selementid2 = #{selementid2,jdbcType=BIGINT},
+      drawtype = #{drawtype,jdbcType=INTEGER},
+      color = #{color,jdbcType=VARCHAR},
+      `label` = #{label,jdbcType=VARCHAR}
+    where linkid = #{linkid,jdbcType=BIGINT}
+  </update>
+</mapper>

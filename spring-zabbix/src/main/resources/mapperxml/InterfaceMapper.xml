@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.InterfaceMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.Interface">
+    <!--@mbg.generated-->
+    <id column="interfaceid" jdbcType="BIGINT" property="interfaceid" />
+    <result column="hostid" jdbcType="BIGINT" property="hostid" />
+    <result column="main" jdbcType="INTEGER" property="main" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="useip" jdbcType="INTEGER" property="useip" />
+    <result column="ip" jdbcType="VARCHAR" property="ip" />
+    <result column="dns" jdbcType="VARCHAR" property="dns" />
+    <result column="port" jdbcType="VARCHAR" property="port" />
+    <result column="bulk" jdbcType="INTEGER" property="bulk" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    interfaceid, hostid, main, `type`, useip, ip, dns, port, `bulk`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from interface
+    where interfaceid = #{interfaceid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from interface
+    where interfaceid = #{interfaceid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.Interface">
+    <!--@mbg.generated-->
+    insert into interface (interfaceid, hostid, main, 
+      `type`, useip, ip, dns, 
+      port, `bulk`)
+    values (#{interfaceid,jdbcType=BIGINT}, #{hostid,jdbcType=BIGINT}, #{main,jdbcType=INTEGER}, 
+      #{type,jdbcType=INTEGER}, #{useip,jdbcType=INTEGER}, #{ip,jdbcType=VARCHAR}, #{dns,jdbcType=VARCHAR}, 
+      #{port,jdbcType=VARCHAR}, #{bulk,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.Interface">
+    <!--@mbg.generated-->
+    insert into interface
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="interfaceid != null">
+        interfaceid,
+      </if>
+      <if test="hostid != null">
+        hostid,
+      </if>
+      <if test="main != null">
+        main,
+      </if>
+      <if test="type != null">
+        `type`,
+      </if>
+      <if test="useip != null">
+        useip,
+      </if>
+      <if test="ip != null">
+        ip,
+      </if>
+      <if test="dns != null">
+        dns,
+      </if>
+      <if test="port != null">
+        port,
+      </if>
+      <if test="bulk != null">
+        `bulk`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="interfaceid != null">
+        #{interfaceid,jdbcType=BIGINT},
+      </if>
+      <if test="hostid != null">
+        #{hostid,jdbcType=BIGINT},
+      </if>
+      <if test="main != null">
+        #{main,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="useip != null">
+        #{useip,jdbcType=INTEGER},
+      </if>
+      <if test="ip != null">
+        #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="dns != null">
+        #{dns,jdbcType=VARCHAR},
+      </if>
+      <if test="port != null">
+        #{port,jdbcType=VARCHAR},
+      </if>
+      <if test="bulk != null">
+        #{bulk,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.Interface">
+    <!--@mbg.generated-->
+    update interface
+    <set>
+      <if test="hostid != null">
+        hostid = #{hostid,jdbcType=BIGINT},
+      </if>
+      <if test="main != null">
+        main = #{main,jdbcType=INTEGER},
+      </if>
+      <if test="type != null">
+        `type` = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="useip != null">
+        useip = #{useip,jdbcType=INTEGER},
+      </if>
+      <if test="ip != null">
+        ip = #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="dns != null">
+        dns = #{dns,jdbcType=VARCHAR},
+      </if>
+      <if test="port != null">
+        port = #{port,jdbcType=VARCHAR},
+      </if>
+      <if test="bulk != null">
+        `bulk` = #{bulk,jdbcType=INTEGER},
+      </if>
+    </set>
+    where interfaceid = #{interfaceid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.Interface">
+    <!--@mbg.generated-->
+    update interface
+    set hostid = #{hostid,jdbcType=BIGINT},
+      main = #{main,jdbcType=INTEGER},
+      `type` = #{type,jdbcType=INTEGER},
+      useip = #{useip,jdbcType=INTEGER},
+      ip = #{ip,jdbcType=VARCHAR},
+      dns = #{dns,jdbcType=VARCHAR},
+      port = #{port,jdbcType=VARCHAR},
+      `bulk` = #{bulk,jdbcType=INTEGER}
+    where interfaceid = #{interfaceid,jdbcType=BIGINT}
+  </update>
+</mapper>

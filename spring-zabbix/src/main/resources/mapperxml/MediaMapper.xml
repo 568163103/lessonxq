@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.MediaMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.Media">
+    <!--@mbg.generated-->
+    <id column="mediaid" jdbcType="BIGINT" property="mediaid" />
+    <result column="userid" jdbcType="BIGINT" property="userid" />
+    <result column="mediatypeid" jdbcType="BIGINT" property="mediatypeid" />
+    <result column="sendto" jdbcType="VARCHAR" property="sendto" />
+    <result column="active" jdbcType="INTEGER" property="active" />
+    <result column="severity" jdbcType="INTEGER" property="severity" />
+    <result column="period" jdbcType="VARCHAR" property="period" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    mediaid, userid, mediatypeid, sendto, active, severity, period
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from media
+    where mediaid = #{mediaid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from media
+    where mediaid = #{mediaid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.Media">
+    <!--@mbg.generated-->
+    insert into media (mediaid, userid, mediatypeid, 
+      sendto, active, severity, 
+      period)
+    values (#{mediaid,jdbcType=BIGINT}, #{userid,jdbcType=BIGINT}, #{mediatypeid,jdbcType=BIGINT}, 
+      #{sendto,jdbcType=VARCHAR}, #{active,jdbcType=INTEGER}, #{severity,jdbcType=INTEGER}, 
+      #{period,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.Media">
+    <!--@mbg.generated-->
+    insert into media
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="mediaid != null">
+        mediaid,
+      </if>
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="mediatypeid != null">
+        mediatypeid,
+      </if>
+      <if test="sendto != null">
+        sendto,
+      </if>
+      <if test="active != null">
+        active,
+      </if>
+      <if test="severity != null">
+        severity,
+      </if>
+      <if test="period != null">
+        period,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="mediaid != null">
+        #{mediaid,jdbcType=BIGINT},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=BIGINT},
+      </if>
+      <if test="mediatypeid != null">
+        #{mediatypeid,jdbcType=BIGINT},
+      </if>
+      <if test="sendto != null">
+        #{sendto,jdbcType=VARCHAR},
+      </if>
+      <if test="active != null">
+        #{active,jdbcType=INTEGER},
+      </if>
+      <if test="severity != null">
+        #{severity,jdbcType=INTEGER},
+      </if>
+      <if test="period != null">
+        #{period,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.Media">
+    <!--@mbg.generated-->
+    update media
+    <set>
+      <if test="userid != null">
+        userid = #{userid,jdbcType=BIGINT},
+      </if>
+      <if test="mediatypeid != null">
+        mediatypeid = #{mediatypeid,jdbcType=BIGINT},
+      </if>
+      <if test="sendto != null">
+        sendto = #{sendto,jdbcType=VARCHAR},
+      </if>
+      <if test="active != null">
+        active = #{active,jdbcType=INTEGER},
+      </if>
+      <if test="severity != null">
+        severity = #{severity,jdbcType=INTEGER},
+      </if>
+      <if test="period != null">
+        period = #{period,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where mediaid = #{mediaid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.Media">
+    <!--@mbg.generated-->
+    update media
+    set userid = #{userid,jdbcType=BIGINT},
+      mediatypeid = #{mediatypeid,jdbcType=BIGINT},
+      sendto = #{sendto,jdbcType=VARCHAR},
+      active = #{active,jdbcType=INTEGER},
+      severity = #{severity,jdbcType=INTEGER},
+      period = #{period,jdbcType=VARCHAR}
+    where mediaid = #{mediaid,jdbcType=BIGINT}
+  </update>
+</mapper>

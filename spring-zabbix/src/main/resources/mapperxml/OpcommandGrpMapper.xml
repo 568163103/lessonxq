@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.OpcommandGrpMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.OpcommandGrp">
+    <!--@mbg.generated-->
+    <id column="opcommand_grpid" jdbcType="BIGINT" property="opcommandGrpid" />
+    <result column="operationid" jdbcType="BIGINT" property="operationid" />
+    <result column="groupid" jdbcType="BIGINT" property="groupid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    opcommand_grpid, operationid, groupid
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from opcommand_grp
+    where opcommand_grpid = #{opcommandGrpid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from opcommand_grp
+    where opcommand_grpid = #{opcommandGrpid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.OpcommandGrp">
+    <!--@mbg.generated-->
+    insert into opcommand_grp (opcommand_grpid, operationid, groupid
+      )
+    values (#{opcommandGrpid,jdbcType=BIGINT}, #{operationid,jdbcType=BIGINT}, #{groupid,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.OpcommandGrp">
+    <!--@mbg.generated-->
+    insert into opcommand_grp
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="opcommandGrpid != null">
+        opcommand_grpid,
+      </if>
+      <if test="operationid != null">
+        operationid,
+      </if>
+      <if test="groupid != null">
+        groupid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="opcommandGrpid != null">
+        #{opcommandGrpid,jdbcType=BIGINT},
+      </if>
+      <if test="operationid != null">
+        #{operationid,jdbcType=BIGINT},
+      </if>
+      <if test="groupid != null">
+        #{groupid,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.OpcommandGrp">
+    <!--@mbg.generated-->
+    update opcommand_grp
+    <set>
+      <if test="operationid != null">
+        operationid = #{operationid,jdbcType=BIGINT},
+      </if>
+      <if test="groupid != null">
+        groupid = #{groupid,jdbcType=BIGINT},
+      </if>
+    </set>
+    where opcommand_grpid = #{opcommandGrpid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.OpcommandGrp">
+    <!--@mbg.generated-->
+    update opcommand_grp
+    set operationid = #{operationid,jdbcType=BIGINT},
+      groupid = #{groupid,jdbcType=BIGINT}
+    where opcommand_grpid = #{opcommandGrpid,jdbcType=BIGINT}
+  </update>
+</mapper>

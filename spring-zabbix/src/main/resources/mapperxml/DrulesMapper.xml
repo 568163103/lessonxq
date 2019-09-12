@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.DrulesMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.Drules">
+    <!--@mbg.generated-->
+    <id column="druleid" jdbcType="BIGINT" property="druleid" />
+    <result column="proxy_hostid" jdbcType="BIGINT" property="proxyHostid" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="iprange" jdbcType="VARCHAR" property="iprange" />
+    <result column="delay" jdbcType="INTEGER" property="delay" />
+    <result column="nextcheck" jdbcType="INTEGER" property="nextcheck" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    druleid, proxy_hostid, `name`, iprange, delay, nextcheck, `status`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from drules
+    where druleid = #{druleid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from drules
+    where druleid = #{druleid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.Drules">
+    <!--@mbg.generated-->
+    insert into drules (druleid, proxy_hostid, `name`, 
+      iprange, delay, nextcheck, 
+      `status`)
+    values (#{druleid,jdbcType=BIGINT}, #{proxyHostid,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, 
+      #{iprange,jdbcType=VARCHAR}, #{delay,jdbcType=INTEGER}, #{nextcheck,jdbcType=INTEGER}, 
+      #{status,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.Drules">
+    <!--@mbg.generated-->
+    insert into drules
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="druleid != null">
+        druleid,
+      </if>
+      <if test="proxyHostid != null">
+        proxy_hostid,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="iprange != null">
+        iprange,
+      </if>
+      <if test="delay != null">
+        delay,
+      </if>
+      <if test="nextcheck != null">
+        nextcheck,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="druleid != null">
+        #{druleid,jdbcType=BIGINT},
+      </if>
+      <if test="proxyHostid != null">
+        #{proxyHostid,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="iprange != null">
+        #{iprange,jdbcType=VARCHAR},
+      </if>
+      <if test="delay != null">
+        #{delay,jdbcType=INTEGER},
+      </if>
+      <if test="nextcheck != null">
+        #{nextcheck,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.Drules">
+    <!--@mbg.generated-->
+    update drules
+    <set>
+      <if test="proxyHostid != null">
+        proxy_hostid = #{proxyHostid,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="iprange != null">
+        iprange = #{iprange,jdbcType=VARCHAR},
+      </if>
+      <if test="delay != null">
+        delay = #{delay,jdbcType=INTEGER},
+      </if>
+      <if test="nextcheck != null">
+        nextcheck = #{nextcheck,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=INTEGER},
+      </if>
+    </set>
+    where druleid = #{druleid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.Drules">
+    <!--@mbg.generated-->
+    update drules
+    set proxy_hostid = #{proxyHostid,jdbcType=BIGINT},
+      `name` = #{name,jdbcType=VARCHAR},
+      iprange = #{iprange,jdbcType=VARCHAR},
+      delay = #{delay,jdbcType=INTEGER},
+      nextcheck = #{nextcheck,jdbcType=INTEGER},
+      `status` = #{status,jdbcType=INTEGER}
+    where druleid = #{druleid,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.TrendsMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.Trends">
+    <!--@mbg.generated-->
+    <id column="itemid" jdbcType="BIGINT" property="itemid" />
+    <id column="clock" jdbcType="INTEGER" property="clock" />
+    <result column="num" jdbcType="INTEGER" property="num" />
+    <result column="value_min" jdbcType="DOUBLE" property="valueMin" />
+    <result column="value_avg" jdbcType="DOUBLE" property="valueAvg" />
+    <result column="value_max" jdbcType="DOUBLE" property="valueMax" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    itemid, clock, num, value_min, value_avg, value_max
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from trends
+    where itemid = #{itemid,jdbcType=BIGINT}
+      and clock = #{clock,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    <!--@mbg.generated-->
+    delete from trends
+    where itemid = #{itemid,jdbcType=BIGINT}
+      and clock = #{clock,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.Trends">
+    <!--@mbg.generated-->
+    insert into trends (itemid, clock, num, 
+      value_min, value_avg, value_max
+      )
+    values (#{itemid,jdbcType=BIGINT}, #{clock,jdbcType=INTEGER}, #{num,jdbcType=INTEGER}, 
+      #{valueMin,jdbcType=DOUBLE}, #{valueAvg,jdbcType=DOUBLE}, #{valueMax,jdbcType=DOUBLE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.Trends">
+    <!--@mbg.generated-->
+    insert into trends
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="itemid != null">
+        itemid,
+      </if>
+      <if test="clock != null">
+        clock,
+      </if>
+      <if test="num != null">
+        num,
+      </if>
+      <if test="valueMin != null">
+        value_min,
+      </if>
+      <if test="valueAvg != null">
+        value_avg,
+      </if>
+      <if test="valueMax != null">
+        value_max,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="itemid != null">
+        #{itemid,jdbcType=BIGINT},
+      </if>
+      <if test="clock != null">
+        #{clock,jdbcType=INTEGER},
+      </if>
+      <if test="num != null">
+        #{num,jdbcType=INTEGER},
+      </if>
+      <if test="valueMin != null">
+        #{valueMin,jdbcType=DOUBLE},
+      </if>
+      <if test="valueAvg != null">
+        #{valueAvg,jdbcType=DOUBLE},
+      </if>
+      <if test="valueMax != null">
+        #{valueMax,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.Trends">
+    <!--@mbg.generated-->
+    update trends
+    <set>
+      <if test="num != null">
+        num = #{num,jdbcType=INTEGER},
+      </if>
+      <if test="valueMin != null">
+        value_min = #{valueMin,jdbcType=DOUBLE},
+      </if>
+      <if test="valueAvg != null">
+        value_avg = #{valueAvg,jdbcType=DOUBLE},
+      </if>
+      <if test="valueMax != null">
+        value_max = #{valueMax,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where itemid = #{itemid,jdbcType=BIGINT}
+      and clock = #{clock,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.Trends">
+    <!--@mbg.generated-->
+    update trends
+    set num = #{num,jdbcType=INTEGER},
+      value_min = #{valueMin,jdbcType=DOUBLE},
+      value_avg = #{valueAvg,jdbcType=DOUBLE},
+      value_max = #{valueMax,jdbcType=DOUBLE}
+    where itemid = #{itemid,jdbcType=BIGINT}
+      and clock = #{clock,jdbcType=INTEGER}
+  </update>
+</mapper>

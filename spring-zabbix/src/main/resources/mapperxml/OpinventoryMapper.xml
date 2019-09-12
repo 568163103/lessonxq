@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.OpinventoryMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.Opinventory">
+    <!--@mbg.generated-->
+    <id column="operationid" jdbcType="BIGINT" property="operationid" />
+    <result column="inventory_mode" jdbcType="INTEGER" property="inventoryMode" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    operationid, inventory_mode
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from opinventory
+    where operationid = #{operationid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from opinventory
+    where operationid = #{operationid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.Opinventory">
+    <!--@mbg.generated-->
+    insert into opinventory (operationid, inventory_mode)
+    values (#{operationid,jdbcType=BIGINT}, #{inventoryMode,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.Opinventory">
+    <!--@mbg.generated-->
+    insert into opinventory
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="operationid != null">
+        operationid,
+      </if>
+      <if test="inventoryMode != null">
+        inventory_mode,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="operationid != null">
+        #{operationid,jdbcType=BIGINT},
+      </if>
+      <if test="inventoryMode != null">
+        #{inventoryMode,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.Opinventory">
+    <!--@mbg.generated-->
+    update opinventory
+    <set>
+      <if test="inventoryMode != null">
+        inventory_mode = #{inventoryMode,jdbcType=INTEGER},
+      </if>
+    </set>
+    where operationid = #{operationid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.Opinventory">
+    <!--@mbg.generated-->
+    update opinventory
+    set inventory_mode = #{inventoryMode,jdbcType=INTEGER}
+    where operationid = #{operationid,jdbcType=BIGINT}
+  </update>
+</mapper>

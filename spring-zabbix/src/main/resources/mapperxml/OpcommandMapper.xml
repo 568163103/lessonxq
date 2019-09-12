@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.OpcommandMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.Opcommand">
+    <!--@mbg.generated-->
+    <id column="operationid" jdbcType="BIGINT" property="operationid" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="scriptid" jdbcType="BIGINT" property="scriptid" />
+    <result column="execute_on" jdbcType="INTEGER" property="executeOn" />
+    <result column="port" jdbcType="VARCHAR" property="port" />
+    <result column="authtype" jdbcType="INTEGER" property="authtype" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="password" jdbcType="VARCHAR" property="password" />
+    <result column="publickey" jdbcType="VARCHAR" property="publickey" />
+    <result column="privatekey" jdbcType="VARCHAR" property="privatekey" />
+    <result column="command" jdbcType="LONGVARCHAR" property="command" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    operationid, `type`, scriptid, execute_on, port, authtype, username, `password`, 
+    publickey, privatekey, command
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from opcommand
+    where operationid = #{operationid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from opcommand
+    where operationid = #{operationid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.Opcommand">
+    <!--@mbg.generated-->
+    insert into opcommand (operationid, `type`, scriptid, 
+      execute_on, port, authtype, 
+      username, `password`, publickey, 
+      privatekey, command)
+    values (#{operationid,jdbcType=BIGINT}, #{type,jdbcType=INTEGER}, #{scriptid,jdbcType=BIGINT}, 
+      #{executeOn,jdbcType=INTEGER}, #{port,jdbcType=VARCHAR}, #{authtype,jdbcType=INTEGER}, 
+      #{username,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{publickey,jdbcType=VARCHAR}, 
+      #{privatekey,jdbcType=VARCHAR}, #{command,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.Opcommand">
+    <!--@mbg.generated-->
+    insert into opcommand
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="operationid != null">
+        operationid,
+      </if>
+      <if test="type != null">
+        `type`,
+      </if>
+      <if test="scriptid != null">
+        scriptid,
+      </if>
+      <if test="executeOn != null">
+        execute_on,
+      </if>
+      <if test="port != null">
+        port,
+      </if>
+      <if test="authtype != null">
+        authtype,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="password != null">
+        `password`,
+      </if>
+      <if test="publickey != null">
+        publickey,
+      </if>
+      <if test="privatekey != null">
+        privatekey,
+      </if>
+      <if test="command != null">
+        command,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="operationid != null">
+        #{operationid,jdbcType=BIGINT},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="scriptid != null">
+        #{scriptid,jdbcType=BIGINT},
+      </if>
+      <if test="executeOn != null">
+        #{executeOn,jdbcType=INTEGER},
+      </if>
+      <if test="port != null">
+        #{port,jdbcType=VARCHAR},
+      </if>
+      <if test="authtype != null">
+        #{authtype,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="publickey != null">
+        #{publickey,jdbcType=VARCHAR},
+      </if>
+      <if test="privatekey != null">
+        #{privatekey,jdbcType=VARCHAR},
+      </if>
+      <if test="command != null">
+        #{command,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.Opcommand">
+    <!--@mbg.generated-->
+    update opcommand
+    <set>
+      <if test="type != null">
+        `type` = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="scriptid != null">
+        scriptid = #{scriptid,jdbcType=BIGINT},
+      </if>
+      <if test="executeOn != null">
+        execute_on = #{executeOn,jdbcType=INTEGER},
+      </if>
+      <if test="port != null">
+        port = #{port,jdbcType=VARCHAR},
+      </if>
+      <if test="authtype != null">
+        authtype = #{authtype,jdbcType=INTEGER},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="password != null">
+        `password` = #{password,jdbcType=VARCHAR},
+      </if>
+      <if test="publickey != null">
+        publickey = #{publickey,jdbcType=VARCHAR},
+      </if>
+      <if test="privatekey != null">
+        privatekey = #{privatekey,jdbcType=VARCHAR},
+      </if>
+      <if test="command != null">
+        command = #{command,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where operationid = #{operationid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.Opcommand">
+    <!--@mbg.generated-->
+    update opcommand
+    set `type` = #{type,jdbcType=INTEGER},
+      scriptid = #{scriptid,jdbcType=BIGINT},
+      execute_on = #{executeOn,jdbcType=INTEGER},
+      port = #{port,jdbcType=VARCHAR},
+      authtype = #{authtype,jdbcType=INTEGER},
+      username = #{username,jdbcType=VARCHAR},
+      `password` = #{password,jdbcType=VARCHAR},
+      publickey = #{publickey,jdbcType=VARCHAR},
+      privatekey = #{privatekey,jdbcType=VARCHAR},
+      command = #{command,jdbcType=LONGVARCHAR}
+    where operationid = #{operationid,jdbcType=BIGINT}
+  </update>
+</mapper>

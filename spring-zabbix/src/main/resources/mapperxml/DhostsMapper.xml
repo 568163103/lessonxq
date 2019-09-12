@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.DhostsMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.Dhosts">
+    <!--@mbg.generated-->
+    <id column="dhostid" jdbcType="BIGINT" property="dhostid" />
+    <result column="druleid" jdbcType="BIGINT" property="druleid" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="lastup" jdbcType="INTEGER" property="lastup" />
+    <result column="lastdown" jdbcType="INTEGER" property="lastdown" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    dhostid, druleid, `status`, lastup, lastdown
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from dhosts
+    where dhostid = #{dhostid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from dhosts
+    where dhostid = #{dhostid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.Dhosts">
+    <!--@mbg.generated-->
+    insert into dhosts (dhostid, druleid, `status`, 
+      lastup, lastdown)
+    values (#{dhostid,jdbcType=BIGINT}, #{druleid,jdbcType=BIGINT}, #{status,jdbcType=INTEGER}, 
+      #{lastup,jdbcType=INTEGER}, #{lastdown,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.Dhosts">
+    <!--@mbg.generated-->
+    insert into dhosts
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="dhostid != null">
+        dhostid,
+      </if>
+      <if test="druleid != null">
+        druleid,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="lastup != null">
+        lastup,
+      </if>
+      <if test="lastdown != null">
+        lastdown,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="dhostid != null">
+        #{dhostid,jdbcType=BIGINT},
+      </if>
+      <if test="druleid != null">
+        #{druleid,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="lastup != null">
+        #{lastup,jdbcType=INTEGER},
+      </if>
+      <if test="lastdown != null">
+        #{lastdown,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.Dhosts">
+    <!--@mbg.generated-->
+    update dhosts
+    <set>
+      <if test="druleid != null">
+        druleid = #{druleid,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="lastup != null">
+        lastup = #{lastup,jdbcType=INTEGER},
+      </if>
+      <if test="lastdown != null">
+        lastdown = #{lastdown,jdbcType=INTEGER},
+      </if>
+    </set>
+    where dhostid = #{dhostid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.Dhosts">
+    <!--@mbg.generated-->
+    update dhosts
+    set druleid = #{druleid,jdbcType=BIGINT},
+      `status` = #{status,jdbcType=INTEGER},
+      lastup = #{lastup,jdbcType=INTEGER},
+      lastdown = #{lastdown,jdbcType=INTEGER}
+    where dhostid = #{dhostid,jdbcType=BIGINT}
+  </update>
+</mapper>

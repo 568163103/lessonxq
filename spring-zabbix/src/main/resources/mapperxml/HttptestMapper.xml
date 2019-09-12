@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.HttptestMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.Httptest">
+    <!--@mbg.generated-->
+    <id column="httptestid" jdbcType="BIGINT" property="httptestid" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="applicationid" jdbcType="BIGINT" property="applicationid" />
+    <result column="nextcheck" jdbcType="INTEGER" property="nextcheck" />
+    <result column="delay" jdbcType="INTEGER" property="delay" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="variables" jdbcType="LONGVARCHAR" property="variables" />
+    <result column="agent" jdbcType="VARCHAR" property="agent" />
+    <result column="authentication" jdbcType="INTEGER" property="authentication" />
+    <result column="http_user" jdbcType="VARCHAR" property="httpUser" />
+    <result column="http_password" jdbcType="VARCHAR" property="httpPassword" />
+    <result column="hostid" jdbcType="BIGINT" property="hostid" />
+    <result column="templateid" jdbcType="BIGINT" property="templateid" />
+    <result column="http_proxy" jdbcType="VARCHAR" property="httpProxy" />
+    <result column="retries" jdbcType="INTEGER" property="retries" />
+    <result column="ssl_cert_file" jdbcType="VARCHAR" property="sslCertFile" />
+    <result column="ssl_key_file" jdbcType="VARCHAR" property="sslKeyFile" />
+    <result column="ssl_key_password" jdbcType="VARCHAR" property="sslKeyPassword" />
+    <result column="verify_peer" jdbcType="INTEGER" property="verifyPeer" />
+    <result column="verify_host" jdbcType="INTEGER" property="verifyHost" />
+    <result column="headers" jdbcType="LONGVARCHAR" property="headers" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    httptestid, `name`, applicationid, nextcheck, delay, `status`, `variables`, agent, 
+    authentication, http_user, http_password, hostid, templateid, http_proxy, retries, 
+    ssl_cert_file, ssl_key_file, ssl_key_password, verify_peer, verify_host, headers
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from httptest
+    where httptestid = #{httptestid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from httptest
+    where httptestid = #{httptestid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.Httptest">
+    <!--@mbg.generated-->
+    insert into httptest (httptestid, `name`, applicationid, 
+      nextcheck, delay, `status`, 
+      `variables`, agent, authentication, 
+      http_user, http_password, hostid, 
+      templateid, http_proxy, retries, 
+      ssl_cert_file, ssl_key_file, ssl_key_password, 
+      verify_peer, verify_host, headers
+      )
+    values (#{httptestid,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{applicationid,jdbcType=BIGINT}, 
+      #{nextcheck,jdbcType=INTEGER}, #{delay,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, 
+      #{variables,jdbcType=LONGVARCHAR}, #{agent,jdbcType=VARCHAR}, #{authentication,jdbcType=INTEGER}, 
+      #{httpUser,jdbcType=VARCHAR}, #{httpPassword,jdbcType=VARCHAR}, #{hostid,jdbcType=BIGINT}, 
+      #{templateid,jdbcType=BIGINT}, #{httpProxy,jdbcType=VARCHAR}, #{retries,jdbcType=INTEGER}, 
+      #{sslCertFile,jdbcType=VARCHAR}, #{sslKeyFile,jdbcType=VARCHAR}, #{sslKeyPassword,jdbcType=VARCHAR}, 
+      #{verifyPeer,jdbcType=INTEGER}, #{verifyHost,jdbcType=INTEGER}, #{headers,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.Httptest">
+    <!--@mbg.generated-->
+    insert into httptest
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="httptestid != null">
+        httptestid,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="applicationid != null">
+        applicationid,
+      </if>
+      <if test="nextcheck != null">
+        nextcheck,
+      </if>
+      <if test="delay != null">
+        delay,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="variables != null">
+        `variables`,
+      </if>
+      <if test="agent != null">
+        agent,
+      </if>
+      <if test="authentication != null">
+        authentication,
+      </if>
+      <if test="httpUser != null">
+        http_user,
+      </if>
+      <if test="httpPassword != null">
+        http_password,
+      </if>
+      <if test="hostid != null">
+        hostid,
+      </if>
+      <if test="templateid != null">
+        templateid,
+      </if>
+      <if test="httpProxy != null">
+        http_proxy,
+      </if>
+      <if test="retries != null">
+        retries,
+      </if>
+      <if test="sslCertFile != null">
+        ssl_cert_file,
+      </if>
+      <if test="sslKeyFile != null">
+        ssl_key_file,
+      </if>
+      <if test="sslKeyPassword != null">
+        ssl_key_password,
+      </if>
+      <if test="verifyPeer != null">
+        verify_peer,
+      </if>
+      <if test="verifyHost != null">
+        verify_host,
+      </if>
+      <if test="headers != null">
+        headers,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="httptestid != null">
+        #{httptestid,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="applicationid != null">
+        #{applicationid,jdbcType=BIGINT},
+      </if>
+      <if test="nextcheck != null">
+        #{nextcheck,jdbcType=INTEGER},
+      </if>
+      <if test="delay != null">
+        #{delay,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="variables != null">
+        #{variables,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="agent != null">
+        #{agent,jdbcType=VARCHAR},
+      </if>
+      <if test="authentication != null">
+        #{authentication,jdbcType=INTEGER},
+      </if>
+      <if test="httpUser != null">
+        #{httpUser,jdbcType=VARCHAR},
+      </if>
+      <if test="httpPassword != null">
+        #{httpPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="hostid != null">
+        #{hostid,jdbcType=BIGINT},
+      </if>
+      <if test="templateid != null">
+        #{templateid,jdbcType=BIGINT},
+      </if>
+      <if test="httpProxy != null">
+        #{httpProxy,jdbcType=VARCHAR},
+      </if>
+      <if test="retries != null">
+        #{retries,jdbcType=INTEGER},
+      </if>
+      <if test="sslCertFile != null">
+        #{sslCertFile,jdbcType=VARCHAR},
+      </if>
+      <if test="sslKeyFile != null">
+        #{sslKeyFile,jdbcType=VARCHAR},
+      </if>
+      <if test="sslKeyPassword != null">
+        #{sslKeyPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="verifyPeer != null">
+        #{verifyPeer,jdbcType=INTEGER},
+      </if>
+      <if test="verifyHost != null">
+        #{verifyHost,jdbcType=INTEGER},
+      </if>
+      <if test="headers != null">
+        #{headers,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.Httptest">
+    <!--@mbg.generated-->
+    update httptest
+    <set>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="applicationid != null">
+        applicationid = #{applicationid,jdbcType=BIGINT},
+      </if>
+      <if test="nextcheck != null">
+        nextcheck = #{nextcheck,jdbcType=INTEGER},
+      </if>
+      <if test="delay != null">
+        delay = #{delay,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="variables != null">
+        `variables` = #{variables,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="agent != null">
+        agent = #{agent,jdbcType=VARCHAR},
+      </if>
+      <if test="authentication != null">
+        authentication = #{authentication,jdbcType=INTEGER},
+      </if>
+      <if test="httpUser != null">
+        http_user = #{httpUser,jdbcType=VARCHAR},
+      </if>
+      <if test="httpPassword != null">
+        http_password = #{httpPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="hostid != null">
+        hostid = #{hostid,jdbcType=BIGINT},
+      </if>
+      <if test="templateid != null">
+        templateid = #{templateid,jdbcType=BIGINT},
+      </if>
+      <if test="httpProxy != null">
+        http_proxy = #{httpProxy,jdbcType=VARCHAR},
+      </if>
+      <if test="retries != null">
+        retries = #{retries,jdbcType=INTEGER},
+      </if>
+      <if test="sslCertFile != null">
+        ssl_cert_file = #{sslCertFile,jdbcType=VARCHAR},
+      </if>
+      <if test="sslKeyFile != null">
+        ssl_key_file = #{sslKeyFile,jdbcType=VARCHAR},
+      </if>
+      <if test="sslKeyPassword != null">
+        ssl_key_password = #{sslKeyPassword,jdbcType=VARCHAR},
+      </if>
+      <if test="verifyPeer != null">
+        verify_peer = #{verifyPeer,jdbcType=INTEGER},
+      </if>
+      <if test="verifyHost != null">
+        verify_host = #{verifyHost,jdbcType=INTEGER},
+      </if>
+      <if test="headers != null">
+        headers = #{headers,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where httptestid = #{httptestid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.Httptest">
+    <!--@mbg.generated-->
+    update httptest
+    set `name` = #{name,jdbcType=VARCHAR},
+      applicationid = #{applicationid,jdbcType=BIGINT},
+      nextcheck = #{nextcheck,jdbcType=INTEGER},
+      delay = #{delay,jdbcType=INTEGER},
+      `status` = #{status,jdbcType=INTEGER},
+      `variables` = #{variables,jdbcType=LONGVARCHAR},
+      agent = #{agent,jdbcType=VARCHAR},
+      authentication = #{authentication,jdbcType=INTEGER},
+      http_user = #{httpUser,jdbcType=VARCHAR},
+      http_password = #{httpPassword,jdbcType=VARCHAR},
+      hostid = #{hostid,jdbcType=BIGINT},
+      templateid = #{templateid,jdbcType=BIGINT},
+      http_proxy = #{httpProxy,jdbcType=VARCHAR},
+      retries = #{retries,jdbcType=INTEGER},
+      ssl_cert_file = #{sslCertFile,jdbcType=VARCHAR},
+      ssl_key_file = #{sslKeyFile,jdbcType=VARCHAR},
+      ssl_key_password = #{sslKeyPassword,jdbcType=VARCHAR},
+      verify_peer = #{verifyPeer,jdbcType=INTEGER},
+      verify_host = #{verifyHost,jdbcType=INTEGER},
+      headers = #{headers,jdbcType=LONGVARCHAR}
+    where httptestid = #{httptestid,jdbcType=BIGINT}
+  </update>
+</mapper>

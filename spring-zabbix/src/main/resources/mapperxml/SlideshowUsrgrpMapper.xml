@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.SlideshowUsrgrpMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.SlideshowUsrgrp">
+    <!--@mbg.generated-->
+    <id column="slideshowusrgrpid" jdbcType="BIGINT" property="slideshowusrgrpid" />
+    <result column="slideshowid" jdbcType="BIGINT" property="slideshowid" />
+    <result column="usrgrpid" jdbcType="BIGINT" property="usrgrpid" />
+    <result column="permission" jdbcType="INTEGER" property="permission" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    slideshowusrgrpid, slideshowid, usrgrpid, permission
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from slideshow_usrgrp
+    where slideshowusrgrpid = #{slideshowusrgrpid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from slideshow_usrgrp
+    where slideshowusrgrpid = #{slideshowusrgrpid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.SlideshowUsrgrp">
+    <!--@mbg.generated-->
+    insert into slideshow_usrgrp (slideshowusrgrpid, slideshowid, usrgrpid, 
+      permission)
+    values (#{slideshowusrgrpid,jdbcType=BIGINT}, #{slideshowid,jdbcType=BIGINT}, #{usrgrpid,jdbcType=BIGINT}, 
+      #{permission,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.SlideshowUsrgrp">
+    <!--@mbg.generated-->
+    insert into slideshow_usrgrp
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="slideshowusrgrpid != null">
+        slideshowusrgrpid,
+      </if>
+      <if test="slideshowid != null">
+        slideshowid,
+      </if>
+      <if test="usrgrpid != null">
+        usrgrpid,
+      </if>
+      <if test="permission != null">
+        permission,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="slideshowusrgrpid != null">
+        #{slideshowusrgrpid,jdbcType=BIGINT},
+      </if>
+      <if test="slideshowid != null">
+        #{slideshowid,jdbcType=BIGINT},
+      </if>
+      <if test="usrgrpid != null">
+        #{usrgrpid,jdbcType=BIGINT},
+      </if>
+      <if test="permission != null">
+        #{permission,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.SlideshowUsrgrp">
+    <!--@mbg.generated-->
+    update slideshow_usrgrp
+    <set>
+      <if test="slideshowid != null">
+        slideshowid = #{slideshowid,jdbcType=BIGINT},
+      </if>
+      <if test="usrgrpid != null">
+        usrgrpid = #{usrgrpid,jdbcType=BIGINT},
+      </if>
+      <if test="permission != null">
+        permission = #{permission,jdbcType=INTEGER},
+      </if>
+    </set>
+    where slideshowusrgrpid = #{slideshowusrgrpid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.SlideshowUsrgrp">
+    <!--@mbg.generated-->
+    update slideshow_usrgrp
+    set slideshowid = #{slideshowid,jdbcType=BIGINT},
+      usrgrpid = #{usrgrpid,jdbcType=BIGINT},
+      permission = #{permission,jdbcType=INTEGER}
+    where slideshowusrgrpid = #{slideshowusrgrpid,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.ActionsMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.Actions">
+    <!--@mbg.generated-->
+    <id column="actionid" jdbcType="BIGINT" property="actionid" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="eventsource" jdbcType="INTEGER" property="eventsource" />
+    <result column="evaltype" jdbcType="INTEGER" property="evaltype" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="esc_period" jdbcType="INTEGER" property="escPeriod" />
+    <result column="def_shortdata" jdbcType="VARCHAR" property="defShortdata" />
+    <result column="def_longdata" jdbcType="LONGVARCHAR" property="defLongdata" />
+    <result column="recovery_msg" jdbcType="INTEGER" property="recoveryMsg" />
+    <result column="r_shortdata" jdbcType="VARCHAR" property="rShortdata" />
+    <result column="r_longdata" jdbcType="LONGVARCHAR" property="rLongdata" />
+    <result column="formula" jdbcType="VARCHAR" property="formula" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    actionid, `name`, eventsource, evaltype, `status`, esc_period, def_shortdata, def_longdata, 
+    recovery_msg, r_shortdata, r_longdata, formula
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from actions
+    where actionid = #{actionid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from actions
+    where actionid = #{actionid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.Actions">
+    <!--@mbg.generated-->
+    insert into actions (actionid, `name`, eventsource, 
+      evaltype, `status`, esc_period, 
+      def_shortdata, def_longdata, recovery_msg, 
+      r_shortdata, r_longdata, formula
+      )
+    values (#{actionid,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{eventsource,jdbcType=INTEGER}, 
+      #{evaltype,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{escPeriod,jdbcType=INTEGER}, 
+      #{defShortdata,jdbcType=VARCHAR}, #{defLongdata,jdbcType=LONGVARCHAR}, #{recoveryMsg,jdbcType=INTEGER}, 
+      #{rShortdata,jdbcType=VARCHAR}, #{rLongdata,jdbcType=LONGVARCHAR}, #{formula,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.Actions">
+    <!--@mbg.generated-->
+    insert into actions
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="actionid != null">
+        actionid,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="eventsource != null">
+        eventsource,
+      </if>
+      <if test="evaltype != null">
+        evaltype,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="escPeriod != null">
+        esc_period,
+      </if>
+      <if test="defShortdata != null">
+        def_shortdata,
+      </if>
+      <if test="defLongdata != null">
+        def_longdata,
+      </if>
+      <if test="recoveryMsg != null">
+        recovery_msg,
+      </if>
+      <if test="rShortdata != null">
+        r_shortdata,
+      </if>
+      <if test="rLongdata != null">
+        r_longdata,
+      </if>
+      <if test="formula != null">
+        formula,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="actionid != null">
+        #{actionid,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="eventsource != null">
+        #{eventsource,jdbcType=INTEGER},
+      </if>
+      <if test="evaltype != null">
+        #{evaltype,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="escPeriod != null">
+        #{escPeriod,jdbcType=INTEGER},
+      </if>
+      <if test="defShortdata != null">
+        #{defShortdata,jdbcType=VARCHAR},
+      </if>
+      <if test="defLongdata != null">
+        #{defLongdata,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="recoveryMsg != null">
+        #{recoveryMsg,jdbcType=INTEGER},
+      </if>
+      <if test="rShortdata != null">
+        #{rShortdata,jdbcType=VARCHAR},
+      </if>
+      <if test="rLongdata != null">
+        #{rLongdata,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="formula != null">
+        #{formula,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.Actions">
+    <!--@mbg.generated-->
+    update actions
+    <set>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="eventsource != null">
+        eventsource = #{eventsource,jdbcType=INTEGER},
+      </if>
+      <if test="evaltype != null">
+        evaltype = #{evaltype,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="escPeriod != null">
+        esc_period = #{escPeriod,jdbcType=INTEGER},
+      </if>
+      <if test="defShortdata != null">
+        def_shortdata = #{defShortdata,jdbcType=VARCHAR},
+      </if>
+      <if test="defLongdata != null">
+        def_longdata = #{defLongdata,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="recoveryMsg != null">
+        recovery_msg = #{recoveryMsg,jdbcType=INTEGER},
+      </if>
+      <if test="rShortdata != null">
+        r_shortdata = #{rShortdata,jdbcType=VARCHAR},
+      </if>
+      <if test="rLongdata != null">
+        r_longdata = #{rLongdata,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="formula != null">
+        formula = #{formula,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where actionid = #{actionid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.Actions">
+    <!--@mbg.generated-->
+    update actions
+    set `name` = #{name,jdbcType=VARCHAR},
+      eventsource = #{eventsource,jdbcType=INTEGER},
+      evaltype = #{evaltype,jdbcType=INTEGER},
+      `status` = #{status,jdbcType=INTEGER},
+      esc_period = #{escPeriod,jdbcType=INTEGER},
+      def_shortdata = #{defShortdata,jdbcType=VARCHAR},
+      def_longdata = #{defLongdata,jdbcType=LONGVARCHAR},
+      recovery_msg = #{recoveryMsg,jdbcType=INTEGER},
+      r_shortdata = #{rShortdata,jdbcType=VARCHAR},
+      r_longdata = #{rLongdata,jdbcType=LONGVARCHAR},
+      formula = #{formula,jdbcType=VARCHAR}
+    where actionid = #{actionid,jdbcType=BIGINT}
+  </update>
+</mapper>

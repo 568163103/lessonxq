@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.EscalationsMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.Escalations">
+    <!--@mbg.generated-->
+    <id column="escalationid" jdbcType="BIGINT" property="escalationid" />
+    <result column="actionid" jdbcType="BIGINT" property="actionid" />
+    <result column="triggerid" jdbcType="BIGINT" property="triggerid" />
+    <result column="eventid" jdbcType="BIGINT" property="eventid" />
+    <result column="r_eventid" jdbcType="BIGINT" property="rEventid" />
+    <result column="nextcheck" jdbcType="INTEGER" property="nextcheck" />
+    <result column="esc_step" jdbcType="INTEGER" property="escStep" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="itemid" jdbcType="BIGINT" property="itemid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    escalationid, actionid, triggerid, eventid, r_eventid, nextcheck, esc_step, `status`, 
+    itemid
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from escalations
+    where escalationid = #{escalationid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from escalations
+    where escalationid = #{escalationid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.Escalations">
+    <!--@mbg.generated-->
+    insert into escalations (escalationid, actionid, triggerid, 
+      eventid, r_eventid, nextcheck, 
+      esc_step, `status`, itemid
+      )
+    values (#{escalationid,jdbcType=BIGINT}, #{actionid,jdbcType=BIGINT}, #{triggerid,jdbcType=BIGINT}, 
+      #{eventid,jdbcType=BIGINT}, #{rEventid,jdbcType=BIGINT}, #{nextcheck,jdbcType=INTEGER}, 
+      #{escStep,jdbcType=INTEGER}, #{status,jdbcType=INTEGER}, #{itemid,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.Escalations">
+    <!--@mbg.generated-->
+    insert into escalations
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="escalationid != null">
+        escalationid,
+      </if>
+      <if test="actionid != null">
+        actionid,
+      </if>
+      <if test="triggerid != null">
+        triggerid,
+      </if>
+      <if test="eventid != null">
+        eventid,
+      </if>
+      <if test="rEventid != null">
+        r_eventid,
+      </if>
+      <if test="nextcheck != null">
+        nextcheck,
+      </if>
+      <if test="escStep != null">
+        esc_step,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="itemid != null">
+        itemid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="escalationid != null">
+        #{escalationid,jdbcType=BIGINT},
+      </if>
+      <if test="actionid != null">
+        #{actionid,jdbcType=BIGINT},
+      </if>
+      <if test="triggerid != null">
+        #{triggerid,jdbcType=BIGINT},
+      </if>
+      <if test="eventid != null">
+        #{eventid,jdbcType=BIGINT},
+      </if>
+      <if test="rEventid != null">
+        #{rEventid,jdbcType=BIGINT},
+      </if>
+      <if test="nextcheck != null">
+        #{nextcheck,jdbcType=INTEGER},
+      </if>
+      <if test="escStep != null">
+        #{escStep,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="itemid != null">
+        #{itemid,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.Escalations">
+    <!--@mbg.generated-->
+    update escalations
+    <set>
+      <if test="actionid != null">
+        actionid = #{actionid,jdbcType=BIGINT},
+      </if>
+      <if test="triggerid != null">
+        triggerid = #{triggerid,jdbcType=BIGINT},
+      </if>
+      <if test="eventid != null">
+        eventid = #{eventid,jdbcType=BIGINT},
+      </if>
+      <if test="rEventid != null">
+        r_eventid = #{rEventid,jdbcType=BIGINT},
+      </if>
+      <if test="nextcheck != null">
+        nextcheck = #{nextcheck,jdbcType=INTEGER},
+      </if>
+      <if test="escStep != null">
+        esc_step = #{escStep,jdbcType=INTEGER},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="itemid != null">
+        itemid = #{itemid,jdbcType=BIGINT},
+      </if>
+    </set>
+    where escalationid = #{escalationid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.Escalations">
+    <!--@mbg.generated-->
+    update escalations
+    set actionid = #{actionid,jdbcType=BIGINT},
+      triggerid = #{triggerid,jdbcType=BIGINT},
+      eventid = #{eventid,jdbcType=BIGINT},
+      r_eventid = #{rEventid,jdbcType=BIGINT},
+      nextcheck = #{nextcheck,jdbcType=INTEGER},
+      esc_step = #{escStep,jdbcType=INTEGER},
+      `status` = #{status,jdbcType=INTEGER},
+      itemid = #{itemid,jdbcType=BIGINT}
+    where escalationid = #{escalationid,jdbcType=BIGINT}
+  </update>
+</mapper>

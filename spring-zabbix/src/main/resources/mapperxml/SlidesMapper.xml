@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.SlidesMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.Slides">
+    <!--@mbg.generated-->
+    <id column="slideid" jdbcType="BIGINT" property="slideid" />
+    <result column="slideshowid" jdbcType="BIGINT" property="slideshowid" />
+    <result column="screenid" jdbcType="BIGINT" property="screenid" />
+    <result column="step" jdbcType="INTEGER" property="step" />
+    <result column="delay" jdbcType="INTEGER" property="delay" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    slideid, slideshowid, screenid, step, delay
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from slides
+    where slideid = #{slideid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from slides
+    where slideid = #{slideid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.Slides">
+    <!--@mbg.generated-->
+    insert into slides (slideid, slideshowid, screenid, 
+      step, delay)
+    values (#{slideid,jdbcType=BIGINT}, #{slideshowid,jdbcType=BIGINT}, #{screenid,jdbcType=BIGINT}, 
+      #{step,jdbcType=INTEGER}, #{delay,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.Slides">
+    <!--@mbg.generated-->
+    insert into slides
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="slideid != null">
+        slideid,
+      </if>
+      <if test="slideshowid != null">
+        slideshowid,
+      </if>
+      <if test="screenid != null">
+        screenid,
+      </if>
+      <if test="step != null">
+        step,
+      </if>
+      <if test="delay != null">
+        delay,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="slideid != null">
+        #{slideid,jdbcType=BIGINT},
+      </if>
+      <if test="slideshowid != null">
+        #{slideshowid,jdbcType=BIGINT},
+      </if>
+      <if test="screenid != null">
+        #{screenid,jdbcType=BIGINT},
+      </if>
+      <if test="step != null">
+        #{step,jdbcType=INTEGER},
+      </if>
+      <if test="delay != null">
+        #{delay,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.Slides">
+    <!--@mbg.generated-->
+    update slides
+    <set>
+      <if test="slideshowid != null">
+        slideshowid = #{slideshowid,jdbcType=BIGINT},
+      </if>
+      <if test="screenid != null">
+        screenid = #{screenid,jdbcType=BIGINT},
+      </if>
+      <if test="step != null">
+        step = #{step,jdbcType=INTEGER},
+      </if>
+      <if test="delay != null">
+        delay = #{delay,jdbcType=INTEGER},
+      </if>
+    </set>
+    where slideid = #{slideid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.Slides">
+    <!--@mbg.generated-->
+    update slides
+    set slideshowid = #{slideshowid,jdbcType=BIGINT},
+      screenid = #{screenid,jdbcType=BIGINT},
+      step = #{step,jdbcType=INTEGER},
+      delay = #{delay,jdbcType=INTEGER}
+    where slideid = #{slideid,jdbcType=BIGINT}
+  </update>
+</mapper>

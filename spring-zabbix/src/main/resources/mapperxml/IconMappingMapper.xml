@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.IconMappingMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.IconMapping">
+    <!--@mbg.generated-->
+    <id column="iconmappingid" jdbcType="BIGINT" property="iconmappingid" />
+    <result column="iconmapid" jdbcType="BIGINT" property="iconmapid" />
+    <result column="iconid" jdbcType="BIGINT" property="iconid" />
+    <result column="inventory_link" jdbcType="INTEGER" property="inventoryLink" />
+    <result column="expression" jdbcType="VARCHAR" property="expression" />
+    <result column="sortorder" jdbcType="INTEGER" property="sortorder" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    iconmappingid, iconmapid, iconid, inventory_link, expression, sortorder
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from icon_mapping
+    where iconmappingid = #{iconmappingid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from icon_mapping
+    where iconmappingid = #{iconmappingid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.IconMapping">
+    <!--@mbg.generated-->
+    insert into icon_mapping (iconmappingid, iconmapid, iconid, 
+      inventory_link, expression, sortorder
+      )
+    values (#{iconmappingid,jdbcType=BIGINT}, #{iconmapid,jdbcType=BIGINT}, #{iconid,jdbcType=BIGINT}, 
+      #{inventoryLink,jdbcType=INTEGER}, #{expression,jdbcType=VARCHAR}, #{sortorder,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.IconMapping">
+    <!--@mbg.generated-->
+    insert into icon_mapping
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="iconmappingid != null">
+        iconmappingid,
+      </if>
+      <if test="iconmapid != null">
+        iconmapid,
+      </if>
+      <if test="iconid != null">
+        iconid,
+      </if>
+      <if test="inventoryLink != null">
+        inventory_link,
+      </if>
+      <if test="expression != null">
+        expression,
+      </if>
+      <if test="sortorder != null">
+        sortorder,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="iconmappingid != null">
+        #{iconmappingid,jdbcType=BIGINT},
+      </if>
+      <if test="iconmapid != null">
+        #{iconmapid,jdbcType=BIGINT},
+      </if>
+      <if test="iconid != null">
+        #{iconid,jdbcType=BIGINT},
+      </if>
+      <if test="inventoryLink != null">
+        #{inventoryLink,jdbcType=INTEGER},
+      </if>
+      <if test="expression != null">
+        #{expression,jdbcType=VARCHAR},
+      </if>
+      <if test="sortorder != null">
+        #{sortorder,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.IconMapping">
+    <!--@mbg.generated-->
+    update icon_mapping
+    <set>
+      <if test="iconmapid != null">
+        iconmapid = #{iconmapid,jdbcType=BIGINT},
+      </if>
+      <if test="iconid != null">
+        iconid = #{iconid,jdbcType=BIGINT},
+      </if>
+      <if test="inventoryLink != null">
+        inventory_link = #{inventoryLink,jdbcType=INTEGER},
+      </if>
+      <if test="expression != null">
+        expression = #{expression,jdbcType=VARCHAR},
+      </if>
+      <if test="sortorder != null">
+        sortorder = #{sortorder,jdbcType=INTEGER},
+      </if>
+    </set>
+    where iconmappingid = #{iconmappingid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.IconMapping">
+    <!--@mbg.generated-->
+    update icon_mapping
+    set iconmapid = #{iconmapid,jdbcType=BIGINT},
+      iconid = #{iconid,jdbcType=BIGINT},
+      inventory_link = #{inventoryLink,jdbcType=INTEGER},
+      expression = #{expression,jdbcType=VARCHAR},
+      sortorder = #{sortorder,jdbcType=INTEGER}
+    where iconmappingid = #{iconmappingid,jdbcType=BIGINT}
+  </update>
+</mapper>

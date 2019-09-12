@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.UsrgrpMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.Usrgrp">
+    <!--@mbg.generated-->
+    <id column="usrgrpid" jdbcType="BIGINT" property="usrgrpid" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="gui_access" jdbcType="INTEGER" property="guiAccess" />
+    <result column="users_status" jdbcType="INTEGER" property="usersStatus" />
+    <result column="debug_mode" jdbcType="INTEGER" property="debugMode" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    usrgrpid, `name`, gui_access, users_status, debug_mode
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from usrgrp
+    where usrgrpid = #{usrgrpid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from usrgrp
+    where usrgrpid = #{usrgrpid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.Usrgrp">
+    <!--@mbg.generated-->
+    insert into usrgrp (usrgrpid, `name`, gui_access, 
+      users_status, debug_mode)
+    values (#{usrgrpid,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{guiAccess,jdbcType=INTEGER}, 
+      #{usersStatus,jdbcType=INTEGER}, #{debugMode,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.Usrgrp">
+    <!--@mbg.generated-->
+    insert into usrgrp
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="usrgrpid != null">
+        usrgrpid,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="guiAccess != null">
+        gui_access,
+      </if>
+      <if test="usersStatus != null">
+        users_status,
+      </if>
+      <if test="debugMode != null">
+        debug_mode,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="usrgrpid != null">
+        #{usrgrpid,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="guiAccess != null">
+        #{guiAccess,jdbcType=INTEGER},
+      </if>
+      <if test="usersStatus != null">
+        #{usersStatus,jdbcType=INTEGER},
+      </if>
+      <if test="debugMode != null">
+        #{debugMode,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.Usrgrp">
+    <!--@mbg.generated-->
+    update usrgrp
+    <set>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="guiAccess != null">
+        gui_access = #{guiAccess,jdbcType=INTEGER},
+      </if>
+      <if test="usersStatus != null">
+        users_status = #{usersStatus,jdbcType=INTEGER},
+      </if>
+      <if test="debugMode != null">
+        debug_mode = #{debugMode,jdbcType=INTEGER},
+      </if>
+    </set>
+    where usrgrpid = #{usrgrpid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.Usrgrp">
+    <!--@mbg.generated-->
+    update usrgrp
+    set `name` = #{name,jdbcType=VARCHAR},
+      gui_access = #{guiAccess,jdbcType=INTEGER},
+      users_status = #{usersStatus,jdbcType=INTEGER},
+      debug_mode = #{debugMode,jdbcType=INTEGER}
+    where usrgrpid = #{usrgrpid,jdbcType=BIGINT}
+  </update>
+</mapper>

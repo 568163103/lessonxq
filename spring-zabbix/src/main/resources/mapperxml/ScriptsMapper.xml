@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.ScriptsMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.Scripts">
+    <!--@mbg.generated-->
+    <id column="scriptid" jdbcType="BIGINT" property="scriptid" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="command" jdbcType="VARCHAR" property="command" />
+    <result column="host_access" jdbcType="INTEGER" property="hostAccess" />
+    <result column="usrgrpid" jdbcType="BIGINT" property="usrgrpid" />
+    <result column="groupid" jdbcType="BIGINT" property="groupid" />
+    <result column="description" jdbcType="LONGVARCHAR" property="description" />
+    <result column="confirmation" jdbcType="VARCHAR" property="confirmation" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="execute_on" jdbcType="INTEGER" property="executeOn" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    scriptid, `name`, command, host_access, usrgrpid, groupid, description, confirmation, 
+    `type`, execute_on
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from scripts
+    where scriptid = #{scriptid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from scripts
+    where scriptid = #{scriptid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.Scripts">
+    <!--@mbg.generated-->
+    insert into scripts (scriptid, `name`, command, 
+      host_access, usrgrpid, groupid, 
+      description, confirmation, `type`, 
+      execute_on)
+    values (#{scriptid,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{command,jdbcType=VARCHAR}, 
+      #{hostAccess,jdbcType=INTEGER}, #{usrgrpid,jdbcType=BIGINT}, #{groupid,jdbcType=BIGINT}, 
+      #{description,jdbcType=LONGVARCHAR}, #{confirmation,jdbcType=VARCHAR}, #{type,jdbcType=INTEGER}, 
+      #{executeOn,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.Scripts">
+    <!--@mbg.generated-->
+    insert into scripts
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="scriptid != null">
+        scriptid,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="command != null">
+        command,
+      </if>
+      <if test="hostAccess != null">
+        host_access,
+      </if>
+      <if test="usrgrpid != null">
+        usrgrpid,
+      </if>
+      <if test="groupid != null">
+        groupid,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="confirmation != null">
+        confirmation,
+      </if>
+      <if test="type != null">
+        `type`,
+      </if>
+      <if test="executeOn != null">
+        execute_on,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="scriptid != null">
+        #{scriptid,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="command != null">
+        #{command,jdbcType=VARCHAR},
+      </if>
+      <if test="hostAccess != null">
+        #{hostAccess,jdbcType=INTEGER},
+      </if>
+      <if test="usrgrpid != null">
+        #{usrgrpid,jdbcType=BIGINT},
+      </if>
+      <if test="groupid != null">
+        #{groupid,jdbcType=BIGINT},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="confirmation != null">
+        #{confirmation,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="executeOn != null">
+        #{executeOn,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.Scripts">
+    <!--@mbg.generated-->
+    update scripts
+    <set>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="command != null">
+        command = #{command,jdbcType=VARCHAR},
+      </if>
+      <if test="hostAccess != null">
+        host_access = #{hostAccess,jdbcType=INTEGER},
+      </if>
+      <if test="usrgrpid != null">
+        usrgrpid = #{usrgrpid,jdbcType=BIGINT},
+      </if>
+      <if test="groupid != null">
+        groupid = #{groupid,jdbcType=BIGINT},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="confirmation != null">
+        confirmation = #{confirmation,jdbcType=VARCHAR},
+      </if>
+      <if test="type != null">
+        `type` = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="executeOn != null">
+        execute_on = #{executeOn,jdbcType=INTEGER},
+      </if>
+    </set>
+    where scriptid = #{scriptid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.Scripts">
+    <!--@mbg.generated-->
+    update scripts
+    set `name` = #{name,jdbcType=VARCHAR},
+      command = #{command,jdbcType=VARCHAR},
+      host_access = #{hostAccess,jdbcType=INTEGER},
+      usrgrpid = #{usrgrpid,jdbcType=BIGINT},
+      groupid = #{groupid,jdbcType=BIGINT},
+      description = #{description,jdbcType=LONGVARCHAR},
+      confirmation = #{confirmation,jdbcType=VARCHAR},
+      `type` = #{type,jdbcType=INTEGER},
+      execute_on = #{executeOn,jdbcType=INTEGER}
+    where scriptid = #{scriptid,jdbcType=BIGINT}
+  </update>
+</mapper>

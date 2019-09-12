@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.MediaTypeMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.MediaType">
+    <!--@mbg.generated-->
+    <id column="mediatypeid" jdbcType="BIGINT" property="mediatypeid" />
+    <result column="type" jdbcType="INTEGER" property="type" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="smtp_server" jdbcType="VARCHAR" property="smtpServer" />
+    <result column="smtp_helo" jdbcType="VARCHAR" property="smtpHelo" />
+    <result column="smtp_email" jdbcType="VARCHAR" property="smtpEmail" />
+    <result column="exec_path" jdbcType="VARCHAR" property="execPath" />
+    <result column="gsm_modem" jdbcType="VARCHAR" property="gsmModem" />
+    <result column="username" jdbcType="VARCHAR" property="username" />
+    <result column="passwd" jdbcType="VARCHAR" property="passwd" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="smtp_port" jdbcType="INTEGER" property="smtpPort" />
+    <result column="smtp_security" jdbcType="INTEGER" property="smtpSecurity" />
+    <result column="smtp_verify_peer" jdbcType="INTEGER" property="smtpVerifyPeer" />
+    <result column="smtp_verify_host" jdbcType="INTEGER" property="smtpVerifyHost" />
+    <result column="smtp_authentication" jdbcType="INTEGER" property="smtpAuthentication" />
+    <result column="exec_params" jdbcType="VARCHAR" property="execParams" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    mediatypeid, `type`, description, smtp_server, smtp_helo, smtp_email, exec_path, 
+    gsm_modem, username, passwd, `status`, smtp_port, smtp_security, smtp_verify_peer, 
+    smtp_verify_host, smtp_authentication, exec_params
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from media_type
+    where mediatypeid = #{mediatypeid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from media_type
+    where mediatypeid = #{mediatypeid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.MediaType">
+    <!--@mbg.generated-->
+    insert into media_type (mediatypeid, `type`, description, 
+      smtp_server, smtp_helo, smtp_email, 
+      exec_path, gsm_modem, username, 
+      passwd, `status`, smtp_port, 
+      smtp_security, smtp_verify_peer, smtp_verify_host, 
+      smtp_authentication, exec_params)
+    values (#{mediatypeid,jdbcType=BIGINT}, #{type,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR}, 
+      #{smtpServer,jdbcType=VARCHAR}, #{smtpHelo,jdbcType=VARCHAR}, #{smtpEmail,jdbcType=VARCHAR}, 
+      #{execPath,jdbcType=VARCHAR}, #{gsmModem,jdbcType=VARCHAR}, #{username,jdbcType=VARCHAR}, 
+      #{passwd,jdbcType=VARCHAR}, #{status,jdbcType=INTEGER}, #{smtpPort,jdbcType=INTEGER}, 
+      #{smtpSecurity,jdbcType=INTEGER}, #{smtpVerifyPeer,jdbcType=INTEGER}, #{smtpVerifyHost,jdbcType=INTEGER}, 
+      #{smtpAuthentication,jdbcType=INTEGER}, #{execParams,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.MediaType">
+    <!--@mbg.generated-->
+    insert into media_type
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="mediatypeid != null">
+        mediatypeid,
+      </if>
+      <if test="type != null">
+        `type`,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="smtpServer != null">
+        smtp_server,
+      </if>
+      <if test="smtpHelo != null">
+        smtp_helo,
+      </if>
+      <if test="smtpEmail != null">
+        smtp_email,
+      </if>
+      <if test="execPath != null">
+        exec_path,
+      </if>
+      <if test="gsmModem != null">
+        gsm_modem,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="passwd != null">
+        passwd,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="smtpPort != null">
+        smtp_port,
+      </if>
+      <if test="smtpSecurity != null">
+        smtp_security,
+      </if>
+      <if test="smtpVerifyPeer != null">
+        smtp_verify_peer,
+      </if>
+      <if test="smtpVerifyHost != null">
+        smtp_verify_host,
+      </if>
+      <if test="smtpAuthentication != null">
+        smtp_authentication,
+      </if>
+      <if test="execParams != null">
+        exec_params,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="mediatypeid != null">
+        #{mediatypeid,jdbcType=BIGINT},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="smtpServer != null">
+        #{smtpServer,jdbcType=VARCHAR},
+      </if>
+      <if test="smtpHelo != null">
+        #{smtpHelo,jdbcType=VARCHAR},
+      </if>
+      <if test="smtpEmail != null">
+        #{smtpEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="execPath != null">
+        #{execPath,jdbcType=VARCHAR},
+      </if>
+      <if test="gsmModem != null">
+        #{gsmModem,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="passwd != null">
+        #{passwd,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="smtpPort != null">
+        #{smtpPort,jdbcType=INTEGER},
+      </if>
+      <if test="smtpSecurity != null">
+        #{smtpSecurity,jdbcType=INTEGER},
+      </if>
+      <if test="smtpVerifyPeer != null">
+        #{smtpVerifyPeer,jdbcType=INTEGER},
+      </if>
+      <if test="smtpVerifyHost != null">
+        #{smtpVerifyHost,jdbcType=INTEGER},
+      </if>
+      <if test="smtpAuthentication != null">
+        #{smtpAuthentication,jdbcType=INTEGER},
+      </if>
+      <if test="execParams != null">
+        #{execParams,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.MediaType">
+    <!--@mbg.generated-->
+    update media_type
+    <set>
+      <if test="type != null">
+        `type` = #{type,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="smtpServer != null">
+        smtp_server = #{smtpServer,jdbcType=VARCHAR},
+      </if>
+      <if test="smtpHelo != null">
+        smtp_helo = #{smtpHelo,jdbcType=VARCHAR},
+      </if>
+      <if test="smtpEmail != null">
+        smtp_email = #{smtpEmail,jdbcType=VARCHAR},
+      </if>
+      <if test="execPath != null">
+        exec_path = #{execPath,jdbcType=VARCHAR},
+      </if>
+      <if test="gsmModem != null">
+        gsm_modem = #{gsmModem,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="passwd != null">
+        passwd = #{passwd,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="smtpPort != null">
+        smtp_port = #{smtpPort,jdbcType=INTEGER},
+      </if>
+      <if test="smtpSecurity != null">
+        smtp_security = #{smtpSecurity,jdbcType=INTEGER},
+      </if>
+      <if test="smtpVerifyPeer != null">
+        smtp_verify_peer = #{smtpVerifyPeer,jdbcType=INTEGER},
+      </if>
+      <if test="smtpVerifyHost != null">
+        smtp_verify_host = #{smtpVerifyHost,jdbcType=INTEGER},
+      </if>
+      <if test="smtpAuthentication != null">
+        smtp_authentication = #{smtpAuthentication,jdbcType=INTEGER},
+      </if>
+      <if test="execParams != null">
+        exec_params = #{execParams,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where mediatypeid = #{mediatypeid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.MediaType">
+    <!--@mbg.generated-->
+    update media_type
+    set `type` = #{type,jdbcType=INTEGER},
+      description = #{description,jdbcType=VARCHAR},
+      smtp_server = #{smtpServer,jdbcType=VARCHAR},
+      smtp_helo = #{smtpHelo,jdbcType=VARCHAR},
+      smtp_email = #{smtpEmail,jdbcType=VARCHAR},
+      exec_path = #{execPath,jdbcType=VARCHAR},
+      gsm_modem = #{gsmModem,jdbcType=VARCHAR},
+      username = #{username,jdbcType=VARCHAR},
+      passwd = #{passwd,jdbcType=VARCHAR},
+      `status` = #{status,jdbcType=INTEGER},
+      smtp_port = #{smtpPort,jdbcType=INTEGER},
+      smtp_security = #{smtpSecurity,jdbcType=INTEGER},
+      smtp_verify_peer = #{smtpVerifyPeer,jdbcType=INTEGER},
+      smtp_verify_host = #{smtpVerifyHost,jdbcType=INTEGER},
+      smtp_authentication = #{smtpAuthentication,jdbcType=INTEGER},
+      exec_params = #{execParams,jdbcType=VARCHAR}
+    where mediatypeid = #{mediatypeid,jdbcType=BIGINT}
+  </update>
+</mapper>

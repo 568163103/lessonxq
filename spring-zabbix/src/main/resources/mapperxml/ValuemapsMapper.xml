@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.ValuemapsMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.Valuemaps">
+    <!--@mbg.generated-->
+    <id column="valuemapid" jdbcType="BIGINT" property="valuemapid" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    valuemapid, `name`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from valuemaps
+    where valuemapid = #{valuemapid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from valuemaps
+    where valuemapid = #{valuemapid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.Valuemaps">
+    <!--@mbg.generated-->
+    insert into valuemaps (valuemapid, `name`)
+    values (#{valuemapid,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.Valuemaps">
+    <!--@mbg.generated-->
+    insert into valuemaps
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="valuemapid != null">
+        valuemapid,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="valuemapid != null">
+        #{valuemapid,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.Valuemaps">
+    <!--@mbg.generated-->
+    update valuemaps
+    <set>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where valuemapid = #{valuemapid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.Valuemaps">
+    <!--@mbg.generated-->
+    update valuemaps
+    set `name` = #{name,jdbcType=VARCHAR}
+    where valuemapid = #{valuemapid,jdbcType=BIGINT}
+  </update>
+</mapper>

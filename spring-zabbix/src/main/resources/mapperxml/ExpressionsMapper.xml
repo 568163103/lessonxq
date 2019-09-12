@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.ExpressionsMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.Expressions">
+    <!--@mbg.generated-->
+    <id column="expressionid" jdbcType="BIGINT" property="expressionid" />
+    <result column="regexpid" jdbcType="BIGINT" property="regexpid" />
+    <result column="expression" jdbcType="VARCHAR" property="expression" />
+    <result column="expression_type" jdbcType="INTEGER" property="expressionType" />
+    <result column="exp_delimiter" jdbcType="VARCHAR" property="expDelimiter" />
+    <result column="case_sensitive" jdbcType="INTEGER" property="caseSensitive" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    expressionid, regexpid, expression, expression_type, exp_delimiter, case_sensitive
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from expressions
+    where expressionid = #{expressionid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from expressions
+    where expressionid = #{expressionid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.Expressions">
+    <!--@mbg.generated-->
+    insert into expressions (expressionid, regexpid, expression, 
+      expression_type, exp_delimiter, case_sensitive
+      )
+    values (#{expressionid,jdbcType=BIGINT}, #{regexpid,jdbcType=BIGINT}, #{expression,jdbcType=VARCHAR}, 
+      #{expressionType,jdbcType=INTEGER}, #{expDelimiter,jdbcType=VARCHAR}, #{caseSensitive,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.Expressions">
+    <!--@mbg.generated-->
+    insert into expressions
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="expressionid != null">
+        expressionid,
+      </if>
+      <if test="regexpid != null">
+        regexpid,
+      </if>
+      <if test="expression != null">
+        expression,
+      </if>
+      <if test="expressionType != null">
+        expression_type,
+      </if>
+      <if test="expDelimiter != null">
+        exp_delimiter,
+      </if>
+      <if test="caseSensitive != null">
+        case_sensitive,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="expressionid != null">
+        #{expressionid,jdbcType=BIGINT},
+      </if>
+      <if test="regexpid != null">
+        #{regexpid,jdbcType=BIGINT},
+      </if>
+      <if test="expression != null">
+        #{expression,jdbcType=VARCHAR},
+      </if>
+      <if test="expressionType != null">
+        #{expressionType,jdbcType=INTEGER},
+      </if>
+      <if test="expDelimiter != null">
+        #{expDelimiter,jdbcType=VARCHAR},
+      </if>
+      <if test="caseSensitive != null">
+        #{caseSensitive,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.Expressions">
+    <!--@mbg.generated-->
+    update expressions
+    <set>
+      <if test="regexpid != null">
+        regexpid = #{regexpid,jdbcType=BIGINT},
+      </if>
+      <if test="expression != null">
+        expression = #{expression,jdbcType=VARCHAR},
+      </if>
+      <if test="expressionType != null">
+        expression_type = #{expressionType,jdbcType=INTEGER},
+      </if>
+      <if test="expDelimiter != null">
+        exp_delimiter = #{expDelimiter,jdbcType=VARCHAR},
+      </if>
+      <if test="caseSensitive != null">
+        case_sensitive = #{caseSensitive,jdbcType=INTEGER},
+      </if>
+    </set>
+    where expressionid = #{expressionid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.Expressions">
+    <!--@mbg.generated-->
+    update expressions
+    set regexpid = #{regexpid,jdbcType=BIGINT},
+      expression = #{expression,jdbcType=VARCHAR},
+      expression_type = #{expressionType,jdbcType=INTEGER},
+      exp_delimiter = #{expDelimiter,jdbcType=VARCHAR},
+      case_sensitive = #{caseSensitive,jdbcType=INTEGER}
+    where expressionid = #{expressionid,jdbcType=BIGINT}
+  </update>
+</mapper>

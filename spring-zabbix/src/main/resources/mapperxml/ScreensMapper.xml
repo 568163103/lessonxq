@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.ScreensMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.Screens">
+    <!--@mbg.generated-->
+    <id column="screenid" jdbcType="BIGINT" property="screenid" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="hsize" jdbcType="INTEGER" property="hsize" />
+    <result column="vsize" jdbcType="INTEGER" property="vsize" />
+    <result column="templateid" jdbcType="BIGINT" property="templateid" />
+    <result column="userid" jdbcType="BIGINT" property="userid" />
+    <result column="private" jdbcType="INTEGER" property="private1" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    screenid, `name`, hsize, vsize, templateid, userid, private
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from screens
+    where screenid = #{screenid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from screens
+    where screenid = #{screenid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.Screens">
+    <!--@mbg.generated-->
+    insert into screens (screenid, `name`, hsize, 
+      vsize, templateid, userid, 
+      private)
+    values (#{screenid,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{hsize,jdbcType=INTEGER}, 
+      #{vsize,jdbcType=INTEGER}, #{templateid,jdbcType=BIGINT}, #{userid,jdbcType=BIGINT}, 
+      #{private1,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.Screens">
+    <!--@mbg.generated-->
+    insert into screens
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="screenid != null">
+        screenid,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="hsize != null">
+        hsize,
+      </if>
+      <if test="vsize != null">
+        vsize,
+      </if>
+      <if test="templateid != null">
+        templateid,
+      </if>
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="private1 != null">
+        private,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="screenid != null">
+        #{screenid,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="hsize != null">
+        #{hsize,jdbcType=INTEGER},
+      </if>
+      <if test="vsize != null">
+        #{vsize,jdbcType=INTEGER},
+      </if>
+      <if test="templateid != null">
+        #{templateid,jdbcType=BIGINT},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=BIGINT},
+      </if>
+      <if test="private1 != null">
+        #{private1,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.Screens">
+    <!--@mbg.generated-->
+    update screens
+    <set>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="hsize != null">
+        hsize = #{hsize,jdbcType=INTEGER},
+      </if>
+      <if test="vsize != null">
+        vsize = #{vsize,jdbcType=INTEGER},
+      </if>
+      <if test="templateid != null">
+        templateid = #{templateid,jdbcType=BIGINT},
+      </if>
+      <if test="userid != null">
+        userid = #{userid,jdbcType=BIGINT},
+      </if>
+      <if test="private != null">
+        private = #{private1,jdbcType=INTEGER},
+      </if>
+    </set>
+    where screenid = #{screenid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.Screens">
+    <!--@mbg.generated-->
+    update screens
+    set `name` = #{name,jdbcType=VARCHAR},
+      hsize = #{hsize,jdbcType=INTEGER},
+      vsize = #{vsize,jdbcType=INTEGER},
+      templateid = #{templateid,jdbcType=BIGINT},
+      userid = #{userid,jdbcType=BIGINT},
+      private = #{private1,jdbcType=INTEGER}
+    where screenid = #{screenid,jdbcType=BIGINT}
+  </update>
+</mapper>

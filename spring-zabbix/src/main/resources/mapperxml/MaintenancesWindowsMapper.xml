@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.MaintenancesWindowsMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.MaintenancesWindows">
+    <!--@mbg.generated-->
+    <id column="maintenance_timeperiodid" jdbcType="BIGINT" property="maintenanceTimeperiodid" />
+    <result column="maintenanceid" jdbcType="BIGINT" property="maintenanceid" />
+    <result column="timeperiodid" jdbcType="BIGINT" property="timeperiodid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    maintenance_timeperiodid, maintenanceid, timeperiodid
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from maintenances_windows
+    where maintenance_timeperiodid = #{maintenanceTimeperiodid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from maintenances_windows
+    where maintenance_timeperiodid = #{maintenanceTimeperiodid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.MaintenancesWindows">
+    <!--@mbg.generated-->
+    insert into maintenances_windows (maintenance_timeperiodid, maintenanceid, 
+      timeperiodid)
+    values (#{maintenanceTimeperiodid,jdbcType=BIGINT}, #{maintenanceid,jdbcType=BIGINT}, 
+      #{timeperiodid,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.MaintenancesWindows">
+    <!--@mbg.generated-->
+    insert into maintenances_windows
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="maintenanceTimeperiodid != null">
+        maintenance_timeperiodid,
+      </if>
+      <if test="maintenanceid != null">
+        maintenanceid,
+      </if>
+      <if test="timeperiodid != null">
+        timeperiodid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="maintenanceTimeperiodid != null">
+        #{maintenanceTimeperiodid,jdbcType=BIGINT},
+      </if>
+      <if test="maintenanceid != null">
+        #{maintenanceid,jdbcType=BIGINT},
+      </if>
+      <if test="timeperiodid != null">
+        #{timeperiodid,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.MaintenancesWindows">
+    <!--@mbg.generated-->
+    update maintenances_windows
+    <set>
+      <if test="maintenanceid != null">
+        maintenanceid = #{maintenanceid,jdbcType=BIGINT},
+      </if>
+      <if test="timeperiodid != null">
+        timeperiodid = #{timeperiodid,jdbcType=BIGINT},
+      </if>
+    </set>
+    where maintenance_timeperiodid = #{maintenanceTimeperiodid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.MaintenancesWindows">
+    <!--@mbg.generated-->
+    update maintenances_windows
+    set maintenanceid = #{maintenanceid,jdbcType=BIGINT},
+      timeperiodid = #{timeperiodid,jdbcType=BIGINT}
+    where maintenance_timeperiodid = #{maintenanceTimeperiodid,jdbcType=BIGINT}
+  </update>
+</mapper>

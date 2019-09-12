@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.RegexpsMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.Regexps">
+    <!--@mbg.generated-->
+    <id column="regexpid" jdbcType="BIGINT" property="regexpid" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="test_string" jdbcType="LONGVARCHAR" property="testString" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    regexpid, `name`, test_string
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from regexps
+    where regexpid = #{regexpid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from regexps
+    where regexpid = #{regexpid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.Regexps">
+    <!--@mbg.generated-->
+    insert into regexps (regexpid, `name`, test_string
+      )
+    values (#{regexpid,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, #{testString,jdbcType=LONGVARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.Regexps">
+    <!--@mbg.generated-->
+    insert into regexps
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="regexpid != null">
+        regexpid,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="testString != null">
+        test_string,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="regexpid != null">
+        #{regexpid,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="testString != null">
+        #{testString,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.Regexps">
+    <!--@mbg.generated-->
+    update regexps
+    <set>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="testString != null">
+        test_string = #{testString,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where regexpid = #{regexpid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.Regexps">
+    <!--@mbg.generated-->
+    update regexps
+    set `name` = #{name,jdbcType=VARCHAR},
+      test_string = #{testString,jdbcType=LONGVARCHAR}
+    where regexpid = #{regexpid,jdbcType=BIGINT}
+  </update>
+</mapper>

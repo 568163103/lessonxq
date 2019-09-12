@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.HistoryStrMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.HistoryStr">
+    <!--@mbg.generated-->
+    <result column="itemid" jdbcType="BIGINT" property="itemid" />
+    <result column="clock" jdbcType="INTEGER" property="clock" />
+    <result column="value" jdbcType="VARCHAR" property="value" />
+    <result column="ns" jdbcType="INTEGER" property="ns" />
+  </resultMap>
+  <insert id="insert" parameterType="com.xq.domain.HistoryStr">
+    <!--@mbg.generated-->
+    insert into history_str (itemid, clock, `value`, 
+      ns)
+    values (#{itemid,jdbcType=BIGINT}, #{clock,jdbcType=INTEGER}, #{value,jdbcType=VARCHAR}, 
+      #{ns,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.HistoryStr">
+    <!--@mbg.generated-->
+    insert into history_str
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="itemid != null">
+        itemid,
+      </if>
+      <if test="clock != null">
+        clock,
+      </if>
+      <if test="value != null">
+        `value`,
+      </if>
+      <if test="ns != null">
+        ns,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="itemid != null">
+        #{itemid,jdbcType=BIGINT},
+      </if>
+      <if test="clock != null">
+        #{clock,jdbcType=INTEGER},
+      </if>
+      <if test="value != null">
+        #{value,jdbcType=VARCHAR},
+      </if>
+      <if test="ns != null">
+        #{ns,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

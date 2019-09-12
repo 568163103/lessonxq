@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.ItemApplicationPrototypeMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.ItemApplicationPrototype">
+    <!--@mbg.generated-->
+    <id column="item_application_prototypeid" jdbcType="BIGINT" property="itemApplicationPrototypeid" />
+    <result column="application_prototypeid" jdbcType="BIGINT" property="applicationPrototypeid" />
+    <result column="itemid" jdbcType="BIGINT" property="itemid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    item_application_prototypeid, application_prototypeid, itemid
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from item_application_prototype
+    where item_application_prototypeid = #{itemApplicationPrototypeid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from item_application_prototype
+    where item_application_prototypeid = #{itemApplicationPrototypeid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.ItemApplicationPrototype">
+    <!--@mbg.generated-->
+    insert into item_application_prototype (item_application_prototypeid, application_prototypeid, 
+      itemid)
+    values (#{itemApplicationPrototypeid,jdbcType=BIGINT}, #{applicationPrototypeid,jdbcType=BIGINT}, 
+      #{itemid,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.ItemApplicationPrototype">
+    <!--@mbg.generated-->
+    insert into item_application_prototype
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="itemApplicationPrototypeid != null">
+        item_application_prototypeid,
+      </if>
+      <if test="applicationPrototypeid != null">
+        application_prototypeid,
+      </if>
+      <if test="itemid != null">
+        itemid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="itemApplicationPrototypeid != null">
+        #{itemApplicationPrototypeid,jdbcType=BIGINT},
+      </if>
+      <if test="applicationPrototypeid != null">
+        #{applicationPrototypeid,jdbcType=BIGINT},
+      </if>
+      <if test="itemid != null">
+        #{itemid,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.ItemApplicationPrototype">
+    <!--@mbg.generated-->
+    update item_application_prototype
+    <set>
+      <if test="applicationPrototypeid != null">
+        application_prototypeid = #{applicationPrototypeid,jdbcType=BIGINT},
+      </if>
+      <if test="itemid != null">
+        itemid = #{itemid,jdbcType=BIGINT},
+      </if>
+    </set>
+    where item_application_prototypeid = #{itemApplicationPrototypeid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.ItemApplicationPrototype">
+    <!--@mbg.generated-->
+    update item_application_prototype
+    set application_prototypeid = #{applicationPrototypeid,jdbcType=BIGINT},
+      itemid = #{itemid,jdbcType=BIGINT}
+    where item_application_prototypeid = #{itemApplicationPrototypeid,jdbcType=BIGINT}
+  </update>
+</mapper>

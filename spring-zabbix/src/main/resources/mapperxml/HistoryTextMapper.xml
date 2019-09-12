@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.HistoryTextMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.HistoryText">
+    <!--@mbg.generated-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="itemid" jdbcType="BIGINT" property="itemid" />
+    <result column="clock" jdbcType="INTEGER" property="clock" />
+    <result column="value" jdbcType="LONGVARCHAR" property="value" />
+    <result column="ns" jdbcType="INTEGER" property="ns" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, itemid, clock, `value`, ns
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from history_text
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from history_text
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.HistoryText">
+    <!--@mbg.generated-->
+    insert into history_text (id, itemid, clock, 
+      `value`, ns)
+    values (#{id,jdbcType=BIGINT}, #{itemid,jdbcType=BIGINT}, #{clock,jdbcType=INTEGER}, 
+      #{value,jdbcType=LONGVARCHAR}, #{ns,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.HistoryText">
+    <!--@mbg.generated-->
+    insert into history_text
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="itemid != null">
+        itemid,
+      </if>
+      <if test="clock != null">
+        clock,
+      </if>
+      <if test="value != null">
+        `value`,
+      </if>
+      <if test="ns != null">
+        ns,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=BIGINT},
+      </if>
+      <if test="itemid != null">
+        #{itemid,jdbcType=BIGINT},
+      </if>
+      <if test="clock != null">
+        #{clock,jdbcType=INTEGER},
+      </if>
+      <if test="value != null">
+        #{value,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="ns != null">
+        #{ns,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.HistoryText">
+    <!--@mbg.generated-->
+    update history_text
+    <set>
+      <if test="itemid != null">
+        itemid = #{itemid,jdbcType=BIGINT},
+      </if>
+      <if test="clock != null">
+        clock = #{clock,jdbcType=INTEGER},
+      </if>
+      <if test="value != null">
+        `value` = #{value,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="ns != null">
+        ns = #{ns,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.HistoryText">
+    <!--@mbg.generated-->
+    update history_text
+    set itemid = #{itemid,jdbcType=BIGINT},
+      clock = #{clock,jdbcType=INTEGER},
+      `value` = #{value,jdbcType=LONGVARCHAR},
+      ns = #{ns,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

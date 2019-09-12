@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.AcknowledgesMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.Acknowledges">
+    <!--@mbg.generated-->
+    <id column="acknowledgeid" jdbcType="BIGINT" property="acknowledgeid" />
+    <result column="userid" jdbcType="BIGINT" property="userid" />
+    <result column="eventid" jdbcType="BIGINT" property="eventid" />
+    <result column="clock" jdbcType="INTEGER" property="clock" />
+    <result column="message" jdbcType="VARCHAR" property="message" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    acknowledgeid, userid, eventid, clock, message
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from acknowledges
+    where acknowledgeid = #{acknowledgeid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from acknowledges
+    where acknowledgeid = #{acknowledgeid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.Acknowledges">
+    <!--@mbg.generated-->
+    insert into acknowledges (acknowledgeid, userid, eventid, 
+      clock, message)
+    values (#{acknowledgeid,jdbcType=BIGINT}, #{userid,jdbcType=BIGINT}, #{eventid,jdbcType=BIGINT}, 
+      #{clock,jdbcType=INTEGER}, #{message,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.Acknowledges">
+    <!--@mbg.generated-->
+    insert into acknowledges
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="acknowledgeid != null">
+        acknowledgeid,
+      </if>
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="eventid != null">
+        eventid,
+      </if>
+      <if test="clock != null">
+        clock,
+      </if>
+      <if test="message != null">
+        message,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="acknowledgeid != null">
+        #{acknowledgeid,jdbcType=BIGINT},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=BIGINT},
+      </if>
+      <if test="eventid != null">
+        #{eventid,jdbcType=BIGINT},
+      </if>
+      <if test="clock != null">
+        #{clock,jdbcType=INTEGER},
+      </if>
+      <if test="message != null">
+        #{message,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.Acknowledges">
+    <!--@mbg.generated-->
+    update acknowledges
+    <set>
+      <if test="userid != null">
+        userid = #{userid,jdbcType=BIGINT},
+      </if>
+      <if test="eventid != null">
+        eventid = #{eventid,jdbcType=BIGINT},
+      </if>
+      <if test="clock != null">
+        clock = #{clock,jdbcType=INTEGER},
+      </if>
+      <if test="message != null">
+        message = #{message,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where acknowledgeid = #{acknowledgeid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.Acknowledges">
+    <!--@mbg.generated-->
+    update acknowledges
+    set userid = #{userid,jdbcType=BIGINT},
+      eventid = #{eventid,jdbcType=BIGINT},
+      clock = #{clock,jdbcType=INTEGER},
+      message = #{message,jdbcType=VARCHAR}
+    where acknowledgeid = #{acknowledgeid,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.OpcommandHstMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.OpcommandHst">
+    <!--@mbg.generated-->
+    <id column="opcommand_hstid" jdbcType="BIGINT" property="opcommandHstid" />
+    <result column="operationid" jdbcType="BIGINT" property="operationid" />
+    <result column="hostid" jdbcType="BIGINT" property="hostid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    opcommand_hstid, operationid, hostid
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from opcommand_hst
+    where opcommand_hstid = #{opcommandHstid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from opcommand_hst
+    where opcommand_hstid = #{opcommandHstid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.OpcommandHst">
+    <!--@mbg.generated-->
+    insert into opcommand_hst (opcommand_hstid, operationid, hostid
+      )
+    values (#{opcommandHstid,jdbcType=BIGINT}, #{operationid,jdbcType=BIGINT}, #{hostid,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.OpcommandHst">
+    <!--@mbg.generated-->
+    insert into opcommand_hst
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="opcommandHstid != null">
+        opcommand_hstid,
+      </if>
+      <if test="operationid != null">
+        operationid,
+      </if>
+      <if test="hostid != null">
+        hostid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="opcommandHstid != null">
+        #{opcommandHstid,jdbcType=BIGINT},
+      </if>
+      <if test="operationid != null">
+        #{operationid,jdbcType=BIGINT},
+      </if>
+      <if test="hostid != null">
+        #{hostid,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.OpcommandHst">
+    <!--@mbg.generated-->
+    update opcommand_hst
+    <set>
+      <if test="operationid != null">
+        operationid = #{operationid,jdbcType=BIGINT},
+      </if>
+      <if test="hostid != null">
+        hostid = #{hostid,jdbcType=BIGINT},
+      </if>
+    </set>
+    where opcommand_hstid = #{opcommandHstid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.OpcommandHst">
+    <!--@mbg.generated-->
+    update opcommand_hst
+    set operationid = #{operationid,jdbcType=BIGINT},
+      hostid = #{hostid,jdbcType=BIGINT}
+    where opcommand_hstid = #{opcommandHstid,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,185 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.GraphThemeMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.GraphTheme">
+    <!--@mbg.generated-->
+    <id column="graphthemeid" jdbcType="BIGINT" property="graphthemeid" />
+    <result column="theme" jdbcType="VARCHAR" property="theme" />
+    <result column="backgroundcolor" jdbcType="VARCHAR" property="backgroundcolor" />
+    <result column="graphcolor" jdbcType="VARCHAR" property="graphcolor" />
+    <result column="gridcolor" jdbcType="VARCHAR" property="gridcolor" />
+    <result column="maingridcolor" jdbcType="VARCHAR" property="maingridcolor" />
+    <result column="gridbordercolor" jdbcType="VARCHAR" property="gridbordercolor" />
+    <result column="textcolor" jdbcType="VARCHAR" property="textcolor" />
+    <result column="highlightcolor" jdbcType="VARCHAR" property="highlightcolor" />
+    <result column="leftpercentilecolor" jdbcType="VARCHAR" property="leftpercentilecolor" />
+    <result column="rightpercentilecolor" jdbcType="VARCHAR" property="rightpercentilecolor" />
+    <result column="nonworktimecolor" jdbcType="VARCHAR" property="nonworktimecolor" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    graphthemeid, theme, backgroundcolor, graphcolor, gridcolor, maingridcolor, gridbordercolor, 
+    textcolor, highlightcolor, leftpercentilecolor, rightpercentilecolor, nonworktimecolor
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from graph_theme
+    where graphthemeid = #{graphthemeid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from graph_theme
+    where graphthemeid = #{graphthemeid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.GraphTheme">
+    <!--@mbg.generated-->
+    insert into graph_theme (graphthemeid, theme, backgroundcolor, 
+      graphcolor, gridcolor, maingridcolor, 
+      gridbordercolor, textcolor, highlightcolor, 
+      leftpercentilecolor, rightpercentilecolor, 
+      nonworktimecolor)
+    values (#{graphthemeid,jdbcType=BIGINT}, #{theme,jdbcType=VARCHAR}, #{backgroundcolor,jdbcType=VARCHAR}, 
+      #{graphcolor,jdbcType=VARCHAR}, #{gridcolor,jdbcType=VARCHAR}, #{maingridcolor,jdbcType=VARCHAR}, 
+      #{gridbordercolor,jdbcType=VARCHAR}, #{textcolor,jdbcType=VARCHAR}, #{highlightcolor,jdbcType=VARCHAR}, 
+      #{leftpercentilecolor,jdbcType=VARCHAR}, #{rightpercentilecolor,jdbcType=VARCHAR}, 
+      #{nonworktimecolor,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.GraphTheme">
+    <!--@mbg.generated-->
+    insert into graph_theme
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="graphthemeid != null">
+        graphthemeid,
+      </if>
+      <if test="theme != null">
+        theme,
+      </if>
+      <if test="backgroundcolor != null">
+        backgroundcolor,
+      </if>
+      <if test="graphcolor != null">
+        graphcolor,
+      </if>
+      <if test="gridcolor != null">
+        gridcolor,
+      </if>
+      <if test="maingridcolor != null">
+        maingridcolor,
+      </if>
+      <if test="gridbordercolor != null">
+        gridbordercolor,
+      </if>
+      <if test="textcolor != null">
+        textcolor,
+      </if>
+      <if test="highlightcolor != null">
+        highlightcolor,
+      </if>
+      <if test="leftpercentilecolor != null">
+        leftpercentilecolor,
+      </if>
+      <if test="rightpercentilecolor != null">
+        rightpercentilecolor,
+      </if>
+      <if test="nonworktimecolor != null">
+        nonworktimecolor,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="graphthemeid != null">
+        #{graphthemeid,jdbcType=BIGINT},
+      </if>
+      <if test="theme != null">
+        #{theme,jdbcType=VARCHAR},
+      </if>
+      <if test="backgroundcolor != null">
+        #{backgroundcolor,jdbcType=VARCHAR},
+      </if>
+      <if test="graphcolor != null">
+        #{graphcolor,jdbcType=VARCHAR},
+      </if>
+      <if test="gridcolor != null">
+        #{gridcolor,jdbcType=VARCHAR},
+      </if>
+      <if test="maingridcolor != null">
+        #{maingridcolor,jdbcType=VARCHAR},
+      </if>
+      <if test="gridbordercolor != null">
+        #{gridbordercolor,jdbcType=VARCHAR},
+      </if>
+      <if test="textcolor != null">
+        #{textcolor,jdbcType=VARCHAR},
+      </if>
+      <if test="highlightcolor != null">
+        #{highlightcolor,jdbcType=VARCHAR},
+      </if>
+      <if test="leftpercentilecolor != null">
+        #{leftpercentilecolor,jdbcType=VARCHAR},
+      </if>
+      <if test="rightpercentilecolor != null">
+        #{rightpercentilecolor,jdbcType=VARCHAR},
+      </if>
+      <if test="nonworktimecolor != null">
+        #{nonworktimecolor,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.GraphTheme">
+    <!--@mbg.generated-->
+    update graph_theme
+    <set>
+      <if test="theme != null">
+        theme = #{theme,jdbcType=VARCHAR},
+      </if>
+      <if test="backgroundcolor != null">
+        backgroundcolor = #{backgroundcolor,jdbcType=VARCHAR},
+      </if>
+      <if test="graphcolor != null">
+        graphcolor = #{graphcolor,jdbcType=VARCHAR},
+      </if>
+      <if test="gridcolor != null">
+        gridcolor = #{gridcolor,jdbcType=VARCHAR},
+      </if>
+      <if test="maingridcolor != null">
+        maingridcolor = #{maingridcolor,jdbcType=VARCHAR},
+      </if>
+      <if test="gridbordercolor != null">
+        gridbordercolor = #{gridbordercolor,jdbcType=VARCHAR},
+      </if>
+      <if test="textcolor != null">
+        textcolor = #{textcolor,jdbcType=VARCHAR},
+      </if>
+      <if test="highlightcolor != null">
+        highlightcolor = #{highlightcolor,jdbcType=VARCHAR},
+      </if>
+      <if test="leftpercentilecolor != null">
+        leftpercentilecolor = #{leftpercentilecolor,jdbcType=VARCHAR},
+      </if>
+      <if test="rightpercentilecolor != null">
+        rightpercentilecolor = #{rightpercentilecolor,jdbcType=VARCHAR},
+      </if>
+      <if test="nonworktimecolor != null">
+        nonworktimecolor = #{nonworktimecolor,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where graphthemeid = #{graphthemeid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.GraphTheme">
+    <!--@mbg.generated-->
+    update graph_theme
+    set theme = #{theme,jdbcType=VARCHAR},
+      backgroundcolor = #{backgroundcolor,jdbcType=VARCHAR},
+      graphcolor = #{graphcolor,jdbcType=VARCHAR},
+      gridcolor = #{gridcolor,jdbcType=VARCHAR},
+      maingridcolor = #{maingridcolor,jdbcType=VARCHAR},
+      gridbordercolor = #{gridbordercolor,jdbcType=VARCHAR},
+      textcolor = #{textcolor,jdbcType=VARCHAR},
+      highlightcolor = #{highlightcolor,jdbcType=VARCHAR},
+      leftpercentilecolor = #{leftpercentilecolor,jdbcType=VARCHAR},
+      rightpercentilecolor = #{rightpercentilecolor,jdbcType=VARCHAR},
+      nonworktimecolor = #{nonworktimecolor,jdbcType=VARCHAR}
+    where graphthemeid = #{graphthemeid,jdbcType=BIGINT}
+  </update>
+</mapper>

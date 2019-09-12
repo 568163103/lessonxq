@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.ApplicationsMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.Applications">
+    <!--@mbg.generated-->
+    <id column="applicationid" jdbcType="BIGINT" property="applicationid" />
+    <result column="hostid" jdbcType="BIGINT" property="hostid" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="flags" jdbcType="INTEGER" property="flags" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    applicationid, hostid, `name`, flags
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from applications
+    where applicationid = #{applicationid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from applications
+    where applicationid = #{applicationid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.Applications">
+    <!--@mbg.generated-->
+    insert into applications (applicationid, hostid, `name`, 
+      flags)
+    values (#{applicationid,jdbcType=BIGINT}, #{hostid,jdbcType=BIGINT}, #{name,jdbcType=VARCHAR}, 
+      #{flags,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.Applications">
+    <!--@mbg.generated-->
+    insert into applications
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="applicationid != null">
+        applicationid,
+      </if>
+      <if test="hostid != null">
+        hostid,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="flags != null">
+        flags,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="applicationid != null">
+        #{applicationid,jdbcType=BIGINT},
+      </if>
+      <if test="hostid != null">
+        #{hostid,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="flags != null">
+        #{flags,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.Applications">
+    <!--@mbg.generated-->
+    update applications
+    <set>
+      <if test="hostid != null">
+        hostid = #{hostid,jdbcType=BIGINT},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="flags != null">
+        flags = #{flags,jdbcType=INTEGER},
+      </if>
+    </set>
+    where applicationid = #{applicationid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.Applications">
+    <!--@mbg.generated-->
+    update applications
+    set hostid = #{hostid,jdbcType=BIGINT},
+      `name` = #{name,jdbcType=VARCHAR},
+      flags = #{flags,jdbcType=INTEGER}
+    where applicationid = #{applicationid,jdbcType=BIGINT}
+  </update>
+</mapper>

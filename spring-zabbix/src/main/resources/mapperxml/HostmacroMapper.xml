@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.HostmacroMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.Hostmacro">
+    <!--@mbg.generated-->
+    <id column="hostmacroid" jdbcType="BIGINT" property="hostmacroid" />
+    <result column="hostid" jdbcType="BIGINT" property="hostid" />
+    <result column="macro" jdbcType="VARCHAR" property="macro" />
+    <result column="value" jdbcType="VARCHAR" property="value" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    hostmacroid, hostid, macro, `value`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from hostmacro
+    where hostmacroid = #{hostmacroid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from hostmacro
+    where hostmacroid = #{hostmacroid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.Hostmacro">
+    <!--@mbg.generated-->
+    insert into hostmacro (hostmacroid, hostid, macro, 
+      `value`)
+    values (#{hostmacroid,jdbcType=BIGINT}, #{hostid,jdbcType=BIGINT}, #{macro,jdbcType=VARCHAR}, 
+      #{value,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.Hostmacro">
+    <!--@mbg.generated-->
+    insert into hostmacro
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="hostmacroid != null">
+        hostmacroid,
+      </if>
+      <if test="hostid != null">
+        hostid,
+      </if>
+      <if test="macro != null">
+        macro,
+      </if>
+      <if test="value != null">
+        `value`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="hostmacroid != null">
+        #{hostmacroid,jdbcType=BIGINT},
+      </if>
+      <if test="hostid != null">
+        #{hostid,jdbcType=BIGINT},
+      </if>
+      <if test="macro != null">
+        #{macro,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null">
+        #{value,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.Hostmacro">
+    <!--@mbg.generated-->
+    update hostmacro
+    <set>
+      <if test="hostid != null">
+        hostid = #{hostid,jdbcType=BIGINT},
+      </if>
+      <if test="macro != null">
+        macro = #{macro,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null">
+        `value` = #{value,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where hostmacroid = #{hostmacroid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.Hostmacro">
+    <!--@mbg.generated-->
+    update hostmacro
+    set hostid = #{hostid,jdbcType=BIGINT},
+      macro = #{macro,jdbcType=VARCHAR},
+      `value` = #{value,jdbcType=VARCHAR}
+    where hostmacroid = #{hostmacroid,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.SysmapsElementsMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.SysmapsElements">
+    <!--@mbg.generated-->
+    <id column="selementid" jdbcType="BIGINT" property="selementid" />
+    <result column="sysmapid" jdbcType="BIGINT" property="sysmapid" />
+    <result column="elementid" jdbcType="BIGINT" property="elementid" />
+    <result column="elementtype" jdbcType="INTEGER" property="elementtype" />
+    <result column="iconid_off" jdbcType="BIGINT" property="iconidOff" />
+    <result column="iconid_on" jdbcType="BIGINT" property="iconidOn" />
+    <result column="label" jdbcType="VARCHAR" property="label" />
+    <result column="label_location" jdbcType="INTEGER" property="labelLocation" />
+    <result column="x" jdbcType="INTEGER" property="x" />
+    <result column="y" jdbcType="INTEGER" property="y" />
+    <result column="iconid_disabled" jdbcType="BIGINT" property="iconidDisabled" />
+    <result column="iconid_maintenance" jdbcType="BIGINT" property="iconidMaintenance" />
+    <result column="elementsubtype" jdbcType="INTEGER" property="elementsubtype" />
+    <result column="areatype" jdbcType="INTEGER" property="areatype" />
+    <result column="width" jdbcType="INTEGER" property="width" />
+    <result column="height" jdbcType="INTEGER" property="height" />
+    <result column="viewtype" jdbcType="INTEGER" property="viewtype" />
+    <result column="use_iconmap" jdbcType="INTEGER" property="useIconmap" />
+    <result column="application" jdbcType="VARCHAR" property="application" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    selementid, sysmapid, elementid, elementtype, iconid_off, iconid_on, `label`, label_location, 
+    x, y, iconid_disabled, iconid_maintenance, elementsubtype, areatype, width, height, 
+    viewtype, use_iconmap, `application`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from sysmaps_elements
+    where selementid = #{selementid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from sysmaps_elements
+    where selementid = #{selementid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.SysmapsElements">
+    <!--@mbg.generated-->
+    insert into sysmaps_elements (selementid, sysmapid, elementid, 
+      elementtype, iconid_off, iconid_on, 
+      `label`, label_location, x, 
+      y, iconid_disabled, iconid_maintenance, 
+      elementsubtype, areatype, width, 
+      height, viewtype, use_iconmap, 
+      `application`)
+    values (#{selementid,jdbcType=BIGINT}, #{sysmapid,jdbcType=BIGINT}, #{elementid,jdbcType=BIGINT}, 
+      #{elementtype,jdbcType=INTEGER}, #{iconidOff,jdbcType=BIGINT}, #{iconidOn,jdbcType=BIGINT}, 
+      #{label,jdbcType=VARCHAR}, #{labelLocation,jdbcType=INTEGER}, #{x,jdbcType=INTEGER}, 
+      #{y,jdbcType=INTEGER}, #{iconidDisabled,jdbcType=BIGINT}, #{iconidMaintenance,jdbcType=BIGINT}, 
+      #{elementsubtype,jdbcType=INTEGER}, #{areatype,jdbcType=INTEGER}, #{width,jdbcType=INTEGER}, 
+      #{height,jdbcType=INTEGER}, #{viewtype,jdbcType=INTEGER}, #{useIconmap,jdbcType=INTEGER}, 
+      #{application,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.SysmapsElements">
+    <!--@mbg.generated-->
+    insert into sysmaps_elements
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="selementid != null">
+        selementid,
+      </if>
+      <if test="sysmapid != null">
+        sysmapid,
+      </if>
+      <if test="elementid != null">
+        elementid,
+      </if>
+      <if test="elementtype != null">
+        elementtype,
+      </if>
+      <if test="iconidOff != null">
+        iconid_off,
+      </if>
+      <if test="iconidOn != null">
+        iconid_on,
+      </if>
+      <if test="label != null">
+        `label`,
+      </if>
+      <if test="labelLocation != null">
+        label_location,
+      </if>
+      <if test="x != null">
+        x,
+      </if>
+      <if test="y != null">
+        y,
+      </if>
+      <if test="iconidDisabled != null">
+        iconid_disabled,
+      </if>
+      <if test="iconidMaintenance != null">
+        iconid_maintenance,
+      </if>
+      <if test="elementsubtype != null">
+        elementsubtype,
+      </if>
+      <if test="areatype != null">
+        areatype,
+      </if>
+      <if test="width != null">
+        width,
+      </if>
+      <if test="height != null">
+        height,
+      </if>
+      <if test="viewtype != null">
+        viewtype,
+      </if>
+      <if test="useIconmap != null">
+        use_iconmap,
+      </if>
+      <if test="application != null">
+        `application`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="selementid != null">
+        #{selementid,jdbcType=BIGINT},
+      </if>
+      <if test="sysmapid != null">
+        #{sysmapid,jdbcType=BIGINT},
+      </if>
+      <if test="elementid != null">
+        #{elementid,jdbcType=BIGINT},
+      </if>
+      <if test="elementtype != null">
+        #{elementtype,jdbcType=INTEGER},
+      </if>
+      <if test="iconidOff != null">
+        #{iconidOff,jdbcType=BIGINT},
+      </if>
+      <if test="iconidOn != null">
+        #{iconidOn,jdbcType=BIGINT},
+      </if>
+      <if test="label != null">
+        #{label,jdbcType=VARCHAR},
+      </if>
+      <if test="labelLocation != null">
+        #{labelLocation,jdbcType=INTEGER},
+      </if>
+      <if test="x != null">
+        #{x,jdbcType=INTEGER},
+      </if>
+      <if test="y != null">
+        #{y,jdbcType=INTEGER},
+      </if>
+      <if test="iconidDisabled != null">
+        #{iconidDisabled,jdbcType=BIGINT},
+      </if>
+      <if test="iconidMaintenance != null">
+        #{iconidMaintenance,jdbcType=BIGINT},
+      </if>
+      <if test="elementsubtype != null">
+        #{elementsubtype,jdbcType=INTEGER},
+      </if>
+      <if test="areatype != null">
+        #{areatype,jdbcType=INTEGER},
+      </if>
+      <if test="width != null">
+        #{width,jdbcType=INTEGER},
+      </if>
+      <if test="height != null">
+        #{height,jdbcType=INTEGER},
+      </if>
+      <if test="viewtype != null">
+        #{viewtype,jdbcType=INTEGER},
+      </if>
+      <if test="useIconmap != null">
+        #{useIconmap,jdbcType=INTEGER},
+      </if>
+      <if test="application != null">
+        #{application,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.SysmapsElements">
+    <!--@mbg.generated-->
+    update sysmaps_elements
+    <set>
+      <if test="sysmapid != null">
+        sysmapid = #{sysmapid,jdbcType=BIGINT},
+      </if>
+      <if test="elementid != null">
+        elementid = #{elementid,jdbcType=BIGINT},
+      </if>
+      <if test="elementtype != null">
+        elementtype = #{elementtype,jdbcType=INTEGER},
+      </if>
+      <if test="iconidOff != null">
+        iconid_off = #{iconidOff,jdbcType=BIGINT},
+      </if>
+      <if test="iconidOn != null">
+        iconid_on = #{iconidOn,jdbcType=BIGINT},
+      </if>
+      <if test="label != null">
+        `label` = #{label,jdbcType=VARCHAR},
+      </if>
+      <if test="labelLocation != null">
+        label_location = #{labelLocation,jdbcType=INTEGER},
+      </if>
+      <if test="x != null">
+        x = #{x,jdbcType=INTEGER},
+      </if>
+      <if test="y != null">
+        y = #{y,jdbcType=INTEGER},
+      </if>
+      <if test="iconidDisabled != null">
+        iconid_disabled = #{iconidDisabled,jdbcType=BIGINT},
+      </if>
+      <if test="iconidMaintenance != null">
+        iconid_maintenance = #{iconidMaintenance,jdbcType=BIGINT},
+      </if>
+      <if test="elementsubtype != null">
+        elementsubtype = #{elementsubtype,jdbcType=INTEGER},
+      </if>
+      <if test="areatype != null">
+        areatype = #{areatype,jdbcType=INTEGER},
+      </if>
+      <if test="width != null">
+        width = #{width,jdbcType=INTEGER},
+      </if>
+      <if test="height != null">
+        height = #{height,jdbcType=INTEGER},
+      </if>
+      <if test="viewtype != null">
+        viewtype = #{viewtype,jdbcType=INTEGER},
+      </if>
+      <if test="useIconmap != null">
+        use_iconmap = #{useIconmap,jdbcType=INTEGER},
+      </if>
+      <if test="application != null">
+        `application` = #{application,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where selementid = #{selementid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.SysmapsElements">
+    <!--@mbg.generated-->
+    update sysmaps_elements
+    set sysmapid = #{sysmapid,jdbcType=BIGINT},
+      elementid = #{elementid,jdbcType=BIGINT},
+      elementtype = #{elementtype,jdbcType=INTEGER},
+      iconid_off = #{iconidOff,jdbcType=BIGINT},
+      iconid_on = #{iconidOn,jdbcType=BIGINT},
+      `label` = #{label,jdbcType=VARCHAR},
+      label_location = #{labelLocation,jdbcType=INTEGER},
+      x = #{x,jdbcType=INTEGER},
+      y = #{y,jdbcType=INTEGER},
+      iconid_disabled = #{iconidDisabled,jdbcType=BIGINT},
+      iconid_maintenance = #{iconidMaintenance,jdbcType=BIGINT},
+      elementsubtype = #{elementsubtype,jdbcType=INTEGER},
+      areatype = #{areatype,jdbcType=INTEGER},
+      width = #{width,jdbcType=INTEGER},
+      height = #{height,jdbcType=INTEGER},
+      viewtype = #{viewtype,jdbcType=INTEGER},
+      use_iconmap = #{useIconmap,jdbcType=INTEGER},
+      `application` = #{application,jdbcType=VARCHAR}
+    where selementid = #{selementid,jdbcType=BIGINT}
+  </update>
+</mapper>

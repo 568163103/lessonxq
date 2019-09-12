@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.HousekeeperMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.Housekeeper">
+    <!--@mbg.generated-->
+    <id column="housekeeperid" jdbcType="BIGINT" property="housekeeperid" />
+    <result column="tablename" jdbcType="VARCHAR" property="tablename" />
+    <result column="field" jdbcType="VARCHAR" property="field" />
+    <result column="value" jdbcType="BIGINT" property="value" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    housekeeperid, tablename, field, `value`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from housekeeper
+    where housekeeperid = #{housekeeperid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from housekeeper
+    where housekeeperid = #{housekeeperid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.Housekeeper">
+    <!--@mbg.generated-->
+    insert into housekeeper (housekeeperid, tablename, field, 
+      `value`)
+    values (#{housekeeperid,jdbcType=BIGINT}, #{tablename,jdbcType=VARCHAR}, #{field,jdbcType=VARCHAR}, 
+      #{value,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.Housekeeper">
+    <!--@mbg.generated-->
+    insert into housekeeper
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="housekeeperid != null">
+        housekeeperid,
+      </if>
+      <if test="tablename != null">
+        tablename,
+      </if>
+      <if test="field != null">
+        field,
+      </if>
+      <if test="value != null">
+        `value`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="housekeeperid != null">
+        #{housekeeperid,jdbcType=BIGINT},
+      </if>
+      <if test="tablename != null">
+        #{tablename,jdbcType=VARCHAR},
+      </if>
+      <if test="field != null">
+        #{field,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null">
+        #{value,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.Housekeeper">
+    <!--@mbg.generated-->
+    update housekeeper
+    <set>
+      <if test="tablename != null">
+        tablename = #{tablename,jdbcType=VARCHAR},
+      </if>
+      <if test="field != null">
+        field = #{field,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null">
+        `value` = #{value,jdbcType=BIGINT},
+      </if>
+    </set>
+    where housekeeperid = #{housekeeperid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.Housekeeper">
+    <!--@mbg.generated-->
+    update housekeeper
+    set tablename = #{tablename,jdbcType=VARCHAR},
+      field = #{field,jdbcType=VARCHAR},
+      `value` = #{value,jdbcType=BIGINT}
+    where housekeeperid = #{housekeeperid,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.IdsMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.Ids">
+    <!--@mbg.generated-->
+    <id column="table_name" jdbcType="VARCHAR" property="tableName" />
+    <id column="field_name" jdbcType="VARCHAR" property="fieldName" />
+    <result column="nextid" jdbcType="BIGINT" property="nextid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    `table_name`, field_name, nextid
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from ids
+    where `table_name` = #{tableName,jdbcType=VARCHAR}
+      and field_name = #{fieldName,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    <!--@mbg.generated-->
+    delete from ids
+    where `table_name` = #{tableName,jdbcType=VARCHAR}
+      and field_name = #{fieldName,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.Ids">
+    <!--@mbg.generated-->
+    insert into ids (`table_name`, field_name, nextid
+      )
+    values (#{tableName,jdbcType=VARCHAR}, #{fieldName,jdbcType=VARCHAR}, #{nextid,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.Ids">
+    <!--@mbg.generated-->
+    insert into ids
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tableName != null">
+        `table_name`,
+      </if>
+      <if test="fieldName != null">
+        field_name,
+      </if>
+      <if test="nextid != null">
+        nextid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tableName != null">
+        #{tableName,jdbcType=VARCHAR},
+      </if>
+      <if test="fieldName != null">
+        #{fieldName,jdbcType=VARCHAR},
+      </if>
+      <if test="nextid != null">
+        #{nextid,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.Ids">
+    <!--@mbg.generated-->
+    update ids
+    <set>
+      <if test="nextid != null">
+        nextid = #{nextid,jdbcType=BIGINT},
+      </if>
+    </set>
+    where `table_name` = #{tableName,jdbcType=VARCHAR}
+      and field_name = #{fieldName,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.Ids">
+    <!--@mbg.generated-->
+    update ids
+    set nextid = #{nextid,jdbcType=BIGINT}
+    where `table_name` = #{tableName,jdbcType=VARCHAR}
+      and field_name = #{fieldName,jdbcType=VARCHAR}
+  </update>
+</mapper>

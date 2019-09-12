@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.FunctionsMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.Functions">
+    <!--@mbg.generated-->
+    <id column="functionid" jdbcType="BIGINT" property="functionid" />
+    <result column="itemid" jdbcType="BIGINT" property="itemid" />
+    <result column="triggerid" jdbcType="BIGINT" property="triggerid" />
+    <result column="function" jdbcType="VARCHAR" property="function" />
+    <result column="parameter" jdbcType="VARCHAR" property="parameter" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    functionid, itemid, triggerid, `function`, `parameter`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from functions
+    where functionid = #{functionid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from functions
+    where functionid = #{functionid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.Functions">
+    <!--@mbg.generated-->
+    insert into functions (functionid, itemid, triggerid, 
+      `function`, `parameter`)
+    values (#{functionid,jdbcType=BIGINT}, #{itemid,jdbcType=BIGINT}, #{triggerid,jdbcType=BIGINT}, 
+      #{function,jdbcType=VARCHAR}, #{parameter,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.Functions">
+    <!--@mbg.generated-->
+    insert into functions
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="functionid != null">
+        functionid,
+      </if>
+      <if test="itemid != null">
+        itemid,
+      </if>
+      <if test="triggerid != null">
+        triggerid,
+      </if>
+      <if test="function != null">
+        `function`,
+      </if>
+      <if test="parameter != null">
+        `parameter`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="functionid != null">
+        #{functionid,jdbcType=BIGINT},
+      </if>
+      <if test="itemid != null">
+        #{itemid,jdbcType=BIGINT},
+      </if>
+      <if test="triggerid != null">
+        #{triggerid,jdbcType=BIGINT},
+      </if>
+      <if test="function != null">
+        #{function,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter != null">
+        #{parameter,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.Functions">
+    <!--@mbg.generated-->
+    update functions
+    <set>
+      <if test="itemid != null">
+        itemid = #{itemid,jdbcType=BIGINT},
+      </if>
+      <if test="triggerid != null">
+        triggerid = #{triggerid,jdbcType=BIGINT},
+      </if>
+      <if test="function != null">
+        `function` = #{function,jdbcType=VARCHAR},
+      </if>
+      <if test="parameter != null">
+        `parameter` = #{parameter,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where functionid = #{functionid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.Functions">
+    <!--@mbg.generated-->
+    update functions
+    set itemid = #{itemid,jdbcType=BIGINT},
+      triggerid = #{triggerid,jdbcType=BIGINT},
+      `function` = #{function,jdbcType=VARCHAR},
+      `parameter` = #{parameter,jdbcType=VARCHAR}
+    where functionid = #{functionid,jdbcType=BIGINT}
+  </update>
+</mapper>

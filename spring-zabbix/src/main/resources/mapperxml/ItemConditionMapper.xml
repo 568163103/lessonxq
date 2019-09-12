@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.ItemConditionMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.ItemCondition">
+    <!--@mbg.generated-->
+    <id column="item_conditionid" jdbcType="BIGINT" property="itemConditionid" />
+    <result column="itemid" jdbcType="BIGINT" property="itemid" />
+    <result column="operator" jdbcType="INTEGER" property="operator" />
+    <result column="macro" jdbcType="VARCHAR" property="macro" />
+    <result column="value" jdbcType="VARCHAR" property="value" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    item_conditionid, itemid, `operator`, macro, `value`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from item_condition
+    where item_conditionid = #{itemConditionid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from item_condition
+    where item_conditionid = #{itemConditionid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.ItemCondition">
+    <!--@mbg.generated-->
+    insert into item_condition (item_conditionid, itemid, `operator`, 
+      macro, `value`)
+    values (#{itemConditionid,jdbcType=BIGINT}, #{itemid,jdbcType=BIGINT}, #{operator,jdbcType=INTEGER}, 
+      #{macro,jdbcType=VARCHAR}, #{value,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.ItemCondition">
+    <!--@mbg.generated-->
+    insert into item_condition
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="itemConditionid != null">
+        item_conditionid,
+      </if>
+      <if test="itemid != null">
+        itemid,
+      </if>
+      <if test="operator != null">
+        `operator`,
+      </if>
+      <if test="macro != null">
+        macro,
+      </if>
+      <if test="value != null">
+        `value`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="itemConditionid != null">
+        #{itemConditionid,jdbcType=BIGINT},
+      </if>
+      <if test="itemid != null">
+        #{itemid,jdbcType=BIGINT},
+      </if>
+      <if test="operator != null">
+        #{operator,jdbcType=INTEGER},
+      </if>
+      <if test="macro != null">
+        #{macro,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null">
+        #{value,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.ItemCondition">
+    <!--@mbg.generated-->
+    update item_condition
+    <set>
+      <if test="itemid != null">
+        itemid = #{itemid,jdbcType=BIGINT},
+      </if>
+      <if test="operator != null">
+        `operator` = #{operator,jdbcType=INTEGER},
+      </if>
+      <if test="macro != null">
+        macro = #{macro,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null">
+        `value` = #{value,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where item_conditionid = #{itemConditionid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.ItemCondition">
+    <!--@mbg.generated-->
+    update item_condition
+    set itemid = #{itemid,jdbcType=BIGINT},
+      `operator` = #{operator,jdbcType=INTEGER},
+      macro = #{macro,jdbcType=VARCHAR},
+      `value` = #{value,jdbcType=VARCHAR}
+    where item_conditionid = #{itemConditionid,jdbcType=BIGINT}
+  </update>
+</mapper>

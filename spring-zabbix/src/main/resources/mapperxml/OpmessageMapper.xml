@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.OpmessageMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.Opmessage">
+    <!--@mbg.generated-->
+    <id column="operationid" jdbcType="BIGINT" property="operationid" />
+    <result column="default_msg" jdbcType="INTEGER" property="defaultMsg" />
+    <result column="subject" jdbcType="VARCHAR" property="subject" />
+    <result column="message" jdbcType="LONGVARCHAR" property="message" />
+    <result column="mediatypeid" jdbcType="BIGINT" property="mediatypeid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    operationid, default_msg, subject, message, mediatypeid
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from opmessage
+    where operationid = #{operationid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from opmessage
+    where operationid = #{operationid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.Opmessage">
+    <!--@mbg.generated-->
+    insert into opmessage (operationid, default_msg, subject, 
+      message, mediatypeid)
+    values (#{operationid,jdbcType=BIGINT}, #{defaultMsg,jdbcType=INTEGER}, #{subject,jdbcType=VARCHAR}, 
+      #{message,jdbcType=LONGVARCHAR}, #{mediatypeid,jdbcType=BIGINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.Opmessage">
+    <!--@mbg.generated-->
+    insert into opmessage
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="operationid != null">
+        operationid,
+      </if>
+      <if test="defaultMsg != null">
+        default_msg,
+      </if>
+      <if test="subject != null">
+        subject,
+      </if>
+      <if test="message != null">
+        message,
+      </if>
+      <if test="mediatypeid != null">
+        mediatypeid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="operationid != null">
+        #{operationid,jdbcType=BIGINT},
+      </if>
+      <if test="defaultMsg != null">
+        #{defaultMsg,jdbcType=INTEGER},
+      </if>
+      <if test="subject != null">
+        #{subject,jdbcType=VARCHAR},
+      </if>
+      <if test="message != null">
+        #{message,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="mediatypeid != null">
+        #{mediatypeid,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.Opmessage">
+    <!--@mbg.generated-->
+    update opmessage
+    <set>
+      <if test="defaultMsg != null">
+        default_msg = #{defaultMsg,jdbcType=INTEGER},
+      </if>
+      <if test="subject != null">
+        subject = #{subject,jdbcType=VARCHAR},
+      </if>
+      <if test="message != null">
+        message = #{message,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="mediatypeid != null">
+        mediatypeid = #{mediatypeid,jdbcType=BIGINT},
+      </if>
+    </set>
+    where operationid = #{operationid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.Opmessage">
+    <!--@mbg.generated-->
+    update opmessage
+    set default_msg = #{defaultMsg,jdbcType=INTEGER},
+      subject = #{subject,jdbcType=VARCHAR},
+      message = #{message,jdbcType=LONGVARCHAR},
+      mediatypeid = #{mediatypeid,jdbcType=BIGINT}
+    where operationid = #{operationid,jdbcType=BIGINT}
+  </update>
+</mapper>

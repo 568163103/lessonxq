@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.ItemDiscoveryMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.ItemDiscovery">
+    <!--@mbg.generated-->
+    <id column="itemdiscoveryid" jdbcType="BIGINT" property="itemdiscoveryid" />
+    <result column="itemid" jdbcType="BIGINT" property="itemid" />
+    <result column="parent_itemid" jdbcType="BIGINT" property="parentItemid" />
+    <result column="key_" jdbcType="VARCHAR" property="key" />
+    <result column="lastcheck" jdbcType="INTEGER" property="lastcheck" />
+    <result column="ts_delete" jdbcType="INTEGER" property="tsDelete" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    itemdiscoveryid, itemid, parent_itemid, key_, lastcheck, ts_delete
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from item_discovery
+    where itemdiscoveryid = #{itemdiscoveryid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from item_discovery
+    where itemdiscoveryid = #{itemdiscoveryid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.ItemDiscovery">
+    <!--@mbg.generated-->
+    insert into item_discovery (itemdiscoveryid, itemid, parent_itemid, 
+      key_, lastcheck, ts_delete
+      )
+    values (#{itemdiscoveryid,jdbcType=BIGINT}, #{itemid,jdbcType=BIGINT}, #{parentItemid,jdbcType=BIGINT}, 
+      #{key,jdbcType=VARCHAR}, #{lastcheck,jdbcType=INTEGER}, #{tsDelete,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.ItemDiscovery">
+    <!--@mbg.generated-->
+    insert into item_discovery
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="itemdiscoveryid != null">
+        itemdiscoveryid,
+      </if>
+      <if test="itemid != null">
+        itemid,
+      </if>
+      <if test="parentItemid != null">
+        parent_itemid,
+      </if>
+      <if test="key != null">
+        key_,
+      </if>
+      <if test="lastcheck != null">
+        lastcheck,
+      </if>
+      <if test="tsDelete != null">
+        ts_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="itemdiscoveryid != null">
+        #{itemdiscoveryid,jdbcType=BIGINT},
+      </if>
+      <if test="itemid != null">
+        #{itemid,jdbcType=BIGINT},
+      </if>
+      <if test="parentItemid != null">
+        #{parentItemid,jdbcType=BIGINT},
+      </if>
+      <if test="key != null">
+        #{key,jdbcType=VARCHAR},
+      </if>
+      <if test="lastcheck != null">
+        #{lastcheck,jdbcType=INTEGER},
+      </if>
+      <if test="tsDelete != null">
+        #{tsDelete,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.ItemDiscovery">
+    <!--@mbg.generated-->
+    update item_discovery
+    <set>
+      <if test="itemid != null">
+        itemid = #{itemid,jdbcType=BIGINT},
+      </if>
+      <if test="parentItemid != null">
+        parent_itemid = #{parentItemid,jdbcType=BIGINT},
+      </if>
+      <if test="key != null">
+        key_ = #{key,jdbcType=VARCHAR},
+      </if>
+      <if test="lastcheck != null">
+        lastcheck = #{lastcheck,jdbcType=INTEGER},
+      </if>
+      <if test="tsDelete != null">
+        ts_delete = #{tsDelete,jdbcType=INTEGER},
+      </if>
+    </set>
+    where itemdiscoveryid = #{itemdiscoveryid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.ItemDiscovery">
+    <!--@mbg.generated-->
+    update item_discovery
+    set itemid = #{itemid,jdbcType=BIGINT},
+      parent_itemid = #{parentItemid,jdbcType=BIGINT},
+      key_ = #{key,jdbcType=VARCHAR},
+      lastcheck = #{lastcheck,jdbcType=INTEGER},
+      ts_delete = #{tsDelete,jdbcType=INTEGER}
+    where itemdiscoveryid = #{itemdiscoveryid,jdbcType=BIGINT}
+  </update>
+</mapper>

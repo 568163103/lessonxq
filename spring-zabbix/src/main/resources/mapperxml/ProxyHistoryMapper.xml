@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.ProxyHistoryMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.ProxyHistory">
+    <!--@mbg.generated-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="itemid" jdbcType="BIGINT" property="itemid" />
+    <result column="clock" jdbcType="INTEGER" property="clock" />
+    <result column="timestamp" jdbcType="INTEGER" property="timestamp" />
+    <result column="source" jdbcType="VARCHAR" property="source" />
+    <result column="severity" jdbcType="INTEGER" property="severity" />
+    <result column="value" jdbcType="LONGVARCHAR" property="value" />
+    <result column="logeventid" jdbcType="INTEGER" property="logeventid" />
+    <result column="ns" jdbcType="INTEGER" property="ns" />
+    <result column="state" jdbcType="INTEGER" property="state" />
+    <result column="lastlogsize" jdbcType="BIGINT" property="lastlogsize" />
+    <result column="mtime" jdbcType="INTEGER" property="mtime" />
+    <result column="flags" jdbcType="INTEGER" property="flags" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, itemid, clock, `timestamp`, `source`, severity, `value`, logeventid, ns, `state`, 
+    lastlogsize, mtime, flags
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from proxy_history
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from proxy_history
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.xq.domain.ProxyHistory" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into proxy_history (itemid, clock, `timestamp`, 
+      `source`, severity, `value`, 
+      logeventid, ns, `state`, 
+      lastlogsize, mtime, flags
+      )
+    values (#{itemid,jdbcType=BIGINT}, #{clock,jdbcType=INTEGER}, #{timestamp,jdbcType=INTEGER}, 
+      #{source,jdbcType=VARCHAR}, #{severity,jdbcType=INTEGER}, #{value,jdbcType=LONGVARCHAR}, 
+      #{logeventid,jdbcType=INTEGER}, #{ns,jdbcType=INTEGER}, #{state,jdbcType=INTEGER}, 
+      #{lastlogsize,jdbcType=BIGINT}, #{mtime,jdbcType=INTEGER}, #{flags,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.xq.domain.ProxyHistory" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into proxy_history
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="itemid != null">
+        itemid,
+      </if>
+      <if test="clock != null">
+        clock,
+      </if>
+      <if test="timestamp != null">
+        `timestamp`,
+      </if>
+      <if test="source != null">
+        `source`,
+      </if>
+      <if test="severity != null">
+        severity,
+      </if>
+      <if test="value != null">
+        `value`,
+      </if>
+      <if test="logeventid != null">
+        logeventid,
+      </if>
+      <if test="ns != null">
+        ns,
+      </if>
+      <if test="state != null">
+        `state`,
+      </if>
+      <if test="lastlogsize != null">
+        lastlogsize,
+      </if>
+      <if test="mtime != null">
+        mtime,
+      </if>
+      <if test="flags != null">
+        flags,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="itemid != null">
+        #{itemid,jdbcType=BIGINT},
+      </if>
+      <if test="clock != null">
+        #{clock,jdbcType=INTEGER},
+      </if>
+      <if test="timestamp != null">
+        #{timestamp,jdbcType=INTEGER},
+      </if>
+      <if test="source != null">
+        #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="severity != null">
+        #{severity,jdbcType=INTEGER},
+      </if>
+      <if test="value != null">
+        #{value,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="logeventid != null">
+        #{logeventid,jdbcType=INTEGER},
+      </if>
+      <if test="ns != null">
+        #{ns,jdbcType=INTEGER},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=INTEGER},
+      </if>
+      <if test="lastlogsize != null">
+        #{lastlogsize,jdbcType=BIGINT},
+      </if>
+      <if test="mtime != null">
+        #{mtime,jdbcType=INTEGER},
+      </if>
+      <if test="flags != null">
+        #{flags,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.ProxyHistory">
+    <!--@mbg.generated-->
+    update proxy_history
+    <set>
+      <if test="itemid != null">
+        itemid = #{itemid,jdbcType=BIGINT},
+      </if>
+      <if test="clock != null">
+        clock = #{clock,jdbcType=INTEGER},
+      </if>
+      <if test="timestamp != null">
+        `timestamp` = #{timestamp,jdbcType=INTEGER},
+      </if>
+      <if test="source != null">
+        `source` = #{source,jdbcType=VARCHAR},
+      </if>
+      <if test="severity != null">
+        severity = #{severity,jdbcType=INTEGER},
+      </if>
+      <if test="value != null">
+        `value` = #{value,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="logeventid != null">
+        logeventid = #{logeventid,jdbcType=INTEGER},
+      </if>
+      <if test="ns != null">
+        ns = #{ns,jdbcType=INTEGER},
+      </if>
+      <if test="state != null">
+        `state` = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="lastlogsize != null">
+        lastlogsize = #{lastlogsize,jdbcType=BIGINT},
+      </if>
+      <if test="mtime != null">
+        mtime = #{mtime,jdbcType=INTEGER},
+      </if>
+      <if test="flags != null">
+        flags = #{flags,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.ProxyHistory">
+    <!--@mbg.generated-->
+    update proxy_history
+    set itemid = #{itemid,jdbcType=BIGINT},
+      clock = #{clock,jdbcType=INTEGER},
+      `timestamp` = #{timestamp,jdbcType=INTEGER},
+      `source` = #{source,jdbcType=VARCHAR},
+      severity = #{severity,jdbcType=INTEGER},
+      `value` = #{value,jdbcType=LONGVARCHAR},
+      logeventid = #{logeventid,jdbcType=INTEGER},
+      ns = #{ns,jdbcType=INTEGER},
+      `state` = #{state,jdbcType=INTEGER},
+      lastlogsize = #{lastlogsize,jdbcType=BIGINT},
+      mtime = #{mtime,jdbcType=INTEGER},
+      flags = #{flags,jdbcType=INTEGER}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

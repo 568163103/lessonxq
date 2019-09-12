@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.ScreensItemsMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.ScreensItems">
+    <!--@mbg.generated-->
+    <id column="screenitemid" jdbcType="BIGINT" property="screenitemid" />
+    <result column="screenid" jdbcType="BIGINT" property="screenid" />
+    <result column="resourcetype" jdbcType="INTEGER" property="resourcetype" />
+    <result column="resourceid" jdbcType="BIGINT" property="resourceid" />
+    <result column="width" jdbcType="INTEGER" property="width" />
+    <result column="height" jdbcType="INTEGER" property="height" />
+    <result column="x" jdbcType="INTEGER" property="x" />
+    <result column="y" jdbcType="INTEGER" property="y" />
+    <result column="colspan" jdbcType="INTEGER" property="colspan" />
+    <result column="rowspan" jdbcType="INTEGER" property="rowspan" />
+    <result column="elements" jdbcType="INTEGER" property="elements" />
+    <result column="valign" jdbcType="INTEGER" property="valign" />
+    <result column="halign" jdbcType="INTEGER" property="halign" />
+    <result column="style" jdbcType="INTEGER" property="style" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="dynamic" jdbcType="INTEGER" property="dynamic" />
+    <result column="sort_triggers" jdbcType="INTEGER" property="sortTriggers" />
+    <result column="application" jdbcType="VARCHAR" property="application" />
+    <result column="max_columns" jdbcType="INTEGER" property="maxColumns" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    screenitemid, screenid, resourcetype, resourceid, width, height, x, y, colspan, rowspan, 
+    elements, valign, halign, `style`, url, `dynamic`, sort_triggers, `application`, 
+    max_columns
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from screens_items
+    where screenitemid = #{screenitemid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from screens_items
+    where screenitemid = #{screenitemid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.ScreensItems">
+    <!--@mbg.generated-->
+    insert into screens_items (screenitemid, screenid, resourcetype, 
+      resourceid, width, height, 
+      x, y, colspan, rowspan, 
+      elements, valign, halign, 
+      `style`, url, `dynamic`, 
+      sort_triggers, `application`, max_columns
+      )
+    values (#{screenitemid,jdbcType=BIGINT}, #{screenid,jdbcType=BIGINT}, #{resourcetype,jdbcType=INTEGER}, 
+      #{resourceid,jdbcType=BIGINT}, #{width,jdbcType=INTEGER}, #{height,jdbcType=INTEGER}, 
+      #{x,jdbcType=INTEGER}, #{y,jdbcType=INTEGER}, #{colspan,jdbcType=INTEGER}, #{rowspan,jdbcType=INTEGER}, 
+      #{elements,jdbcType=INTEGER}, #{valign,jdbcType=INTEGER}, #{halign,jdbcType=INTEGER}, 
+      #{style,jdbcType=INTEGER}, #{url,jdbcType=VARCHAR}, #{dynamic,jdbcType=INTEGER}, 
+      #{sortTriggers,jdbcType=INTEGER}, #{application,jdbcType=VARCHAR}, #{maxColumns,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.ScreensItems">
+    <!--@mbg.generated-->
+    insert into screens_items
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="screenitemid != null">
+        screenitemid,
+      </if>
+      <if test="screenid != null">
+        screenid,
+      </if>
+      <if test="resourcetype != null">
+        resourcetype,
+      </if>
+      <if test="resourceid != null">
+        resourceid,
+      </if>
+      <if test="width != null">
+        width,
+      </if>
+      <if test="height != null">
+        height,
+      </if>
+      <if test="x != null">
+        x,
+      </if>
+      <if test="y != null">
+        y,
+      </if>
+      <if test="colspan != null">
+        colspan,
+      </if>
+      <if test="rowspan != null">
+        rowspan,
+      </if>
+      <if test="elements != null">
+        elements,
+      </if>
+      <if test="valign != null">
+        valign,
+      </if>
+      <if test="halign != null">
+        halign,
+      </if>
+      <if test="style != null">
+        `style`,
+      </if>
+      <if test="url != null">
+        url,
+      </if>
+      <if test="dynamic != null">
+        `dynamic`,
+      </if>
+      <if test="sortTriggers != null">
+        sort_triggers,
+      </if>
+      <if test="application != null">
+        `application`,
+      </if>
+      <if test="maxColumns != null">
+        max_columns,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="screenitemid != null">
+        #{screenitemid,jdbcType=BIGINT},
+      </if>
+      <if test="screenid != null">
+        #{screenid,jdbcType=BIGINT},
+      </if>
+      <if test="resourcetype != null">
+        #{resourcetype,jdbcType=INTEGER},
+      </if>
+      <if test="resourceid != null">
+        #{resourceid,jdbcType=BIGINT},
+      </if>
+      <if test="width != null">
+        #{width,jdbcType=INTEGER},
+      </if>
+      <if test="height != null">
+        #{height,jdbcType=INTEGER},
+      </if>
+      <if test="x != null">
+        #{x,jdbcType=INTEGER},
+      </if>
+      <if test="y != null">
+        #{y,jdbcType=INTEGER},
+      </if>
+      <if test="colspan != null">
+        #{colspan,jdbcType=INTEGER},
+      </if>
+      <if test="rowspan != null">
+        #{rowspan,jdbcType=INTEGER},
+      </if>
+      <if test="elements != null">
+        #{elements,jdbcType=INTEGER},
+      </if>
+      <if test="valign != null">
+        #{valign,jdbcType=INTEGER},
+      </if>
+      <if test="halign != null">
+        #{halign,jdbcType=INTEGER},
+      </if>
+      <if test="style != null">
+        #{style,jdbcType=INTEGER},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="dynamic != null">
+        #{dynamic,jdbcType=INTEGER},
+      </if>
+      <if test="sortTriggers != null">
+        #{sortTriggers,jdbcType=INTEGER},
+      </if>
+      <if test="application != null">
+        #{application,jdbcType=VARCHAR},
+      </if>
+      <if test="maxColumns != null">
+        #{maxColumns,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.ScreensItems">
+    <!--@mbg.generated-->
+    update screens_items
+    <set>
+      <if test="screenid != null">
+        screenid = #{screenid,jdbcType=BIGINT},
+      </if>
+      <if test="resourcetype != null">
+        resourcetype = #{resourcetype,jdbcType=INTEGER},
+      </if>
+      <if test="resourceid != null">
+        resourceid = #{resourceid,jdbcType=BIGINT},
+      </if>
+      <if test="width != null">
+        width = #{width,jdbcType=INTEGER},
+      </if>
+      <if test="height != null">
+        height = #{height,jdbcType=INTEGER},
+      </if>
+      <if test="x != null">
+        x = #{x,jdbcType=INTEGER},
+      </if>
+      <if test="y != null">
+        y = #{y,jdbcType=INTEGER},
+      </if>
+      <if test="colspan != null">
+        colspan = #{colspan,jdbcType=INTEGER},
+      </if>
+      <if test="rowspan != null">
+        rowspan = #{rowspan,jdbcType=INTEGER},
+      </if>
+      <if test="elements != null">
+        elements = #{elements,jdbcType=INTEGER},
+      </if>
+      <if test="valign != null">
+        valign = #{valign,jdbcType=INTEGER},
+      </if>
+      <if test="halign != null">
+        halign = #{halign,jdbcType=INTEGER},
+      </if>
+      <if test="style != null">
+        `style` = #{style,jdbcType=INTEGER},
+      </if>
+      <if test="url != null">
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="dynamic != null">
+        `dynamic` = #{dynamic,jdbcType=INTEGER},
+      </if>
+      <if test="sortTriggers != null">
+        sort_triggers = #{sortTriggers,jdbcType=INTEGER},
+      </if>
+      <if test="application != null">
+        `application` = #{application,jdbcType=VARCHAR},
+      </if>
+      <if test="maxColumns != null">
+        max_columns = #{maxColumns,jdbcType=INTEGER},
+      </if>
+    </set>
+    where screenitemid = #{screenitemid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.ScreensItems">
+    <!--@mbg.generated-->
+    update screens_items
+    set screenid = #{screenid,jdbcType=BIGINT},
+      resourcetype = #{resourcetype,jdbcType=INTEGER},
+      resourceid = #{resourceid,jdbcType=BIGINT},
+      width = #{width,jdbcType=INTEGER},
+      height = #{height,jdbcType=INTEGER},
+      x = #{x,jdbcType=INTEGER},
+      y = #{y,jdbcType=INTEGER},
+      colspan = #{colspan,jdbcType=INTEGER},
+      rowspan = #{rowspan,jdbcType=INTEGER},
+      elements = #{elements,jdbcType=INTEGER},
+      valign = #{valign,jdbcType=INTEGER},
+      halign = #{halign,jdbcType=INTEGER},
+      `style` = #{style,jdbcType=INTEGER},
+      url = #{url,jdbcType=VARCHAR},
+      `dynamic` = #{dynamic,jdbcType=INTEGER},
+      sort_triggers = #{sortTriggers,jdbcType=INTEGER},
+      `application` = #{application,jdbcType=VARCHAR},
+      max_columns = #{maxColumns,jdbcType=INTEGER}
+    where screenitemid = #{screenitemid,jdbcType=BIGINT}
+  </update>
+</mapper>

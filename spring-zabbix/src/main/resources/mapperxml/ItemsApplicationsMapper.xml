@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.ItemsApplicationsMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.ItemsApplications">
+    <!--@mbg.generated-->
+    <id column="itemappid" jdbcType="BIGINT" property="itemappid" />
+    <result column="applicationid" jdbcType="BIGINT" property="applicationid" />
+    <result column="itemid" jdbcType="BIGINT" property="itemid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    itemappid, applicationid, itemid
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from items_applications
+    where itemappid = #{itemappid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from items_applications
+    where itemappid = #{itemappid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.ItemsApplications">
+    <!--@mbg.generated-->
+    insert into items_applications (itemappid, applicationid, itemid
+      )
+    values (#{itemappid,jdbcType=BIGINT}, #{applicationid,jdbcType=BIGINT}, #{itemid,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.ItemsApplications">
+    <!--@mbg.generated-->
+    insert into items_applications
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="itemappid != null">
+        itemappid,
+      </if>
+      <if test="applicationid != null">
+        applicationid,
+      </if>
+      <if test="itemid != null">
+        itemid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="itemappid != null">
+        #{itemappid,jdbcType=BIGINT},
+      </if>
+      <if test="applicationid != null">
+        #{applicationid,jdbcType=BIGINT},
+      </if>
+      <if test="itemid != null">
+        #{itemid,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.ItemsApplications">
+    <!--@mbg.generated-->
+    update items_applications
+    <set>
+      <if test="applicationid != null">
+        applicationid = #{applicationid,jdbcType=BIGINT},
+      </if>
+      <if test="itemid != null">
+        itemid = #{itemid,jdbcType=BIGINT},
+      </if>
+    </set>
+    where itemappid = #{itemappid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.ItemsApplications">
+    <!--@mbg.generated-->
+    update items_applications
+    set applicationid = #{applicationid,jdbcType=BIGINT},
+      itemid = #{itemid,jdbcType=BIGINT}
+    where itemappid = #{itemappid,jdbcType=BIGINT}
+  </update>
+</mapper>

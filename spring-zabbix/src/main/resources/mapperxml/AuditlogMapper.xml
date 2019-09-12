@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.AuditlogMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.Auditlog">
+    <!--@mbg.generated-->
+    <id column="auditid" jdbcType="BIGINT" property="auditid" />
+    <result column="userid" jdbcType="BIGINT" property="userid" />
+    <result column="clock" jdbcType="INTEGER" property="clock" />
+    <result column="action" jdbcType="INTEGER" property="action" />
+    <result column="resourcetype" jdbcType="INTEGER" property="resourcetype" />
+    <result column="details" jdbcType="VARCHAR" property="details" />
+    <result column="ip" jdbcType="VARCHAR" property="ip" />
+    <result column="resourceid" jdbcType="BIGINT" property="resourceid" />
+    <result column="resourcename" jdbcType="VARCHAR" property="resourcename" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    auditid, userid, clock, `action`, resourcetype, details, ip, resourceid, resourcename
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from auditlog
+    where auditid = #{auditid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from auditlog
+    where auditid = #{auditid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.Auditlog">
+    <!--@mbg.generated-->
+    insert into auditlog (auditid, userid, clock, 
+      `action`, resourcetype, details, 
+      ip, resourceid, resourcename
+      )
+    values (#{auditid,jdbcType=BIGINT}, #{userid,jdbcType=BIGINT}, #{clock,jdbcType=INTEGER}, 
+      #{action,jdbcType=INTEGER}, #{resourcetype,jdbcType=INTEGER}, #{details,jdbcType=VARCHAR}, 
+      #{ip,jdbcType=VARCHAR}, #{resourceid,jdbcType=BIGINT}, #{resourcename,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.Auditlog">
+    <!--@mbg.generated-->
+    insert into auditlog
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="auditid != null">
+        auditid,
+      </if>
+      <if test="userid != null">
+        userid,
+      </if>
+      <if test="clock != null">
+        clock,
+      </if>
+      <if test="action != null">
+        `action`,
+      </if>
+      <if test="resourcetype != null">
+        resourcetype,
+      </if>
+      <if test="details != null">
+        details,
+      </if>
+      <if test="ip != null">
+        ip,
+      </if>
+      <if test="resourceid != null">
+        resourceid,
+      </if>
+      <if test="resourcename != null">
+        resourcename,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="auditid != null">
+        #{auditid,jdbcType=BIGINT},
+      </if>
+      <if test="userid != null">
+        #{userid,jdbcType=BIGINT},
+      </if>
+      <if test="clock != null">
+        #{clock,jdbcType=INTEGER},
+      </if>
+      <if test="action != null">
+        #{action,jdbcType=INTEGER},
+      </if>
+      <if test="resourcetype != null">
+        #{resourcetype,jdbcType=INTEGER},
+      </if>
+      <if test="details != null">
+        #{details,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null">
+        #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceid != null">
+        #{resourceid,jdbcType=BIGINT},
+      </if>
+      <if test="resourcename != null">
+        #{resourcename,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.Auditlog">
+    <!--@mbg.generated-->
+    update auditlog
+    <set>
+      <if test="userid != null">
+        userid = #{userid,jdbcType=BIGINT},
+      </if>
+      <if test="clock != null">
+        clock = #{clock,jdbcType=INTEGER},
+      </if>
+      <if test="action != null">
+        `action` = #{action,jdbcType=INTEGER},
+      </if>
+      <if test="resourcetype != null">
+        resourcetype = #{resourcetype,jdbcType=INTEGER},
+      </if>
+      <if test="details != null">
+        details = #{details,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null">
+        ip = #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="resourceid != null">
+        resourceid = #{resourceid,jdbcType=BIGINT},
+      </if>
+      <if test="resourcename != null">
+        resourcename = #{resourcename,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where auditid = #{auditid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.Auditlog">
+    <!--@mbg.generated-->
+    update auditlog
+    set userid = #{userid,jdbcType=BIGINT},
+      clock = #{clock,jdbcType=INTEGER},
+      `action` = #{action,jdbcType=INTEGER},
+      resourcetype = #{resourcetype,jdbcType=INTEGER},
+      details = #{details,jdbcType=VARCHAR},
+      ip = #{ip,jdbcType=VARCHAR},
+      resourceid = #{resourceid,jdbcType=BIGINT},
+      resourcename = #{resourcename,jdbcType=VARCHAR}
+    where auditid = #{auditid,jdbcType=BIGINT}
+  </update>
+</mapper>

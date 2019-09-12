@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.HostDiscoveryMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.HostDiscovery">
+    <!--@mbg.generated-->
+    <id column="hostid" jdbcType="BIGINT" property="hostid" />
+    <result column="parent_hostid" jdbcType="BIGINT" property="parentHostid" />
+    <result column="parent_itemid" jdbcType="BIGINT" property="parentItemid" />
+    <result column="host" jdbcType="VARCHAR" property="host" />
+    <result column="lastcheck" jdbcType="INTEGER" property="lastcheck" />
+    <result column="ts_delete" jdbcType="INTEGER" property="tsDelete" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    hostid, parent_hostid, parent_itemid, `host`, lastcheck, ts_delete
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from host_discovery
+    where hostid = #{hostid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from host_discovery
+    where hostid = #{hostid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.HostDiscovery">
+    <!--@mbg.generated-->
+    insert into host_discovery (hostid, parent_hostid, parent_itemid, 
+      `host`, lastcheck, ts_delete
+      )
+    values (#{hostid,jdbcType=BIGINT}, #{parentHostid,jdbcType=BIGINT}, #{parentItemid,jdbcType=BIGINT}, 
+      #{host,jdbcType=VARCHAR}, #{lastcheck,jdbcType=INTEGER}, #{tsDelete,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.HostDiscovery">
+    <!--@mbg.generated-->
+    insert into host_discovery
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="hostid != null">
+        hostid,
+      </if>
+      <if test="parentHostid != null">
+        parent_hostid,
+      </if>
+      <if test="parentItemid != null">
+        parent_itemid,
+      </if>
+      <if test="host != null">
+        `host`,
+      </if>
+      <if test="lastcheck != null">
+        lastcheck,
+      </if>
+      <if test="tsDelete != null">
+        ts_delete,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="hostid != null">
+        #{hostid,jdbcType=BIGINT},
+      </if>
+      <if test="parentHostid != null">
+        #{parentHostid,jdbcType=BIGINT},
+      </if>
+      <if test="parentItemid != null">
+        #{parentItemid,jdbcType=BIGINT},
+      </if>
+      <if test="host != null">
+        #{host,jdbcType=VARCHAR},
+      </if>
+      <if test="lastcheck != null">
+        #{lastcheck,jdbcType=INTEGER},
+      </if>
+      <if test="tsDelete != null">
+        #{tsDelete,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.HostDiscovery">
+    <!--@mbg.generated-->
+    update host_discovery
+    <set>
+      <if test="parentHostid != null">
+        parent_hostid = #{parentHostid,jdbcType=BIGINT},
+      </if>
+      <if test="parentItemid != null">
+        parent_itemid = #{parentItemid,jdbcType=BIGINT},
+      </if>
+      <if test="host != null">
+        `host` = #{host,jdbcType=VARCHAR},
+      </if>
+      <if test="lastcheck != null">
+        lastcheck = #{lastcheck,jdbcType=INTEGER},
+      </if>
+      <if test="tsDelete != null">
+        ts_delete = #{tsDelete,jdbcType=INTEGER},
+      </if>
+    </set>
+    where hostid = #{hostid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.HostDiscovery">
+    <!--@mbg.generated-->
+    update host_discovery
+    set parent_hostid = #{parentHostid,jdbcType=BIGINT},
+      parent_itemid = #{parentItemid,jdbcType=BIGINT},
+      `host` = #{host,jdbcType=VARCHAR},
+      lastcheck = #{lastcheck,jdbcType=INTEGER},
+      ts_delete = #{tsDelete,jdbcType=INTEGER}
+    where hostid = #{hostid,jdbcType=BIGINT}
+  </update>
+</mapper>

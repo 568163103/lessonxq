@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.OpconditionsMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.Opconditions">
+    <!--@mbg.generated-->
+    <id column="opconditionid" jdbcType="BIGINT" property="opconditionid" />
+    <result column="operationid" jdbcType="BIGINT" property="operationid" />
+    <result column="conditiontype" jdbcType="INTEGER" property="conditiontype" />
+    <result column="operator" jdbcType="INTEGER" property="operator" />
+    <result column="value" jdbcType="VARCHAR" property="value" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    opconditionid, operationid, conditiontype, `operator`, `value`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from opconditions
+    where opconditionid = #{opconditionid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from opconditions
+    where opconditionid = #{opconditionid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.xq.domain.Opconditions">
+    <!--@mbg.generated-->
+    insert into opconditions (opconditionid, operationid, conditiontype, 
+      `operator`, `value`)
+    values (#{opconditionid,jdbcType=BIGINT}, #{operationid,jdbcType=BIGINT}, #{conditiontype,jdbcType=INTEGER}, 
+      #{operator,jdbcType=INTEGER}, #{value,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.xq.domain.Opconditions">
+    <!--@mbg.generated-->
+    insert into opconditions
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="opconditionid != null">
+        opconditionid,
+      </if>
+      <if test="operationid != null">
+        operationid,
+      </if>
+      <if test="conditiontype != null">
+        conditiontype,
+      </if>
+      <if test="operator != null">
+        `operator`,
+      </if>
+      <if test="value != null">
+        `value`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="opconditionid != null">
+        #{opconditionid,jdbcType=BIGINT},
+      </if>
+      <if test="operationid != null">
+        #{operationid,jdbcType=BIGINT},
+      </if>
+      <if test="conditiontype != null">
+        #{conditiontype,jdbcType=INTEGER},
+      </if>
+      <if test="operator != null">
+        #{operator,jdbcType=INTEGER},
+      </if>
+      <if test="value != null">
+        #{value,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.Opconditions">
+    <!--@mbg.generated-->
+    update opconditions
+    <set>
+      <if test="operationid != null">
+        operationid = #{operationid,jdbcType=BIGINT},
+      </if>
+      <if test="conditiontype != null">
+        conditiontype = #{conditiontype,jdbcType=INTEGER},
+      </if>
+      <if test="operator != null">
+        `operator` = #{operator,jdbcType=INTEGER},
+      </if>
+      <if test="value != null">
+        `value` = #{value,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where opconditionid = #{opconditionid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.Opconditions">
+    <!--@mbg.generated-->
+    update opconditions
+    set operationid = #{operationid,jdbcType=BIGINT},
+      conditiontype = #{conditiontype,jdbcType=INTEGER},
+      `operator` = #{operator,jdbcType=INTEGER},
+      `value` = #{value,jdbcType=VARCHAR}
+    where opconditionid = #{opconditionid,jdbcType=BIGINT}
+  </update>
+</mapper>
