@@ -10,7 +10,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>spring-zabbix</artifactId>
-
+    <packaging>jar</packaging>
     <dependencies>
         <!-- 1. nacos-配置管理功能依赖 -->
         <!--       <dependency>-->

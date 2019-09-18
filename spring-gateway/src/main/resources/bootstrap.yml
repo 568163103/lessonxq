@@ -1,14 +1,15 @@
 spring:
   application:
-    name: nacos-consumer-spring
+    name: spring-gateway
   cloud:
     nacos:
       config:
         server-addr: 101.132.64.239:8848
         file-extension: yaml
-        prefix: nacos-consumer
+        prefix: nacos-gateway
   profiles:
     active: dev
+
 
 management:
   endpoints:

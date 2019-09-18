@@ -180,4 +180,11 @@
       prohibited_status = #{prohibitedStatus,jdbcType=INTEGER}
     where id = #{id,jdbcType=CHAR}
   </update>
+
+  <select id="findAllServer" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"></include>
+    from
+    server
+  </select>
 </mapper>
