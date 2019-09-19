@@ -1,0 +1,42 @@
+@charset "utf-8";
+/* CSS Document */
+  .clearfix:after { visibility: hidden; display: block; font-size: 0; content: " "; clear: both; height: 0;}
+  .clearfix{ zoom: 1; }
+  #main{ width:1018px; overflow:visible; padding-bottom:20px;margin: 0 auto;}
+  #main1{ padding-left:140px;}
+  /*#main1 ul.m1_one{  
+ width:567px; height:34px;margin-top:20px; background:url(images/bg_main1.png) no-repeat;_background:none;_filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='bg_main1.png',sizingMethod='scale');}*/
+ #main1 ul.m1_one{  
+ width:740px; height:40px;margin-top:20px; background:url('images/bg_main1.png') no-repeat; _background:url('images/bg_main1.gif');}
+  #main1 ul.m1_one li{ width:30px; height:31px; text-align:center; line-height:31px; float:left; margin-left:194px; color:#CBD6DF; font-weight:bold; font-family:"Arial"; font-size:18px;_display:inline; margin-top:5px;}
+  
+  #main1 ul.m1_one li.li_frist{ height:34px; margin:5px 0 0 13px;}
+  #main1 ul.m1_one #li_two{ margin-left:195px;}
+  #main1 ul.m1_one li.li_hover1{ color:#758B9F; width:31px; height:31px; line-height:31px; background:url('images/coin_main1.png') no-repeat center;_background:url('images/coin_main1.gif');}
+  #main1 ul.m1_two{ margin-top:10px; clear:both; width:100%;}
+  #main1 ul.m1_two li{ float:left; margin-left:140px; color:#99A6B1; font-weight:bold; font-family:"微软雅黑"; display:inline;}
+  #main1 ul.m1_two li.li_hover2{ color:#2E2E2E;}
+  #main1 ul.m1_two li.li_frist{ margin-left:0;}
+  
+  #main2{ clear:both; width:1018px; height:395px; background:url('images/bg_main2.png') repeat-x; font-family:"微软雅黑"; display:block; margin-top:15px; position:relative;}
+  #main2 .m2_user{ margin-left:258px; font-size:14px; padding-top:50px; color:#212121;}
+  #main2 .m2_check{ margin-left:258px; margin-top:42px; font-size:12px;}
+  #main2 .txt{ height:25px; width:160px; border:1px solid #C4C4C4;}
+  #main2 .m2_check h3{ color:#343434; height:25px; line-height:25px; font-family:'microsoft YaHei',simhei,sans-serif;}
+  #main2 .m2_check h4{ color:#9A9A9A; height:25px; line-height:25px; font-family:'microsoft YaHei',simhei,sans-serif;}
+  #main2 .m2_check dl dt{ height:40px; line-height:50px; margin-top:15px;}
+  #main2 .m2_check dl dd{ padding-left:10px;}
+  #main2 .btn{ position:absolute; left:645px; top:225px;}
+  #main2 .btn1{ position:absolute; left:725px; top:225px;}
+
+.btn-blue{
+	display: inline-block;
+	width: 79px;
+	height: 24px;
+	line-height: 22px;
+	cursor: pointer;
+	background: url('images/btn-blue.png') no-repeat;
+	text-align:center;
+	color: #fff;
+	white-space: pre;
+}

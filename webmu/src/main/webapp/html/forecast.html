@@ -1,0 +1,236 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+<head>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="browsermode" content="application">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no, email=no" />
+    <title>局部客流实时预测</title>
+    <meta name="keywords" content="局部客流实时预测" />
+    <meta name="description" content="局部客流实时预测" />
+    <link rel="stylesheet" type="text/css" href="js/lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <link type="text/css" href="js/lib/riqi/css/jquery-ui-1.8.17.custom.css" rel="stylesheet" />
+    <link type="text/css" href="js/lib/riqi/css/jquery-ui-timepicker-addon.css" rel="stylesheet" />
+    <style>
+        .device-chart {
+            width: 100%
+        }
+
+        #chart1 {
+            width: 100%
+        }
+
+        .ui-datepicker {
+            width: 202px;
+            box-shadow: 0 5px 10px 1px gray;
+        }
+
+        #startTime {
+            width: 135px;
+        }
+
+        .ui-widget-header {
+            background: #7293FE !important;
+            border: none;
+        }
+
+        .ui-state-highlight,
+        .ui-widget-content .ui-state-highlight,
+        .ui-widget-header .ui-state-highlight {
+            background: #CCD6FA !important;
+            border: none;
+        }
+
+
+        .dropdown-menu li {
+            text-align: center;
+            line-height: 40px;
+        }
+
+        .nav>li {
+            position: relative;
+            display: block;
+        }
+
+        .dropdown-menu {
+            left: 0px;
+        }
+
+        .dropdown-menu li {
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .dropdown-menu li:hover {
+            background: #379be9;
+            color: #fff;
+        }
+
+        .btn .caret {
+            margin-left: 6px;
+        }
+    </style>
+    <!-- <script type="text/javascript" src="js/lib/jquery/jquery.min.js"></script> -->
+    <script type="text/javascript" src="js/lib/riqi/js/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="js/lib/cookie/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/lib/bootstrap/js/bootstrap.modal.js"></script>
+
+    <script type="text/javascript" src="js/lib/riqi/js/jquery-ui-1.8.17.custom.min.js"></script>
+    <script type="text/javascript" src="js/lib/riqi/js/jquery-ui-timepicker-addon.js"></script>
+    <script type="text/javascript" src="js/lib/riqi/js/jquery-ui-timepicker-zh-CN.js"></script>
+
+    <script type="text/javascript" src="js/lib/highcharts/highstock.js"></script>
+    <script type="text/javascript" src="js/lib/highcharts/exportings.js"></script>
+    <script type="text/javascript" src="js/lib/highcharts/highcharts-zh_CN.js"></script>
+    <script type="text/javascript" src="js/lib/highcharts/export-data.js"></script>
+
+    <script type="text/javascript" src="js/lib/jquery.table2excel.min.js"></script>
+
+    <script>
+
+        // $(function () {
+        //     // 标签点击之后增加背景颜色
+        //     function clickStyle(ele) {
+        //         ele.css({
+        //             backgroundColor:'#379be9',
+        //             color:'#fff'
+        //         })
+        //     }
+
+        //     var LocString = window.location.href
+        //     function GetQueryString(str) {
+        //         var rs = new RegExp("(^|)" + str + "=([^&]*)(&|$)", "gi").exec(LocString), tmp;
+        //         if (tmp = rs) return tmp[2];
+        //         return "no";
+        //     }
+
+        //     //初始操作
+        //     var siteName = decodeURI(GetQueryString("text"))
+        //     var src = decodeURI(GetQueryString("src"))
+        //     var theClas = GetQueryString("class")
+        //     $('.choose').html('' + siteName + '<b class="caret"></b>')
+        //     $('.imgSrc').attr('src', src)
+
+        //     //获取cookie
+        //     var allHref = $(".forecast" , parent.document).attr('allHref')
+        //     var hrefLeng = allHref.split(';')
+        //     //按钮下拉框
+        //     for (var i = 0; i < hrefLeng.length - 1; i++) {
+        //         var text = hrefLeng[i].split('&')[1].split('=')[1]
+        //         var html = ''
+        //         html += '<li class="pic' + i + '" href="' + hrefLeng[i] + '">' + text + '</li>'
+        //         $('.devType').append(html)
+        //     }
+        //     $('.devType').find('li').click(function () {
+        //         var loca = window.location.href
+        //         var clas = $(this).attr('class')
+        //         window.location.href = loca + $(this).attr('href') + '&class=' + clas
+        //     })
+
+        //     clickStyle($('.' + theClas + ''))
+
+        // })
+    </script>
+    <script type="text/javascript" src="js/deploy.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript" src="js/forecast.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(".ui_timepicker").datetimepicker({
+                showSecond: true,
+                timeFormat: 'hh:mm:ss',
+                stepHour: 1,
+                stepMinute: 1,
+                stepSecond: 1
+            })
+        })
+    </script>
+</head>
+
+<body class="page-iframe-content">
+    <div class="content-pad">
+
+        <!-- 下拉改标签 -->
+        <div class="site-tab">
+            <ul class="clearfix devType">
+
+            </ul>
+        </div>
+
+        <div class="site-tab-box">
+            <div class="eval-box clearfix">
+                <div class="row-fluid">
+                    <ul class="thumb clearfix">
+                        <li class="floor-plan-box border-bg">
+                            <div class="floor-plan" data-toggle="modal" href="#example">
+                                <img class="imgSrc" src="">
+                                <ul class="example"></ul>
+                            </div>
+                            <div class="comeBack hidden"></div>
+                        </li>
+                        <li class="eva-table-box device-table-box border-bg">
+                            <div class="device-search" style="border-bottom:2px solid #626ffc;padding-bottom:5px;">
+                                <div class="form-horizontal clearfix">
+                                    <div class="control-group pull-left">
+                                        <label class="control-label" for="devClassN">设备</label>
+                                        <div class="controls">
+                                            <select id="devClassN">
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="control-group pull-left">
+                                        <label class="control-label" for="startTime">时间</label>
+                                        <div class="controls">
+                                            <input id="startTime" type="text" name="datetime" class="ui_timepicker" value="">
+
+                                        </div>
+                                    </div>
+                                    <div class="control-group pull-left">
+                                        <label class="control-label" for="inputGrained">粒度</label>
+                                        <div class="controls">
+                                            <select id="inputGrained">
+                                                <option value="1">5分钟</option>
+                                                <option value="2">10分钟</option>
+                                                <option value="3">15分钟</option>
+                                                <option value="4">30分钟</option>
+                                                <option value="5">1小时</option>
+                                                <option value="6">1天</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn submit">查询</button>
+                                </div>
+                            </div>
+
+                            <div class="device-chart" style="border-bottom:2px solid #626ffc;">
+                                <div class="lodding lodding1 hidden">
+                                    <img src="images/lodding.gif">
+                                </div>
+                                <div id="chart1" style="height:280px"></div>
+                            </div>
+
+                            <div class="device-chart">
+                                <div class="lodding lodding2 hidden">
+                                    <img src="images/lodding.gif">
+                                </div>
+                                <div id="chart2" style="height:287px"></div>
+                            </div>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="mod"></div>
+</body>
+
+</html>

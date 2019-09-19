@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd"
+		default-autowire="byName" default-lazy-init="false">
+	<bean id="schedulerFactoryBean" class="com.beyeon.common.scheduling.SLSchedulerFactoryBean">
+		<property name="cache" ref="queryObjectCache"/>
+		<property name="cronExpressions">
+			<map>
+				<entry key="Bs" value="${scheduler.Bs}"/>
+				<entry key="Bm" value="${scheduler.Bm}"/>
+				<entry key="BH" value="${scheduler.BH}"/>
+				<entry key="Bd" value="${scheduler.Bd}"/>
+				<entry key="BM" value="${scheduler.BM}"/>
+				<entry key="Bw" value="${scheduler.Bw}"/>
+				<entry key="Bm5" value="${scheduler.Bm5}"/>
+				<entry key="Bm10" value="${scheduler.Bm10}"/>
+			</map>
+		</property>
+	</bean>
+</beans>

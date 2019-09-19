@@ -1,0 +1,93 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+<head>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="browsermode" content="application">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no, email=no" />
+    <title>乘客诱导信息发布</title>
+    <meta name="keywords" content="乘客诱导信息发布" />
+    <meta name="description" content="乘客诱导信息发布" />
+    <link rel="stylesheet" type="text/css" href="js/lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <script type="text/javascript" src="js/lib/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="js/deploy.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            // 转换时间戳
+            function getMoth(str) {
+                var oDate = new Date(str),
+                    y = oDate.getFullYear(),
+                    m = oDate.getMonth() + 1,
+                    d = oDate.getDate(),
+                    h = oDate.getHours(),
+                    mi = oDate.getMinutes(),
+                    s = oDate.getSeconds()
+                oTime = getzf(y) + '-' + getzf(m) + '-' + getzf(d) + ' ' + getzf(h) + ':' + getzf(mi) + ':' + getzf(s);
+                return oTime;
+            };
+            function getzf(num) {
+                if (parseInt(num) < 10) {
+                    num = '0' + num;
+                }
+                return num;
+            }
+
+            var nowTime = (new Date()).valueOf();//当前时间戳
+            var cur_time = getMoth(nowTime)
+
+            $.ajax({
+                url: ""+ajaxUrl+"/guangzhou/guide/info",
+                type: "get",
+                dataType: "json",
+                data: {
+                    "cur_time": cur_time
+                },
+                success: function (objects) {
+                    console.log(objects)
+                    if (objects.code == "10000") {
+                        if (objects.data !== null) {
+                            for (var i = 0; i < objects.data.length; i++) {
+                                var OHtml = '';
+                            OHtml += '<tr class="listTr">' +
+                                '<td>' + objects.data[i].position + '</td>' +
+                                '<td>' + objects.data[i].content + '</td>' +
+                                '<td>' + objects.data[i].time + '</td>' +
+                                '</tr>';
+                            $(".release-table").append(OHtml);
+                            }
+                            
+                        }
+                    } else {
+                        alert(objects.msg)
+                    }
+                }
+            });
+        })
+    </script>
+</head>
+
+<body class="page-iframe-content page-release">
+    <div class="content-pad">
+        <div class="release-tit">
+            信息发布内容
+        </div>
+        <div class="release-box">
+            <table class="table release-table">
+                <tr>
+                    <th width="20%">信息发布位置</th>
+                    <th width="60%">信息发布内容</th>
+                    <th width="20%">时间</th>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+
+</html>

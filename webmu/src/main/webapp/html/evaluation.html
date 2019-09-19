@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+<head>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="browsermode" content="application">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no, email=no" />
+    <title>关键设备状态评估</title>
+    <meta name="keywords" content="关键设备状态评估" />
+    <meta name="description" content="关键设备状态评估" />
+    <link rel="stylesheet" type="text/css" href="js/lib/bootstrap/css/bootstrap.min.css">
+    <link type="text/css" href="js/lib/riqi/css/jquery-ui-1.8.17.custom.css" rel="stylesheet" />
+    <link type="text/css" href="js/lib/riqi/css/jquery-ui-timepicker-addon.css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <link rel="stylesheet" type="text/css" href="css/evaluation.css">
+    <style>
+        .tabBox {
+            height: 480px;
+            overflow: auto;
+        }
+    </style>
+    <!-- <script type="text/javascript" src="js/lib/jquery/jquery.min.js"></script> -->
+    <script type="text/javascript" src="js/lib/riqi/js/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="js/lib/bootstrap/js/bootstrap.modal.js"></script>
+    <!-- <script type="text/javascript" src="js/lib/bootstrap/js/bootstrap.min.js"></script> -->
+    <script type="text/javascript" src="js/lib/cookie/jquery.cookie.js"></script>
+
+    <script type="text/javascript" src="js/lib/riqi/js/jquery-ui-1.8.17.custom.min.js"></script>
+    <script type="text/javascript" src="js/lib/riqi/js/jquery-ui-timepicker-addon.js"></script>
+    <script type="text/javascript" src="js/lib/riqi/js/jquery-ui-timepicker-zh-CN.js"></script>
+
+    <script type="text/javascript" src="js/lib/jquery.table2excel.min.js"></script>
+    <script type="text/javascript" src="js/jquery.SuperSlide.2.1.2.js"></script>
+
+    <script type="text/javascript" src="js/deploy.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript" src="js/evaluation.js"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(".ui_timepicker").datetimepicker({
+                showSecond: true,
+                timeFormat: 'hh:mm:ss',
+                stepHour: 1,
+                stepMinute: 1,
+                stepSecond: 1
+            })
+        })
+    </script>
+
+</head>
+
+<body class="page-iframe-content">
+    <div class="content-pad">
+
+        <!-- 下拉改标签 -->
+        <div class="site-tab">
+            <ul class="clearfix devType">
+
+            </ul>
+        </div>
+
+        <div class="site-tab-box">
+            <div class="eval-box clearfix">
+                <div class="row-fluid">
+                    <ul class="thumb clearfix">
+                        <li class="floor-plan-box border-bg">
+                            <div class="floor-plan" data-toggle="modal" href="#example">
+                                <img class="imgSrc" src="">
+                                <ul class="example"></ul>
+                            </div>
+                            <div class="comeBack hidden"></div>
+                        </li>
+                        <li class="eva-table-box border-bg">
+
+                            <div class="timeAxisInput">
+                                <div class="device-search ">
+                                    <div class="form-horizontal clearfix">
+
+                                        <div class="control-group pull-left">
+                                            <label class="control-label" for="startTime" style="width:65px;">开始时间</label>
+                                            <div class="controls" style="margin-left:70px;">
+                                                <input id="startTime" type="text" name="datetime" class="ui_timepicker" value="" style="width:140px;">
+                                            </div>
+
+                                        </div>
+                                        <button class="btn" type="button" id="btnSure" style="margin: 5px 0 0 20px;">查询</button>
+                                        <button class="btn" type="button" id="btnExport" style="margin: 5px 0 0 20px;">导出表格</button>
+
+                                    </div>
+                                </div>
+
+
+                            </div>
+                            <div class="tabBox">
+                                <table class="table eva-table">
+                                    <tr>
+                                        <th colspan="5">车站关键设备状态评估表</th>
+                                    </tr>
+                                    <tr>
+                                        <td width="20%">别名</td>
+                                        <td width="20%">设备编号</td>
+                                        <td width="20%">客流密度</td>
+                                        <td width="20%">客流量</td>
+                                        <td width="20%">评估状态</td>
+                                    </tr>
+                                </table>
+                            </div>
+
+
+                            <div class="time-box" id="Js_Show" style="display: none;">
+                                <div class="bd">
+                                    <ul class="parul clearfix">
+                                    </ul>
+                                </div>
+                                <div class="hd">
+                                    <a class="prev">
+                                        <img src="images/left_ico.png" alt="" title="">
+                                    </a>
+                                    <a class="next">
+                                        <img src="images/right_ico.png" alt="" title="">
+                                    </a>
+                                </div>
+                                <div class="time-line"></div>
+                            </div>
+
+                        </li>
+
+                        <li class="method border-bg">
+                            <div class="yjstatus"></div>
+                            <ul class="stream"></ul>
+                            <!-- <ul class="driving"></ul> -->
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="mod"></div>
+</body>
+
+</html>

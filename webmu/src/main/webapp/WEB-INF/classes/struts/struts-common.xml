@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+    <package name="common" extends="default" namespace="/common">
+        <action name="module" class="moduleAction">
+        	<result name="error">/index.jsp</result>
+        	<result name="index">/index.jsp</result>
+			<result name="top">/top.jsp</result>
+        	<result name="left">/left.jsp</result>
+        	<result name="leftError">/left.jsp</result>
+			<result name="selfManageIndex">/selfmanage/index.jsp</result>
+			<result name="selfManageTop">/selfmanage/top.jsp</result>
+			<result name="selfManageLeft">/selfmanage/left.jsp</result>
+			<result name="refreshCache">/jsp/common/refreshCache.jsp</result>
+			<result name="findSn">/jsp/common/systemsn/findSn.jsp</result>
+			<interceptor-ref name="uploadStack"/>
+        </action>
+		<action name="practical" class="practicalAction">
+		</action>
+	</package>
+</struts>
+
+

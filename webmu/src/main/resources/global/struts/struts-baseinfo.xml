@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+    <package name="baseinfo" extends="default" namespace="/baseinfo">
+        <action name="dept" class="deptAction">
+        	<result name="error">/baseinfo/dept!findPage.do</result>
+        	<result name="beforeUpdate">/jsp/baseinfo/dept/update.jsp</result>
+        	<result name="update">/jsp/baseinfo/dept/update.jsp</result>
+        	<result name="save">/jsp/baseinfo/dept/save.jsp</result>
+        	<result name="findPage">/jsp/baseinfo/dept/findPage.jsp</result>
+        </action>
+		<action name="dict" class="dictAction">
+			<result name="error">/baseinfo/dict!findDict.do</result>
+			<result name="findDict">/jsp/baseinfo/dict/findPage.jsp</result>
+			<result name="findDictError">/jsp/baseinfo/dict/findPage.jsp</result>
+		</action>
+		<action name="corp" class="corpAction">
+			<result name="error">/baseinfo/corp!findPage.do</result>
+			<result name="update">/jsp/baseinfo/corp/update.jsp</result>
+			<result name="save">/jsp/baseinfo/corp/save.jsp</result>
+			<result name="findPage">/jsp/baseinfo/corp/findPage.jsp</result>
+		</action>
+		<action name="position" class="positionAction">
+			<result name="error">/baseinfo/position!findPage.do</result>
+			<result name="beforeUpdate">/jsp/baseinfo/position/update.jsp</result>
+        	<result name="beforeSave">/jsp/baseinfo/position/save.jsp</result>
+			<result name="update">/jsp/baseinfo/position/update.jsp</result>
+			<result name="save">/jsp/baseinfo/position/save.jsp</result>
+			<result name="findPage">/jsp/baseinfo/position/findPage.jsp</result>
+		</action>
+    </package>
+</struts>
+
+

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+    <package name="dmu" extends="default" namespace="/dmu">       
+        <action name="dmuEquipment" class="dmuEquipmentAction">
+        	<result name="error">/dmu/dmuequipment!findPage.do</result>        	
+        	<result name="findPage">/jsp/dmu/dmuequipment/findPage.jsp</result>
+        	<result name="findSwitchPage">/jsp/dmu/dmuequipment/findSwitchPage.jsp</result>
+        	<result name="diskState">/jsp/dmu/dmuequipment/diskState.jsp</result>
+        	<result name="encoderState">/jsp/dmu/dmuequipment/encoderState.jsp</result>
+        	<result name="IPCamState">/jsp/dmu/dmuequipment/IPCamState.jsp</result>
+        	<result name="serverState">/jsp/dmu/dmuequipment/serverState.jsp</result>        	
+        	<result name="switchState">/jsp/dmu/dmuequipment/switchState.jsp</result>    
+        	<result name="PCState">/jsp/dmu/dmuequipment/PCState.jsp</result>    
+        	<result name="decoderState">/jsp/dmu/dmuequipment/decoderState.jsp</result>    
+        	<result name="flashState">/jsp/dmu/dmuequipment/flashState.jsp</result> 
+        	<result name="findAllRecordPage">/jsp/dmu/dmuequipment/findAllRecordPage.jsp</result>       	
+        	<result name="findPageError">/jsp/dmu/dmuequipment/findPage.jsp</result>
+       		<!-- 导出 -->
+            <result name="exportList" type="stream">
+			    <param name="contentType">application/vnd.ms-excel;charset=ISO8859-1</param>
+			    <param name="inputName">inputStream</param>
+			    <param name="contentDisposition">attachment;filename="${#request.name}.xls"</param>
+			    <param name="bufferSize">1024</param>
+			</result>
+        </action>
+        
+        <action name="dmuAlarmInfo" class="dmuAlarmInfoAction">
+			<result name="error">/jsp/dmu/dmualarminfo/findPage.jsp</result>
+			<result name="findPage">/jsp/dmu/dmualarminfo/findPage.jsp</result>
+			<result name="alarmInfoStatistics">/jsp/dmu/dmualarminfo/alarmInfoStatistics.jsp</result>
+			<!-- 导出 -->
+            <result name="exportList" type="stream">
+			    <param name="contentType">application/vnd.ms-excel;charset=ISO8859-1</param>
+			    <param name="inputName">inputStream</param>
+			    <param name="contentDisposition">attachment;filename="${#request.name}.xls"</param>
+			    <param name="bufferSize">1024</param>
+			</result>
+			 <result name="exportList2" type="stream">
+			    <param name="contentType">application/vnd.ms-excel;charset=ISO8859-1</param>
+			    <param name="inputName">inputStream</param>
+			    <param name="contentDisposition">attachment;filename="${#request.name}.xls"</param>
+			    <param name="bufferSize">1024</param>
+			</result>
+		</action>
+		<action name="dmuAlarmLevel" class="dmuAlarmLevelAction">
+			<result name="error">/jsp/dmu/dmualarmlevel/findPage.jsp</result>
+			<result name="findPage">/jsp/dmu/dmualarmlevel/findPage.jsp</result>
+			<result name="beforeUpdate">/jsp/dmu/dmualarmlevel/update.jsp</result>
+		</action>
+		
+		<action name="dmuAlarmRes" class="dmuAlarmResAction">
+			<result name="error">/jsp/dmu/dmuAlarmRes/findPage.jsp</result>
+			<result name="findPage">/jsp/dmu/dmuAlarmRes/findPage.jsp</result>
+			<result name="flow">/jsp/dmu/dmuAlarmRes/flow.jsp</result>
+		</action>
+		
+		<action name="dmuSwitchPort" class="dmuSwitchPortAction">
+			<result name="error">/jsp/dmu/dmuSwitchPort/findPage.jsp</result>
+			<result name="beforeUpdate">/jsp/dmu/dmuSwitchPort/update.jsp</result>
+        	<result name="update">/jsp/dmu/dmuSwitchPort/update.jsp</result>
+        	<result name="beforeSave">/jsp/dmu/dmuSwitchPort/save.jsp</result>
+        	<result name="save">/jsp/dmu/dmuSwitchPort/save.jsp</result>
+			<result name="findPage">/jsp/dmu/dmuSwitchPort/findPage.jsp</result>
+			<result name="findSelfPage">/jsp/dmu/dmuSwitchPort/findSelfPage.jsp</result>
+		</action>
+    </package>
+</struts>
+
+

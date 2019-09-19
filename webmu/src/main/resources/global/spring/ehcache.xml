@@ -1,0 +1,21 @@
+<ehcache name="beyeon_cache">
+	<diskStore path="java.io.tmpdir"/>
+	<defaultCache
+			maxElementsInMemory="10000"
+			eternal="false"
+			overflowToDisk="true"
+			timeToIdleSeconds="691200"
+			timeToLiveSeconds="0"
+			diskPersistent="false"
+			maxEntriesLocalHeap="0"
+			diskExpiryThreadIntervalSeconds="0"/>
+	<cache name="userCache"
+		   maxEntriesLocalHeap="0"/>
+	<cache name="resourceCache"
+		   maxEntriesLocalHeap="0"
+		   eternal="true"/>
+	<cache name="queryObjectCache"
+		   maxEntriesLocalHeap="0"
+		   overflowToDisk="true"
+		   eternal="true"/>
+</ehcache>

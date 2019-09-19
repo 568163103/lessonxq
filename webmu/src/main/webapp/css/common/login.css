@@ -1,0 +1,132 @@
+@CHARSET "UTF-8";
+#login_main {
+    margin: 0 auto;
+    min-height: 200px;
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+}
+#login_content{
+	width:721px;
+	height:363px;	
+	margin:100px auto 20px;
+}
+#login_box {
+	
+	width: 317px;
+	height: 338px;
+	padding: 65px 71px 0 333px;
+}
+#login_box2 {
+	/*暂时留白*/
+	background: url("images/logo.png") no-repeat scroll 50% 50% transparent;
+	width: 150px;
+	height: 150px;
+	margin-top: -305px;
+	margin-left: 125px;
+}
+#login_title {
+	height: 40px;
+	margin: -345px 0 0 0px;
+	text-align: center;
+}
+#login_box .field {
+    padding-top: 14px;
+}
+#login_box .field label {
+    display: inline-block;
+    text-align: right;
+    width: 86px;
+	font-size:12px;
+}
+#login_box .login-text {
+    height: 18px;
+    margin-right: 3px;
+    padding: 3px;
+    vertical-align: middle;
+    width: 180px;
+}
+#login_box .img-code .checkcode {
+    margin-right: 1px;
+    width: 40px;
+}
+#login_box .check-code-img {
+    border: 1px solid #C8C8C8;
+    height: 24px;
+    margin-right: 1px;
+    vertical-align: middle;
+    width: 52px;
+}
+.r-box {
+    display: block;
+    outline: medium none;
+    position: relative;
+}
+
+.bg-blank {
+    background-repeat: no-repeat;
+    display: block;
+    overflow: hidden;
+    text-indent: 0px;
+	font-size: 25px;
+	font-family: "黑体";
+    color: #3b3a3a;
+	font-weight: 200;
+}
+.a-box {
+    display: block;
+    outline: medium none;
+    position: absolute;
+}
+.submit {
+    clear: both;
+    margin-top: 16px;
+    overflow: hidden;
+    padding: 4px 0 0 90px;
+}
+.submit button {
+    background: url("images/btn_login.png") no-repeat scroll 0 0px transparent;
+    border: 0 none;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 0;
+    height: 34px;
+    line-height: 100px;
+    margin-right: 6px;
+    overflow: hidden;
+    vertical-align: middle;
+    width: 98px;
+}
+.submit button:hover {
+    background-position:0 -34px;
+}
+#bg_l {
+    background: url("images/bg_login.png") no-repeat scroll 0 0 transparent;
+    height: 278px;
+    left: -352px;
+    top: 45px;
+    width: 388px;
+}
+#bg_r {
+	background: url("images/bg_login.png") no-repeat scroll -388px 0 transparent;
+	width:387px;
+	height:278px;	
+	left:684px;
+	top:45px;
+}
+.submit button:hover {
+    background-position: 0 -34px;
+}
+.submit button {
+    background: url("images/btn_login.png") no-repeat scroll 0 0 transparent;
+    border: 0 none;
+    cursor: pointer;
+    display: inline-block;
+    font-size: 0;
+    height: 34px;
+    line-height: 100px;
+    margin-right: 6px;
+    overflow: hidden;
+    vertical-align: middle;
+    width: 98px;
+}

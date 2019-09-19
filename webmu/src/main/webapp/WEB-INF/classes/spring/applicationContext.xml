@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:aop="http://www.springframework.org/schema/aop"
+	xmlns:tx="http://www.springframework.org/schema/tx" xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+			http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+			http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.3.xsd
+			http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-4.3.xsd"
+	default-autowire="byName" default-lazy-init="false">
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="locations">
+			<list>
+				<value>classpath*:jdbc.properties</value>
+				<value>classpath*:config/manual/coreConf.properties</value>
+				<value>classpath*:config/manual/publicConf.properties</value>
+			</list>
+		</property>
+	</bean>
+
+    <bean id="cacheSupport" class="com.beyeon.common.cache.impl.EhcacheSupport">
+    	<property name="cache" ref="queryObjectCache"/>
+    </bean>
+	<bean id="SpringInit" class="com.socket.sip.SpringInit" lazy-init="false">
+	</bean>  
+	<bean id="cacheManager" class="org.springframework.cache.ehcache.EhCacheManagerFactoryBean">
+		<property name="configLocation" value="classpath:spring/ehcache.xml"/>
+	</bean>
+	<bean id="queryObjectCache" class="org.springframework.cache.ehcache.EhCacheFactoryBean">
+		<property name="cacheManager" ref="cacheManager" />
+		<property name="cacheName" value="queryObjectCache" />
+	</bean>
+
+	<context:component-scan base-package="com.beyeon" resource-pattern="**/model/dao/*.class"/>
+	<context:component-scan base-package="com.beyeon" resource-pattern="**/model/bpo/*.class"/>
+	<context:component-scan base-package="com.beyeon" resource-pattern="**/model/*.class"/>
+	<context:component-scan base-package="com.beyeon" resource-pattern="**/control/action/*.class"/>
+
+	<!-- 基本事务定义,使用transactionManager作事务管理,默认get*、find*方法的事务为readonly,其余方法按默认设置.
+			 默认的设置请参考Spring文档事务一章. -->
+
+	<bean id="transactionManager_fivs_w" class="org.springframework.orm.hibernate5.HibernateTransactionManager">
+		<property name="sessionFactory" ref="sessionFactory_fivs_w"/>
+	</bean>
+
+	<tx:advice id="txAdvice_fivs_w"  transaction-manager="transactionManager_fivs_w">
+		<tx:attributes>
+			<tx:method name="get*" read-only="true"/>
+			<tx:method name="find*" read-only="true"/>
+			<tx:method name="*"/>
+		</tx:attributes>
+	</tx:advice>
+
+	<!-- 定义 AOP -->
+	<bean id="cacheAdvice" class="com.beyeon.common.aop.advice.CacheAdvice">
+		<property name="cache" ref="queryObjectCache"/>
+	</bean>
+
+	<aop:config proxy-target-class="true">
+		<aop:advisor pointcut="@annotation(com.beyeon.common.aop.annotation.Cache)" advice-ref="cacheAdvice" order="0"/>
+		<aop:advisor pointcut="execution(public * com.beyeon..model.bpo.*Bpo.*(..))" advice-ref="txAdvice_fivs_w" order="1"/>
+		<aop:advisor pointcut="execution(public * com.beyeon..model.*Facade.*(..))" advice-ref="txAdvice_fivs_w" order="1"/>
+	</aop:config>
+</beans>

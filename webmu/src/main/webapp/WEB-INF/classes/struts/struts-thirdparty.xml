@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+    <package name="thirdparty" extends="default" namespace="/thirdparty">
+		<action name="interface" class="interfaceAction">
+			<result name="130201">/ext/caseinfo!uploadCaseInfo.do</result>
+			<result name="130202">/ext/caseinfo!uploadCaseVideoInfo.do</result>
+			<result name="140101">/detection/environment!findEnvironment.do</result>
+			<result name="140201">/detection/data!findLiveData.do</result>
+		</action>
+		<action name="basicFormInterface" class="formInterfaceAction">
+			<result name="110103">/device/channel!findSnapshot.do</result>
+			<result name="110104">/device/channel!uploadSnapshot.do</result>
+            <result name="150101">/disk/diskchk!findPage.do</result>
+            <result name="150102">/disk/diskchk!getDiskStatus.do</result>
+            <result name="150103">/disk/diskchk!getAllEncoders.do</result>
+            <result name="150104">/disk/diskchk!getChildDiskInfo.do</result>
+            <result name="150105">/disk/diskchk!getChildEncoder.do</result>
+            <result name="150106">/disk/diskchk!getChildren.do</result>
+		</action>
+		<action name="formInterface" class="formInterfaceAction">
+			<result name="110101">/device/channel!findUserSnapshot.do</result>
+			<result name="110102">/device/channel!viewSnapshot.do</result>
+			<result name="120101">/bussiness/display!beforeLiveDisplay.do</result>
+			<result name="120102">/bussiness/display!beforeHistoryDisplay.do</result>
+			<result name="120103">/bussiness/display!listLiveDisplay.do</result>
+			<result name="120104">/bussiness/display!operateChannelPtz.do</result>
+			<result name="120105">/bussiness/display!playVod.do</result>
+			<result name="120106">/bussiness/display!queryHistoryDisplay.do</result>
+			<result name="130101">/ext/easypr!importEasyPrImage.do</result>
+			<result name="130102">/ext/easypr!importFaceImage.do</result>
+			<result name="130201">/ext/caseinfo!uploadCaseVideoFile.do</result>
+			<result name="140301">/detection/report!save.do</result>
+		</action>
+    </package>
+</struts>
+
+
+
+

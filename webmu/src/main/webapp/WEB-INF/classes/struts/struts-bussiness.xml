@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+    <package name="bussiness" extends="default" namespace="/bussiness">
+        <action name="groups" class="groupsAction">
+        	<result name="error">/bussiness/groups!findPage.do</result>
+        	<result name="beforeUpdate">/jsp/bussiness/groups/update.jsp</result>
+        	<result name="update">/jsp/bussiness/groups/update.jsp</result>
+        	<result name="beforeSave">/jsp/bussiness/groups/save.jsp</result>
+        	<result name="save">/jsp/bussiness/groups/save.jsp</result>
+        	<result name="findPage">/jsp/bussiness/groups/findPage.jsp</result>
+        	<result name="findPageError">/jsp/bussiness/groups/findPage.jsp</result>
+			<result name="beforeAuthForGroups">/jsp/bussiness/groups/authForGroups.jsp</result>
+			<result name="authForGroupsUP">/jsp/bussiness/groups/authForGroups.jsp</result>
+        </action>
+		<action name="usertree" class="userTreeAction">
+			<result name="error">/security/user!findPage.do</result>
+			<result name="findPage">/jsp/bussiness/usertree/findPage.jsp</result>
+			<result name="findPageForUserAlarmRes">/jsp/bussiness/usertree/userAlarmRes.jsp</result>
+			<result name="findPageUserForAuthGroups">/jsp/bussiness/usertree/authGroupsForUser.jsp</result>
+			<result name="beforeAuthResourceForUser">/jsp/bussiness/usertree/authResourceForUser.jsp</result>
+			<result name="beforeCopyUserTreeToUser">/jsp/bussiness/usertree/copyUserTreeToUser.jsp</result>
+			<result name="beforeSubExternalAlarmRes">/jsp/bussiness/usertree/subExternalAlarmRes.jsp</result>
+			<result name="copyUserTreeToUser">/bussiness/usertree!beforeCopyUserTreeToUser.do</result>
+			<result name="findPageUserForAuthAlarmRes">/jsp/bussiness/usertree/authAlarmResForUser.jsp</result>
+			<result name="findPageUserForAlarmRes">/jsp/bussiness/usertree/alarmResForUser.jsp</result>
+			<result name="findPageUserGroupForAuthGroups">/jsp/bussiness/usertree/authGroupsForUserGroup.jsp</result>
+			<result name="beforeUpdateUserGroup">/jsp/bussiness/usertree/updateUserGroup.jsp</result>
+			<result name="updateUserGroup">/jsp/bussiness/usertree/updateUserGroup.jsp</result>
+			<!-- 导出 -->
+            <result name="exportList" type="stream">
+			    <param name="contentType">application/vnd.ms-excel;charset=ISO8859-1</param>
+			    <param name="inputName">inputStream</param>
+			    <param name="contentDisposition">attachment;filename="${#request.name}.xls"</param>
+			    <param name="bufferSize">1024</param>
+			</result>
+			<interceptor-ref name="basicStack"/>
+			<interceptor-ref name="uploadStack"/>
+		</action>
+		<action name="prescheme" class="preSchemeAction">
+			<result name="error">/bussiness/prescheme!findPage.do</result>
+			<result name="beforeUpdate">/jsp/bussiness/prescheme/update.jsp</result>
+			<result name="update">/jsp/bussiness/prescheme/update.jsp</result>
+			<result name="beforeSave">/jsp/bussiness/prescheme/save.jsp</result>
+			<result name="save">/jsp/bussiness/prescheme/save.jsp</result>
+			<result name="findPage">/jsp/bussiness/prescheme/findPage.jsp</result>
+			<result name="findPageError">/jsp/bussiness/prescheme/findPage.jsp</result>
+			<result name="reBeforeSave">/bussiness/prescheme!beforeSave.do?id=${preScheme.id}</result>
+		</action>
+		<action name="alarmprescheme" class="alarmPreSchemeAction">
+			<result name="error">/bussiness/alarmprescheme!findPage.do</result>
+			<result name="beforeUpdate">/jsp/bussiness/alarmprescheme/update.jsp</result>
+			<result name="update">/jsp/bussiness/alarmprescheme/update.jsp</result>
+			<result name="beforeSave">/jsp/bussiness/alarmprescheme/save.jsp</result>
+			<result name="save">/jsp/bussiness/alarmprescheme/save.jsp</result>
+			<result name="findPage">/jsp/bussiness/alarmprescheme/findPage.jsp</result>
+			<result name="findPageError">/jsp/bussiness/alarmprescheme/findPage.jsp</result>
+		</action>
+		<action name="recordplan" class="recordPlanAction">
+			<result name="error">/bussiness/recordplan!findPage.do</result>
+			<result name="beforeUpdate">/jsp/bussiness/recordplan/update.jsp</result>
+			<result name="update">/jsp/bussiness/recordplan/update.jsp</result>
+			<result name="beforeSave">/jsp/bussiness/recordplan/save.jsp</result>
+			<result name="save">/jsp/bussiness/recordplan/save.jsp</result>
+			<result name="findPage">/jsp/bussiness/recordplan/findPage.jsp</result>
+			<result name="findPageError">/jsp/bussiness/recordplan/findPage.jsp</result>
+		</action>
+		<action name="display" class="displayAction">
+			<result name="error">/jsp/bussiness/display/liveDisplay.jsp</result>
+			<result name="liveDisplay">/jsp/bussiness/display/liveDisplay.jsp</result>
+			<result name="liveDisplay1">/jsp/bussiness/display/liveDisplay1.jsp</result>
+			<result name="liveDisplay9">/jsp/bussiness/display/liveDisplay9.jsp</result>
+			<result name="historyDisplay">/jsp/bussiness/display/historyDisplay.jsp</result>
+			<result name="mapForPlay">/jsp/bussiness/display/mapforplay.jsp</result>
+			<result name="player">/jsp/bussiness/display/player.jsp</result>
+			<result name="livePalyer">/jsp/bussiness/display/livePlayer.jsp</result>
+			<result name="listLiveDisplay">/jsp/bussiness/display/listLiveDisplay.jsp</result>
+		</action>
+		<action name="devicePerformance" class="devicePerformanceAction">
+			<result name="error">/bussiness/devicePerformance!findPage.do</result>
+			<result name="findPage">/jsp/bussiness/deviceperformance/findPage.jsp</result>
+			<result name="findPageError">/jsp/bussiness/deviceperformance/findPage.jsp</result>
+			<result name="viewServerStatus">/jsp/bussiness/deviceperformance/viewServerStatus.jsp</result>
+			<result name="reqServerRes">/jsp/bussiness/deviceperformance/reqServerRes.jsp</result>
+			<result name="reqResUser">/jsp/bussiness/deviceperformance/reqResUser.jsp</result>
+		</action>
+		
+		 <action name="userGroup" class="userGroupAction">
+        	<result name="error">/bussiness/userGroup!findPage.do</result>
+        	<result name="beforeUpdate">/jsp/bussiness/usergroup/update.jsp</result>
+        	<result name="update">/jsp/bussiness/usergroup/update.jsp</result>
+        	<result name="beforeSave">/jsp/bussiness/usergroup/save.jsp</result>
+        	<result name="save">/jsp/bussiness/usergroup/save.jsp</result>
+        	<result name="findPage">/jsp/bussiness/usergroup/findPage.jsp</result>
+        	<result name="findPageError">/jsp/bussiness/usergroup/findPage.jsp</result>       		
+        </action>
+    </package>
+</struts>
+
+

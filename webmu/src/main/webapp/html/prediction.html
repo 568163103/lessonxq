@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+<head>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="browsermode" content="application">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no, email=no" />
+    <title>局部客流实时预测</title>
+    <meta name="keywords" content="局部客流实时预测" />
+    <meta name="description" content="局部客流实时预测" />
+    <link rel="stylesheet" type="text/css" href="js/lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <style>
+        .device-chart {
+            width: 100%
+        }
+
+        #chart1 {
+            width: 100%
+        }
+
+        .dropdown-menu li {
+            text-align: center;
+            line-height: 40px;
+        }
+
+        .nav>li {
+            position: relative;
+            display: block;
+        }
+
+        .dropdown-menu {
+            left: 0px;
+        }
+
+        .dropdown-menu li {
+            font-size: 14px;
+            cursor: pointer;
+        }
+
+        .dropdown-menu li:hover {
+            background: #379be9;
+            color: #fff;
+        }
+
+        .btn .caret {
+            margin-left: 6px;
+        }
+    </style>
+    <!-- <script type="text/javascript" src="js/lib/jquery/jquery.min.js"></script> -->
+    <script type="text/javascript" src="js/lib/riqi/js/jquery-1.7.1.min.js"></script>
+    <script type="text/javascript" src="js/lib/cookie/jquery.cookie.js"></script>
+
+    <script type="text/javascript" src="js/lib/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- <script type="text/javascript" src="js/lib/bootstrap/js/bootstrap.modal.js"></script> -->
+
+    <script type="text/javascript" src="js/lib/highcharts/highstock.js"></script>
+    <!-- <script type="text/javascript" src="js/lib/highcharts/exportings.js"></script> -->
+    <script type="text/javascript" src="js/lib/highcharts/exporting.js"></script>
+    <script type="text/javascript" src="js/lib/highcharts/highcharts-zh_CN.js"></script>
+    <script type="text/javascript" src="js/lib/highcharts/export-data.js"></script>
+
+    <script type="text/javascript" src="js/deploy.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript" src="js/prediction.js"></script>
+</head>
+
+<body class="page-iframe-content">
+    <div class="content-pad">
+
+        <!-- 下拉改标签 -->
+        <div class="site-tab">
+            <ul class="clearfix devType">
+
+            </ul>
+        </div>
+
+        <div class="site-tab-box">
+            <div class="eval-box clearfix">
+                <div class="row-fluid">
+                    <ul class="thumb clearfix">
+                        <li class="floor-plan-box border-bg">
+                            <div class="floor-plan" data-toggle="modal" href="#example">
+                                <img class="imgSrc" src="">
+                                <ul class="example"></ul>
+                            </div>
+                            <div class="comeBack hidden"></div>
+                        </li>
+                        <li class="eva-table-box device-table-box border-bg">
+                            <div class="device-search" style="border-bottom:2px solid #626ffc;padding-bottom:5px;">
+                                <div class="form-horizontal clearfix">
+                                    <div class="control-group pull-left">
+                                        <label class="control-label" for="devClassN">设备</label>
+                                        <div class="controls">
+                                            <select id="devClassN">
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="control-group pull-left">
+                                        <label class="control-label" for="startTime">时间</label>
+                                        <div class="controls">
+                                            <select id="startTime">
+                                                <option value="3">最近三小时</option>
+                                                <option value="6">最近六小时</option>
+                                                <option value="9">最近九小时</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="control-group pull-left">
+                                        <label class="control-label" for="inputGrained">粒度</label>
+                                        <div class="controls">
+                                            <select id="inputGrained">
+                                                <option value="1">5分钟</option>
+                                                <option value="2">10分钟</option>
+                                                <option value="3">15分钟</option>
+                                                <option value="4">30分钟</option>
+                                                <option value="5">1小时</option>
+                                                <option value="6">1天</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <button type="submit" class="btn submit">查询</button>
+                                </div>
+                            </div>
+
+                            <div class="device-chart" style="border-bottom:2px solid #626ffc;">
+                                    <div class="lodding lodding1 hidden"><img src="images/lodding.gif"></div>
+                                <div id="chart1" style="height:280px"></div>
+                            </div>
+
+                            <div class="device-chart">
+                                    <div class="lodding lodding2 hidden"><img src="images/lodding.gif"></div>
+                                <div id="chart2" style="height:287px"></div>
+                            </div>
+
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 添加监测对象模态框 -->
+    <div id="mod"></div>
+    
+</body>
+
+</html>

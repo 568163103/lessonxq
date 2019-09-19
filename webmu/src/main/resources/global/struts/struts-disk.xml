@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+    <package name="disk" extends="default" namespace="/disk">
+		<action name="diskchk" class="diskChkAction">
+			<result name="error">/jsp/common/error.jsp</result>
+            <result name="findPage">/jsp/disk/findPage.jsp</result>
+            <result name="getDiskStatus">/jsp/disk/diskView.jsp</result>
+            <result name="getChildren">/jsp/common/error.jsp</result>
+            <result name="diskNoData">/jsp/disk/diskViewError.jsp</result>
+		</action>
+    </package>
+</struts>
+
+

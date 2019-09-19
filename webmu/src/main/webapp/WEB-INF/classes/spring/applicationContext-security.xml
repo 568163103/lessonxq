@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xmlns:security="http://www.springframework.org/schema/security"
+		xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd
+			http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-4.1.xsd">
+	<!-- ======================== FILTER CHAIN ======================= -->
+	<bean id="springSecurityFilterChain" class="org.springframework.security.web.FilterChainProxy">
+		<constructor-arg>
+			<list>
+				<security:filter-chain pattern="/**/*.do*" filters="
+					securityContextPersistenceFilter,requestCacheAwareFilter,
+					securityContextHolderAwareRequestFilter,rememberMeAuthenticationFilter,
+					anonymousAuthenticationFilter,exceptionTranslationFilter,
+					filterSecurityInterceptor" />
+				<security:filter-chain pattern="/**/*.jsp*" filters="
+					securityContextPersistenceFilter,rememberMeAuthenticationFilter" />
+				<security:filter-chain pattern="/j_login*" filters="
+					securityContextPersistenceFilter,authenticationFilter,
+					usernamePasswordAuthenticationFilter" />
+				<security:filter-chain pattern="/j_logout*" filters="
+					securityContextPersistenceFilter,logoutFilter" />
+			</list>
+		</constructor-arg>
+	</bean>
+
+	<bean id="securityContextPersistenceFilter" class="org.springframework.security.web.context.SecurityContextPersistenceFilter" >
+		<property name="forceEagerSessionCreation" value="false"/>
+	</bean>
+
+	<bean id="securityContextHolderAwareRequestFilter" class="org.springframework.security.web.servletapi.SecurityContextHolderAwareRequestFilter" />
+
+	<bean id="requestCacheAwareFilter" class="org.springframework.security.web.savedrequest.RequestCacheAwareFilter"/>
+
+	<bean id="logoutFilter" class="org.springframework.security.web.authentication.logout.LogoutFilter">
+		<constructor-arg index="0" type="org.springframework.security.web.authentication.logout.LogoutSuccessHandler">
+			<bean class="com.beyeon.common.security.spring.access.authentication.SLLogoutSuccessHandler">
+				<property name="urlJumpContainer" ref="urlJumpContainer"/>
+			</bean>
+		</constructor-arg>
+		<!-- URL redirected to after logout -->
+		<constructor-arg index="1">
+			<list>
+				<ref bean="rememberMeServices" />
+				<bean class="org.springframework.security.web.authentication.logout.SecurityContextLogoutHandler" />
+			</list>
+		</constructor-arg>
+		<property name="filterProcessesUrl" value="/j_logout.auth" />
+	</bean>
+
+	<bean id="urlJumpContainer" class="com.beyeon.common.security.spring.access.authentication.UrlJumpContainer">
+		<property name="ignoreAppType" value="false"/>
+		<property name="defaultInputUrl" value="/login.jsp"/>
+		<property name="defaultTargetUrl" value="/blank.jsp?url=%2Fcommon%2Fmodule!index.do"/>
+		<property name="inputUrls">
+			<map>
+				<entry key="1" value="/login.jsp"/>
+				<entry key="2" value="/selfmanager/login.jsp"/>
+			</map>
+		</property>
+		<property name="targetUrls">
+			<map>
+				<entry key="1" value="/blank.jsp?url=%2Fcommon%2Fmodule!index.do"/>
+				<entry key="2" value="/blank.jsp?url=%2Fcommon%2Fmodule!selfManageIndex.do"/>
+			</map>
+		</property>
+	</bean>
+
+	<bean id="authenticationFilter" class="com.beyeon.common.security.spring.access.filter.SLAuthenticationFilter">
+		<property name="cacheSupport" ref="cacheSupport"/>
+		<property name="urlJumpContainer" ref="urlJumpContainer"/>
+		<property name="needLoginTimeHandle" value="false"/>
+		<property name="onlyOne" value="false"/>
+	</bean>
+	
+	<bean id="usernamePasswordAuthenticationFilter" class="org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter">
+		<property name="authenticationManager" ref="authenticationManager" />
+		<property name="authenticationFailureHandler">
+			<bean class="com.beyeon.common.security.spring.access.authentication.SLAuthenticationFailureHandler">
+				<property name="useForward" value="true"/>
+				<property name="urlJumpContainer" ref="urlJumpContainer"/>
+			</bean>
+		</property>
+		<property name="usernameParameter" value="j_username"/>
+		<property name="passwordParameter" value="j_password"/>
+		<property name="authenticationSuccessHandler">
+			<bean class="com.beyeon.common.security.spring.access.authentication.SLAuthenticationSuccessHandler">
+				<property name="urlJumpContainer" ref="urlJumpContainer"/>
+			</bean>
+		</property>
+		<property name="filterProcessesUrl" value="/j_login.auth" />
+		<property name="rememberMeServices" ref="rememberMeServices" />
+		<property name="postOnly" value="true"/>
+	</bean>
+
+	<bean id="rememberMeAuthenticationFilter"
+		class="org.springframework.security.web.authentication.rememberme.RememberMeAuthenticationFilter">
+		<constructor-arg name="authenticationManager" ref="authenticationManager" />
+		<constructor-arg name="rememberMeServices" ref="rememberMeServices" />
+	</bean>
+
+	<bean id="rememberMeServices"
+		class="org.springframework.security.web.authentication.rememberme.TokenBasedRememberMeServices">
+		<constructor-arg name="userDetailsService" ref="userDaoImpl"/>
+		<constructor-arg name="key" value="changeThis" />
+	</bean>
+
+	<bean id="anonymousAuthenticationFilter"
+		class="org.springframework.security.web.authentication.AnonymousAuthenticationFilter">
+		<constructor-arg name="key" value="changeThis" />
+		<!--constructor-arg name="userAttribute" value="AnonymousUser,ROLE_ANONYMOUS" /-->
+	</bean>
+
+	<bean id="exceptionTranslationFilter"
+		class="org.springframework.security.web.access.ExceptionTranslationFilter">
+		<constructor-arg name="authenticationEntryPoint">
+			<bean class="com.beyeon.common.security.spring.access.authentication.SLLoginUrlAuthenticationEntryPoint">
+				<constructor-arg name="loginFormUrl" value="/" />
+				<property name="forceHttps" value="false" />
+				<property name="urlJumpContainer" ref="urlJumpContainer" />
+				<property name="cacheSupport" ref="cacheSupport" />
+			</bean>
+		</constructor-arg>
+		<property name="accessDeniedHandler">
+			<bean class="org.springframework.security.web.access.AccessDeniedHandlerImpl">
+				<property name="errorPage" value="/accessDenied.jsp" />
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="filterSecurityInterceptor"
+		class="org.springframework.security.web.access.intercept.FilterSecurityInterceptor">
+		<property name="rejectPublicInvocations" value="false"/>
+		<property name="authenticationManager" ref="authenticationManager"/>
+		<property name="accessDecisionManager" ref="filterAccessDecisionManager"/>
+		<property name="securityMetadataSource" ref="cacheBaseUrlDefinitionSource"/>
+	</bean>
+	
+	<bean id="filterAccessDecisionManager" class="org.springframework.security.access.vote.AffirmativeBased">
+		<property name="allowIfAllAbstainDecisions"	value="false"/>
+		<constructor-arg name="decisionVoters">
+			<list>
+				<ref bean="roleVoter"/>
+				<ref bean="authenticatedVoter"/>
+			</list>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="roleVoter" class="org.springframework.security.access.vote.RoleVoter" >
+		<property name="rolePrefix" value=""/>
+	</bean>
+	<bean id="authenticatedVoter" class="org.springframework.security.access.vote.AuthenticatedVoter" />
+	
+	<bean id="authenticationManager" class="org.springframework.security.authentication.ProviderManager">
+		<constructor-arg name="providers">
+			<list>
+				<ref bean="daoAuthenticationProvider" />
+				<bean class="org.springframework.security.authentication.AnonymousAuthenticationProvider">
+					<constructor-arg name="key" value="changeThis" />
+				</bean>
+				<bean class="org.springframework.security.authentication.RememberMeAuthenticationProvider">
+					<constructor-arg name="key" value="changeThis" />
+				</bean>
+			</list>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="daoAuthenticationProvider"
+		class="org.springframework.security.authentication.dao.DaoAuthenticationProvider">
+		<property name="hideUserNotFoundExceptions" value="false"/>
+		<property name="userDetailsService" ref="userDaoImpl" />
+		<property name="passwordEncoder" ref="passwordEncoder" />
+	</bean>
+
+	<bean id="userDaoImpl" class="com.beyeon.common.security.spring.provider.dao.UserDaoImpl">
+		<property name="dataSource" ref="dataSource_fivs_w" />
+		<property name="usersQuery">
+			<value>select u.name,u.password,1,ui.alias,u.id,ui.phone,ui.mail FROM user_info ui,user u where ui.id = u.id</value>
+		</property>
+		<property name="usersByUsernameQuery">
+			<value>select u.name,u.password,1,ui.alias,ui.id,ui.phone,ui.mail from user_info ui,user u where ui.id = u.id and u.name = ?</value>
+		</property>
+		<property name="authoritiesByUsernameQuery">
+			<value>select concat(r.rid,'-',r.role_type) from t_user_role ur,t_role r where r.status = 1 and r.rid = ur.rid and ur.amid = ?</value>
+		</property>
+		<property name="userAreaByUseridQuery">
+			<value>select u.priv_type,u.priv_code from t_priv_data u where u.user_id = ?</value>
+		</property>
+		<property name="linkUserByUseridQuery">
+			<value>select u.preamid,u.full_amid from t_user_link u where u.amid = ?</value>
+		</property>
+	</bean>
+
+	<bean id="passwordEncoder" class="com.beyeon.common.security.spring.access.authentication.encoding.SLMd5PasswordEncoder" />
+
+	<bean id="cacheBaseUrlDefinitionSource" 
+		class="com.beyeon.common.security.spring.access.intercept.CacheBaseUrlDefinitionSource">
+		<property name="convertUrlToLowercaseBeforeComparison" value="false" />
+		<property name="protectAllResource" value="${app.protect.all.resource}" />
+		<property name="useAntPath" value="true" />
+		<property name="securityCacheManager" ref="securityCacheManager" />
+		<property name="resourceProvider" ref="resourceProvider" />
+	</bean>
+
+	<bean id="resourceProvider"
+		class="com.beyeon.common.security.spring.provider.ResourceProvider">
+		<property name="resourceCache" ref="resourceCache" />
+		<property name="resourceDao" ref="resourceDao" />
+	</bean>
+	
+	<bean id="resourceDao" class="com.beyeon.common.security.spring.provider.dao.ResourceDaoImpl">
+		<property name="dataSource" ref="dataSource_fivs_w" />
+		<property name="loadResourceQuery">
+			<value>select t.mid, t.is_func,t.url from t_menu t where t.mid = ? and t.dmlflag !=3</value>
+		</property>
+		<property name="loadResourcesQuery">
+			<value>select t.mid, t.is_func,t.url from t_menu t where t.dmlflag !=3  and t.full_mid like ?</value>
+		</property>
+		<property name="authoritiesByResourceQuery">
+			<value>select concat(r.rid,'-',r.role_type) from t_role r,t_role_menu rm where r.status = 1 and r.rid = rm.rid and rm.mid = ?</value>
+		</property>
+		<property name="authoritiesByResourceUrlQuery">
+			<value>select concat(r.rid,'-',r.role_type) from t_role r,t_role_menu rm,t_menu m where r.status = 1 and r.rid = rm.rid and rm.mid = m.mid and m.dmlflag !=3 and m.url like ?</value>
+		</property>
+	</bean>
+
+	<bean id="webInvocationPrivilegeEvaluator" class="org.springframework.security.web.access.DefaultWebInvocationPrivilegeEvaluator">
+		<constructor-arg ref="filterSecurityInterceptor" />
+	</bean>
+
+	<bean id="resourceCache" class="com.beyeon.common.security.spring.cache.impl.EhCacheBasedResourceCache">
+		<property name="cache">
+			<bean class="org.springframework.cache.ehcache.EhCacheFactoryBean">
+				<property name="cacheManager" ref="cacheManager"/>
+				<property name="cacheName" value="resourceCache"/>
+			</bean>
+		</property>
+	</bean>
+
+	<bean id="securityCacheManager" class="com.beyeon.common.security.spring.cache.SecurityCacheManager">
+		<property name="userDao" ref="userDaoImpl"/>
+		<property name="resourceDao" ref="resourceDao"/>
+		<property name="resourceCache" ref="resourceCache"/>
+	</bean>
+	<bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="spring/i18n/messages" />
+	</bean>
+</beans>

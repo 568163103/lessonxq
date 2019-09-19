@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+    <package name="logs" extends="default" namespace="/logs">
+        <action name="userTrace" class="userTraceAction">
+        	<result name="error">/jsp/syslogs/userTrace/findPage.jsp</result>
+        	<result name="findPage">/jsp/syslogs/userTrace/findPage.jsp</result>
+        	<result name="exportList" type="stream">
+			    <param name="contentType">application/vnd.ms-excel;charset=ISO8859-1</param>
+			    <param name="inputName">apendListInputStream</param>
+			    <param name="contentDisposition">attachment;filename="${downFileName}.xls"</param>
+			    <param name="bufferSize">1024</param>
+			</result>
+        </action>
+		<action name="operationLog" class="operationLogAction">
+			<result name="error">/jsp/syslogs/operationLog/findPage.jsp</result>
+			<result name="findPage">/jsp/syslogs/operationLog/findPage.jsp</result>
+			<result name="exportList" type="stream">
+			    <param name="contentType">application/vnd.ms-excel;charset=ISO8859-1</param>
+			    <param name="inputName">apendListInputStream</param>
+			    <param name="contentDisposition">attachment;filename="${downFileName}.xls"</param>
+			    <param name="bufferSize">1024</param>
+			</result>
+		</action>
+    </package>
+</struts>
+
+

@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta content="webkit" name="renderer">
+    <meta content="IE=Edge,chrome=1" http-equiv="X-UA-Compatible">
+    <meta content="text/html; charset=utf-8" http-equiv="Content-Type" />
+    <meta content="no-siteapp" http-equiv="Cache-Control" />
+    <meta content="application" name="browsermode">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no, email=no" name="format-detection" />
+    <title>配置页面</title>
+    <link rel="stylesheet" type="text/css" href="js/lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="js/lib/bootstrap/css/component.css">
+    <link rel="stylesheet" type="text/css" href="js/lib/datetimepickter/css/bootstrap-datetimepicker.min.css">
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <link rel="stylesheet" type="text/css" href="css/object.css">
+    <style>
+        .form-horizontal .control-label {
+            text-align: right;
+        }
+
+        #devType li {
+            cursor: pointer;
+        }
+
+        /* 蒙板 */
+        .site-tab {
+            position: relative;
+        }
+
+        .cover {
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            cursor: not-allowed;
+        }
+
+        .selectS {
+            width: 110px;
+        }
+
+        .delAlias {
+            padding: 0 6px;
+            background-color: #379be9;
+            border-radius: 50%;
+            border: 0;
+            margin: -25px auto auto -10px;
+            color: white;
+        }
+
+        .sub-title .addText:after {
+            content: "一添加"
+        }
+
+        .sub-title .editText:after{
+            content: "一修改"
+        }
+    </style>
+    <script type="text/javascript" src="js/lib/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="js/lib/cookie/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/lib/datetimepickter/js/bootstrap-datetimepicker.min.js"></script>
+    <script type="text/javascript" src="js/deploy.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript" src="js/object.js"></script>
+</head>
+
+<body class="page-iframe-content">
+    <div class="content-pad">
+        <div class="site-tab">
+            <div class="cover hidden"></div>
+            <!--蒙板，点击添加时候，禁止点击下边的li标签-->
+            <ul class="clearfix">
+                <li class="liDevice active">设备设施管理</li>
+                <li class="liDeviceRef">设备设施状态评估表</li>
+                <li class="liAlarm">报警阈值表</li>
+                <li class="external">外部事件表</li>
+            </ul>
+        </div>
+        <div class="sub-title">
+            <div class="left">
+                <button class="btn add"></button>
+            </div>
+            <div class="center"></div>
+        </div>
+
+        <!--添加-->
+        <div class="list">
+            <form class="form-horizontal" role="form">
+
+            </form>
+        </div>
+
+        <!--列表-->
+
+        <table class="table tableList" cellpadding="0" cellspacing="0" border="0">
+
+        </table>
+    </div>
+
+</body>
+
+</html>

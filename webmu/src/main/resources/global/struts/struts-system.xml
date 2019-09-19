@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+    <package name="system" extends="default" namespace="/system">
+        <action name="systemConfig" class="systemConfigAction">
+        	<result name="error">/jsp/system/systemconfig/findPage.jsp</result>
+        	<result name="findPage">/jsp/system/systemconfig/findPage.jsp</result>
+        	<result name="update">/jsp/system/systemconfig/update.jsp</result>
+        	<result name="beforeUpdate">/jsp/system/systemconfig/update.jsp</result>
+        </action>		
+    </package>
+</struts>
+
+

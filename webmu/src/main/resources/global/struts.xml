@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+
+<struts>
+    <!-- Constants -->
+    <constant name="struts.locale" value="zh_CN"/>
+    <constant name="struts.devMode" value="false"/>
+    <constant name="struts.i18n.encoding" value="UTF-8"/>
+	<constant name="struts.i18n.reload" value="true"/>
+	<constant name="struts.configuration.xml.reload" value="false"/>
+    <constant name="struts.action.extension" value="do"/>
+    <constant name="struts.objectFactory" value="spring"/>
+	<constant name="struts.objectFactory.spring.autoWire" value="name"/>
+    <constant name="struts.custom.i18n.resources" value="i18n/messages"/>
+    <constant name="struts.multipart.maxSize" value="1000427580"/>
+    <constant name="struts.ui.theme" value="simple"/>
+    <constant name="struts.enable.SlashesInActionNames" value="false"/>
+	<constant name="struts.url.includeParams" value="none"/>
+	<constant name="struts.serve.static" value="true"/>
+	<constant name="struts.serve.static.browserCache" value="false"/>
+	<constant name="struts.convention.result.path" value="/"/>
+	<constant name="struts.multipart.saveDir" value="/tmp"/>
+	<constant name="struts.convention.package.locators.disable" value="true"/>
+	<constant name="struts.enable.DynamicMethodInvocation" value="true" />
+
+	<!-- Configuration for the default package. -->
+    <package name="default" extends="struts-default">
+        <interceptors>
+        	<interceptor name="exception" class="com.beyeon.common.web.control.intercept.ExceptionInterceptor"/>
+            <interceptor name="longAccess" class="com.beyeon.common.web.control.intercept.LongAccessLogInterceptor"/>
+            <interceptor name="sessionManage" class="com.beyeon.common.web.control.intercept.SessionManageInterceptor"/>
+			<interceptor name="operateLogAccess" class="com.beyeon.common.web.control.intercept.OperateLogInterceptor"/>
+			<interceptor name="token" class="com.beyeon.common.web.control.intercept.TokenInterceptor"/>
+			<interceptor-stack name="basicStack">
+				<interceptor-ref name="exception" />
+				<interceptor-ref name="longAccess" />
+				<interceptor-ref name="sessionManage" />
+				<interceptor-ref name="operateLogAccess" />
+                <interceptor-ref name="modelDriven"/>
+                <interceptor-ref name="servletConfig"/>
+                <interceptor-ref name="prepare"/>
+				<interceptor-ref name="token">
+					<param name="includeMethods">save*</param>
+				</interceptor-ref>
+                <interceptor-ref name="checkbox"/>
+                <interceptor-ref name="multiselect"/>
+                <interceptor-ref name="params"/>
+                <interceptor-ref name="conversionError"/>
+            </interceptor-stack>
+			<!-- 带文件上传的参数拦截器堆栈 -->
+            <interceptor-stack name="uploadStack">
+                <interceptor-ref name="exception" />
+                <interceptor-ref name="longAccess" />
+                <interceptor-ref name="sessionManage" />
+                <interceptor-ref name="modelDriven"/>
+                <interceptor-ref name="servletConfig"/>
+                <interceptor-ref name="prepare"/>
+                <interceptor-ref name="fileUpload" />
+                <interceptor-ref name="checkbox"/>
+                <interceptor-ref name="multiselect"/>
+                <interceptor-ref name="params"/>
+                <interceptor-ref name="conversionError"/>
+            </interceptor-stack>
+        </interceptors>
+        <default-interceptor-ref name="basicStack"/>
+        <global-results>
+			<result name="error">/jsp/common/error.jsp</result>
+        </global-results>
+		<global-allowed-methods>regex:.*</global-allowed-methods>
+        <global-exception-mappings>
+        	<exception-mapping result="error" exception="java.lang.Exception"/>
+        </global-exception-mappings>
+    </package>
+	<include file="struts/struts-common.xml"/>
+	<include file="struts/struts-baseinfo.xml"/>
+	<include file="struts/struts-security.xml"/>
+	<include file="struts/struts-log.xml"/>
+	<include file="struts/struts-device.xml"/>
+	<include file="struts/struts-bussiness.xml"/>
+	<include file="struts/struts-fault.xml"/>
+	<include file="struts/struts-ext.xml"/>
+	<include file="struts/struts-thirdparty.xml"/>
+    <include file="struts/struts-disk.xml" />
+    <include file="struts/struts-external.xml" />
+    <include file="struts/struts-storage.xml" />
+    <include file="struts/struts-dmu.xml" />
+    <include file="struts/struts-system.xml" />
+</struts>
+
+

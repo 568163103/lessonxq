@@ -1,0 +1,164 @@
+
+.subwdzong{
+	width:275px;
+	height:255px;
+	margin:1px auto;
+	text-align: center;
+	background-color: #ffffff;
+}
+.subwdleft{
+	float:left;
+	width:60px;
+	height:255px;
+}
+.button9{
+
+	width:27px;
+	height:27px;
+	margin-left: -50px;
+	margin-top: 129px;
+}
+
+.button10{
+
+	width:27px;
+	height:27px;
+	margin-left: -60px;
+	margin-top: 0px;
+}
+
+.subwdcenter{
+	float:left;
+	width:200px;
+	height:255px;
+}
+.subwdright{
+	float: right;
+	width:10px;
+	height:255px;
+}
+.subwdall{
+	width:200px;
+	height:230px;
+	text-align: center;
+}
+
+.subwd{
+	background:url(image/cloud_bg.png);
+	width:200px;
+	height:160px;
+	text-align: center;
+}
+.left{
+	float:left;
+	width:200px;
+	height:160px;
+	text-align: center;
+}
+.button4{
+
+	width:18px;
+	height:25px;
+	margin-left: -80px;
+	margin-top: 66px;
+}
+
+.left{
+	float:left;
+	width:70px;
+	height:160px;
+}
+.center{
+	float:left;
+	width:70px;
+	height:160px;
+
+
+}
+.button1{
+
+	width:25px;
+	height:18px;
+	margin-top: 20px;
+	margin-left: -8px;
+}
+
+.subnell{
+
+	width:70px;
+	height:70px;
+	margin-top: 10px;
+	margin-left: -30px;
+}
+
+.button2{
+
+	width:25px;
+	height:18px;
+	margin-top: 6px;
+	margin-left: -8px;
+}
+
+.right{
+	float:right;
+	width:2px;
+	height:160px;
+
+}
+
+.button3{
+
+	width:18px;
+	height:25px;
+	margin-left: 15px;
+	margin-top: 65px;
+}
+
+
+.subwd2{
+	width:200px;
+	height:70px;
+
+}
+.left2{
+	float:left;
+	width:100px;
+	height:70px;
+}
+.button5{
+
+	width:27px;
+	height:27px;
+	margin-left: 30px;
+	margin-top: 40px;
+}
+
+.right2{
+	float:right;
+	width:100px;
+	height:70px;
+}
+
+.button6{
+
+	width:27px;
+	height:27px;
+	margin-left: -10px;
+	margin-top: 40px;
+}
+
+.button7{
+
+	width:27px;
+	height:27px;
+	margin-left: 30px;
+	margin-top: 130px;
+}
+
+.button8{
+
+	width:27px;
+	height:27px;
+	margin-left: 40px;
+	margin-top: -5px;
+}

@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+    <package name="device" extends="default" namespace="/device">
+        <action name="server" class="serverAction">
+        	<result name="error">/device/server!findPage.do</result>
+        	<result name="beforeUpdate">/jsp/device/server/update.jsp</result>
+        	<result name="update">/jsp/device/server/update.jsp</result>
+        	<result name="beforeSave">/jsp/device/server/save.jsp</result>
+        	<result name="save">/jsp/device/server/save.jsp</result>
+        	<result name="findPage">/jsp/device/server/findPage.jsp</result>
+        	<result name="findPageError">/jsp/device/server/findPage.jsp</result>
+       		<!-- 导出 -->
+            <result name="exportList" type="stream">
+			    <param name="contentType">application/vnd.ms-excel;charset=ISO8859-1</param>
+			    <param name="inputName">inputStream</param>
+			    <param name="contentDisposition">attachment;filename="${#request.name}.xls"</param>
+			    <param name="bufferSize">1024</param>
+			</result>
+        </action>
+		<action name="encoder" class="encoderAction">
+			<result name="error">/device/encoder!findPage.do</result>
+			<result name="beforeUpdate">/jsp/device/encoder/update.jsp</result>
+			<result name="update">/jsp/device/encoder/update.jsp</result>
+			<result name="beforeSave">/jsp/device/encoder/save.jsp</result>
+			<result name="save">/jsp/device/encoder/save.jsp</result>
+			<result name="findPage">/jsp/device/encoder/findPage.jsp</result>
+			<result name="findPlatformPage">/jsp/device/encoder/findPlatformPage.jsp</result>
+			<result name="findPageError">/jsp/device/encoder/findPage.jsp</result>
+			<result name="createChannel">/jsp/device/encoder/createChannel.jsp</result>
+			<result name="beforeInitUserResourceTree">/jsp/device/encoder/initUserResourceTree.jsp</result>
+			<result name="initUserResourceTree">/device/encoder!findPage.do</result>
+			<result name="addServer">/device/server!findPage.do</result>
+			<!-- 导出 -->
+            <result name="exportList" type="stream">
+			    <param name="contentType">application/vnd.ms-excel;charset=ISO8859-1</param>
+			    <param name="inputName">inputStream</param>
+			    <param name="contentDisposition">attachment;filename="${#request.name}.xls"</param>
+			    <param name="bufferSize">1024</param>
+			</result>
+			<interceptor-ref name="basicStack"/>
+			<interceptor-ref name="uploadStack"/>
+		</action>
+		<action name="channel" class="channelAction">
+			<result name="error">/device/channel!findPage.do</result>
+			<result name="beforeUpdate">/jsp/device/channel/update.jsp</result>
+			<result name="update">/jsp/device/channel/update.jsp</result>
+			<result name="beforeUpdatePlan">/jsp/device/channel/updatePlan.jsp</result>
+			<result name="updatePlan">/jsp/device/channel/updatePlan.jsp</result>
+			<result name="beforeSave">/jsp/device/channel/save.jsp</result>
+			<result name="save">/jsp/device/channel/save.jsp</result>
+			<result name="findPage">/jsp/device/channel/findPage.jsp</result>
+			<result name="findExternalPage">/jsp/device/channel/findExternalPage.jsp</result>
+			<result name="findPageError">/jsp/device/channel/findPage.jsp</result>
+			<result name="updateEncoder">/device/encoder!beforeUpdate.do?id=${channel.encoderId}</result>
+			<result name="updatePreset">/device/channel!beforeUpdate.do?id=${preset.channelId}</result>
+			<result name="findSnapshot">/jsp/device/channel/findSnapshot.jsp</result>
+			<result name="findUserSnapshot">/jsp/device/channel/findUserSnapshot.jsp</result>
+			<!-- 导出 -->
+            <result name="exportList" type="stream">
+			    <param name="contentType">application/vnd.ms-excel;charset=ISO8859-1</param>
+			    <param name="inputName">inputStream</param>
+			    <param name="contentDisposition">attachment;filename="${#request.name}.xls"</param>
+			    <param name="bufferSize">1024</param>
+			</result>
+			<interceptor-ref name="basicStack"/>
+			<interceptor-ref name="uploadStack"/>
+		</action>
+		<action name="terminal" class="terminalAction">
+			<result name="error">/device/terminal!findPage.do</result>
+			<result name="beforeUpdate">/jsp/device/terminal/update.jsp</result>
+			<result name="update">/jsp/device/terminal/update.jsp</result>
+			<result name="beforeSave">/jsp/device/terminal/save.jsp</result>
+			<result name="save">/jsp/device/terminal/save.jsp</result>
+			<result name="findPage">/jsp/device/terminal/findPage.jsp</result>
+			<result name="findPageError">/jsp/device/terminal/findPage.jsp</result>
+			<!-- 导出 -->
+			<result name="exportList" type="stream">
+				<param name="contentType">application/vnd.ms-excel;charset=ISO8859-1</param>
+				<param name="inputName">inputStream</param>
+				<param name="contentDisposition">attachment;filename="${#request.name}.xls"</param>
+				<param name="bufferSize">1024</param>
+			</result>
+		</action>
+		
+		<action name="equipment" class="equipmentAction">
+        	<result name="error">/device/equipment!findPage.do</result>
+        	<result name="beforeUpdate">/jsp/device/equipment/update.jsp</result>
+        	<result name="update">/jsp/device/equipment/update.jsp</result>
+        	<result name="beforeSave">/jsp/device/equipment/save.jsp</result>
+        	<result name="save">/jsp/device/equipment/save.jsp</result>
+        	<result name="findPage">/jsp/device/equipment/findPage.jsp</result>
+        	<result name="findPageError">/jsp/device/equipment/findPage.jsp</result>
+       		<!-- 导出 -->
+            <result name="exportList" type="stream">
+			    <param name="contentType">application/vnd.ms-excel;charset=ISO8859-1</param>
+			    <param name="inputName">inputStream</param>
+			    <param name="contentDisposition">attachment;filename="${#request.name}.xls"</param>
+			    <param name="bufferSize">1024</param>
+			</result>
+        </action>
+        
+       
+    </package>
+</struts>
+
+

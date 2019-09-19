@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+    <package name="security" extends="default" namespace="/security">
+        <action name="user" class="userAction">
+        	<result name="error">/security/user!findPage.do</result>
+        	<result name="beforeUpdate">/jsp/security/user/update.jsp</result>
+        	<result name="update">/jsp/security/user/update.jsp</result>
+        	<result name="beforeSave">/jsp/security/user/save.jsp</result>
+        	<result name="save">/jsp/security/user/save.jsp</result>
+        	<result name="findPage">/jsp/security/user/findPage.jsp</result>
+        	<result name="findExternalPage">/jsp/security/user/findExternalPage.jsp</result>
+        	<result name="findPageError">/jsp/security/user/findPage.jsp</result>
+        	<result name="beforeAuthForUser">/jsp/security/user/authForUser.jsp</result>
+        	<result name="authForUserUP">/jsp/security/user/authForUser.jsp</result>
+        </action>
+        <action name="role" class="roleAction">
+        	<result name="error">/security/role!findPage.do</result>
+        	<result name="beforeUpdate">/jsp/security/role/update.jsp</result>
+        	<result name="update">/jsp/security/role/update.jsp</result>
+        	<result name="save">/jsp/security/role/save.jsp</result>
+        	<result name="findPage">/jsp/security/role/findPage.jsp</result>
+        	<result name="findPageError">/jsp/security/role/findPage.jsp</result>
+        	<result name="beforeAuthForRole">/jsp/security/role/authForRole.jsp</result>
+        	<result name="authForRoleUP">/jsp/security/role/authForRole.jsp</result>
+			<result name="beforeCopyRole">/jsp/security/role/beforeCopyRole.jsp</result>
+        </action>
+        <action name="menu" class="menuAction">
+        	<result name="error">/security/menu!findPage</result>
+        	<result name="viewMenu">/jsp/security/menu/viewMenu.jsp</result>
+        	<result name="viewMenuError">/jsp/security/menu/viewMenu.jsp</result>
+        	<result name="findPage">/jsp/security/menu/findPage.jsp</result>
+        	<result name="findPageError">/jsp/security/menu/findPage.jsp</result>
+        	<result name="beforeAuthForMenu">/jsp/security/menu/authForMenu.jsp</result>
+        </action>
+		<action name="password" class="passwordAction">
+			<result name="modifyPasswd">/jsp/security/password/modifyPasswd.jsp</result>
+			<result name="modifyPasswd1">/jsp/security/password/modifyPasswd1.jsp</result>
+			<result name="modifyPasswdSuccess">/jsp/security/password/modifyPasswdSuccess.jsp</result>
+			<result name="forgetPasswd">/jsp/security/password/forgetPasswd.jsp</result>
+			<result name="forgetPasswdVerify">/jsp/security/password/forgetPasswdVerify.jsp</result>
+			<result name="restPassword">/jsp/security/password/restPasswd.jsp</result>
+			<result name="restPasswordSuccess">/jsp/security/password/restPasswdSuccess.jsp</result>
+		</action>
+    </package>
+</struts>
+
+

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	   xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.3.xsd"
+	   default-autowire="byName" default-lazy-init="false">
+	<!-- 数据源定义,使用Apache DBCP 连接池 -->
+	<bean id="baseDataSource" abstract="true"
+		class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${dataSource.driverClassName}" />
+		<property name="maxTotal" value="150" />
+		<property name="maxIdle" value="5" />
+		<property name="minIdle" value="1" />
+		<property name="maxWaitMillis" value="-1" />
+		<property name="defaultAutoCommit" value="true" />
+		<property name="validationQuery" value="select 1" />
+		<property name="removeAbandonedOnBorrow" value="true" />
+		<property name="removeAbandonedTimeout" value="3600" />
+		<property name="timeBetweenEvictionRunsMillis" value="300000" />
+		<property name="minEvictableIdleTimeMillis" value="300000" />
+	</bean>
+	<!--
+	<bean id="baseDataSourceOracle" abstract="true"
+		  class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
+		<property name="driverClassName" value="${dataSource_oracle.driverClassName}" />
+		<property name="maxTotal" value="150" />
+		<property name="maxIdle" value="5" />
+		<property name="minIdle" value="1" />
+		<property name="maxWaitMillis" value="-1" />
+		<property name="defaultAutoCommit" value="true" />
+		<property name="validationQuery" value="select 1 from dual" />
+		<property name="removeAbandonedOnBorrow" value="true" />
+		<property name="removeAbandonedTimeout" value="3600" />
+		<property name="timeBetweenEvictionRunsMillis" value="300000" />
+		<property name="minEvictableIdleTimeMillis" value="300000" />
+	</bean>
+	-->
+	<!--Hibernate SessionFatory -->
+	<bean id="baseSessionFactory" abstract="true"
+		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.MySQL5InnoDBDialect</prop>
+				<prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory</prop>
+				<prop key="hibernate.cache.use_second_level_cache">false</prop>
+				<prop key="hibernate.cache.use_query_cache">true</prop>
+				<prop key="hibernate.jdbc.fetch_size">50</prop>
+				<prop key="hibernate.jdbc.batch_size">25</prop>
+				<!-- 调试sql -->
+				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.format_sql">true</prop>
+				<prop key="hibernate.query.substitutions">true 1, false 0</prop>
+			</props>
+		</property>
+	</bean>
+	<!--
+	<bean id="baseSessionFactoryOracle" abstract="true"
+		  class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<property name="hibernateProperties">
+			<props>
+				<prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
+				<prop key="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.SingletonEhCacheRegionFactory</prop>
+				<prop key="hibernate.cache.use_second_level_cache">false</prop>
+				<prop key="hibernate.cache.use_query_cache">true</prop>
+				<prop key="hibernate.jdbc.fetch_size">50</prop>
+				<prop key="hibernate.jdbc.batch_size">25</prop>
+				<prop key="hibernate.show_sql">false</prop>
+				<prop key="hibernate.format_sql">false</prop>
+				<prop key="hibernate.query.substitutions">true 1, false 0</prop>
+			</props>
+		</property>
+	</bean>
+    -->
+	<!-- fivs-begin -->
+	<bean id="dataSource_fivs_w" parent="baseDataSource">
+		<property name="url" value="${dataSource_fivs_w.url}" />
+		<property name="username" value="${dataSource_fivs_w.username}" />
+		<property name="password" value="${dataSource_fivs_w.password}" />
+	</bean>
+
+	<bean id="dataSource_fivs_r" parent="baseDataSource">
+		<property name="url" value="${dataSource_fivs_w.url}" />
+		<property name="username" value="${dataSource_fivs_w.username}" />
+		<property name="password" value="${dataSource_fivs_w.password}" />
+	</bean>
+
+	<bean id="sessionFactory_fivs" parent="baseSessionFactory"
+		abstract="true">
+		<property name="packagesToScan">
+			<list>
+				<value>com.beyeon.hibernate.fivsdb</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="sessionFactory_fivs_w" parent="sessionFactory_fivs">
+		<property name="dataSource" ref="dataSource_fivs_w" />
+	</bean>
+
+	<bean id="sessionFactory_fivs_r" parent="sessionFactory_fivs">
+		<property name="dataSource" ref="dataSource_fivs_r" />
+	</bean>
+	<!-- fivs-end -->
+
+	<!-- 
+	tmodb-begin 
+	<bean id="dataSource_tmodb_w" parent="baseDataSourceOracle">
+		<property name="url" value="${dataSource_tmodb_w.url}" />
+		<property name="username" value="${dataSource_tmodb_w.username}" />
+		<property name="password" value="${dataSource_tmodb_w.password}" />
+	</bean>
+
+	<bean id="dataSource_tmodb_r" parent="baseDataSourceOracle">
+		<property name="url" value="${dataSource_tmodb_w.url}" />
+		<property name="username" value="${dataSource_tmodb_w.username}" />
+		<property name="password" value="${dataSource_tmodb_w.password}" />
+	</bean>
+
+	<bean id="sessionFactory_tmodb" parent="baseSessionFactoryOracle"
+		  abstract="true">
+		<property name="packagesToScan">
+			<list>
+				<value>com.beyeon.hibernate.fivsdb</value>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="sessionFactory_tmodb_w" parent="sessionFactory_tmodb">
+		<property name="dataSource" ref="dataSource_tmodb_w" />
+	</bean>
+
+	<bean id="sessionFactory_tmodb_r" parent="sessionFactory_tmodb">
+		<property name="dataSource" ref="dataSource_tmodb_r" />
+	</bean>
+	tmodb-end 
+	-->
+
+	<bean id="facadeDao" class="com.beyeon.common.web.model.dao.FacadeDao">
+		<property name="sessionFactorys">
+			<map>
+				<entry key="fivs_w" value-ref="sessionFactory_fivs_w" />
+				<entry key="fivs_r" value-ref="sessionFactory_fivs_r" />
+				<!-- 
+				<entry key="tmodb_w" value-ref="sessionFactory_tmodb_w" />
+				<entry key="tmodb_r" value-ref="sessionFactory_tmodb_r" />
+				 -->
+			</map>
+		</property>
+	</bean>
+
+</beans>

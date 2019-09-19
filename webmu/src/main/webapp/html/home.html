@@ -1,0 +1,207 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+<head>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="browsermode" content="application">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no, email=no" />
+    <title>主界面</title>
+    <meta name="keywords" content="主界面" />
+    <meta name="description" content="主界面" />
+    <link rel="stylesheet" type="text/css" href="js/lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <style>
+        .eval-box .thumb li.floor-plan-box {
+            width: 900px;
+        }
+
+        .floor-plan {
+            width: 900px;
+        }
+
+        .eval-box .thumb li.eva-table-box {
+            left: 930px;
+        }
+
+        .alarmH {
+            width: 100%;
+            height: auto;
+            margin-top: 15px;
+            border: 2px solid #5498c6;
+            padding: 10px 20px;
+            box-sizing: border-box;
+            position: relative;
+            background-color: #f3f6fb;
+        }
+
+        .titleH {
+            border-bottom: 1px solid gray;
+            padding-bottom: 5px;
+        }
+
+        .closeH {
+            position: absolute;
+            right: 10px;
+            top: 0;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        .mainH {
+            padding-top: 10px;
+        }
+
+        @keyframes alarmH {
+            0% {
+                border-color: none;
+                background-color: none;
+            }
+            50% {
+                border-color: orangered;
+                background-color: #FFDEAD;
+            }
+            100% {
+                border-color: none;
+                background-color: none;
+            }
+        }
+
+
+        .modVideoB {
+            width: 680px;
+            margin-left: -340px;
+            left: 50%;
+        }
+
+        .videoBoxB {
+            padding: 0;
+        }
+    </style>
+    <script type="text/javascript" src="js/lib/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="js/lib/cookie/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/lib/bootstrap/js/bootstrap.modal.js"></script>
+    <script type="text/javascript" src="js/lib/mqtt/mqttws31.js"></script>
+    <script type="text/javascript" src="js/lib/mqtt/singlepoint.js"></script>
+    <script type="text/javascript" src="js/deploy.js"></script>
+    <script type="text/javascript" src="js/common.js"></script>
+    <script>
+        $(function () {
+            $('.aa').click(function () {
+                openAlarmFn()
+            })
+            $('.bb').click(function () {
+                closeAlarmFn()
+            })
+            $('.closeH').click(function () {
+                closeAlarmFn()
+            })
+
+            function openAlarmFn() {
+                $('.alarmH').removeClass('hidden')
+                $('.alarmH').css({
+                    animation: 'alarmH 1s 5'
+                });
+                audioH.play()
+            }
+            function closeAlarmFn() {
+                $('.alarmH').addClass('hidden')
+                $('.alarmH').css({
+                    animation: 'alarmH 1s 0'
+                });
+                audioH.pause()
+            }
+        })
+    </script>
+</head>
+
+<body class="page-iframe-content">
+    <div class="content-pad">
+        <div class="site-tab-box">
+            <div class="monitor-title">
+                杨箕站实时客流监测平面图
+            </div>
+            <div class="eval-box clearfix">
+                <div class="row-fluid">
+                    <ul class="thumb clearfix">
+                        <li class="floor-plan-box border-bg">
+                            <div class="floor-plan">
+                                <img src="images/yangqi/all.jpg">
+                                <ul class="example"></ul>
+                            </div>
+                            <div class="comeBack hidden"></div>
+                        </li>
+                        <li class="eva-table-box border-bg" style="min-width: 200px;">
+                            <div class="time-status">
+                                <div class="status-box">
+                                    <div class="status-tit">
+                                        实时客流状态
+                                    </div>
+                                    <div class="status-detail">
+                                        <ul class="statusLevelUl"></ul>
+                                        <button class="aa">模拟开始</button>
+                                        <button class="bb">模拟结束</button>
+                                        <div class="alarmH hidden">
+                                            <span class="closeH">×</span>
+                                            <div class="titleH">
+                                                <span>温馨提示</span>
+                                            </div>
+                                            <div class="mainH">
+                                                <p>预警状态：
+                                                    <span class="warnH"></span>
+                                                </p>
+                                                <p>客流控制编号：
+                                                    <span class="control_numH"></span>
+                                                </p>
+                                                <p>建议启动：
+                                                    <span class="suggestH"></span>
+                                                </p>
+                                                <p>开始时间：
+                                                    <span class="start_timeH"></span>
+                                                </p>
+                                                <p>结束时间：
+                                                    <span class="end_timeH"></span>
+                                                </p>
+                                                <p>控制措施：
+                                                    <span class="methodH"></span>
+                                                </p>
+                                                <audio id="audioH" src="images/alarm.mp3"></audio>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!--添加关联监测对象模态框-->
+    <div id="mod"></div>
+
+    <!-- 视频播放模态框 -->
+    <div id="modVideo">
+        <div id="modVideoD" class="modal hide fade in modVideoB" style="display: none; ">
+            <div class="modal-header" style="text-align: center;">
+                <a class="close" data-dismiss="modal">×</a>
+                <h4 class="videoModTitle" style="margin:0;">视频</h4>
+            </div>
+            <div class="modal-body videoBoxB">
+
+            </div>
+        </div>
+    </div>
+
+
+</body>
+
+</html>

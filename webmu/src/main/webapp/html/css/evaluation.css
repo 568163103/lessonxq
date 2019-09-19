@@ -1,0 +1,171 @@
+.timeAxis{
+    width: 100%;
+    height: 30px;
+    background-color: orange;
+    position: absolute;
+    bottom: 0;
+    box-sizing: border-box;
+    padding: 0 20px;
+}
+
+.timeAxisInput{
+    width: 100%;
+    padding: 10px 0;
+
+}
+
+
+
+
+
+
+
+
+
+
+.time-box{
+    position: absolute;
+    left: 20px;
+    right: 20px;
+    bottom: 0;
+    height: 40px;
+    /* overflow: hidden; */
+}
+/*.time-box .bd{
+    position: absolute;
+    left: 30px;
+    right: 30px;
+    z-index: 100;
+    height: 40px;
+    overflow: hidden;
+}*/
+.tempWrap{
+    margin: 0 auto;
+    width: 100% !important;
+}
+.time-box .parul{
+    position: absolute;
+    padding: 0 30px;
+    z-index: 100;
+    height: 40px;
+    overflow: hidden;
+    /* width: 500000px !important; */
+}
+.time-box .parul li {
+    float: left;
+    width: 50px;
+    height: 40px;
+    line-height: 30px;
+    text-align: center;
+    cursor: pointer;
+}
+.time-box .parul li.cur{
+    color: red;
+}
+.time-box .parul li.cur .timeline-c{
+    background: red;
+}
+
+.time-box .parul li .timeline-c{
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    background: #626ffc;
+    margin: 0 auto;
+}
+.time-box .parul li span{
+    display:block;
+}
+
+.time-line{
+    position: absolute;
+    z-index: 5;
+    left: 20px;
+    right: 20px;
+    top: 5px;
+    height: 1px;
+    background: #ccc;
+}
+
+
+.prev, .next {
+    width: 20px;
+    height: 20px;
+    display: block;
+    position: absolute;
+    z-index: 300;
+    top: 5px;
+    cursor: pointer;
+}
+.prev {
+    left: -15px;
+}
+.next {
+    right: -15px;
+}
+
+.device-chart {
+    width: 100%
+}
+
+#chart1 {
+    width: 100%
+}
+
+.ui-datepicker {
+    width: 202px;
+    box-shadow: 0 5px 10px 1px gray;
+}
+
+#startTime {
+    width: 135px;
+}
+
+.ui-widget-header {
+    background: #7293FE !important;
+    border: none;
+}
+
+.ui-state-highlight,
+.ui-widget-content .ui-state-highlight,
+.ui-widget-header .ui-state-highlight {
+    background: #CCD6FA !important;
+    border: none;
+}
+
+.device-chart {
+    width: 100%
+}
+
+#chart1 {
+    width: 100%
+}
+
+.dropdown-menu li {
+    text-align: center;
+    line-height: 40px;
+}
+
+.nav>li {
+    position: relative;
+    display: block;
+}
+
+.dropdown-menu {
+    left: 0px;
+}
+
+.dropdown-menu li {
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.dropdown-menu li:hover {
+    background: #626ffc;
+    color: #fff;
+}
+
+.btn .caret {
+    margin-left: 6px;
+}

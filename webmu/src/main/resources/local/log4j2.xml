@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration status="off">
+	<Properties>
+		<property name="log_path">${sys:catalina.home}/logs/app</property>
+		<property name="file_size">10M</property><!-- 日志切割的最小单位 -->
+		<property name="log_level">error</property><!-- 日志输出级别 -->
+		<property name="log_pattern">%d{yyyy-MM-dd HH:mm:ss} %-5p %c %L - %m%n</property>
+	</Properties>
+	<appenders>
+		<Console name="Console" target="SYSTEM_OUT">
+			<PatternLayout pattern="${log_pattern}" />
+		</Console>
+		<RollingFile name="base" fileName="${log_path}/base.log" filePattern="${log_path}/base-%d{yyyy-MM-dd}-%i.log.gz">
+			<PatternLayout pattern="${log_pattern}"/>
+			<SizeBasedTriggeringPolicy size="${file_size}"/>
+		</RollingFile>
+		<RollingFile name="longAccess" fileName="${log_path}/longAccess.log" filePattern="${log_path}/longAccess-%d{yyyy-MM-dd}-%i.log.gz">
+			<PatternLayout pattern="${log_pattern}"/>
+			<SizeBasedTriggeringPolicy size="${file_size}"/>
+		</RollingFile>
+		<RollingFile name="exception" fileName="${log_path}/exception.log" filePattern="${log_path}/exception-%d{yyyy-MM-dd}-%i.log.gz">
+			<PatternLayout pattern="${log_pattern}"/>
+			<SizeBasedTriggeringPolicy size="${file_size}"/>
+		</RollingFile>
+	</appenders>
+	<loggers>
+		<root level="${log_level}">
+			<appender-ref ref="Console" />
+		</root>
+		<logger name="com.beyeon" level="trace" additivity="true">
+			<appender-ref ref="base"/>
+		</logger>
+		<logger name="Global.LongAccess" level="trace" additivity="true">
+			<appender-ref ref="longAccess"/>
+		</logger>
+		<logger name="Global.Exception" level="trace" additivity="true">
+			<appender-ref ref="exception"/>
+		</logger>
+	</loggers>
+</configuration>

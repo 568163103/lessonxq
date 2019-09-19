@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+<head>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="browsermode" content="application">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no, email=no" />
+    <title>杨箕站实时客流状态辨识与预警系统</title>
+    <meta name="keywords" content="杨箕站实时客流状态辨识与预警系统" />
+    <meta name="description" content="杨箕站实时客流状态辨识与预警系统" />
+    <link rel="stylesheet" type="text/css" href="js/lib/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/common.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+
+    <script type="text/javascript" src="js/lib/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="js/lib/bootstrap/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="js/lib/artDialog/jquery.artDialog.js"></script>
+    <script type="text/javascript" src="js/lib/cookie/jquery.cookie.js"></script>
+    <script type="text/javascript" src="js/lib/jquery-slimscroll/jquery.slimscroll.min.js"></script>
+    <script type="text/javascript" src="js/base.js"></script>
+    <script type="text/javascript" src="js/index.js"></script>
+</head>
+
+<body class="page-sidebar-fixed">
+    <div class="page-bar">
+        <div class="page-bar-inner clearfix">
+            <div class="page-user-info">
+                <div class="page-user-text">
+                    <div class="IndexTit">
+                        <span class="siteName"></span>实时客流状态辨识与预警系统
+                        <span class="siteTimeP">
+                            <span>车站时间：</span>
+                            <span class="siteTime">0000-00-00 00:00:00</span>
+                        </span>
+                    </div>
+                    <div class="page-bar-right">
+                        <ul class="nav indexLi">
+                            <li class="dropdown">
+                                <button class="btn choose" data-toggle="dropdown">杨箕站
+                                    <b class="caret"></b>
+                                </button>
+                                <ul id="devStation" class="dropdown-menu">
+                                    <li class="liYangqi">杨箕站</li>
+                                    <li class="li2">站点2</li>
+                                    <li class="li3">站点3</li>
+                                </ul>
+                            </li>
+                        </ul>
+                
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="page-container">
+        <div class="page-sidebar-wrap">
+            <div class="page-sidebar slimScroll">
+                <ul class="sideul">
+                    <li class="current">
+                        <a class="home" href="home.html">
+                            <span class="title title1">主界面</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="prediction" href="prediction.html">
+                            <span class="title">局部客流实时监测</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="real" href="real-time-info.html">
+                            <span class="title">客流信息统计分析</span>
+                        </a>
+                    </li>                   
+                    <li>
+                        <a class="forecast" href="forecast.html">
+                            <span class="title">局部客流预测信息</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="evaluation" href="evaluation.html">
+                            <span class="title">设备状态评估与预警</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="release" href="release.html">
+                            <span class="title">乘客诱导信息发布</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="object" href="object.html">
+                            <span class="title">配置页面</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="page-content-wrap clearfix">
+            <div class="page-content">
+                <div class="page-content-inner">
+                    <iframe name="page-iframe" id="page-iframe" class="page-iframe" scrolling="auto" frameborder="0" src="home.html?uniqueId=0101&class=home"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+</html>

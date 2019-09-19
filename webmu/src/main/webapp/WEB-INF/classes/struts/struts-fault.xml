@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+        "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+    <package name="fault" extends="default" namespace="/fault">
+        <action name="alarmInfo" class="alarmInfoAction">
+            <result name="error">/jsp/fault/alarminfo/findPage.jsp</result>
+            <result name="findPage">/jsp/fault/alarminfo/findPage.jsp</result>
+            <result name="alarmInfoStatistics">/jsp/fault/alarminfo/alarmInfoStatistics.jsp</result>
+            <result name="exportList" type="stream">
+                <param name="contentType">application/vnd.ms-excel;charset=ISO8859-1</param>
+                <param name="inputName">inputStream</param>
+                <param name="contentDisposition">attachment;filename="${#request.name}.xls"</param>
+                <param name="bufferSize">1024</param>
+            </result>
+            <result name="exportList2" type="stream">
+                <param name="contentType">application/vnd.ms-excel;charset=ISO8859-1</param>
+                <param name="inputName">inputStream</param>
+                <param name="contentDisposition">attachment;filename="${#request.name}.xls"</param>
+                <param name="bufferSize">1024</param>
+            </result>
+        </action>
+        <action name="alarmLevel" class="alarmLevelAction">
+            <result name="error">/jsp/fault/alarmlevel/findPage.jsp</result>
+            <result name="findPage">/jsp/fault/alarmlevel/findPage.jsp</result>
+            <result name="beforeUpdate">/jsp/fault/alarmlevel/update.jsp</result>
+        </action>
+
+        <action name="alarmRes" class="alarmResAction">
+            <result name="error">/fault/alarmres!findPage.do</result>
+            <result name="beforeUpdate">/jsp/fault/alarmres/update.jsp</result>
+            <result name="update">/jsp/fault/alarmres/update.jsp</result>
+            <result name="beforeSave">/jsp/fault/alarmres/save.jsp</result>
+            <result name="findRes">/jsp/fault/alarmres/save.jsp</result>
+            <result name="findPage">/jsp/fault/alarmres/findPage.jsp</result>
+            <result name="findPageError">/jsp/fault/alarmres/findPage.jsp</result>
+            <result name="exportList" type="stream">
+                <param name="contentType">application/vnd.ms-excel;charset=ISO8859-1</param>
+                <param name="inputName">inputStream</param>
+                <param name="contentDisposition">attachment;filename="${#request.name}.xls"</param>
+                <param name="bufferSize">1024</param>
+            </result>
+        </action>
+
+        <action name="tbAlarmsubcriType" class="tbAlarmsubcriTypeAction">
+            <result name="error">/fault/tbalarmsubcritype!findPage.do</result>
+            <result name="beforeUpdate">/jsp/fault/tbalarmsubcritype/update.jsp</result>
+            <result name="update">/jsp/fault/tbalarmsubcritype/update.jsp</result>
+            <result name="beforeSave">/jsp/fault/tbalarmsubcritype/save.jsp</result>
+            <result name="findRes">/jsp/fault/tbalarmsubcritype/save.jsp</result>
+            <result name="findPage">/jsp/fault/tbalarmsubcritype/findPage.jsp</result>
+            <result name="findPageError">/jsp/fault/tbalarmsubcritype/findPage.jsp</result>
+        </action>
+
+
+    </package>
+</struts>
+
+

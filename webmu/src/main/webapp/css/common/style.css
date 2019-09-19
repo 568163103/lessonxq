@@ -1,0 +1,283 @@
+/*default、top页面使用*/
+.icon {
+	background-repeat: no-repeat;
+	display: block;
+	overflow: hidden;
+	text-indent: -99999px;
+	position:absolute;
+}
+/*top页面*/
+#header {
+	background: none repeat scroll 0 0 #FFFFFF;
+	border-bottom: 1px solid #CCCCCC;
+	height: 68px;
+	width:100%;
+}
+#wisdom_head {
+	margin:0 20px;
+}
+#header-logo {
+	float: left;
+	margin:10px 10px 0;
+}
+#wisdom_head h1 {
+	float: left;
+	padding: 17px 15px 0;
+}
+#site-heading span {
+	font-family:'microsoft YaHei',simhei,sans-serif;
+	font-size:24px;
+	font-weight:bolder;
+	color:#000000;
+	vertical-align: middle;
+}
+#site-heading a:hover {
+	text-decoration:none;
+}
+#head_dock{
+	margin:22px 0;
+}
+#head_dock li{
+	float:left;
+	margin-right:14px;
+	height: 28px;
+	line-height: 28px;
+}
+#head_dock a{
+	font-size:12px;
+	color:#000000;
+	position:relative;
+	padding:4px 0 0 20px;
+}
+#head_dock a:hover{
+	color:#f38d14;
+	text-decoration:none;
+}
+#head_dock .icon{
+	width:18px;
+	height:18px;
+	top:0;
+	left:0;
+}
+#head_dock .icon-key{
+	background: url("images/icon_key.png")
+}
+#head_dock .icon-pen{
+	background: url("images/icon_pen.png")
+}
+#head_dock .icon-power{
+	background: url("images/icon_power.png")
+}
+/*default页面样式*/
+#defaultMain {
+	margin: 0 auto;
+	min-height: 200px;
+	overflow: hidden;
+	position: relative;
+	width: 100%;
+}
+.top-shodow {
+	background: url("images/bg_top_shadow.png") repeat-x scroll 0 0 transparent;
+}
+#icon_panel{
+	background: url("images/bg_icon_panel.png") repeat-x scroll 0 0 transparent;
+	margin:26px auto;
+	width:1000px;
+	height:300px;
+	padding-top:106px;
+}
+#icon_panel ul{
+	margin:0 50px;
+}
+#icon_panel li{
+	text-align:center;
+	margin:50px auto;
+	width:220px;
+	height:68px;
+	border-right: 1px dashed #c2c2c2;
+	border-left: 1px dashed #fff;
+	float:left;
+}
+#icon_panel li.first{
+	border-left: none;
+}
+#icon_panel li.last{
+	border-right: none;
+}
+#icon_panel .app-icon{
+	padding:134px 0 0;
+	width:172px;
+	height:43px;
+	display:block;
+	margin:-50px 0 0 23px;
+	font-family:'microsoft YaHei',simhei,sans-serif;
+	position:relative;
+	color:#000;
+	font-size:16px;
+}
+#icon_panel .app-icon:hover{
+	background: url("images/bg_icon_hover.png") no-repeat;
+	text-decoration:none;
+}
+#icon_panel .icon {
+	left: 42px;
+	top: 40px;
+}
+#icon_panel .icon-setting1{
+	top: 32px; left: 46px;
+	height: 78px; width: 78px;
+	background: url("images/icon_app_setting1.png");
+}
+#icon_panel .icon-setting2{
+	height: 73px; width: 84px;
+	background: url("images/icon_app_setting2.png");
+}
+#icon_panel .icon-setting3{
+	height: 63px; width: 96px;
+	background: url("images/icon_app_setting3.png");
+}
+#icon_panel .icon-setting4{
+	height: 72px; width: 75px;
+	background: url("images/icon_app_setting4.png");
+}
+#icon_panel .icon-setting5{
+	height: 72px; width: 75px;
+	background: url("images/icon_app_setting8.png");
+}
+#icon_panel .disabled .icon-setting {
+	background: url("images/icon_app_setting_disabled.png");
+}
+#icon_panel .disabled {
+	color:#c2c2c2;
+}
+#icon_panel .disabled:hover {
+	background:none;
+}
+#icon_panel .app-icon-gray{
+	padding:134px 0 0;
+	width:172px;
+	height:43px;
+	display:block;
+	margin:-50px 0 0 23px;
+	font-family:"黑体";
+	position:relative;
+	color:#807979;
+	font-size:16px;
+}
+#icon_panel .app-icon-gray:hover {
+	cursor: not-allowed;
+	text-decoration:none;
+}
+/*欢迎、提示页面*/
+.welcome{
+	background: url('images/bg.png') no-repeat;
+	position:absolute;
+	width: 752px;
+	height: 373px;
+	top:50%;
+	left:50%;
+	margin-top:-187px;
+	margin-left:-376px;
+}
+.wel_words  {
+	width: 490px;
+	margin: 0 auto;
+	position:absolute;
+	top:50%;
+	left:50%;
+	margin-top:-80px;
+	margin-left:-215px;
+}
+.smile {
+	position:absolute;
+	top:50%;
+	margin-top:-32px;
+	margin-left:0px;
+}
+.out_line {
+	margin: 0 0 0 100px;
+	font-family: "黑体";
+	font-size: 18px;
+	color: #434343;
+	padding: 0;
+}
+.out_line li {
+	list-style: none;
+	line-height: 30px;
+}
+.in_line {
+	font-family: Tahoma;
+	color: #9a9a9a;
+	margin-top: 10px;
+	float: left;
+}
+/*main页面样式*/
+#left-menu-div {
+	background:url("images/ks-bodybg.gif") repeat-y;
+	width: 149px;
+	float: left;
+	padding-top: 5px;
+	overflow: auto;
+	border-top: 0px solid #407fc4;
+}
+#left-menu-div h3 {
+	font-size: 15px;
+	font-weight: bold;
+	line-height: 48px;
+	height: 48px;
+}
+.ui-accordion .ui-accordion-header {
+	padding: 0 0.5em 0 0.7em;
+	margin-top: 0;
+}
+.ui-accordion .ui-widget-content {
+	background: none;
+}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+	border: 0px;
+	color: #666666;
+	text-align:center;
+	background: url("images/navigate-libg.gif") repeat scroll 0 0 transparent;
+}
+.ui-state-hover,.ui-widget-content .ui-state-hover,.ui-widget-header .ui-state-hover,
+.ui-state-focus, .ui-widget-content .ui-state-focus, .ui-widget-header .ui-state-focus,
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
+	border: 0px;
+	color: #ffffff;
+	background: url("images/navigate-libg-active.gif") no-repeat 0 0;
+}
+.ui-menu .ui-widget-content {
+	width: 143px;
+	background: url("images/ks-bodybg.gif") repeat-y;
+}
+.ui-menu .ui-icon {
+	margin-left: 33%;
+	*margin-left: 0;
+	_margin-left: 0;
+	width: 48px;
+	height: 48px;
+}
+.ui-menu .ui-menu-item a{
+	text-align: center;
+	padding: 10px 0 10px 0;
+}
+.ui-menu .ui-menu-item a.ui-state-focus,
+.ui-menu .ui-menu-item a.ui-state-active {
+	margin: 0px;
+}
+#main-content {
+	overflow: hidden;
+	position: relative;
+	margin: 0 auto 10px auto;
+	min-height:200px;
+	min-width: 830px;
+	padding: 10px;
+}
+
+/*修改密码*/
+.list_table{
+	padding:36px 0 ;
+	margin: auto;
+	text-align:center;
+	width:1430px;
+}

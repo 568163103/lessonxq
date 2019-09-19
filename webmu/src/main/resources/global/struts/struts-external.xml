@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+    <package name="external" extends="default" namespace="/external">
+		<action name="shieldplan" class="resShieldPlanAction">
+			<result name="error">/external/shieldplan!findPage.do</result>
+			<result name="beforeUpdate">/jsp/external/resshieldplan/update.jsp</result>
+			<result name="update">/jsp/external/resshieldplan/update.jsp</result>
+			<result name="beforeSave">/jsp/external/resshieldplan/save.jsp</result>
+			<result name="save">/jsp/external/resshieldplan/save.jsp</result>
+			<result name="findPage">/jsp/external/resshieldplan/findPage.jsp</result>
+			<result name="findPageError">/jsp/external/resshieldplan/findPage.jsp</result>
+		</action>
+
+		<action name="channelDistribute" class="channelDistributeAction">
+			<result name="error">/external/channelDistribute!findPage.do</result>
+			<result name="findPage">/jsp/external/channelDistribute/findPage.jsp</result>
+			<result name="findResPage">/jsp/external/channelDistribute/findResPage.jsp</result>
+			<result name="findPageError">/jsp/external/channelDistribute/findPage.jsp</result>
+		</action>
+		
+    </package>
+</struts>
+
+

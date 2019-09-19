@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+    <package name="ext" extends="default" namespace="/ext">
+		<action name="easypr" class="easyPrAction">
+			<interceptor-ref name="uploadStack"/>
+		</action>
+		<action name="caseinfo" class="caseInfoAction">
+			<result name="error">/ext/caseinfo!findPage.do</result>
+			<result name="view">/jsp/ext/caseinfo/view.jsp</result>
+			<result name="findPage">/jsp/ext/caseinfo/findPage.jsp</result>
+			<result name="findPageError">/jsp/ext/caseinfo/findPage.jsp</result>
+			<result name="findPageVideo">/jsp/ext/caseinfo/findPageVideo.jsp</result>
+			<interceptor-ref name="uploadStack"/>
+		</action>
+    </package>
+</struts>
+
+
