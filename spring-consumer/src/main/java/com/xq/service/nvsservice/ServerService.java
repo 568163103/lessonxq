@@ -1,4 +1,4 @@
-package com.xq.service;
+package com.xq.service.nvsservice;
 
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;

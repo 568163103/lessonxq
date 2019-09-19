@@ -1,4 +1,4 @@
-package com.xq.service;
+package com.xq.service.zabbixservice;
 
 import org.springframework.cloud.openfeign.FeignClient;
 

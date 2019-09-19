@@ -1,6 +1,6 @@
-package com.xq.service.impl;
+package com.xq.service.nvsservice.impl;
 
-import com.xq.service.ServerService;
+import com.xq.service.nvsservice.ServerService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
