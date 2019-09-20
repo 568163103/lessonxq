@@ -1,10 +1,10 @@
 package com.xq.service;
 
 
-import com.alibaba.fastjson.JSONObject;
+import com.xq.domain.Server;
 import com.xq.service.impl.ServerServiceImpl;
 
-import java.util.Map;
+import java.util.List;
 
 /**
  * {@link ServerServiceImpl}
@@ -14,5 +14,5 @@ import java.util.Map;
  */
 public interface ServerService {
 
-    JSONObject findServerAll();
+    List<Server> findServerAll();
 }

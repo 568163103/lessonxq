@@ -1,12 +1,10 @@
 package com.xq.service.impl;
 
-import com.alibaba.fastjson.JSON;
-import com.alibaba.fastjson.JSONObject;
-import com.xq.cache.nvss.ServerCache;
+import com.xq.cache.nvss.service.impl.ServerCache;
+import com.xq.constant.Constant;
 import com.xq.domain.Server;
 import com.xq.mapper.ServerMapper;
 import com.xq.service.ServerService;
-import org.apache.commons.lang.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -34,18 +32,15 @@ public class ServerServiceImpl implements ServerService {
 
 
     @Override
-    public JSONObject findServerAll() {
-        String resultCache = null;
-        JSONObject result = new JSONObject();
-        resultCache = serverCache.getServerCache("server:serverList");
-        if (StringUtils.isNotBlank(resultCache)) {
-            result.put("serverList",resultCache.substring(0,resultCache.length()-1).replaceAll("\\\\",""));
+    public List<Server> findServerAll() {
+        List<Server> serverList = serverCache.getListCache(Constant.SERVER_LIST,Server.class);
+        if (serverList!=null && serverList.size()>0) {
+           return serverList;
         } else {
-            List<Server> serverList = serverMapper.findAllServer();
-            result.put("serverList", serverList);
-            serverCache.setServerCache(JSON.toJSONString(serverMapper.findAllServer()));
+            serverList = serverMapper.findAllServer();
+            serverCache.setServerCacheList(Constant.SERVER_LIST,serverList);
         }
 
-        return result;
+        return serverList;
     }
 }

@@ -17,9 +17,15 @@ public class ServerServiceImpl {
     @Autowired
     private ServerService serverService;
 
-    @GetMapping(value = "/findAllServer",produces = "application/json;charset=utf-8")
-    public Map<String,Object> findAllServer(){
+    @GetMapping(value = "/findAllServer", produces = "application/json;charset=utf-8")
+    public Map<String, Object> findAllServer() {
         return serverService.findAllServer();
+    }
+
+
+    @GetMapping(value = "/findAllServerType", produces = "application/json;charset=utf-8")
+    public Map<String, Object> findAllServerType() {
+        return serverService.findAllServerType();
     }
 
 }

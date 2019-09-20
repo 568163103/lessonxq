@@ -2,6 +2,8 @@ package com.xq.mapper;
 
 import com.xq.domain.ServerType;
 
+import java.util.List;
+
 public interface ServerTypeMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -14,4 +16,6 @@ public interface ServerTypeMapper {
     int updateByPrimaryKeySelective(ServerType record);
 
     int updateByPrimaryKey(ServerType record);
+
+    List<ServerType> findServeTypeAll();
 }

@@ -63,4 +63,10 @@
     set `name` = #{name,jdbcType=CHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  <select id="findServeTypeAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"></include>
+    from
+    server_type
+  </select>
 </mapper>
