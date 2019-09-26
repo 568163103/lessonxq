@@ -34,16 +34,9 @@
 							</c:forEach>
 						</select>
 				</td>
-				<td style="text-align:right;" width="10%"><label class="field-request">* </label>服务器类型：</td>
-				<td width="20%">
-					<select class="validate[required]" name="server.type" id="type">
-						<option value="">请选择</option>
-						<c:forEach var="type" items="${types}">
-							<option value="${type.key}" <c:if test="${server.type eq type.key}">selected</c:if>>${type.value}</option>
-						</c:forEach>
-					</select>
-				</td>
-				
+				<td id="server-type" style="text-align:right;" width="10%"><label class="field-request">* </label>服务器类型：</td>
+
+
 			</tr>
 			<tr>
 				<td style="text-align: right;" width="10%"><label class="field-request">* </label>节点服务：</td>
@@ -107,5 +100,10 @@
 		</table>
 	</form>
 	</div>
+	<script type="text/javascript" >
+        document.write('<script src="${ctx}/js/nvss/common/common.js?t=' + new Date().getTime() + '"><\/script>')
+        document.write('<script src="${ctx}/js/nvss/server/server.js?t=' + new Date().getTime() + '"><\/script>')
+    </script>
+
 </body>
 </html>

@@ -1,0 +1,1 @@
+let nvss_provider_url = "http://localhost:9000/spring-cloud/webmu";
