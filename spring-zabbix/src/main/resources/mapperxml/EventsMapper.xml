@@ -136,7 +136,7 @@
 
   <select id="findAllEvents" resultMap="BaseResultMap">
     SELECT
-      e.eventid,
+      <include refid="Base_Column_List"></include>,
       FROM_UNIXTIME(e.clock ) as begin_time,
       FROM_UNIXTIME(e.clock + 5 ) as end_time,
       '0' as status
