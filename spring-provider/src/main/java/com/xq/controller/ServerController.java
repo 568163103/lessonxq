@@ -48,4 +48,5 @@ public class ServerController {
         result.put("serverTypeList", serverTypeList);
         return result;
     }
+
 }

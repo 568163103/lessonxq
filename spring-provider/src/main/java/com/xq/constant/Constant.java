@@ -7,4 +7,5 @@ package com.xq.constant;
 public class Constant {
 
     public static final String SERVER_LIST ="server:serverList";
+    public static final String SERVER_TYPE_LIST ="server:serverTypeList";
 }

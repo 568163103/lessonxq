@@ -133,4 +133,14 @@
       ns = #{ns,jdbcType=INTEGER}
     where eventid = #{eventid,jdbcType=BIGINT}
   </update>
+
+  <select id="findAllEvents" resultMap="BaseResultMap">
+    SELECT
+      e.eventid,
+      FROM_UNIXTIME(e.clock ) AS begin_time,
+      FROM_UNIXTIME(e.clock + 5 ) AS end_time,
+      '0' as status
+    FROM
+      events e
+  </select>
 </mapper>

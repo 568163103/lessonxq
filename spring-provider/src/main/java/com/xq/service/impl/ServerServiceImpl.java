@@ -13,6 +13,7 @@ import java.util.List;
 /**
  * {@link ServerService}
  * {@link ServerMapper}
+ * 服务器接口类
  *
  * @author xq
  * @since 2019/09/18

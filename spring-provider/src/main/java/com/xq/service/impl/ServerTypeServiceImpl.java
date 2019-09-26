@@ -1,6 +1,7 @@
 package com.xq.service.impl;
 
 import com.xq.cache.nvss.service.impl.ServerCache;
+import com.xq.constant.Constant;
 import com.xq.domain.ServerType;
 import com.xq.mapper.ServerTypeMapper;
 import com.xq.service.ServerTypeService;
@@ -23,12 +24,12 @@ public class ServerTypeServiceImpl implements ServerTypeService {
 
     @Override
     public List<ServerType> findServeTypeAll() {
-        List<ServerType> serverTypeList = serverCache.getListCache("server:serverTypeList", ServerType.class);
+        List<ServerType> serverTypeList = serverCache.getListCache(Constant.SERVER_TYPE_LIST, ServerType.class);
         if (serverTypeList != null && serverTypeList.size() > 0) {
             return serverTypeList;
         } else {
             serverTypeList = serverTypeMapper.findServeTypeAll();
-            serverCache.setServerCacheList("server:serverTypeList", serverTypeList);
+            serverCache.setServerCacheList(Constant.SERVER_TYPE_LIST, serverTypeList);
         }
 
         return serverTypeList;

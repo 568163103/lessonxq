@@ -7,8 +7,12 @@ spring:
         server-addr: 101.132.64.239:8848
         file-extension: yaml
         prefix: nacos-provider
+
+
+
   profiles:
     active: dev
+
 
 
 management:
