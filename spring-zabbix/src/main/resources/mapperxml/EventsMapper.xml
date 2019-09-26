@@ -137,8 +137,8 @@
   <select id="findAllEvents" resultMap="BaseResultMap">
     SELECT
       e.eventid,
-      FROM_UNIXTIME(e.clock ) AS begin_time,
-      FROM_UNIXTIME(e.clock + 5 ) AS end_time,
+      FROM_UNIXTIME(e.clock ) as begin_time,
+      FROM_UNIXTIME(e.clock + 5 ) as end_time,
       '0' as status
     FROM
       events e
