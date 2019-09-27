@@ -13,6 +13,9 @@ import java.util.List;
  * @since 2019/09/18
  */
 public interface ServerService {
-
+    /**
+     * 查询所有服务器
+     * @return
+     */
     List<Server> findServerAll();
 }
