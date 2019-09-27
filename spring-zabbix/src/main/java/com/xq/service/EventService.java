@@ -1,6 +1,6 @@
 package com.xq.service;
 
-import com.xq.domain.Events;
+import com.xq.expansion.EventsExpansion;
 import com.xq.service.impl.EventServiceImpl;
 
 import java.util.List;
@@ -15,5 +15,5 @@ import java.util.List;
  **/
 public interface EventService {
 
-    List<Events> findAllEvents();
+    List<EventsExpansion> findAllEvents();
 }

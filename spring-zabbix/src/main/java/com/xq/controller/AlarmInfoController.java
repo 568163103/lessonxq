@@ -1,6 +1,7 @@
 package com.xq.controller;
 
 import com.xq.domain.Events;
+import com.xq.expansion.EventsExpansion;
 import com.xq.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -28,7 +29,7 @@ public class AlarmInfoController {
     @PostMapping(value = "/alarmInfoList",produces = "application/json;charset=utf-8")
     public Map<String,Object> alarmInfoList(){
         Map<String,Object> result = new HashMap<>(16);
-        List<Events> eventsList = eventService.findAllEvents();
+        List<EventsExpansion> eventsList = eventService.findAllEvents();
         result.put("eventsList",eventsList);
         return result;
     }

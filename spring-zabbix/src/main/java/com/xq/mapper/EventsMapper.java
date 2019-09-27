@@ -1,6 +1,7 @@
 package com.xq.mapper;
 
 import com.xq.domain.Events;
+import com.xq.expansion.EventsExpansion;
 import org.springframework.stereotype.Component;
 
 import java.util.List;
@@ -19,5 +20,4 @@ public interface EventsMapper {
 
     int updateByPrimaryKey(Events record);
 
-    List<Events> findAllEvents();
 }

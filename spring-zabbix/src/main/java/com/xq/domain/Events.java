@@ -18,45 +18,7 @@ public class Events {
     private Integer acknowledged;
 
     private Integer ns;
-    /**
-     * 告警开始时间
-     */
-    @Transient
-    private String begin_time;
 
-    /**
-     * 告警结束时间
-     */
-    @Transient
-    private String end_time;
-
-    @Transient
-    private String status;
-
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public String getBegin_time() {
-        return begin_time;
-    }
-
-    public void setBegin_time(String begin_time) {
-        this.begin_time = begin_time;
-    }
-
-    public String getEnd_time() {
-        return end_time;
-    }
-
-    public void setEnd_time(String end_time) {
-        this.end_time = end_time;
-    }
 
     public Long getEventid() {
         return eventid;
