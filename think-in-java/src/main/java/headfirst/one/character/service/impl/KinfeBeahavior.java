@@ -1,6 +1,6 @@
-package headfirst.ont.character.service.impl;
+package headfirst.one.character.service.impl;
 
-import headfirst.ont.character.service.WeaponBehavior;
+import headfirst.one.character.service.WeaponBehavior;
 
 public class KinfeBeahavior implements WeaponBehavior {
     public void useWeapon() {

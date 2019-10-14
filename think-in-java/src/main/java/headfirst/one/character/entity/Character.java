@@ -1,6 +1,6 @@
-package headfirst.ont.character.entity;
+package headfirst.one.character.entity;
 
-import headfirst.ont.character.service.WeaponBehavior;
+import headfirst.one.character.service.WeaponBehavior;
 
 public abstract class Character {
     WeaponBehavior weaponBehavior;

@@ -1,7 +1,7 @@
-package headfirst.ont.character.main;
+package headfirst.one.character.main;
 
-import headfirst.ont.character.entity.PersonAndSprit;
-import headfirst.ont.character.service.impl.KinfeBeahavior;
+import headfirst.one.character.entity.PersonAndSprit;
+import headfirst.one.character.service.impl.KinfeBeahavior;
 
 public class Demon {
 

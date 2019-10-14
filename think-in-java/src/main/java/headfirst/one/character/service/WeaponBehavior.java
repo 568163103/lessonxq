@@ -1,4 +1,4 @@
-package headfirst.ont.character.service;
+package headfirst.one.character.service;
 
 public interface WeaponBehavior {
     /**

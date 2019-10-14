@@ -8,7 +8,7 @@ public class MiniDuckSimulator {
 
         Duck modelDuck = new ModelDuck();
         modelDuck.performFly();
-        modelDuck.setFlyBehavior(new FlyRocketPowerd());
+        modelDuck.setFlyBehavior(new FlyRocketPowered());
         modelDuck.performFly();
         Person person = new PersonUseDuckCall();
         person.useDuckCall();

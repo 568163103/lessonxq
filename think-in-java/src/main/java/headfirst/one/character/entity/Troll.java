@@ -1,4 +1,4 @@
-package headfirst.ont.character.entity;
+package headfirst.one.character.entity;
 
 public class Troll extends Character {
     @Override
