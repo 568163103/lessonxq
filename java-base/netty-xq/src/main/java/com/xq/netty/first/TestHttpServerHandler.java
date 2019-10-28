@@ -1,6 +1,5 @@
 package com.xq.netty.first;
 
-import com.sun.jndi.toolkit.url.Uri;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
@@ -13,7 +12,7 @@ import java.net.URI;
 /**
  * @ClassName
  * @Description
- * @Auror
+ * @author
  * @Date
  * @Version
  **/
