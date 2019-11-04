@@ -1,7 +1,10 @@
 package com.xq.mapper;
 
 import com.xq.domain.Video;
+import org.springframework.stereotype.Component;
 
+import java.util.List;
+@Component
 public interface VideoMapper {
     int deleteByPrimaryKey(Integer id);
 
@@ -14,4 +17,6 @@ public interface VideoMapper {
     int updateByPrimaryKeySelective(Video record);
 
     int updateByPrimaryKey(Video record);
+
+    List<Video> findAll();
 }

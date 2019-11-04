@@ -16,3 +16,15 @@ management:
     web:
       exposure:
         include: '*'
+
+
+    #=================================微信相关==================
+    #公众号
+wxpay:
+  appid: wxp8fi0bhif49my536
+  appsecret: p5783zlb844l25e12j38x03f732rhtv5
+
+    #=================================下划线转驼峰==================
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true

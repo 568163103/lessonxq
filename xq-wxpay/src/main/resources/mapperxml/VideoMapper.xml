@@ -139,4 +139,11 @@
       point = #{point,jdbcType=DOUBLE}
     where id = #{id,jdbcType=INTEGER}
   </update>
+  
+  <select id="findAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"></include>
+    from
+    video
+  </select>
 </mapper>
