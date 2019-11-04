@@ -7,6 +7,7 @@ import java.util.List;
 
 /**
  * {@link EventServiceImpl}
+ *
  * @ClassName
  * @Description
  * @Auror
@@ -15,5 +16,5 @@ import java.util.List;
  **/
 public interface EventService {
 
-    List<EventsExpansion> findAllEvents();
+    List<EventsExpansion> findAllEvents(int pageNumber, int pageSize);
 }

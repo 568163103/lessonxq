@@ -1,0 +1,18 @@
+spring:
+  application:
+    name: nacos-provider-wxpay
+  cloud:
+    nacos:
+      config:
+        server-addr: 101.132.64.239:8848
+        file-extension: yaml
+        prefix: nacos-provider-wxpay
+  profiles:
+    active: dev
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
