@@ -1,11 +1,11 @@
 package com.xq.service.impl;
 
-import com.github.pagehelper.PageHelper;
 import com.xq.domain.Video;
 import com.xq.mapper.VideoMapper;
 import com.xq.service.VideoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -32,6 +32,7 @@ public class VideoServiceImpl implements VideoService {
         return videoMapper.selectByPrimaryKey(id);
     }
 
+
     @Override
     public int updateVideo(Video video) {
         return videoMapper.updateByPrimaryKeySelective(video);
@@ -40,5 +41,11 @@ public class VideoServiceImpl implements VideoService {
     @Override
     public int delVideo(int id) {
         return videoMapper.deleteByPrimaryKey(id);
+    }
+
+    @Override
+    public int save(Video video) {
+        videoMapper.insertSelective(video);
+        return video.getId();
     }
 }
