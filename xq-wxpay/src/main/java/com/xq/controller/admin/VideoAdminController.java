@@ -1,12 +1,6 @@
 package com.xq.controller.admin;
 
-/**
- * @author mac-xq
- * @ClassName
- * @Description
- * @Date
- * @Version
- **/
+
 
 import com.xq.domain.Video;
 import com.xq.service.VideoService;
@@ -60,7 +54,6 @@ public class VideoAdminController {
      */
     @PostMapping(value = "save", produces = "application/json;charset=UTF-8")
     public Object save(@RequestBody Video video) {
-        video.setCreateTime(new Date());
         return videoService.save(video);
     }
 }

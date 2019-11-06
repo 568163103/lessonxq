@@ -35,7 +35,6 @@ public class SqlSessionConfig {
         dataSource.setUsername(dataSourceProperties.getUsername());
         dataSource.setPassword(dataSourceProperties.getPassword());
 
-
         return dataSource;
 
     }
