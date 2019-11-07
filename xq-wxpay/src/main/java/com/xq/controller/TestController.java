@@ -3,6 +3,7 @@ package com.xq.controller;
 import com.xq.config.WeChatConfig;
 import com.xq.domain.Video;
 import com.xq.mapper.VideoMapper;
+import com.xq.utils.JsonData;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -22,8 +23,8 @@ public class TestController {
     private VideoMapper videoMapper;
 
     @RequestMapping(value = "/getAppId")
-    public String getAppId() {
-        return weChatConfig.getAppSecret();
+    public Object getAppId() {
+        return JsonData.buildSuccess(weChatConfig.getAppSecret());
     }
 
     @RequestMapping(value = "/testDb")

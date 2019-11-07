@@ -23,6 +23,10 @@ management:
 wxpay:
   appid: wxp8fi0bhif49my536
   appsecret: p5783zlb844l25e12j38x03f732rhtv5
+wxopen:
+  appid: wxp8fi0bhif49my536
+  appsecret: p5783zlb844l25e12j38x03f732rhtv5
+  redirect_url: http://test/pub/api/v1/wechat/user/callback1
 
     #=================================下划线转驼峰==================
 mybatis:
