@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.VideoMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.Video">
+    <!--@mbg.generated-->
+    <!--@Table video-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="summary" jdbcType="VARCHAR" property="summary" />
+    <result column="cover_img" jdbcType="VARCHAR" property="coverImg" />
+    <result column="view_num" jdbcType="INTEGER" property="viewNum" />
+    <result column="price" jdbcType="INTEGER" property="price" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="online" jdbcType="INTEGER" property="online" />
+    <result column="point" jdbcType="DOUBLE" property="point" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, title, summary, cover_img, view_num, price, create_time, `online`, point
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from video
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from video
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.xq.domain.Video" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into video (title, summary, cover_img, 
+      view_num, price, create_time, 
+      `online`, point)
+    values (#{title,jdbcType=VARCHAR}, #{summary,jdbcType=VARCHAR}, #{coverImg,jdbcType=VARCHAR}, 
+      #{viewNum,jdbcType=INTEGER}, #{price,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{online,jdbcType=INTEGER}, #{point,jdbcType=DOUBLE})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.xq.domain.Video" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into video
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="title != null">
+        title,
+      </if>
+      <if test="summary != null">
+        summary,
+      </if>
+      <if test="coverImg != null">
+        cover_img,
+      </if>
+      <if test="viewNum != null">
+        view_num,
+      </if>
+      <if test="price != null">
+        price,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="online != null">
+        `online`,
+      </if>
+      <if test="point != null">
+        point,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="summary != null">
+        #{summary,jdbcType=VARCHAR},
+      </if>
+      <if test="coverImg != null">
+        #{coverImg,jdbcType=VARCHAR},
+      </if>
+      <if test="viewNum != null">
+        #{viewNum,jdbcType=INTEGER},
+      </if>
+      <if test="price != null">
+        #{price,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="online != null">
+        #{online,jdbcType=INTEGER},
+      </if>
+      <if test="point != null">
+        #{point,jdbcType=DOUBLE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.Video">
+    <!--@mbg.generated-->
+    update video
+    <set>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="summary != null">
+        summary = #{summary,jdbcType=VARCHAR},
+      </if>
+      <if test="coverImg != null">
+        cover_img = #{coverImg,jdbcType=VARCHAR},
+      </if>
+      <if test="viewNum != null">
+        view_num = #{viewNum,jdbcType=INTEGER},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="online != null">
+        `online` = #{online,jdbcType=INTEGER},
+      </if>
+      <if test="point != null">
+        point = #{point,jdbcType=DOUBLE},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.Video">
+    <!--@mbg.generated-->
+    update video
+    set title = #{title,jdbcType=VARCHAR},
+      summary = #{summary,jdbcType=VARCHAR},
+      cover_img = #{coverImg,jdbcType=VARCHAR},
+      view_num = #{viewNum,jdbcType=INTEGER},
+      price = #{price,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      `online` = #{online,jdbcType=INTEGER},
+      point = #{point,jdbcType=DOUBLE}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <select id="findAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"></include>
+    from
+    video
+  </select>
+</mapper>

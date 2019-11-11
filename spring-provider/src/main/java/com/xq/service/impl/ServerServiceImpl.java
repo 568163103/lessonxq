@@ -1,11 +1,13 @@
 package com.xq.service.impl;
 
+import com.alibaba.fastjson.JSON;
 import com.xq.cache.nvss.service.impl.ServerCache;
 import com.xq.constant.Constant;
 import com.xq.domain.Server;
 import com.xq.mapper.ServerMapper;
 import com.xq.service.ServerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -30,6 +32,9 @@ public class ServerServiceImpl implements ServerService {
      */
     @Autowired
     private ServerCache serverCache;
+
+    @Autowired
+    private RedisTemplate redisTemplate;
 
 
     @Override

@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xq.mapper.ChapterMapper">
+  <resultMap id="BaseResultMap" type="com.xq.domain.Chapter">
+    <!--@mbg.generated-->
+    <!--@Table chapter-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="video_id" jdbcType="INTEGER" property="videoId" />
+    <result column="title" jdbcType="VARCHAR" property="title" />
+    <result column="ordered" jdbcType="INTEGER" property="ordered" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, video_id, title, ordered, create_time
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from chapter
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from chapter
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.xq.domain.Chapter" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into chapter (video_id, title, ordered, 
+      create_time)
+    values (#{videoId,jdbcType=INTEGER}, #{title,jdbcType=VARCHAR}, #{ordered,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.xq.domain.Chapter" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into chapter
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="videoId != null">
+        video_id,
+      </if>
+      <if test="title != null">
+        title,
+      </if>
+      <if test="ordered != null">
+        ordered,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="videoId != null">
+        #{videoId,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="ordered != null">
+        #{ordered,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.xq.domain.Chapter">
+    <!--@mbg.generated-->
+    update chapter
+    <set>
+      <if test="videoId != null">
+        video_id = #{videoId,jdbcType=INTEGER},
+      </if>
+      <if test="title != null">
+        title = #{title,jdbcType=VARCHAR},
+      </if>
+      <if test="ordered != null">
+        ordered = #{ordered,jdbcType=INTEGER},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.xq.domain.Chapter">
+    <!--@mbg.generated-->
+    update chapter
+    set video_id = #{videoId,jdbcType=INTEGER},
+      title = #{title,jdbcType=VARCHAR},
+      ordered = #{ordered,jdbcType=INTEGER},
+      create_time = #{createTime,jdbcType=TIMESTAMP}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

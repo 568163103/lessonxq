@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: nacos-provider-wxpay
+  cloud:
+    nacos:
+      config:
+        server-addr: 101.132.64.239:8848
+        file-extension: yaml
+        prefix: nacos-provider-wxpay
+  profiles:
+    active: dev
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+
+    #=================================微信相关==================
+    #公众号
+wxpay:
+  appid: wxp8fi0bhif49my536
+  appsecret: p5783zlb844l25e12j38x03f732rhtv5
+wxopen:
+  appid: wxp8fi0bhif49my536
+  appsecret: p5783zlb844l25e12j38x03f732rhtv5
+  redirect_url: http://test/pub/api/v1/wechat/user/callback1
+
+    #=================================下划线转驼峰==================
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true

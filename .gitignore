@@ -32,3 +32,4 @@ build/
 spring-provider/src/main/resources/rebel.xml
 spring-gateway/src/main/resources/rebel.xml
 spring-consumer/src/main/resources/rebel.xml
+xq-wxpay/src/main/resources/rebel.xml
