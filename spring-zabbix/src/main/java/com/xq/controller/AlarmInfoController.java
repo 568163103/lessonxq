@@ -3,12 +3,12 @@ package com.xq.controller;
 import com.xq.expansion.EventsExpansion;
 import com.xq.service.EventService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.cloud.client.loadbalancer.LoadBalanced;
+
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.client.RestTemplate;
+
 
 import java.util.HashMap;
 import java.util.List;
@@ -36,6 +36,7 @@ public class AlarmInfoController {
         Map<String,Object> result = new HashMap<>(16);
         List<EventsExpansion> eventsList = eventService.findAllEvents(pageNumber,18);
         result.put("eventsList",eventsList);
+
         return result;
     }
 }
