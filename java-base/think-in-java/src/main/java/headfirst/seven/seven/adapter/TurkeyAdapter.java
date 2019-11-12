@@ -1,4 +1,7 @@
-package headfirst.seven;
+package headfirst.seven.seven.adapter;
+
+import headfirst.seven.duck.service.Duck;
+import headfirst.seven.turke.Turkey;
 
 public class TurkeyAdapter implements Duck {
     Turkey turkey;
