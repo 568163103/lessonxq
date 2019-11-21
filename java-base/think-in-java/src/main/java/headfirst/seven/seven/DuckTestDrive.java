@@ -1,9 +1,9 @@
 package headfirst.seven.seven;
 
-import headfirst.seven.adapter.TurkeyAdapter;
-import headfirst.seven.duck.service.Duck;
-import headfirst.seven.duck.service.impl.MallardDuck;
-import headfirst.seven.turke.impl.WildTurkey;
+import headfirst.seven.seven.adapter.TurkeyAdapter;
+import headfirst.seven.seven.duck.service.Duck;
+import headfirst.seven.seven.duck.service.impl.MallardDuck;
+import headfirst.seven.seven.turke.impl.WildTurkey;
 
 /**
  * @author xq

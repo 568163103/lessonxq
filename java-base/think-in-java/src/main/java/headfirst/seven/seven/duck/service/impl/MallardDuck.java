@@ -1,6 +1,7 @@
 package headfirst.seven.seven.duck.service.impl;
 
-import headfirst.seven.duck.service.Duck;
+
+import headfirst.seven.seven.duck.service.Duck;
 
 /**
  * @author xq

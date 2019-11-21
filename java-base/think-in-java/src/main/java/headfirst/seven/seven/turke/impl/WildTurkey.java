@@ -1,7 +1,7 @@
 package headfirst.seven.seven.turke.impl;
 
 
-import headfirst.seven.turke.Turkey;
+import headfirst.seven.seven.turke.Turkey;
 
 /**
  * @author hc
