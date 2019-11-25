@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mingsoft.nvssauthor.mapper.CruiseTrackMapper">
+  <resultMap id="BaseResultMap" type="com.mingsoft.nvssauthor.domain.CruiseTrack">
+    <!--@mbg.generated-->
+    <!--@Table cruise_track-->
+    <id column="channel_id" jdbcType="CHAR" property="channelId" />
+    <id column="num" jdbcType="INTEGER" property="num" />
+    <result column="name" jdbcType="CHAR" property="name" />
+    <result column="dwell_time" jdbcType="INTEGER" property="dwellTime" />
+    <result column="speed" jdbcType="INTEGER" property="speed" />
+    <result column="flag" jdbcType="INTEGER" property="flag" />
+    <result column="preset_num" jdbcType="CHAR" property="presetNum" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    channel_id, num, `name`, dwell_time, speed, flag, preset_num, `status`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from cruise_track
+    where channel_id = #{channelId,jdbcType=CHAR}
+      and num = #{num,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    <!--@mbg.generated-->
+    delete from cruise_track
+    where channel_id = #{channelId,jdbcType=CHAR}
+      and num = #{num,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mingsoft.nvssauthor.domain.CruiseTrack">
+    <!--@mbg.generated-->
+    insert into cruise_track (channel_id, num, `name`, 
+      dwell_time, speed, flag, 
+      preset_num, `status`)
+    values (#{channelId,jdbcType=CHAR}, #{num,jdbcType=INTEGER}, #{name,jdbcType=CHAR}, 
+      #{dwellTime,jdbcType=INTEGER}, #{speed,jdbcType=INTEGER}, #{flag,jdbcType=INTEGER}, 
+      #{presetNum,jdbcType=CHAR}, #{status,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mingsoft.nvssauthor.domain.CruiseTrack">
+    <!--@mbg.generated-->
+    insert into cruise_track
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="channelId != null">
+        channel_id,
+      </if>
+      <if test="num != null">
+        num,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="dwellTime != null">
+        dwell_time,
+      </if>
+      <if test="speed != null">
+        speed,
+      </if>
+      <if test="flag != null">
+        flag,
+      </if>
+      <if test="presetNum != null">
+        preset_num,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="channelId != null">
+        #{channelId,jdbcType=CHAR},
+      </if>
+      <if test="num != null">
+        #{num,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=CHAR},
+      </if>
+      <if test="dwellTime != null">
+        #{dwellTime,jdbcType=INTEGER},
+      </if>
+      <if test="speed != null">
+        #{speed,jdbcType=INTEGER},
+      </if>
+      <if test="flag != null">
+        #{flag,jdbcType=INTEGER},
+      </if>
+      <if test="presetNum != null">
+        #{presetNum,jdbcType=CHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mingsoft.nvssauthor.domain.CruiseTrack">
+    <!--@mbg.generated-->
+    update cruise_track
+    <set>
+      <if test="name != null">
+        `name` = #{name,jdbcType=CHAR},
+      </if>
+      <if test="dwellTime != null">
+        dwell_time = #{dwellTime,jdbcType=INTEGER},
+      </if>
+      <if test="speed != null">
+        speed = #{speed,jdbcType=INTEGER},
+      </if>
+      <if test="flag != null">
+        flag = #{flag,jdbcType=INTEGER},
+      </if>
+      <if test="presetNum != null">
+        preset_num = #{presetNum,jdbcType=CHAR},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=INTEGER},
+      </if>
+    </set>
+    where channel_id = #{channelId,jdbcType=CHAR}
+      and num = #{num,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mingsoft.nvssauthor.domain.CruiseTrack">
+    <!--@mbg.generated-->
+    update cruise_track
+    set `name` = #{name,jdbcType=CHAR},
+      dwell_time = #{dwellTime,jdbcType=INTEGER},
+      speed = #{speed,jdbcType=INTEGER},
+      flag = #{flag,jdbcType=INTEGER},
+      preset_num = #{presetNum,jdbcType=CHAR},
+      `status` = #{status,jdbcType=INTEGER}
+    where channel_id = #{channelId,jdbcType=CHAR}
+      and num = #{num,jdbcType=INTEGER}
+  </update>
+</mapper>

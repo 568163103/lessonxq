@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mingsoft.nvssauthor.mapper.ChannelMapper">
+  <resultMap id="BaseResultMap" type="com.mingsoft.nvssauthor.domain.Channel">
+    <!--@mbg.generated-->
+    <!--@Table channel-->
+    <id column="id" jdbcType="CHAR" property="id" />
+    <result column="name" jdbcType="CHAR" property="name" />
+    <result column="enabled" jdbcType="BOOLEAN" property="enabled" />
+    <result column="encoder_id" jdbcType="CHAR" property="encoderId" />
+    <result column="num" jdbcType="INTEGER" property="num" />
+    <result column="has_ptz" jdbcType="INTEGER" property="hasPtz" />
+    <result column="has_audio" jdbcType="INTEGER" property="hasAudio" />
+    <result column="stream_count" jdbcType="INTEGER" property="streamCount" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="location" jdbcType="VARCHAR" property="location" />
+    <result column="purpose" jdbcType="VARCHAR" property="purpose" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, `name`, enabled, encoder_id, num, has_ptz, has_audio, stream_count, description, 
+    `location`, purpose
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from channel
+    where id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from channel
+    where id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.mingsoft.nvssauthor.domain.Channel">
+    <!--@mbg.generated-->
+    insert into channel (id, `name`, enabled, 
+      encoder_id, num, has_ptz, 
+      has_audio, stream_count, description, 
+      `location`, purpose)
+    values (#{id,jdbcType=CHAR}, #{name,jdbcType=CHAR}, #{enabled,jdbcType=BOOLEAN}, 
+      #{encoderId,jdbcType=CHAR}, #{num,jdbcType=INTEGER}, #{hasPtz,jdbcType=INTEGER}, 
+      #{hasAudio,jdbcType=INTEGER}, #{streamCount,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR}, 
+      #{location,jdbcType=VARCHAR}, #{purpose,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mingsoft.nvssauthor.domain.Channel">
+    <!--@mbg.generated-->
+    insert into channel
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="enabled != null">
+        enabled,
+      </if>
+      <if test="encoderId != null">
+        encoder_id,
+      </if>
+      <if test="num != null">
+        num,
+      </if>
+      <if test="hasPtz != null">
+        has_ptz,
+      </if>
+      <if test="hasAudio != null">
+        has_audio,
+      </if>
+      <if test="streamCount != null">
+        stream_count,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="location != null">
+        `location`,
+      </if>
+      <if test="purpose != null">
+        purpose,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=CHAR},
+      </if>
+      <if test="enabled != null">
+        #{enabled,jdbcType=BOOLEAN},
+      </if>
+      <if test="encoderId != null">
+        #{encoderId,jdbcType=CHAR},
+      </if>
+      <if test="num != null">
+        #{num,jdbcType=INTEGER},
+      </if>
+      <if test="hasPtz != null">
+        #{hasPtz,jdbcType=INTEGER},
+      </if>
+      <if test="hasAudio != null">
+        #{hasAudio,jdbcType=INTEGER},
+      </if>
+      <if test="streamCount != null">
+        #{streamCount,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="location != null">
+        #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="purpose != null">
+        #{purpose,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mingsoft.nvssauthor.domain.Channel">
+    <!--@mbg.generated-->
+    update channel
+    <set>
+      <if test="name != null">
+        `name` = #{name,jdbcType=CHAR},
+      </if>
+      <if test="enabled != null">
+        enabled = #{enabled,jdbcType=BOOLEAN},
+      </if>
+      <if test="encoderId != null">
+        encoder_id = #{encoderId,jdbcType=CHAR},
+      </if>
+      <if test="num != null">
+        num = #{num,jdbcType=INTEGER},
+      </if>
+      <if test="hasPtz != null">
+        has_ptz = #{hasPtz,jdbcType=INTEGER},
+      </if>
+      <if test="hasAudio != null">
+        has_audio = #{hasAudio,jdbcType=INTEGER},
+      </if>
+      <if test="streamCount != null">
+        stream_count = #{streamCount,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="location != null">
+        `location` = #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="purpose != null">
+        purpose = #{purpose,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mingsoft.nvssauthor.domain.Channel">
+    <!--@mbg.generated-->
+    update channel
+    set `name` = #{name,jdbcType=CHAR},
+      enabled = #{enabled,jdbcType=BOOLEAN},
+      encoder_id = #{encoderId,jdbcType=CHAR},
+      num = #{num,jdbcType=INTEGER},
+      has_ptz = #{hasPtz,jdbcType=INTEGER},
+      has_audio = #{hasAudio,jdbcType=INTEGER},
+      stream_count = #{streamCount,jdbcType=INTEGER},
+      description = #{description,jdbcType=VARCHAR},
+      `location` = #{location,jdbcType=VARCHAR},
+      purpose = #{purpose,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=CHAR}
+  </update>
+</mapper>

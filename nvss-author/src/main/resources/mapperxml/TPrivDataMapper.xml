@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mingsoft.nvssauthor.mapper.TPrivDataMapper">
+  <resultMap id="BaseResultMap" type="com.mingsoft.nvssauthor.domain.TPrivData">
+    <!--@mbg.generated-->
+    <!--@Table t_priv_data-->
+    <id column="user_id" jdbcType="CHAR" property="userId" />
+    <id column="priv_code" jdbcType="VARCHAR" property="privCode" />
+    <result column="priv_type" jdbcType="TINYINT" property="privType" />
+    <result column="dmlflag" jdbcType="TINYINT" property="dmlflag" />
+    <result column="dmltime" jdbcType="TIMESTAMP" property="dmltime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    user_id, priv_code, priv_type, dmlflag, dmltime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="map" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from t_priv_data
+    where user_id = #{userId,jdbcType=CHAR}
+      and priv_code = #{privCode,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    <!--@mbg.generated-->
+    delete from t_priv_data
+    where user_id = #{userId,jdbcType=CHAR}
+      and priv_code = #{privCode,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.mingsoft.nvssauthor.domain.TPrivData">
+    <!--@mbg.generated-->
+    insert into t_priv_data (user_id, priv_code, priv_type, 
+      dmlflag, dmltime)
+    values (#{userId,jdbcType=CHAR}, #{privCode,jdbcType=VARCHAR}, #{privType,jdbcType=TINYINT}, 
+      #{dmlflag,jdbcType=TINYINT}, #{dmltime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mingsoft.nvssauthor.domain.TPrivData">
+    <!--@mbg.generated-->
+    insert into t_priv_data
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="privCode != null">
+        priv_code,
+      </if>
+      <if test="privType != null">
+        priv_type,
+      </if>
+      <if test="dmlflag != null">
+        dmlflag,
+      </if>
+      <if test="dmltime != null">
+        dmltime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=CHAR},
+      </if>
+      <if test="privCode != null">
+        #{privCode,jdbcType=VARCHAR},
+      </if>
+      <if test="privType != null">
+        #{privType,jdbcType=TINYINT},
+      </if>
+      <if test="dmlflag != null">
+        #{dmlflag,jdbcType=TINYINT},
+      </if>
+      <if test="dmltime != null">
+        #{dmltime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mingsoft.nvssauthor.domain.TPrivData">
+    <!--@mbg.generated-->
+    update t_priv_data
+    <set>
+      <if test="privType != null">
+        priv_type = #{privType,jdbcType=TINYINT},
+      </if>
+      <if test="dmlflag != null">
+        dmlflag = #{dmlflag,jdbcType=TINYINT},
+      </if>
+      <if test="dmltime != null">
+        dmltime = #{dmltime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where user_id = #{userId,jdbcType=CHAR}
+      and priv_code = #{privCode,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mingsoft.nvssauthor.domain.TPrivData">
+    <!--@mbg.generated-->
+    update t_priv_data
+    set priv_type = #{privType,jdbcType=TINYINT},
+      dmlflag = #{dmlflag,jdbcType=TINYINT},
+      dmltime = #{dmltime,jdbcType=TIMESTAMP}
+    where user_id = #{userId,jdbcType=CHAR}
+      and priv_code = #{privCode,jdbcType=VARCHAR}
+  </update>
+</mapper>

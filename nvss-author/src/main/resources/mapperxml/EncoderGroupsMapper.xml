@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mingsoft.nvssauthor.mapper.EncoderGroupsMapper">
+  <resultMap id="BaseResultMap" type="com.mingsoft.nvssauthor.domain.EncoderGroups">
+    <!--@mbg.generated-->
+    <!--@Table encoder_groups-->
+    <id column="encoder_id" jdbcType="CHAR" property="encoderId" />
+    <result column="group_id" jdbcType="CHAR" property="groupId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    encoder_id, group_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from encoder_groups
+    where encoder_id = #{encoderId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from encoder_groups
+    where encoder_id = #{encoderId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.mingsoft.nvssauthor.domain.EncoderGroups">
+    <!--@mbg.generated-->
+    insert into encoder_groups (encoder_id, group_id)
+    values (#{encoderId,jdbcType=CHAR}, #{groupId,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mingsoft.nvssauthor.domain.EncoderGroups">
+    <!--@mbg.generated-->
+    insert into encoder_groups
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="encoderId != null">
+        encoder_id,
+      </if>
+      <if test="groupId != null">
+        group_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="encoderId != null">
+        #{encoderId,jdbcType=CHAR},
+      </if>
+      <if test="groupId != null">
+        #{groupId,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mingsoft.nvssauthor.domain.EncoderGroups">
+    <!--@mbg.generated-->
+    update encoder_groups
+    <set>
+      <if test="groupId != null">
+        group_id = #{groupId,jdbcType=CHAR},
+      </if>
+    </set>
+    where encoder_id = #{encoderId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mingsoft.nvssauthor.domain.EncoderGroups">
+    <!--@mbg.generated-->
+    update encoder_groups
+    set group_id = #{groupId,jdbcType=CHAR}
+    where encoder_id = #{encoderId,jdbcType=CHAR}
+  </update>
+</mapper>

@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mingsoft.nvssauthor.mapper.TUserLinkMapper">
+  <resultMap id="BaseResultMap" type="com.mingsoft.nvssauthor.domain.TUserLink">
+    <!--@mbg.generated-->
+    <!--@Table t_user_link-->
+    <id column="full_amid" jdbcType="VARCHAR" property="fullAmid" />
+    <result column="amid" jdbcType="CHAR" property="amid" />
+    <result column="preamid" jdbcType="CHAR" property="preamid" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    full_amid, amid, preamid
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from t_user_link
+    where full_amid = #{fullAmid,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from t_user_link
+    where full_amid = #{fullAmid,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.mingsoft.nvssauthor.domain.TUserLink">
+    <!--@mbg.generated-->
+    insert into t_user_link (full_amid, amid, preamid
+      )
+    values (#{fullAmid,jdbcType=VARCHAR}, #{amid,jdbcType=CHAR}, #{preamid,jdbcType=CHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.mingsoft.nvssauthor.domain.TUserLink">
+    <!--@mbg.generated-->
+    insert into t_user_link
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="fullAmid != null">
+        full_amid,
+      </if>
+      <if test="amid != null">
+        amid,
+      </if>
+      <if test="preamid != null">
+        preamid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="fullAmid != null">
+        #{fullAmid,jdbcType=VARCHAR},
+      </if>
+      <if test="amid != null">
+        #{amid,jdbcType=CHAR},
+      </if>
+      <if test="preamid != null">
+        #{preamid,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mingsoft.nvssauthor.domain.TUserLink">
+    <!--@mbg.generated-->
+    update t_user_link
+    <set>
+      <if test="amid != null">
+        amid = #{amid,jdbcType=CHAR},
+      </if>
+      <if test="preamid != null">
+        preamid = #{preamid,jdbcType=CHAR},
+      </if>
+    </set>
+    where full_amid = #{fullAmid,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mingsoft.nvssauthor.domain.TUserLink">
+    <!--@mbg.generated-->
+    update t_user_link
+    set amid = #{amid,jdbcType=CHAR},
+      preamid = #{preamid,jdbcType=CHAR}
+    where full_amid = #{fullAmid,jdbcType=VARCHAR}
+  </update>
+</mapper>

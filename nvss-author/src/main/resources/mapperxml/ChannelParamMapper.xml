@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mingsoft.nvssauthor.mapper.ChannelParamMapper">
+  <resultMap id="BaseResultMap" type="com.mingsoft.nvssauthor.domain.ChannelParam">
+    <!--@mbg.generated-->
+    <!--@Table channel_param-->
+    <id column="channel_id" jdbcType="CHAR" property="channelId" />
+    <result column="channel_type" jdbcType="INTEGER" property="channelType" />
+    <result column="scene_type" jdbcType="INTEGER" property="sceneType" />
+    <result column="decoder_address" jdbcType="INTEGER" property="decoderAddress" />
+    <result column="ptz_model" jdbcType="INTEGER" property="ptzModel" />
+    <result column="ptz_protocol" jdbcType="INTEGER" property="ptzProtocol" />
+    <result column="trans_com_type" jdbcType="INTEGER" property="transComType" />
+    <result column="baudrate" jdbcType="INTEGER" property="baudrate" />
+    <result column="checkbit" jdbcType="INTEGER" property="checkbit" />
+    <result column="databit" jdbcType="INTEGER" property="databit" />
+    <result column="flowcontrol" jdbcType="INTEGER" property="flowcontrol" />
+    <result column="stopbit" jdbcType="INTEGER" property="stopbit" />
+    <result column="vaparam" jdbcType="CHAR" property="vaparam" />
+    <result column="inter_device_id" jdbcType="INTEGER" property="interDeviceId" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    channel_id, channel_type, scene_type, decoder_address, ptz_model, ptz_protocol, trans_com_type, 
+    baudrate, checkbit, databit, flowcontrol, stopbit, vaparam, inter_device_id
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from channel_param
+    where channel_id = #{channelId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from channel_param
+    where channel_id = #{channelId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.mingsoft.nvssauthor.domain.ChannelParam">
+    <!--@mbg.generated-->
+    insert into channel_param (channel_id, channel_type, scene_type, 
+      decoder_address, ptz_model, ptz_protocol, 
+      trans_com_type, baudrate, checkbit, 
+      databit, flowcontrol, stopbit, 
+      vaparam, inter_device_id)
+    values (#{channelId,jdbcType=CHAR}, #{channelType,jdbcType=INTEGER}, #{sceneType,jdbcType=INTEGER}, 
+      #{decoderAddress,jdbcType=INTEGER}, #{ptzModel,jdbcType=INTEGER}, #{ptzProtocol,jdbcType=INTEGER}, 
+      #{transComType,jdbcType=INTEGER}, #{baudrate,jdbcType=INTEGER}, #{checkbit,jdbcType=INTEGER}, 
+      #{databit,jdbcType=INTEGER}, #{flowcontrol,jdbcType=INTEGER}, #{stopbit,jdbcType=INTEGER}, 
+      #{vaparam,jdbcType=CHAR}, #{interDeviceId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mingsoft.nvssauthor.domain.ChannelParam">
+    <!--@mbg.generated-->
+    insert into channel_param
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="channelId != null">
+        channel_id,
+      </if>
+      <if test="channelType != null">
+        channel_type,
+      </if>
+      <if test="sceneType != null">
+        scene_type,
+      </if>
+      <if test="decoderAddress != null">
+        decoder_address,
+      </if>
+      <if test="ptzModel != null">
+        ptz_model,
+      </if>
+      <if test="ptzProtocol != null">
+        ptz_protocol,
+      </if>
+      <if test="transComType != null">
+        trans_com_type,
+      </if>
+      <if test="baudrate != null">
+        baudrate,
+      </if>
+      <if test="checkbit != null">
+        checkbit,
+      </if>
+      <if test="databit != null">
+        databit,
+      </if>
+      <if test="flowcontrol != null">
+        flowcontrol,
+      </if>
+      <if test="stopbit != null">
+        stopbit,
+      </if>
+      <if test="vaparam != null">
+        vaparam,
+      </if>
+      <if test="interDeviceId != null">
+        inter_device_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="channelId != null">
+        #{channelId,jdbcType=CHAR},
+      </if>
+      <if test="channelType != null">
+        #{channelType,jdbcType=INTEGER},
+      </if>
+      <if test="sceneType != null">
+        #{sceneType,jdbcType=INTEGER},
+      </if>
+      <if test="decoderAddress != null">
+        #{decoderAddress,jdbcType=INTEGER},
+      </if>
+      <if test="ptzModel != null">
+        #{ptzModel,jdbcType=INTEGER},
+      </if>
+      <if test="ptzProtocol != null">
+        #{ptzProtocol,jdbcType=INTEGER},
+      </if>
+      <if test="transComType != null">
+        #{transComType,jdbcType=INTEGER},
+      </if>
+      <if test="baudrate != null">
+        #{baudrate,jdbcType=INTEGER},
+      </if>
+      <if test="checkbit != null">
+        #{checkbit,jdbcType=INTEGER},
+      </if>
+      <if test="databit != null">
+        #{databit,jdbcType=INTEGER},
+      </if>
+      <if test="flowcontrol != null">
+        #{flowcontrol,jdbcType=INTEGER},
+      </if>
+      <if test="stopbit != null">
+        #{stopbit,jdbcType=INTEGER},
+      </if>
+      <if test="vaparam != null">
+        #{vaparam,jdbcType=CHAR},
+      </if>
+      <if test="interDeviceId != null">
+        #{interDeviceId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mingsoft.nvssauthor.domain.ChannelParam">
+    <!--@mbg.generated-->
+    update channel_param
+    <set>
+      <if test="channelType != null">
+        channel_type = #{channelType,jdbcType=INTEGER},
+      </if>
+      <if test="sceneType != null">
+        scene_type = #{sceneType,jdbcType=INTEGER},
+      </if>
+      <if test="decoderAddress != null">
+        decoder_address = #{decoderAddress,jdbcType=INTEGER},
+      </if>
+      <if test="ptzModel != null">
+        ptz_model = #{ptzModel,jdbcType=INTEGER},
+      </if>
+      <if test="ptzProtocol != null">
+        ptz_protocol = #{ptzProtocol,jdbcType=INTEGER},
+      </if>
+      <if test="transComType != null">
+        trans_com_type = #{transComType,jdbcType=INTEGER},
+      </if>
+      <if test="baudrate != null">
+        baudrate = #{baudrate,jdbcType=INTEGER},
+      </if>
+      <if test="checkbit != null">
+        checkbit = #{checkbit,jdbcType=INTEGER},
+      </if>
+      <if test="databit != null">
+        databit = #{databit,jdbcType=INTEGER},
+      </if>
+      <if test="flowcontrol != null">
+        flowcontrol = #{flowcontrol,jdbcType=INTEGER},
+      </if>
+      <if test="stopbit != null">
+        stopbit = #{stopbit,jdbcType=INTEGER},
+      </if>
+      <if test="vaparam != null">
+        vaparam = #{vaparam,jdbcType=CHAR},
+      </if>
+      <if test="interDeviceId != null">
+        inter_device_id = #{interDeviceId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where channel_id = #{channelId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mingsoft.nvssauthor.domain.ChannelParam">
+    <!--@mbg.generated-->
+    update channel_param
+    set channel_type = #{channelType,jdbcType=INTEGER},
+      scene_type = #{sceneType,jdbcType=INTEGER},
+      decoder_address = #{decoderAddress,jdbcType=INTEGER},
+      ptz_model = #{ptzModel,jdbcType=INTEGER},
+      ptz_protocol = #{ptzProtocol,jdbcType=INTEGER},
+      trans_com_type = #{transComType,jdbcType=INTEGER},
+      baudrate = #{baudrate,jdbcType=INTEGER},
+      checkbit = #{checkbit,jdbcType=INTEGER},
+      databit = #{databit,jdbcType=INTEGER},
+      flowcontrol = #{flowcontrol,jdbcType=INTEGER},
+      stopbit = #{stopbit,jdbcType=INTEGER},
+      vaparam = #{vaparam,jdbcType=CHAR},
+      inter_device_id = #{interDeviceId,jdbcType=INTEGER}
+    where channel_id = #{channelId,jdbcType=CHAR}
+  </update>
+</mapper>
