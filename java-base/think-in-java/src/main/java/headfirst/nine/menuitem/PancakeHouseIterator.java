@@ -1,8 +1,9 @@
 package headfirst.nine.menuitem;
 
-import headfirst.nine.service.Iterator;
+
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class PancakeHouseIterator implements Iterator {
     ArrayList menuItems;
@@ -24,5 +25,9 @@ public class PancakeHouseIterator implements Iterator {
         MenuItem menuItem = (MenuItem) menuItems.get(position);
         position = position + 1;
         return menuItem;
+    }
+
+    public void remove() {
+
     }
 }

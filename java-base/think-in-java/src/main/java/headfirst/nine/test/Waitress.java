@@ -1,29 +1,29 @@
 package headfirst.nine.test;
 
-import headfirst.nine.dinemenu.DinerMenu;
-import headfirst.nine.dinemenu.DinerMenuIterator;
+
 import headfirst.nine.menuitem.MenuItem;
-import headfirst.nine.menuitem.PancakeHouseIterator;
-import headfirst.nine.menuitem.PancakeHouseMenu;
-import headfirst.nine.service.Iterator;
+
+import headfirst.nine.service.Menu;
+
+import java.util.ArrayList;
+import java.util.Iterator;
 
 /**
  * @author xq
  */
 public class Waitress {
-    PancakeHouseMenu pancakeHouseMenu;
-    DinerMenu dinerMenu;
+    ArrayList menuList;
 
-    public Waitress(PancakeHouseMenu pancakeHouseMenu, DinerMenu dinerMenu) {
-        this.pancakeHouseMenu = pancakeHouseMenu;
-        this.dinerMenu = dinerMenu;
+    public Waitress(ArrayList menuList) {
+        this.menuList = menuList;
     }
 
     public void printMenu() {
-        Iterator pancakeHouseMenuIterator = pancakeHouseMenu.createIterator();
-        printMenu(pancakeHouseMenuIterator);
-        Iterator dinerMenuIterator = dinerMenu.createIterator();
-        printMenu(dinerMenuIterator);
+        Iterator menuIterator = menuList.iterator();
+        while (menuIterator.hasNext()) {
+            Menu menu = (Menu) menuIterator.next();
+            printMenu(menu.createIterator());
+        }
     }
 
     public void printMenu(Iterator iterator) {

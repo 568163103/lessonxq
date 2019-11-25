@@ -1,13 +1,15 @@
 package headfirst.nine.dinemenu;
 
 import headfirst.nine.menuitem.MenuItem;
-import headfirst.nine.service.Iterator;
+import headfirst.nine.service.Menu;
+
+import java.util.Iterator;
 
 
 /**
  * @author hc
  */
-public class DinerMenu {
+public class DinerMenu implements Menu {
     static final int MAX_ITEMS = 6;
     int numberOfItems = 0;
     MenuItem[] menuItems;
@@ -30,10 +32,6 @@ public class DinerMenu {
         }
     }
 
-
-//    public MenuItem[] getMenuItems() {
-//        return menuItems;
-//    }
 
     public Iterator createIterator() {
         return new DinerMenuIterator(menuItems);
