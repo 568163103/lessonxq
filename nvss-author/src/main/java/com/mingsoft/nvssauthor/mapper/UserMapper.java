@@ -1,7 +1,9 @@
 package com.mingsoft.nvssauthor.mapper;
 
 import com.mingsoft.nvssauthor.domain.User;
+import org.springframework.stereotype.Component;
 
+@Component
 public interface UserMapper {
     int deleteByPrimaryKey(String id);
 
@@ -14,4 +16,6 @@ public interface UserMapper {
     int updateByPrimaryKeySelective(User record);
 
     int updateByPrimaryKey(User record);
+
+    User findByUserName(String userName);
 }

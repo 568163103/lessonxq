@@ -75,4 +75,10 @@
       `password` = #{password,jdbcType=CHAR}
     where id = #{id,jdbcType=CHAR}
   </update>
+
+  <select id="findByUserName" parameterType="java.lang.String" resultMap="BaseResultMap">
+  select
+  <include refid="Base_Column_List"></include>
+  from user
+  </select>
 </mapper>
