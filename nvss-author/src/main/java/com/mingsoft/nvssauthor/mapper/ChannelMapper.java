@@ -1,7 +1,11 @@
 package com.mingsoft.nvssauthor.mapper;
 
 import com.mingsoft.nvssauthor.domain.Channel;
+import org.springframework.stereotype.Component;
 
+import java.util.List;
+
+@Component
 public interface ChannelMapper {
     int deleteByPrimaryKey(String id);
 
@@ -14,4 +18,6 @@ public interface ChannelMapper {
     int updateByPrimaryKeySelective(Channel record);
 
     int updateByPrimaryKey(Channel record);
+
+    List<Channel> getChannelList();
 }

@@ -80,5 +80,7 @@
   select
   <include refid="Base_Column_List"></include>
   from user
+  where
+  name = #{userName}
   </select>
 </mapper>

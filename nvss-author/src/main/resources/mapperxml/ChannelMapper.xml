@@ -18,7 +18,7 @@
   </resultMap>
   <sql id="Base_Column_List">
     <!--@mbg.generated-->
-    id, `name`, enabled, encoder_id, num, has_ptz, has_audio, stream_count, description, 
+    id, `name`, enabled, encoder_id, num, has_ptz, has_audio, stream_count, description,
     `location`, purpose
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
@@ -170,4 +170,15 @@
       purpose = #{purpose,jdbcType=VARCHAR}
     where id = #{id,jdbcType=CHAR}
   </update>
+
+  <select id="getChannelList" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select
+    cn.id as channelId, cn.`name` as channelName, cn.enabled as channelEnable, encoder_id, num, has_ptz, cn.has_audio as channelHasAudio, stream_count, cn.description as channelDescription,
+      `location`, purpose,
+    ec.status as status,ec.id as encoderId
+    from
+    channel cn
+    left join  encoder ec
+    on  cn.encoder_id = ec.id
+  </select>
 </mapper>

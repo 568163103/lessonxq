@@ -12,9 +12,7 @@ import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.concurrent.TimeUnit;
 
@@ -32,9 +30,26 @@ public class loginController {
     @Autowired
     private LoginService loginService;
 
-    @GetMapping(value = "to_login")
-    public String toLogin(@RequestParam(value = "username", required = false) String username,
-                          @RequestParam(value = "password", required = false) String password, ModelMap modelMap){
+    /**
+     * 跳转到登录页面
+     * @return
+     */
+    @RequestMapping(value = "to_login")
+    public String toLogin() {
+        return "login";
+    }
+
+    /**
+     * 登录校验
+     * @param username
+     * @param password
+     * @param modelMap
+     * @return
+     */
+    @PostMapping(value = "goindex")
+    public String login(@RequestParam(value = "username", required = false) String username,
+                        @RequestParam(value = "password", required = false) String password, ModelMap modelMap) {
+
         if (StringUtils.isNotBlank(username) && StringUtils.isNotBlank(password)) {
             Subject subject = SecurityUtils.getSubject();
             String pwd = MD5.md5(password);
@@ -45,10 +60,10 @@ public class loginController {
                 try {
                     subject.login(token);
                     modelMap.put("username", username);
-                    return "redirect:index/to_index?username=" + username;
+                    return "redirect:/index/to_index?username=" + username;
                 } catch (UnknownAccountException e) {
                     modelMap.put("msg", "用户不存在");
-                    return "login/login";
+                    return "login";
                 } catch (IncorrectCredentialsException e) {
                     modelMap.put("msg", "用户名或密码错误");
                     return "login/login";
@@ -56,11 +71,11 @@ public class loginController {
             } else {
 
                 modelMap.put("msg", "用户名或密码错误");
-                return "login/login";
+                return "login";
             }
 
         }
-        return "login/login";
+        return "login";
     }
 
 }

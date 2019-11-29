@@ -20,16 +20,15 @@
     <script type="text/javascript" src="../static/js/lib/cookie/jquery.cookie.js"></script>
     <script type="text/javascript" src="../static/js/lib/layer/layer.js"></script>
     <script type="text/javascript" src="../static/js/lib/layui/layui.js"></script>
-    <script type="text/javascript" src="../static/js/lib/jquery.base64.js"></script>
-    <script type="text/javascript" src="../static/js/ajax.js"></script>
     <script type="text/javascript" src="../static/js/login-guilinyangshuo.js"></script>
+    <script type="text/javascript" src="../static/js/lib/axios.js"></script>
 </head>
 
 <body class="body-login">
 <div class="login-wrap">
     <div class="login-box">
         <div class="logo-tit">
-            <span class="province"></span>铁路综合监控中心
+            <span class="province"></span>铁路综合视频运维系统
         </div>
         <div class="login-con">
             <div class="login-con-1"></div>
@@ -67,7 +66,7 @@
                         </label>
                     </div>
                     <div class="login-row login-btn-box">
-                        <div class="login-btn">登 录</div>
+                        <div onclick="login()" class="login-btn">登 录</div>
                     </div>
                 </div>
             </div>
@@ -97,6 +96,23 @@
         resize();
         $window.on("resize", resize);
     });
+    function login(){
+    var username = $('#user').val();    
+    var pwd = $('#pwd').val();  
+    let params = new URLSearchParams();
+    params.append('username', username);
+    params.append('password', pwd);
+    console.log(params);
+    axios.post("/login/goindex",params)
+    .then(res => {
+       console.log(res)
+    })
+    .catch(err => {
+        console.error(err); 
+    })    
+}
+   
+
 </script>
 </body>
 

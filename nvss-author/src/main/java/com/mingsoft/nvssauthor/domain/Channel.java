@@ -1,60 +1,88 @@
 package com.mingsoft.nvssauthor.domain;
 
+import com.sun.org.apache.regexp.internal.RE;
+
 public class Channel {
     /**
-    * ID,must be union code
-    */
+     * ID,must be union code
+     */
     private String id;
 
     /**
-    * name, unique
-    */
+     * name, unique
+     */
     private String name;
 
     /**
-    * enabled flag,0 indicate disabled
-    */
+     * enabled flag,0 indicate disabled
+     */
     private Boolean enabled;
 
     /**
-    * encoder ID
-    */
+     * encoder ID
+     */
     private String encoderId;
 
     /**
-    * sequence num, start from 0
-    */
+     * sequence num, start from 0
+     */
     private Integer num;
 
     /**
-    * 0 indicate no PTZ
-    */
+     * 0 indicate no PTZ
+     */
     private Integer hasPtz;
 
     /**
-    * 0 indicate no audio
-    */
+     * 0 indicate no audio
+     */
     private Integer hasAudio;
 
     /**
-    * stream count, can be 2 or more
-    */
+     * stream count, can be 2 or more
+     */
     private Integer streamCount;
 
     /**
-    * description
-    */
+     * description
+     */
     private String description;
 
     /**
-    * location
-    */
+     * location
+     */
     private String location;
 
     /**
-    * purpose
-    */
+     * purpose
+     */
     private String purpose;
+
+    private int status;
+
+    private String statusZn;
+
+    public String getStatusZn() {
+        if (this.status == 0) {
+            this.statusZn = "离线";
+        } else if (this.status == 1) {
+            this.statusZn = "在线";
+        }
+        return statusZn;
+
+    }
+
+    public void setStatusZn(String statusZn) {
+        this.statusZn = statusZn;
+    }
+
+    public int getStatus() {
+        return status;
+    }
+
+    public void setStatus(int status) {
+        this.status = status;
+    }
 
     public String getId() {
         return id;

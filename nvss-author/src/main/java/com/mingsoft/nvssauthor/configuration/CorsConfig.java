@@ -1,6 +1,7 @@
 package com.mingsoft.nvssauthor.configuration;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 import org.springframework.web.filter.CorsFilter;
@@ -12,6 +13,7 @@ import org.springframework.web.filter.CorsFilter;
  * @Date  2019-04-01
  * @Version 1.0
  **/
+@Configuration
 public class CorsConfig {
 
     private CorsConfiguration buildConfig() {

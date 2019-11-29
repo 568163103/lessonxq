@@ -34,7 +34,7 @@ if( capblityL.length == 1 ){
 }
 var deviceids = deviceid.replace('-','_');
 //var url = 'http://' + deviceip + '/' +'v1/sms/routes?proto=flv&title='+deviceids+'_'+ streamtype;
-var url = '/v1/sms/routes?proto=flv&title='+deviceids+'_'+ streamtype;
+var url = '/login/to_login';
 console.log(url)
 
 $.ajax({ 

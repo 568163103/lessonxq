@@ -38,6 +38,9 @@ public class ShiroConfig {
         map.put("/plugins/**","anon");
         map.put("/static/**", "anon");
         map.put("/login/to_login", "anon");
+        map.put("/login/goindex", "anon");
+        //临时访问权限
+        map.put("/api/v1/channel/**", "anon");
         map.put("/to_index", "anon");
         //上传视频需要对应的权限
         map.put("/upload","perms[user:upload]");
@@ -46,9 +49,9 @@ public class ShiroConfig {
         //对所有用户认证
         map.put("/**","authc");
         //登录
-        shiroFilterFactoryBean.setLoginUrl("/tologin");
+        shiroFilterFactoryBean.setLoginUrl("/login/to_login");
         //首页
-//        shiroFilterFactoryBean.setSuccessUrl("/toindex");
+        shiroFilterFactoryBean.setSuccessUrl("index/to_index");
         //设置没有授权跳转页面
         shiroFilterFactoryBean.setUnauthorizedUrl("/noAuth");
         shiroFilterFactoryBean.setFilterChainDefinitionMap(map);
