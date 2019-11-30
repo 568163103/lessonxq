@@ -1,10 +1,150 @@
-<!DOCTYPE html>
-<html lang="en">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <title>铁路综合监控中心</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta http-equiv="Cache-Control" content="no-siteapp" />
+    <meta name="browsermode" content="application">
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="format-detection" content="telephone=no, email=no" />
+    <title>首页</title>
+    <meta name="keywords" content="首页" />
+    <meta name="description" content="首页" />
+    <link rel="stylesheet" type="text/css" href="../static/index/css/common.css">
+    <script type="text/javascript" src="../static/js/lib/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/index/js/echarts.js"></script>
+    <script type="text/javascript" src="../static/index/js/index.js"></script>
+    <script type="text/javascript" src="../static/js/lib/axios.js"></script>
 </head>
+
 <body>
-  <h1>Hello World</h1>
+<div class="title">
+    铁路综合运维系统
+</div>
+<div class="wrap clearfix">
+    <div class="content content-left">
+        <div class="left-top">
+            <div class="content-title">
+                摄像机类型
+            </div>
+            <div class="chart-note clearfix" style="height: 72%">
+                <div id="leftTop" style="width: 80%;">
+
+                </div>
+                <div class="leftTopnote" style="width: 20%;">
+                    <p>在线：111</p>
+                    <p>离线：111</p>
+                </div>
+            </div>
+            <div class="note">
+                <span>固定摄像机:0</span>
+                <span>云台摄像机:0</span>
+                <span>固定IP摄像机:0</span>
+                <span>云台IP摄像机:0</span>
+                <span>其他:0</span>
+            </div>
+        </div>
+        <div class="left-middle">
+            <div class="content-title">
+                存储容量
+            </div>
+            <div id="leftMiddle" style="width: 100%;height: 85%">
+
+            </div>
+        </div>
+        <div class="left-bottom">
+            <div class="content-title">
+                服务器故障统计
+            </div>
+            <div class="leftbottom" style="width: 100%;height: 85%">
+                <div class="leftbottom-1">
+                    <img src="images/icon.png">
+                    <p>111</p>
+                </div>
+                <div class="leftbottom-1">
+                    <img src="images/icon.png">
+                    <p>111</p>
+                </div>
+                <div class="leftbottom-1">
+                    <img src="images/icon.png">
+                    <p>111</p>
+                </div>
+                <div class="leftbottom-1">
+                    <img src="images/icon.png">
+                    <p>111</p>
+                </div>
+                <div class="leftbottom-1">
+                    <img src="images/icon.png">
+                    <p>111</p>
+                </div>
+                <div class="leftbottom-1">
+                    <img src="images/icon.png">
+                    <p>111</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="content-middle">
+        <div class="middle-top">
+            <div class="content-title">
+                北京南站铁路状况
+            </div>
+            <div id="middleTop" style="width: 100%;height: 85%;">
+
+            </div>
+        </div>
+        <div class="middle-bottom">
+            <div class="content-title">
+                服务器运行状态
+            </div>
+            <div id="middleBottom" style="width: 100%;height: 85%">
+
+            </div>
+        </div>
+    </div>
+    <div class="content content-right">
+        <div class="right-top">
+            <div class="content-title">
+                录像诊断
+            </div>
+            <div id="rightTop" style="width: 100%;height: 85%">
+
+            </div>
+        </div>
+        <div class="right-middle">
+            <div class="content-title">
+                网络异常统计
+            </div>
+            <div id="rightMiddle" style="width: 100%;height: 85%">
+
+            </div>
+        </div>
+
+        <div class="right-bottom">
+            <div class="content-title">
+                服务器统计
+            </div>
+            <div class="chart-note clearfix" style="height: 72%">
+                <div id="rightBottom" style="width: 80%;">
+
+                </div>
+                <div class="leftTopnote" style="width: 20%;">
+                    <p id="online"></p>
+                    <p id="offline">离线：0</p>
+                </div>
+            </div>
+            <div class="note">
+                <span id="cms">cms服务器:0</span>
+                <span id="dms">dms服务器:0</span>
+                <span id="mss">mss服务器:0</span>
+                <span>其他服务器:0</span>
+            </div>
+        </div>
+    </div>
+</div>
 </body>
+
 </html>

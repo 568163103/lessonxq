@@ -181,4 +181,23 @@
       prohibited_status = #{prohibitedStatus,jdbcType=INTEGER}
     where id = #{id,jdbcType=CHAR}
   </update>
+
+  <select id="findServerList" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"></include>
+    from
+    server
+  </select>
+
+  <select id="findServerAndType" parameterType="java.util.Map" resultMap="BaseResultMap">
+    select
+     se.id, se.name, `type`, ip, port, username, `password`, max_connection, address, description,
+    `status`, prohibited_status,st.name as serverTypeName
+    from
+    server se
+    left join
+    server_type st
+    on
+    se.type = st.id
+     </select>
 </mapper>

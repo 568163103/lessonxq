@@ -2,6 +2,7 @@ package com.mingsoft.nvssauthor.controller;
 
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -17,9 +18,9 @@ public class IndexController {
 
     @RequestMapping("/to_index")
     public String toIndex(
-            @RequestParam(value = "username",required = false) String username
+            @RequestParam(value = "username", required = false) String username, Model model
     ) {
-        System.out.println(username);
+        model.addAttribute("msg", "Hello World");
         return "index";
     }
 }

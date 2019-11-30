@@ -11,9 +11,12 @@ import org.apache.shiro.authc.UsernamePasswordToken;
 import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -32,6 +35,7 @@ public class loginController {
 
     /**
      * 跳转到登录页面
+     *
      * @return
      */
     @RequestMapping(value = "to_login")
@@ -41,15 +45,17 @@ public class loginController {
 
     /**
      * 登录校验
+     *
      * @param username
      * @param password
-     * @param modelMap
+     * @param
      * @return
      */
     @PostMapping(value = "goindex")
-    public String login(@RequestParam(value = "username", required = false) String username,
-                        @RequestParam(value = "password", required = false) String password, ModelMap modelMap) {
-
+    @ResponseBody
+    public Map<String, Object> login(@RequestParam(value = "username", required = false) String username,
+                                     @RequestParam(value = "password", required = false) String password, Model model) {
+        Map<String, Object> result = new HashMap<>();
         if (StringUtils.isNotBlank(username) && StringUtils.isNotBlank(password)) {
             Subject subject = SecurityUtils.getSubject();
             String pwd = MD5.md5(password);
@@ -59,23 +65,27 @@ public class loginController {
                 UsernamePasswordToken token = new UsernamePasswordToken(username, pwd);
                 try {
                     subject.login(token);
-                    modelMap.put("username", username);
-                    return "redirect:/index/to_index?username=" + username;
+                    result.put("username", username);
+                    result.put("msg", "登录成功");
+                    result.put("code", 200);
+                    return result;
                 } catch (UnknownAccountException e) {
-                    modelMap.put("msg", "用户不存在");
-                    return "login";
+                    result.put("msg", "用户不存在");
+                    result.put("code", 500);
+                    return result;
                 } catch (IncorrectCredentialsException e) {
-                    modelMap.put("msg", "用户名或密码错误");
-                    return "login/login";
+                    result.put("msg", "用户名或密码错误");
+                    result.put("code", 500);
+                    return result;
                 }
             } else {
-
-                modelMap.put("msg", "用户名或密码错误");
-                return "login";
+                result.put("msg", "用户名或密码错误");
+                result.put("code", 500);
+                return result;
             }
 
         }
-        return "login";
+        return result;
     }
 
 }

@@ -173,9 +173,8 @@
 
   <select id="getChannelList" parameterType="java.util.Map" resultMap="BaseResultMap">
     select
-    cn.id as channelId, cn.`name` as channelName, cn.enabled as channelEnable, encoder_id, num, has_ptz, cn.has_audio as channelHasAudio, stream_count, cn.description as channelDescription,
-      `location`, purpose,
-    ec.status as status,ec.id as encoderId
+    cn.id , cn.`name`, cn.enabled, encoder_id, num, has_ptz, cn.has_audio , stream_count, cn.description,
+    ec.status as status,ec.id
     from
     channel cn
     left join  encoder ec

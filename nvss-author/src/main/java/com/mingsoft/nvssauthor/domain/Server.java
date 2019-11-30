@@ -61,6 +61,21 @@ public class Server {
     */
     private Integer prohibitedStatus;
 
+
+    /**
+     * 服务器类型
+     * @return
+     */
+    private String serverTypeName;
+
+    public String getServerTypeName() {
+        return serverTypeName;
+    }
+
+    public void setServerTypeName(String serverTypeName) {
+        this.serverTypeName = serverTypeName;
+    }
+
     public String getId() {
         return id;
     }

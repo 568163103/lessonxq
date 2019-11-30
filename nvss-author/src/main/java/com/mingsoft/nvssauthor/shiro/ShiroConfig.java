@@ -37,10 +37,11 @@ public class ShiroConfig {
         Map<String,String> map = new LinkedHashMap<>();
         map.put("/plugins/**","anon");
         map.put("/static/**", "anon");
+        map.put("/templates/**", "anon");
         map.put("/login/to_login", "anon");
         map.put("/login/goindex", "anon");
         //临时访问权限
-        map.put("/api/v1/channel/**", "anon");
+        map.put("/api/v1/**", "anon");
         map.put("/to_index", "anon");
         //上传视频需要对应的权限
         map.put("/upload","perms[user:upload]");
