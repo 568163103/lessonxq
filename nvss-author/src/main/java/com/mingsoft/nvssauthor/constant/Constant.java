@@ -24,4 +24,25 @@ public class Constant {
     public static String OPERATION_TYPE = "13";
 
     public static String OPERATION_LOG = "14";
+    public  final static String SERVER_TYPE_CMS = "cms";
+    public  final static String SERVER_TYPE_DMS = "dms";
+    public  final static String SERVER_TYPE_MSS = "mss";
+    public  final static String CACHE_TYPE = "cacheType";
+    /**
+     *固定摄像机
+     */
+    public  final static String FIXED_CAMERA = "1201";
+
+    /**
+     *云台摄像机
+     */
+    public  final static String PTZ_CAMERA = "1202";
+    /**
+     *固定IP摄像机
+     */
+    public  final static String FIXED_IP_CAMERA = "1203";
+    /**
+     *云台IP摄像机
+     */
+    public  final static String PTZ_IP_CAMERA = "1204";
 }

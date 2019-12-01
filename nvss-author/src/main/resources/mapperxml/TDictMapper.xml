@@ -128,4 +128,13 @@
       dmltime = #{dmltime,jdbcType=TIMESTAMP}
     where did = #{did,jdbcType=INTEGER}
   </update>
+
+  <select id="findChannelTypeDict" parameterType="int" resultMap="BaseResultMap">
+    select td.pre_id,td.name,td.value
+    from
+    t_dict td
+    where
+    td.pre_id = #{preId}
+
+  </select>
 </mapper>

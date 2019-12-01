@@ -2,6 +2,8 @@ package com.mingsoft.nvssauthor.mapper;
 
 import com.mingsoft.nvssauthor.domain.Encoder;
 
+import java.util.List;
+
 public interface EncoderMapper {
     int deleteByPrimaryKey(String id);
 
@@ -14,4 +16,5 @@ public interface EncoderMapper {
     int updateByPrimaryKeySelective(Encoder record);
 
     int updateByPrimaryKey(Encoder record);
+    List<Encoder> findStatusCount(int status);
 }

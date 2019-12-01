@@ -1,59 +1,9 @@
+
+
 $(function () {
 
+    getChannelInfo();
 
-    //左上角
-    var myChart = echarts.init(document.getElementById('leftTop'));
-
-    // 指定图表的配置项和数据
-    var option = {
-        tooltip: {
-            trigger: 'item',
-            formatter: "{a} <br/>{b}: {c} ({d}%)"
-        },
-        legend: {
-            orient: 'vertical',
-            x: 'left',
-            data: ['固定摄像机', '云台摄像机', '固定IP摄像机', '云台IP摄像机', '其他'],
-            textStyle: {//图例文字的样式
-                color: '#fff',
-            },
-        },
-        series: [{
-            name: '摄像机状况',
-            type: 'pie',
-            radius: ['50%', '70%'],
-            avoidLabelOverlap: false,
-            label: {
-                normal: {
-                    show: false,
-                    position: 'center',
-                    color: '#fff',
-                },
-                emphasis: {
-                    show: true,
-                    textStyle: {
-                        fontSize: '20',
-                        fontWeight: 'bold'
-
-                    }
-                }
-            },
-            labelLine: {
-                normal: {
-                    show: false,
-                }
-
-            },
-            data: [
-                {value: 335, name: '固定摄像机'},
-                {value: 310, name: '云台摄像机'},
-                {value: 234, name: '固定IP摄像机'},
-                {value: 135, name: '云台IP摄像机'},
-                {value: 1548, name: '其他'}
-            ]
-        }]
-    }
-    myChart.setOption(option);
 
 
     //左中
@@ -446,14 +396,86 @@ $(function () {
 
 })
 
+
+function getChannelInfo(){
+
+
+    axios.post('/api/v1/channel/getChannelList')
+    .then(res => {
+         //左上角
+    var myChart = echarts.init(document.getElementById('leftTop'));
+
+    // 指定图表的配置项和数据
+    var option = {
+        tooltip: {
+            trigger: 'item',
+            formatter: "{a} <br/>{b}: {c} ({d}%)"
+        },
+        legend: {
+            orient: 'vertical',
+            x: 'left',
+            data: ['固定摄像机', '云台摄像机', '固定IP摄像机', '云台IP摄像机', '其他'],
+            textStyle: {//图例文字的样式
+                color: '#fff',
+            },
+        },
+        series: [{
+            name: '摄像机状况',
+            type: 'pie',
+            radius: ['50%', '70%'],
+            avoidLabelOverlap: false,
+            label: {
+                normal: {
+                    show: false,
+                    position: 'center',
+                    color: '#fff',
+                },
+                emphasis: {
+                    show: true,
+                    textStyle: {
+                        fontSize: '20',
+                        fontWeight: 'bold'
+
+                    }
+                }
+            },
+            labelLine: {
+                normal: {
+                    show: false,
+                }
+
+            },
+            data: [
+                {value: res.data.channelStatistics.fixedCameraCount, name: '固定摄像机'},
+                {value: res.data.channelStatistics.ptzCameraCount, name: '云台摄像机'},
+                {value: res.data.channelStatistics.fixedIpCameraCount, name: '固定IP摄像机'},
+                {value: res.data.channelStatistics.ptzIpCameraCount, name: '云台IP摄像机'},
+                {value: 0, name: '其他'}
+            ]
+        }]
+    }
+    myChart.setOption(option);
+    $('#fix').text('固定摄像机: '+res.data.channelStatistics.fixedCameraCount);
+    $('#fix1').text('云台摄像机: '+res.data.channelStatistics.ptzCameraCount);
+    $('#fix2').text('固定IP摄像机: '+res.data.channelStatistics.fixedIpCameraCount);
+    $('#fix3').text('云台IP摄像机: '+res.data.channelStatistics.ptzIpCameraCount);
+    $('#channelOnline').text("在线: " + res.data.onlineChannel);
+    $('#channelOfOnline').text("离线: " +res.data.offOnlineChannel);
+    })
+    .catch(err => {
+        console.error(err); 
+    })
+
+ 
+}
+
+
+
 function getServerInfo() {
     var url = "/api/v1/server/getServerType";
     axios.post(url)
         .then(res => {
-            console.log(res)
-            console.log(res.data.cmsCount);
-
-            //右下
+             //右下
             var myChart6 = echarts.init(document.getElementById('rightBottom'));
 
             // 指定图表的配置项和数据
@@ -514,3 +536,8 @@ function getServerInfo() {
             console.error(err);
         })
 }
+
+window.setInterval(function() {
+    getServerInfo();
+    getChannelInfo();
+    },3000)

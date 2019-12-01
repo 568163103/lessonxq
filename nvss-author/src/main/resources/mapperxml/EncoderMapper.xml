@@ -216,4 +216,11 @@
       `status` = #{status,jdbcType=BOOLEAN}
     where id = #{id,jdbcType=CHAR}
   </update>
+
+  <select id="findStatusCount" parameterType="int" resultMap="BaseResultMap">
+    select ec.status
+    from
+    encoder ec
+    where ec.status=#{status}
+  </select>
 </mapper>

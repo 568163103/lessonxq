@@ -1,5 +1,6 @@
 package com.mingsoft.nvssauthor.controller.server;
 
+import com.mingsoft.nvssauthor.constant.Constant;
 import com.mingsoft.nvssauthor.domain.Server;
 import com.mingsoft.nvssauthor.service.ServerService;
 import com.mingsoft.nvssauthor.tempentiry.ServerStatistics;
@@ -49,17 +50,17 @@ public class ServerController {
         int dmsOnlineCount = 0;
         int cmsOnlineCount = 0;
         for (Server server : serverList) {
-            if ("mss".equals(server.getServerTypeName())){
+            if (Constant.SERVER_TYPE_MSS.equals(server.getServerTypeName())){
                 mssCount++;
                 if (server.getStatus()){
                     mssOnlineCount++;
                 }
-            }else if ("dms".equals(server.getServerTypeName())){
+            }else if (Constant.SERVER_TYPE_DMS.equals(server.getServerTypeName())){
                 dmsCount++;
                 if (server.getStatus()){
                     dmsOnlineCount++;
                 }
-            }else if ("cms".equals(server.getServerTypeName())){
+            }else if (Constant.SERVER_TYPE_CMS.equals(server.getServerTypeName())){
                 cmsCount++;
                 if (server.getStatus()){
                     cmsOnlineCount++;

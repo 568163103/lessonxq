@@ -2,6 +2,8 @@ package com.mingsoft.nvssauthor.mapper;
 
 import com.mingsoft.nvssauthor.domain.TDict;
 
+import java.util.List;
+
 public interface TDictMapper {
     int deleteByPrimaryKey(Integer did);
 
@@ -14,4 +16,6 @@ public interface TDictMapper {
     int updateByPrimaryKeySelective(TDict record);
 
     int updateByPrimaryKey(TDict record);
+
+    List<TDict> findChannelTypeDict(int preId);
 }
