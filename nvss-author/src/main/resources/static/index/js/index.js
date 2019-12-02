@@ -11,6 +11,7 @@ $(function () {
 
     // 指定图表的配置项和数据
     var option1 = {
+        color:['#7CCD7C'],
         tooltip: {
             trigger: 'axis',
             axisPointer: {
@@ -141,6 +142,7 @@ $(function () {
 
     // 指定图表的配置项和数据
     var option2 = {
+        color:['#7CCD7C'],
         tooltip: {
             trigger: 'axis'
         },
@@ -189,6 +191,7 @@ $(function () {
 
     // 指定图表的配置项和数据
     var option3 = {
+        color:['#7CCD7C'],
         tooltip: {
             trigger: 'axis',
             axisPointer: {            // 坐标轴指示器，坐标轴触发有效
@@ -227,6 +230,7 @@ $(function () {
 
     // 指定图表的配置项和数据
     var option4 = {
+        color:['#7CCD7C','#87CEFA'],
         tooltip: {
             trigger: 'axis',
             axisPointer: {
@@ -349,10 +353,11 @@ $(function () {
 
 
     //右中
-    var myChart5 = echarts.init(document.getElementById('rightMiddle'));
+    var myChart5 = echarts.init(document.getElementById('leftbottom'));
 
     // 指定图表的配置项和数据
     var option5 = {
+        color:['#7CCD7C'],
         tooltip: {
             trigger: 'axis'
         },
@@ -407,6 +412,7 @@ function getChannelInfo(){
 
     // 指定图表的配置项和数据
     var option = {
+        color:['#CDCDC1','#6495ED','#DAA520','#666666','#E066FF'],
         tooltip: {
             trigger: 'item',
             formatter: "{a} <br/>{b}: {c} ({d}%)"
@@ -480,6 +486,7 @@ function getServerInfo() {
 
             // 指定图表的配置项和数据
             var option6 = {
+                color:['#CDCDC1','#6495ED','#DAA520','#666666'],
                 tooltip: {
                     trigger: 'item',
                     formatter: "{a} <br/>{b}: {c} ({d}%)"
@@ -495,7 +502,7 @@ function getServerInfo() {
                 series: [{
                     name: '服务器状况',
                     type: 'pie',
-                    radius: ['50%', '70%'],
+                    radius: ['40%', '60%'],
                     avoidLabelOverlap: false,
                     label: {
                         normal: {

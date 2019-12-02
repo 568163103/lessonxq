@@ -9,12 +9,13 @@ spring:
     url: jdbc:mysql://101.200.123.93:3306/nvs3000?useUnicode=true&amp;characterEncoding=UTF-8&autoReconnect=true
     username: root
     password: 6000
+#    password: 1qA2wS3De
     type: com.alibaba.druid.pool.DruidDataSource
   resources:
     static-locations: classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/,classpath:/test/,classpath:/templates/,file:${web.video-path}
   redis:
     #测试
-    host: 101.132.64.239
+    host: 101.200.123.93
     #生产
     #    host: 39.106.141.171
     database: 0
