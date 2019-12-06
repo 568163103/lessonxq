@@ -5,7 +5,6 @@ import com.mingsoft.nvssauthor.mapper.UserMapper;
 import com.mingsoft.nvssauthor.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import sun.dc.pr.PRError;
 
 /**
  * @author mac-xq

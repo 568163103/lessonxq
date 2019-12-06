@@ -9,14 +9,11 @@ import com.mingsoft.nvssauthor.mapper.ChannelMapper;
 import com.mingsoft.nvssauthor.mapper.EncoderMapper;
 import com.mingsoft.nvssauthor.mapper.TDictMapper;
 import com.mingsoft.nvssauthor.service.ChannelService;
-import com.mingsoft.nvssauthor.utils.RedisUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author mac-xq
