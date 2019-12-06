@@ -1,7 +1,6 @@
 package headfirst.nine.dinemenu;
 
 import headfirst.nine.menuitem.MenuItem;
-import headfirst.nine.service.Menu;
 
 import java.util.Iterator;
 
@@ -9,7 +8,7 @@ import java.util.Iterator;
 /**
  * @author hc
  */
-public class DinerMenu implements Menu {
+public class DinerMenu  {
     static final int MAX_ITEMS = 6;
     int numberOfItems = 0;
     MenuItem[] menuItems;

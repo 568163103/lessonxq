@@ -1,7 +1,6 @@
 package headfirst.nine.cafe;
 
 import headfirst.nine.menuitem.MenuItem;
-import headfirst.nine.service.Menu;
 
 import java.util.Hashtable;
 import java.util.Iterator;
@@ -9,7 +8,7 @@ import java.util.Iterator;
 /**
  * @author xq
  */
-public class CafeMenu implements Menu {
+public class CafeMenu   {
     Hashtable menuItems = new Hashtable();
 
     public CafeMenu() {

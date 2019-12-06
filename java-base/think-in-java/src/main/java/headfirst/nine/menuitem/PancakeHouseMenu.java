@@ -1,15 +1,12 @@
 package headfirst.nine.menuitem;
 
-import headfirst.nine.dinemenu.DinerMenuIterator;
-import headfirst.nine.service.Menu;
-
 import java.util.ArrayList;
 import java.util.Iterator;
 
 /**
  * @author xq
  */
-public class PancakeHouseMenu implements Menu {
+public class PancakeHouseMenu   {
     ArrayList menuItems;
 
     public PancakeHouseMenu() {
