@@ -1,4 +1,4 @@
-package Concurrentprogramming.one;
+package concurrentprogramming.one;
 
 import java.util.concurrent.TimeUnit;
 

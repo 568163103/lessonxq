@@ -1,4 +1,4 @@
-package Concurrentprogramming.two;
+package concurrentprogramming.two;
 
 import java.util.stream.IntStream;
 

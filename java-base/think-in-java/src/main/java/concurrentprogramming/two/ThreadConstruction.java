@@ -1,4 +1,4 @@
-package Concurrentprogramming.two;
+package concurrentprogramming.two;
 
 public class ThreadConstruction {
     public static void main(String[] args) {

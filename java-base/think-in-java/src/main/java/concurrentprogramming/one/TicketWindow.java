@@ -1,4 +1,4 @@
-package Concurrentprogramming.one;
+package concurrentprogramming.one;
 
 public class TicketWindow extends Thread {
 
