@@ -18,8 +18,9 @@ public class FightQueryExample {
         List<String> results = search("SH", "BJ");
         System.out.println("==============result========================");
         results.forEach(System.out::println);
-    }
 
+    }
+    
     private static List<String> search(String original, String dest) {
         final List<String> result = new ArrayList<>();
         //创建航班信息的线程列表
