@@ -6,6 +6,7 @@
       <module fileurl="file://$PROJECT_DIR$/lesson-xq/lesson-xq.iml" filepath="$PROJECT_DIR$/lesson-xq/lesson-xq.iml" />
       <module fileurl="file://$PROJECT_DIR$/netty-xq/netty-xq.iml" filepath="$PROJECT_DIR$/netty-xq/netty-xq.iml" />
       <module fileurl="file://$PROJECT_DIR$/think-in-java/think-in-java.iml" filepath="$PROJECT_DIR$/think-in-java/think-in-java.iml" />
+      <module fileurl="file://$PROJECT_DIR$/think-in-jvm/think-in-jvm.iml" filepath="$PROJECT_DIR$/think-in-jvm/think-in-jvm.iml" />
     </modules>
   </component>
 </project>
