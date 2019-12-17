@@ -6,15 +6,18 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="netty-xq" />
+        <module name="think-in-jvm" />
         <module name="think-in-java" />
+        <module name="netty-xq" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel target="8">
       <module name="java-base" target="8" />
       <module name="lesson-xq" target="8" />
       <module name="netty-xq" target="8" />
-      <module name="think-in-java" target="8" />
+      <module name="think-in-java" target="1.8" />
+      <module name="think-in-jdk8" target="1.8" />
+      <module name="think-in-jvm" target="8" />
     </bytecodeTargetLevel>
   </component>
 </project>
