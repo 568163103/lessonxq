@@ -19,6 +19,7 @@
         <module>think-in-java</module>
         <module>netty-xq</module>
         <module>think-in-jvm</module>
+        <module>think-in-jdk8</module>
     </modules>
 
     <artifactId>java-base</artifactId>
