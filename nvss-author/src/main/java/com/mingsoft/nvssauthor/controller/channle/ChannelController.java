@@ -17,7 +17,7 @@ import java.util.Map;
 
 /**
  * @author mac-xq
- * @ClassName
+ * @ClassName  ChannelController
  * @Description
  * @Date 2019-11-29 16:45
  * @Version
@@ -67,6 +67,7 @@ public class ChannelController {
     }
 
     public static void main(String[] args) {
+        
 
     }
 

@@ -5,7 +5,6 @@ import com.mingsoft.nvssauthor.domain.Server;
 import com.mingsoft.nvssauthor.service.ServerService;
 import com.mingsoft.nvssauthor.tempentiry.ServerStatistics;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
