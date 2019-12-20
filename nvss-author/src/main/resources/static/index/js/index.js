@@ -1,154 +1,75 @@
-
-
-$(function () {
+$(function() {
 
     getChannelInfo();
 
 
 
-    //左中
-    var myChart1 = echarts.init(document.getElementById('leftMiddle'));
 
-    // 指定图表的配置项和数据
-    var option1 = {
-        color:['#7CCD7C'],
+
+
+    //存储容量-右
+    var chart = Highcharts.chart('leftMiddle1', {
+        chart: {
+            backgroundColor: 'rgba(0,0,0,0)',
+            type: 'pie',
+            margin: 10,
+            options3d: {
+                enabled: true,
+                alpha: 45,
+                beta: 0
+            }
+        },
+        title: {
+            text: ''
+        },
+        credits: {
+            enabled: false //不显示LOGO
+        },
+        exporting: {
+            enabled: false
+        },
         tooltip: {
-            trigger: 'axis',
-            axisPointer: {
-                type: 'cross',
-                label: {
-                    backgroundColor: '#283b56'
-                },
+            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        },
+        plotOptions: {
+            pie: {
+                allowPointSelect: true,
+                cursor: 'pointer',
+                depth: 35,
+                dataLabels: {
+                    enabled: true,
+                    format: '{point.name}'
+                }
             }
         },
-        legend: {
-            data: ['', ''],
-            textStyle: {//图例文字的样式
-                color: '#fff',
-            },
-            lineStyle: {
-                borderColor: "#fff"
-            }
-
-        },
-        dataZoom: {
-            show: false,
-            start: 0,
-            end: 100
-        },
-        xAxis: [{
-            type: 'category',
-            axisLine: {
-                lineStyle: {
-                    color: '#fff',
-                    width: 1,//这里是为了突出显示加上的
-                }
-            },
-            boundaryGap: true,
-            data: (function () {
-                var now = new Date();
-                var res = [];
-                var len = 10;
-                while (len--) {
-                    res.unshift(now.toLocaleTimeString().replace(/^\D*/, ''));
-                    now = new Date(now - 2000);
-                }
-                return res;
-            })()
-        },
-            {
-                type: 'category',
-                axisLine: {
-                    lineStyle: {
-                        color: '#fff',
-                        width: 1,//这里是为了突出显示加上的
-                    }
-                },
-                boundaryGap: true,
-                data: (function () {
-                    var res = [];
-                    var len = 10;
-                    while (len--) {
-                        res.push(10 - len - 1);
-                    }
-                    return res;
-                })()
-            },
-            {}
-        ],
-        yAxis: [{
-            type: 'value',
-            axisLine: {
-                lineStyle: {
-                    color: '#fff',
-                    width: 1,//这里是为了突出显示加上的
-                }
-            },
-            scale: true,
-            name: '',
-            max: 30,
-            min: 0,
-            boundaryGap: [0.2, 0.2]
-        },
-            {
-                type: 'value',
-                axisLine: {
-                    lineStyle: {
-                        color: '#fff',
-                        width: 1,//这里是为了突出显示加上的
-                    }
-                },
-                scale: true,
-                name: '',
-                max: 1200,
-                min: 0,
-                boundaryGap: [0.2, 0.2]
-            },
-        ],
+        colors: ['#4dd3b9', '#fdd67f'],
         series: [{
-            name: '',
-            type: 'bar',
-            xAxisIndex: 1,
-            yAxisIndex: 1,
-            data: (function () {
-                var res = [];
-                var len = 10;
-                while (len--) {
-                    res.push(Math.round(Math.random() * 1000));
-                }
-                return res;
-            })()
-        },
-            {
-                name: '',
-                type: 'line',
-                data: (function () {
-                    var res = [];
-                    var len = 0;
-                    while (len < 10) {
-                        res.push((Math.random() * 10 + 5).toFixed(1) - 0);
-                        len++;
-                    }
-                    return res;
-                })()
-            }
-        ]
-    };
-    myChart1.setOption(option1);
+            type: 'pie',
+            name: '浏览器占比',
+            data: [
+                ['Firefox', 45.0],
+                ['IE', 26.8]
+            ]
+        }]
+    });
 
 
-    //中上
+
+
+
+
+    //中上--北京南站铁路状况
     var myChart2 = echarts.init(document.getElementById('middleTop'));
 
     // 指定图表的配置项和数据
     var option2 = {
-        color:['#7CCD7C'],
+        color: ['#7CCD7C'],
         tooltip: {
             trigger: 'axis'
         },
         legend: {
             data: ['线路状况'],
-            textStyle: {//图例文字的样式
+            textStyle: { //图例文字的样式
                 color: '#fff',
             },
         },
@@ -159,7 +80,7 @@ $(function () {
             axisLine: {
                 lineStyle: {
                     color: '#fff',
-                    width: 1,//这里是为了突出显示加上的
+                    width: 1, //这里是为了突出显示加上的
                 }
             },
         },
@@ -168,34 +89,32 @@ $(function () {
             axisLine: {
                 lineStyle: {
                     color: '#fff',
-                    width: 1,//这里是为了突出显示加上的
+                    width: 1, //这里是为了突出显示加上的
                 }
             },
         },
-        series: [
-            {
-                name: '线路状况',
-                type: 'line',
-                stack: '总量',
-                data: [120, 132, 101, 134, 90, 230, 210]
-            }
-        ]
+        series: [{
+            name: '线路状况',
+            type: 'line',
+            stack: '总量',
+            data: [120, 132, 101, 134, 90, 230, 210]
+        }]
     };
 
 
     myChart2.setOption(option2);
 
 
-    //中下
+    //中下--服务器运行状态
     var myChart3 = echarts.init(document.getElementById('middleBottom'));
 
     // 指定图表的配置项和数据
     var option3 = {
-        color:['#7CCD7C'],
+        color: ['#7CCD7C'],
         tooltip: {
             trigger: 'axis',
-            axisPointer: {            // 坐标轴指示器，坐标轴触发有效
-                type: 'shadow'        // 默认为直线，可选为：'line' | 'shadow'
+            axisPointer: { // 坐标轴指示器，坐标轴触发有效
+                type: 'shadow' // 默认为直线，可选为：'line' | 'shadow'
             }
         },
         xAxis: {
@@ -204,7 +123,7 @@ $(function () {
             axisLine: {
                 lineStyle: {
                     color: '#fff',
-                    width: 1,//这里是为了突出显示加上的
+                    width: 1, //这里是为了突出显示加上的
                 }
             }
         },
@@ -213,7 +132,7 @@ $(function () {
             axisLine: {
                 lineStyle: {
                     color: '#fff',
-                    width: 1,//这里是为了突出显示加上的
+                    width: 1, //这里是为了突出显示加上的
                 }
             }
         },
@@ -225,12 +144,12 @@ $(function () {
     myChart3.setOption(option3);
 
 
-    //右上
+    //右上--录像诊断
     var myChart4 = echarts.init(document.getElementById('rightTop'));
 
     // 指定图表的配置项和数据
     var option4 = {
-        color:['#7CCD7C','#87CEFA'],
+        color: ['#7CCD7C', '#87CEFA'],
         tooltip: {
             trigger: 'axis',
             axisPointer: {
@@ -242,7 +161,7 @@ $(function () {
         },
         legend: {
             data: ['录像总数', '录像正常'],
-            textStyle: {//图例文字的样式
+            textStyle: { //图例文字的样式
                 color: '#fff',
             }
         },
@@ -252,35 +171,35 @@ $(function () {
             end: 100
         },
         xAxis: [{
-            type: 'category',
-            boundaryGap: true,
-            axisLine: {
-                lineStyle: {
-                    color: '#fff',
-                    width: 1,//这里是为了突出显示加上的
-                }
+                type: 'category',
+                boundaryGap: true,
+                axisLine: {
+                    lineStyle: {
+                        color: '#fff',
+                        width: 1, //这里是为了突出显示加上的
+                    }
+                },
+                data: (function() {
+                    var now = new Date();
+                    var res = [];
+                    var len = 10;
+                    while (len--) {
+                        res.unshift(now.toLocaleTimeString().replace(/^\D*/, ''));
+                        now = new Date(now - 2000);
+                    }
+                    return res;
+                })()
             },
-            data: (function () {
-                var now = new Date();
-                var res = [];
-                var len = 10;
-                while (len--) {
-                    res.unshift(now.toLocaleTimeString().replace(/^\D*/, ''));
-                    now = new Date(now - 2000);
-                }
-                return res;
-            })()
-        },
             {
                 type: 'category',
                 axisLine: {
                     lineStyle: {
                         color: '#fff',
-                        width: 1,//这里是为了突出显示加上的
+                        width: 1, //这里是为了突出显示加上的
                     }
                 },
                 boundaryGap: true,
-                data: (function () {
+                data: (function() {
                     var res = [];
                     var len = 10;
                     while (len--) {
@@ -291,19 +210,19 @@ $(function () {
             }
         ],
         yAxis: [{
-            type: 'value',
-            scale: true,
-            name: '数量',
-            max: 30,
-            min: 0,
-            boundaryGap: [0.2, 0.2],
-            axisLine: {
-                lineStyle: {
-                    color: '#fff',
-                    width: 1,//这里是为了突出显示加上的
-                }
+                type: 'value',
+                scale: true,
+                name: '数量',
+                max: 30,
+                min: 0,
+                boundaryGap: [0.2, 0.2],
+                axisLine: {
+                    lineStyle: {
+                        color: '#fff',
+                        width: 1, //这里是为了突出显示加上的
+                    }
+                },
             },
-        },
             {
                 type: 'value',
                 scale: true,
@@ -314,30 +233,30 @@ $(function () {
                 axisLine: {
                     lineStyle: {
                         color: '#fff',
-                        width: 1,//这里是为了突出显示加上的
+                        width: 1, //这里是为了突出显示加上的
                     }
                 },
             }
 
         ],
         series: [{
-            name: '录像总数',
-            type: 'bar',
-            xAxisIndex: 1,
-            yAxisIndex: 1,
-            data: (function () {
-                var res = [];
-                var len = 10;
-                while (len--) {
-                    res.push(Math.round(Math.random() * 1000));
-                }
-                return res;
-            })()
-        },
+                name: '录像总数',
+                type: 'bar',
+                xAxisIndex: 1,
+                yAxisIndex: 1,
+                data: (function() {
+                    var res = [];
+                    var len = 10;
+                    while (len--) {
+                        res.push(Math.round(Math.random() * 1000));
+                    }
+                    return res;
+                })()
+            },
             {
                 name: '录像正常',
                 type: 'line',
-                data: (function () {
+                data: (function() {
                     var res = [];
                     var len = 0;
                     while (len < 10) {
@@ -352,127 +271,178 @@ $(function () {
     myChart4.setOption(option4);
 
 
-    //右中
-    var myChart5 = echarts.init(document.getElementById('leftbottom'));
-
-    // 指定图表的配置项和数据
-    var option5 = {
-        color:['#7CCD7C'],
-        tooltip: {
-            trigger: 'axis'
-        },
-        legend: {
-            data: ['超限网口数量'],
-            textStyle: {//图例文字的样式
-                color: '#fff',
-            },
-        },
-        xAxis: {
-            type: 'category',
-            data: ['一', '二', '三', '四', '五', '六', '日'],
-            axisLine: {
-                lineStyle: {
-                    color: '#fff',
-                    width: 1,//这里是为了突出显示加上的
-                }
-            },
-        },
-        yAxis: {
-            type: 'value',
-            axisLine: {
-                lineStyle: {
-                    color: '#fff',
-                    width: 1,//这里是为了突出显示加上的
-                }
-            },
-        },
-        series: [
-            {
-                name: '超限网口数量',
-                data: [820, 932, 901, 934, 1290, 1330, 1320],
-                type: 'line'
-            }
-        ]
-    };
-    myChart5.setOption(option5);
+    //网络异常统计
+    jQuery(".txtMarquee-top").slide({
+        titCell: ".hd ul",
+        mainCell:".bd ul",
+        autoPage: true,
+        effect: "top",
+        autoPlay: false,
+        vis: 6,
+        pnLoop:false
+    });
+    
 
     getServerInfo();
+    getCpuInfo();
 
 
 })
 
-
-function getChannelInfo(){
-
-
-    axios.post('/api/v1/channel/getChannelList')
+function getCpuInfo() {
+    let url = "/api/v1/alarm/alarmInfo";
+    axios.post(url)
     .then(res => {
-         //左上角
-    var myChart = echarts.init(document.getElementById('leftTop'));
+    console.log(res.data.data);
+    var cpu_data = parseFloat(res.data.data);
+         //存储容量-左
+    var myChart1 = echarts.init(document.getElementById('leftMiddle'));
 
     // 指定图表的配置项和数据
-    var option = {
-        color:['#CDCDC1','#6495ED','#DAA520','#666666','#E066FF'],
-        tooltip: {
-            trigger: 'item',
-            formatter: "{a} <br/>{b}: {c} ({d}%)"
+    Highcharts.chart('leftMiddle', {
+        chart: {
+            backgroundColor: 'rgba(0,0,0,0)',
+            type: 'cylinder',
+            margin: 25,
+            options3d: {
+                enabled: true,
+                alpha: 15,
+                beta: 25,
+                depth: 50,
+                viewDistance: 25
+            }
         },
-        legend: {
-            orient: 'vertical',
-            x: 'left',
-            data: ['固定摄像机', '云台摄像机', '固定IP摄像机', '云台IP摄像机', '其他'],
-            textStyle: {//图例文字的样式
-                color: '#fff',
-            },
+        animation:false,
+        title: {
+            text: ''
         },
-        series: [{
-            name: '摄像机状况',
-            type: 'pie',
-            radius: ['50%', '70%'],
-            avoidLabelOverlap: false,
-            label: {
-                normal: {
-                    show: false,
-                    position: 'center',
+        credits: {
+            enabled: false //不显示LOGO
+        },
+        exporting: {
+            enabled: false
+        },
+        yAxis: {
+            min: 0,
+            title: {
+                text: '数值',
+                style: {
                     color: '#fff',
-                },
-                emphasis: {
-                    show: true,
-                    textStyle: {
-                        fontSize: '20',
-                        fontWeight: 'bold'
-
-                    }
                 }
             },
-            labelLine: {
-                normal: {
-                    show: false,
+            labels: {
+                style: {
+                    color: '#fff',
+                    fontSize: '14px'
                 }
-
+            }
+        },
+        xAxis: {
+            labels: {
+                style: {
+                    color: '#fff',
+                    fontSize: '14px'
+                }
             },
-            data: [
-                {value: res.data.channelStatistics.fixedCameraCount, name: '固定摄像机'},
-                {value: res.data.channelStatistics.ptzCameraCount, name: '云台摄像机'},
-                {value: res.data.channelStatistics.fixedIpCameraCount, name: '固定IP摄像机'},
-                {value: res.data.channelStatistics.ptzIpCameraCount, name: '云台IP摄像机'},
-                {value: 0, name: '其他'}
-            ]
+            categories: [
+			   'cpu使用率(%)','cpu温度(℃)'
+			  ],
+			  crosshair: true
+        },
+        plotOptions: {
+            series: {
+                depth: 25,
+                colorByPoint: true
+            }
+        },
+        colors: ['#4dd3b9', '#fdd67f'],
+        series: [{
+            data: [71.5,cpu_data],
+            name: 'Cylinders',
+            showInLegend: false
         }]
-    }
-    myChart.setOption(option);
-    $('#fix').text('固定摄像机: '+res.data.channelStatistics.fixedCameraCount);
-    $('#fix1').text('云台摄像机: '+res.data.channelStatistics.ptzCameraCount);
-    $('#fix2').text('固定IP摄像机: '+res.data.channelStatistics.fixedIpCameraCount);
-    $('#fix3').text('云台IP摄像机: '+res.data.channelStatistics.ptzIpCameraCount);
-    $('#channelOnline').text("在线: " + res.data.onlineChannel);
-    $('#channelOfOnline').text("离线: " +res.data.offOnlineChannel);
+    });
+
     })
     .catch(err => {
         console.error(err); 
     })
+    
+}
 
- 
+
+
+function getChannelInfo() {
+
+    
+    axios.post('/api/v1/channel/getChannelList')
+        .then(res => {
+            //摄像机类型
+            var myChart = echarts.init(document.getElementById('leftTop'));
+
+            // 指定图表的配置项和数据
+            var option = {
+                color: ['#CDCDC1', '#6495ED', '#DAA520', '#666666', '#E066FF'],
+                tooltip: {
+                    trigger: 'item',
+                    formatter: "{a} <br/>{b}: {c} ({d}%)"
+                },
+                legend: {
+                    orient: 'vertical',
+                    x: 'left',
+                    data: ['固定摄像机', '云台摄像机', '固定IP摄像机', '云台IP摄像机', '其他'],
+                    textStyle: { //图例文字的样式
+                        color: '#fff',
+                    },
+                },
+                series: [{
+                    name: '摄像机状况',
+                    type: 'pie',
+                    radius: ['50%', '70%'],
+                    avoidLabelOverlap: false,
+                    label: {
+                        normal: {
+                            show: false,
+                            position: 'center',
+                            color: '#fff',
+                        },
+                        emphasis: {
+                            show: true,
+                            textStyle: {
+                                fontSize: '20',
+                                fontWeight: 'bold'
+
+                            }
+                        }
+                    },
+                    labelLine: {
+                        normal: {
+                            show: false,
+                        }
+
+                    },
+                    data: [
+                        { value: res.data.channelStatistics.fixedCameraCount, name: '固定摄像机' },
+                        { value: res.data.channelStatistics.ptzCameraCount, name: '云台摄像机' },
+                        { value: res.data.channelStatistics.fixedIpCameraCount, name: '固定IP摄像机' },
+                        { value: res.data.channelStatistics.ptzIpCameraCount, name: '云台IP摄像机' },
+                        { value: 0, name: '其他' }
+                    ]
+                }]
+            }
+            myChart.setOption(option);
+            $('#fix').text('固定摄像机: ' + res.data.channelStatistics.fixedCameraCount);
+            $('#fix1').text('云台摄像机: ' + res.data.channelStatistics.ptzCameraCount);
+            $('#fix2').text('固定IP摄像机: ' + res.data.channelStatistics.fixedIpCameraCount);
+            $('#fix3').text('云台IP摄像机: ' + res.data.channelStatistics.ptzIpCameraCount);
+            $('#channelOnline').text("在线: " + res.data.onlineChannel);
+            $('#channelOfOnline').text("离线: " + res.data.offOnlineChannel);
+        })
+        .catch(err => {
+            console.error(err);
+        })
+
+
 }
 
 
@@ -481,12 +451,12 @@ function getServerInfo() {
     var url = "/api/v1/server/getServerType";
     axios.post(url)
         .then(res => {
-             //右下
+            //右下--自定义微服务统计
             var myChart6 = echarts.init(document.getElementById('rightBottom'));
 
             // 指定图表的配置项和数据
             var option6 = {
-                color:['#CDCDC1','#6495ED','#DAA520','#666666'],
+                color: ['#CDCDC1', '#6495ED', '#DAA520', '#666666'],
                 tooltip: {
                     trigger: 'item',
                     formatter: "{a} <br/>{b}: {c} ({d}%)"
@@ -494,13 +464,13 @@ function getServerInfo() {
                 legend: {
                     orient: 'vertical',
                     x: 'left',
-                    data: ['cms服务器', 'dms服务器', 'mss服务器', '其他服务器'],
-                    textStyle: {//图例文字的样式
+                    data: ['cms服务', 'dms服务', 'mss服务', '其他服务'],
+                    textStyle: { //图例文字的样式
                         color: '#fff',
                     }
                 },
                 series: [{
-                    name: '服务器状况',
+                    name: '服务状况',
                     type: 'pie',
                     radius: ['40%', '60%'],
                     avoidLabelOverlap: false,
@@ -524,20 +494,25 @@ function getServerInfo() {
                         }
                     },
                     data: [
-                        {value: res.data.serverStatistics.cmsCount, name: 'cms服务器'},
-                        {value: res.data.serverStatistics.dmsCount, name: 'dms服务器'},
-                        {value: res.data.serverStatistics.mssCount, name: 'mss服务器'},
-                        {value: 0, name: '其他服务器'},
+                        { value: res.data.serverStatistics.cmsCount, name: 'cms服务' },
+                        { value: res.data.serverStatistics.dmsCount, name: 'dms服务' },
+                        { value: res.data.serverStatistics.mssCount, name: 'mss服务' },
+                        { value: 0, name: '其他服务' },
                         // { value: 1548, name: '搜索引擎' }
                     ]
                 }]
             }
             myChart6.setOption(option6);
-            $('#cms').text("cms服务器:" + res.data.serverStatistics.cmsCount);
-            $('#dms').text("dms服务器:" + res.data.serverStatistics.dmsCount);
-            $('#mss').text("mss服务器:" + res.data.serverStatistics.mssCount);
+            $('#cms').text("cms节点:" + res.data.serverStatistics.cmsCount);
+            $('#dms').text("dms节点:" + res.data.serverStatistics.dmsCount);
+            $('#mss').text("mss节点:" + res.data.serverStatistics.mssCount);
+            $('#cms_server').text("cms服务:" + res.data.serverStatistics.cmsCount);
+            $('#dms_server').text("dms服务:" + res.data.serverStatistics.dmsCount);
+            $('#mss_server').text("mss服务:" + res.data.serverStatistics.mssCount);
             $('#online').text("在线: " + (res.data.serverStatistics.mssOnline + res.data.serverStatistics.dmsOnline + res.data.serverStatistics.cmsOnline));
             $('#offline').text("离线: " + (res.data.serverStatistics.mssOffOnline + res.data.serverStatistics.dmsOffOnline + res.data.serverStatistics.cmsOffOnline));
+            $('#online1').text("在线: " + (res.data.serverStatistics.mssOnline + res.data.serverStatistics.dmsOnline + res.data.serverStatistics.cmsOnline));
+            $('#offline1').text("离线: " + (res.data.serverStatistics.mssOffOnline + res.data.serverStatistics.dmsOffOnline + res.data.serverStatistics.cmsOffOnline));
         })
         .catch(err => {
             console.error(err);
@@ -547,4 +522,7 @@ function getServerInfo() {
 window.setInterval(function() {
     getServerInfo();
     getChannelInfo();
-    },3000)
+}, 3000)
+window.setInterval(function() {
+    getCpuInfo();
+}, 6000)

@@ -33,7 +33,7 @@ public class SnmpUtil {
         target.setTimeout(3000);    //3s
         target.setRetries(1);
 
-        sendRequest(snmp, createGetPdu(), target);
+        sendRequest(snmp, createGetPdu("1.3.6.1.2.1.1.3"), target);
         sendRequest(snmp, createGetNextPdu(), target);
         sendRequest(snmp, createGetBulkPdu(), target);
         snmpWalk(snmp, target);
@@ -50,12 +50,10 @@ public class SnmpUtil {
         Thread.sleep(6000);    //main thread wait 6s for the completion of asynchronous request
     }
 
-    public static PDU createGetPdu() {
+    public static PDU createGetPdu(String oId) {
         PDU pdu = new PDU();
         pdu.setType(PDU.GET);
-        pdu.add(new VariableBinding(new OID("1.3.6.1.4.1.3470.12.1.6.3.0")));    //sysUpTime
-        pdu.add(new VariableBinding(new OID("1.3.6.1.4.1.3470.12.1.6.3")));    //sysName
-//        pdu.add(new VariableBinding(new OID("1.3.6.1.2.1.1.5")));    //expect an no_such_instance error
+        pdu.add(new VariableBinding(new OID(oId)));    //sysUpTime
         return pdu;
     }
 
@@ -84,27 +82,29 @@ public class SnmpUtil {
         return pdu;
     }
 
-    public static void sendRequest(Snmp snmp, PDU pdu, CommunityTarget target)
+    public static  Vector<? extends VariableBinding> sendRequest(Snmp snmp, PDU pdu, CommunityTarget target)
             throws IOException {
         ResponseEvent responseEvent = snmp.send(pdu, target);
         PDU response = responseEvent.getResponse();
 
         if (response == null) {
             System.out.println("TimeOut...");
+            return null;
         } else {
             if (response.getErrorStatus() == PDU.noError) {
                 Vector<? extends VariableBinding> vbs = response.getVariableBindings();
-                for (VariableBinding vb : vbs) {
-                    System.out.println(vb + " ," + vb.getVariable().getSyntaxString());
-                }
+                return vbs;
             } else {
                 System.out.println("Error:" + response.getErrorStatusText());
+                return null;
+
             }
         }
     }
 
-    public static void sendAsyncRequest(Snmp snmp, PDU pdu, CommunityTarget target)
+    public static Vector<? extends VariableBinding> sendAsyncRequest(Snmp snmp, PDU pdu, CommunityTarget target)
             throws IOException {
+        final Vector<? extends VariableBinding>[] vbsTemp = new Vector[]{new Vector<>()};
         snmp.send(pdu, target, null, new ResponseListener() {
 
             @Override
@@ -116,15 +116,15 @@ public class SnmpUtil {
                 } else {
                     if (response.getErrorStatus() == PDU.noError) {
                         Vector<? extends VariableBinding> vbs = response.getVariableBindings();
-                        for (VariableBinding vb : vbs) {
-                            System.out.println(vb + " ," + vb.getVariable().getSyntaxString());
-                        }
+                        vbsTemp[0] = vbs;
                     } else {
                         System.out.println("Error:" + response.getErrorStatusText());
                     }
                 }
             }
         });
+        return vbsTemp[0];
+
     }
 
     public static void snmpWalk(Snmp snmp, CommunityTarget target) {
