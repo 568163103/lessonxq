@@ -23,11 +23,11 @@ import java.util.Vector;
 public class AlarmInfoController {
 
     @RequestMapping(value = "/alarmInfo", method = RequestMethod.POST)
-    public Map<String, Object> alarmInfo(@RequestParam(value = "ips", required = false) String [] ips,
+    public Map<String, Object> alarmInfo(@RequestParam(value = "ip", required = false) String  ip,
                                          @RequestParam(value = "oid", required = false) String oid
     ) throws IOException {
         Map<String,Object> result = new HashMap<>();
-        ips[0]= "10.10.24.201";
+        ip = "10.10.24.201";
         oid= "1.3.6.1.4.1.3470.12.1.6.3.0";
         Snmp snmp = new Snmp(new DefaultUdpTransportMapping());
         snmp.listen();
@@ -35,7 +35,7 @@ public class AlarmInfoController {
         CommunityTarget target = new CommunityTarget();
         target.setCommunity(new OctetString("private"));
         target.setVersion(SnmpConstants.version2c);
-        target.setAddress(new UdpAddress(ips[0] + "/161"));
+        target.setAddress(new UdpAddress(ip + "/161"));
         target.setTimeout(3000);
         target.setRetries(1);
 
@@ -47,7 +47,7 @@ public class AlarmInfoController {
         return result;
     }
 
-    @RequestMapping(value = "getAlarmInfo", method = RequestMethod.GET)
+        @RequestMapping(value = "getAlarmInfo", method = RequestMethod.GET)
     public String getAlarmInfo(@RequestParam(value = "type", required = false) String type,
                                @RequestParam(value = "level", required = false) int level,
                                @RequestParam(value = "ip", required = false) String ip

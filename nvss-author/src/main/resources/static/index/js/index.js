@@ -45,10 +45,10 @@ $(function() {
         colors: ['#4dd3b9', '#fdd67f'],
         series: [{
             type: 'pie',
-            name: '浏览器占比',
+            name: '硬盘使用占比',
             data: [
-                ['Firefox', 45.0],
-                ['IE', 26.8]
+                ['未使用', 30.0],
+                ['已使用', 70.0]
             ]
         }]
     });
@@ -357,11 +357,16 @@ function getCpuInfo() {
         },
         colors: ['#4dd3b9', '#fdd67f'],
         series: [{
-            data: [71.5,cpu_data],
+            data: [60,cpu_data],
             name: 'Cylinders',
             showInLegend: false
         }]
     });
+    $('#cpuinfo').html('');
+    var cpuHtml ='';
+        cpuHtml += "<span id='cpu1' class='color1'><span class='circle'></span>使用率:"+60+"%</span>";
+        cpuHtml += "<span id='cpu2' class='color1'><span class='circle'></span>温度:"+cpu_data+"℃</span>";
+    $('#cpuinfo').append(cpuHtml);
 
     })
     .catch(err => {
