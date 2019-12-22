@@ -1,59 +1,6 @@
-$(function() {
+$(function () {
 
     getChannelInfo();
-
-
-
-
-
-
-    //存储容量-右
-    var chart = Highcharts.chart('leftMiddle1', {
-        chart: {
-            backgroundColor: 'rgba(0,0,0,0)',
-            type: 'pie',
-            margin: 10,
-            options3d: {
-                enabled: true,
-                alpha: 45,
-                beta: 0
-            }
-        },
-        title: {
-            text: ''
-        },
-        credits: {
-            enabled: false //不显示LOGO
-        },
-        exporting: {
-            enabled: false
-        },
-        tooltip: {
-            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-        },
-        plotOptions: {
-            pie: {
-                allowPointSelect: true,
-                cursor: 'pointer',
-                depth: 35,
-                dataLabels: {
-                    enabled: true,
-                    format: '{point.name}'
-                }
-            }
-        },
-        colors: ['#4dd3b9', '#fdd67f'],
-        series: [{
-            type: 'pie',
-            name: '硬盘使用占比',
-            data: [
-                ['未使用', 30.0],
-                ['已使用', 70.0]
-            ]
-        }]
-    });
-
-
 
 
 
@@ -171,25 +118,25 @@ $(function() {
             end: 100
         },
         xAxis: [{
-                type: 'category',
-                boundaryGap: true,
-                axisLine: {
-                    lineStyle: {
-                        color: '#fff',
-                        width: 1, //这里是为了突出显示加上的
-                    }
-                },
-                data: (function() {
-                    var now = new Date();
-                    var res = [];
-                    var len = 10;
-                    while (len--) {
-                        res.unshift(now.toLocaleTimeString().replace(/^\D*/, ''));
-                        now = new Date(now - 2000);
-                    }
-                    return res;
-                })()
+            type: 'category',
+            boundaryGap: true,
+            axisLine: {
+                lineStyle: {
+                    color: '#fff',
+                    width: 1, //这里是为了突出显示加上的
+                }
             },
+            data: (function () {
+                var now = new Date();
+                var res = [];
+                var len = 10;
+                while (len--) {
+                    res.unshift(now.toLocaleTimeString().replace(/^\D*/, ''));
+                    now = new Date(now - 2000);
+                }
+                return res;
+            })()
+        },
             {
                 type: 'category',
                 axisLine: {
@@ -199,7 +146,7 @@ $(function() {
                     }
                 },
                 boundaryGap: true,
-                data: (function() {
+                data: (function () {
                     var res = [];
                     var len = 10;
                     while (len--) {
@@ -210,19 +157,19 @@ $(function() {
             }
         ],
         yAxis: [{
-                type: 'value',
-                scale: true,
-                name: '数量',
-                max: 30,
-                min: 0,
-                boundaryGap: [0.2, 0.2],
-                axisLine: {
-                    lineStyle: {
-                        color: '#fff',
-                        width: 1, //这里是为了突出显示加上的
-                    }
-                },
+            type: 'value',
+            scale: true,
+            name: '数量',
+            max: 30,
+            min: 0,
+            boundaryGap: [0.2, 0.2],
+            axisLine: {
+                lineStyle: {
+                    color: '#fff',
+                    width: 1, //这里是为了突出显示加上的
+                }
             },
+        },
             {
                 type: 'value',
                 scale: true,
@@ -240,23 +187,23 @@ $(function() {
 
         ],
         series: [{
-                name: '录像总数',
-                type: 'bar',
-                xAxisIndex: 1,
-                yAxisIndex: 1,
-                data: (function() {
-                    var res = [];
-                    var len = 10;
-                    while (len--) {
-                        res.push(Math.round(Math.random() * 1000));
-                    }
-                    return res;
-                })()
-            },
+            name: '录像总数',
+            type: 'bar',
+            xAxisIndex: 1,
+            yAxisIndex: 1,
+            data: (function () {
+                var res = [];
+                var len = 10;
+                while (len--) {
+                    res.push(Math.round(Math.random() * 1000));
+                }
+                return res;
+            })()
+        },
             {
                 name: '录像正常',
                 type: 'line',
-                data: (function() {
+                data: (function () {
                     var res = [];
                     var len = 0;
                     while (len < 10) {
@@ -274,28 +221,30 @@ $(function() {
     //网络异常统计
     jQuery(".txtMarquee-top").slide({
         titCell: ".hd ul",
-        mainCell:".bd ul",
+        mainCell: ".bd ul",
         autoPage: true,
         effect: "top",
         autoPlay: false,
         vis: 6,
-        pnLoop:false
+        pnLoop: false
     });
-    
+
 
     getServerInfo();
     getCpuInfo();
+    getDiskCapacity();
+    // getCpuInfoTest();
 
 
 })
 
-function getCpuInfo() {
-    let url = "/api/v1/alarm/alarmInfo";
-    axios.post(url)
-    .then(res => {
-    console.log(res.data.data);
-    var cpu_data = parseFloat(res.data.data);
-         //存储容量-左
+/**
+ * 本地测试 cpu
+ */
+function getCpuInfoTest() {
+    var cpu_temperature = 35.0;
+    var cpu_usage_rate = 35.0;
+    //存储容量-左
     var myChart1 = echarts.init(document.getElementById('leftMiddle'));
 
     // 指定图表的配置项和数据
@@ -312,7 +261,7 @@ function getCpuInfo() {
                 viewDistance: 25
             }
         },
-        animation:false,
+        animation: false,
         title: {
             text: ''
         },
@@ -345,41 +294,122 @@ function getCpuInfo() {
                 }
             },
             categories: [
-			   'cpu使用率(%)','cpu温度(℃)'
-			  ],
-			  crosshair: true
+                'cpu使用率(%)', 'cpu温度(℃)'
+            ],
+            crosshair: true
         },
         plotOptions: {
             series: {
-                depth: 25,
+                depth: 50,
                 colorByPoint: true
             }
         },
         colors: ['#4dd3b9', '#fdd67f'],
         series: [{
-            data: [60,cpu_data],
+            data: [cpu_usage_rate, cpu_temperature],
             name: 'Cylinders',
             showInLegend: false
         }]
     });
     $('#cpuinfo').html('');
-    var cpuHtml ='';
-        cpuHtml += "<span id='cpu1' class='color1'><span class='circle'></span>使用率:"+60+"%</span>";
-        cpuHtml += "<span id='cpu2' class='color1'><span class='circle'></span>温度:"+cpu_data+"℃</span>";
+    var cpuHtml = '';
+    cpuHtml += "<span id='cpu1' class='color1'><span class='circle'></span>使用率:" + cpu_usage_rate + "%</span>";
+    cpuHtml += "<span id='cpu2' class='color1'><span class='circle'></span>温度:" + cpu_temperature + "℃</span>";
     $('#cpuinfo').append(cpuHtml);
-
-    })
-    .catch(err => {
-        console.error(err); 
-    })
-    
 }
 
+/**
+ * CPU信息获取
+ */
+function getCpuInfo() {
+    let url = "/api/v1/alarm/getCpuInfo";
+    axios.post(url)
+        .then(res => {
+            var cpu_temperature = parseFloat(res.data.cpu_temperature);
+            var cpu_usage_rate = parseFloat(res.data.cpu_usage_rate);
+            //存储容量-左
+            var myChart1 = echarts.init(document.getElementById('leftMiddle'));
+
+            // 指定图表的配置项和数据
+            Highcharts.chart('leftMiddle', {
+                chart: {
+                    backgroundColor: 'rgba(0,0,0,0)',
+                    type: 'cylinder',
+                    margin: 25,
+                    options3d: {
+                        enabled: true,
+                        alpha: 15,
+                        beta: 25,
+                        depth: 50,
+                        viewDistance: 25
+                    }
+                },
+                animation: false,
+                title: {
+                    text: ''
+                },
+                credits: {
+                    enabled: false //不显示LOGO
+                },
+                exporting: {
+                    enabled: false
+                },
+                yAxis: {
+                    min: 0,
+                    title: {
+                        text: '数值',
+                        style: {
+                            color: '#fff',
+                        }
+                    },
+                    labels: {
+                        style: {
+                            color: '#fff',
+                            fontSize: '14px'
+                        }
+                    }
+                },
+                xAxis: {
+                    labels: {
+                        style: {
+                            color: '#fff',
+                            fontSize: '14px'
+                        }
+                    },
+                    categories: [
+                        'cpu使用率(%)', 'cpu温度(℃)'
+                    ],
+                    crosshair: true
+                },
+                plotOptions: {
+                    series: {
+                        depth: 50,
+                        colorByPoint: true
+                    }
+                },
+                colors: ['#4dd3b9', '#fdd67f'],
+                series: [{
+                    data: [cpu_usage_rate, cpu_temperature],
+                    name: 'Cylinders',
+                    showInLegend: false
+                }]
+            });
+            $('#cpuinfo').html('');
+            var cpuHtml = '';
+            cpuHtml += "<span id='cpu1' class='color1'><span class='circle'></span>使用率:" + cpu_usage_rate + "%</span>";
+            cpuHtml += "<span id='cpu2' class='color1'><span class='circle'></span>温度:" + cpu_temperature + "℃</span>";
+            $('#cpuinfo').append(cpuHtml);
+        })
+        .catch(err => {
+            console.error(err);
+        })
+
+}
 
 
 function getChannelInfo() {
 
-    
+
     axios.post('/api/v1/channel/getChannelList')
         .then(res => {
             //摄像机类型
@@ -427,11 +457,11 @@ function getChannelInfo() {
 
                     },
                     data: [
-                        { value: res.data.channelStatistics.fixedCameraCount, name: '固定摄像机' },
-                        { value: res.data.channelStatistics.ptzCameraCount, name: '云台摄像机' },
-                        { value: res.data.channelStatistics.fixedIpCameraCount, name: '固定IP摄像机' },
-                        { value: res.data.channelStatistics.ptzIpCameraCount, name: '云台IP摄像机' },
-                        { value: 0, name: '其他' }
+                        {value: res.data.channelStatistics.fixedCameraCount, name: '固定摄像机'},
+                        {value: res.data.channelStatistics.ptzCameraCount, name: '云台摄像机'},
+                        {value: res.data.channelStatistics.fixedIpCameraCount, name: '固定IP摄像机'},
+                        {value: res.data.channelStatistics.ptzIpCameraCount, name: '云台IP摄像机'},
+                        {value: 0, name: '其他'}
                     ]
                 }]
             }
@@ -449,7 +479,6 @@ function getChannelInfo() {
 
 
 }
-
 
 
 function getServerInfo() {
@@ -499,10 +528,10 @@ function getServerInfo() {
                         }
                     },
                     data: [
-                        { value: res.data.serverStatistics.cmsCount, name: 'cms服务' },
-                        { value: res.data.serverStatistics.dmsCount, name: 'dms服务' },
-                        { value: res.data.serverStatistics.mssCount, name: 'mss服务' },
-                        { value: 0, name: '其他服务' },
+                        {value: res.data.serverStatistics.cmsCount, name: 'cms服务'},
+                        {value: res.data.serverStatistics.dmsCount, name: 'dms服务'},
+                        {value: res.data.serverStatistics.mssCount, name: 'mss服务'},
+                        {value: 0, name: '其他服务'},
                         // { value: 1548, name: '搜索引擎' }
                     ]
                 }]
@@ -524,10 +553,88 @@ function getServerInfo() {
         })
 }
 
-window.setInterval(function() {
+
+function getDiskCapacity(){
+
+        //存储容量-右
+        let url = '/api/v1/alarm/getDiskCapacity';
+        let params = new URLSearchParams();
+        axios.post(url,params)
+        .then(res => {
+            var disk_remainingCapacity = parseFloat(res.data.remainingCapacity);
+            var disk_usedCapacity = parseFloat(res.data.usedCapacity);
+            var disk_countCapacity = parseFloat(res.data.countCapacity);
+            var chart = Highcharts.chart('leftMiddle1', {
+                chart: {
+                    backgroundColor: 'rgba(0,0,0,0)',
+                    type: 'pie',
+                    margin: 10,
+                    options3d: {
+                        enabled: true,
+                        alpha: 45,
+                        beta: 0
+                    }
+                },
+                title: {
+                    text: ''
+                },
+                credits: {
+                    enabled: false //不显示LOGO
+                },
+                exporting: {
+                    enabled: false
+                },
+                tooltip: {
+                    pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+                },
+                plotOptions: {
+                    pie: {
+                        allowPointSelect: true,
+                        cursor: 'pointer',
+                        depth: 35,
+                        dataLabels: {
+                            enabled: true,
+                            format: '{point.name}'
+                        }
+                    }
+                },
+                colors: ['#4dd3b9', '#fdd67f'],
+                series: [{
+                    type: 'pie',
+                    name: '硬盘使用占比',
+                    data: [
+                        ['未使用', disk_remainingCapacity],
+                        ['已使用', disk_usedCapacity]
+                    ]
+                }]
+            });
+            $('#diskinfo').html('');
+            var diskHtml = '';
+            diskHtml += "<span id='yinpan1' class='color1'><span class='circle'></span>未使用:" + disk_remainingCapacity + "GB</span>";
+            diskHtml += "<span id='yinpan2' class='color2'><span class='circle'></span>已使用:" + disk_usedCapacity + "GB</span>";
+            diskHtml += "<span id='yinpan3' >总容量:" + disk_countCapacity + "GB</span>";
+            $('#diskinfo').append(diskHtml);
+
+            $('#diskcount').html('');
+            var diskCountHtml ='';
+            diskCountHtml+="<span id='countyinpan' ></span>总硬盘:"+res.data.diskCount+"</span>";
+            diskCountHtml+="<span id='jiedian' ></span>总节点:"+6+"</span>";
+            $('#diskcount').append(diskCountHtml);
+        })
+        .catch(err => {
+            console.error(err); 
+        })
+       
+    
+}
+
+
+window.setInterval(function () {
     getServerInfo();
     getChannelInfo();
 }, 3000)
-window.setInterval(function() {
+window.setInterval(function () {
+    getDiskCapacity();
+    // getCpuInfoTest();
     getCpuInfo();
 }, 6000)

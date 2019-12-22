@@ -1,5 +1,7 @@
 package com.mingsoft.nvssauthor.utils;
 
+import com.alibaba.fastjson.JSON;
+import org.omg.CORBA.OBJ_ADAPTER;
 import org.snmp4j.CommunityTarget;
 import org.snmp4j.PDU;
 import org.snmp4j.Snmp;
@@ -14,11 +16,16 @@ import org.snmp4j.transport.DefaultUdpTransportMapping;
 import org.snmp4j.util.DefaultPDUFactory;
 import org.snmp4j.util.TableEvent;
 import org.snmp4j.util.TableUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.io.IOException;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Vector;
+import java.util.concurrent.ConcurrentHashMap;
+
 @Component
 public class SnmpUtil {
 
@@ -33,7 +40,7 @@ public class SnmpUtil {
         target.setTimeout(3000);    //3s
         target.setRetries(1);
 
-        sendRequest(snmp, createGetPdu("1.3.6.1.2.1.1.3"), target);
+//        sendRequest(snmp, createGetPdu("1.3.6.1.2.1.1.3"), target);
         sendRequest(snmp, createGetNextPdu(), target);
         sendRequest(snmp, createGetBulkPdu(), target);
         snmpWalk(snmp, target);
@@ -46,14 +53,28 @@ public class SnmpUtil {
         broadcastTarget.setVersion(SnmpConstants.version2c);
         broadcastTarget.setAddress(new UdpAddress("192.168.0.255/161"));
         broadcastTarget.setTimeout(5000);    //5s
-        sendAsyncRequest(snmp, createGetNextPdu(), broadcastTarget);
+        sendCpuAsyncRequest(snmp, createGetNextPdu(), broadcastTarget);
         Thread.sleep(6000);    //main thread wait 6s for the completion of asynchronous request
     }
 
-    public static PDU createGetPdu(String oId) {
+    public static PDU createGetPdu(String oid) {
         PDU pdu = new PDU();
         pdu.setType(PDU.GET);
-        pdu.add(new VariableBinding(new OID(oId)));    //sysUpTime
+
+        pdu.add(new VariableBinding(new OID(oid)));    //sysUpTime
+
+        return pdu;
+    }
+
+
+    public static PDU createGetPduList(String[] oids) {
+        PDU pdu = new PDU();
+        pdu.setType(PDU.GET);
+        for (int i = 0; i < oids.length; i++) {
+            pdu.add(new VariableBinding(new OID(oids[i])));
+        }
+        //sysUpTime
+
         return pdu;
     }
 
@@ -82,7 +103,7 @@ public class SnmpUtil {
         return pdu;
     }
 
-    public static  Vector<? extends VariableBinding> sendRequest(Snmp snmp, PDU pdu, CommunityTarget target)
+    public static Vector<? extends VariableBinding> sendRequest(Snmp snmp, PDU pdu, CommunityTarget target)
             throws IOException {
         ResponseEvent responseEvent = snmp.send(pdu, target);
         PDU response = responseEvent.getResponse();
@@ -93,6 +114,7 @@ public class SnmpUtil {
         } else {
             if (response.getErrorStatus() == PDU.noError) {
                 Vector<? extends VariableBinding> vbs = response.getVariableBindings();
+                System.out.println(vbs);
                 return vbs;
             } else {
                 System.out.println("Error:" + response.getErrorStatusText());
@@ -102,9 +124,9 @@ public class SnmpUtil {
         }
     }
 
-    public static Vector<? extends VariableBinding> sendAsyncRequest(Snmp snmp, PDU pdu, CommunityTarget target)
+    public static void sendCpuAsyncRequest(Snmp snmp, PDU pdu, CommunityTarget target)
             throws IOException {
-        final Vector<? extends VariableBinding>[] vbsTemp = new Vector[]{new Vector<>()};
+
         snmp.send(pdu, target, null, new ResponseListener() {
 
             @Override
@@ -116,14 +138,43 @@ public class SnmpUtil {
                 } else {
                     if (response.getErrorStatus() == PDU.noError) {
                         Vector<? extends VariableBinding> vbs = response.getVariableBindings();
-                        vbsTemp[0] = vbs;
+                        StringBuffer sb = new StringBuffer();
+                        String str = "cpu_usage=" + vbs.get(0).toValueString() + "&cpu_temperature=" + vbs.get(1).toValueString();
+                        sb.append(str);
+                        HttpUtils.doPost("http://localhost:8090/api/v1/alarm/helloWorld", sb.toString());
+
                     } else {
                         System.out.println("Error:" + response.getErrorStatusText());
                     }
                 }
             }
         });
-        return vbsTemp[0];
+
+
+    }
+
+    public static void sendDiskAsyncRequest(Snmp snmp, PDU pdu, CommunityTarget target)
+            throws IOException {
+
+        snmp.send(pdu, target, null, new ResponseListener() {
+
+            @Override
+            public void onResponse(ResponseEvent event) {
+                PDU response = event.getResponse();
+                System.out.println("Got response from " + event.getPeerAddress());
+                if (response == null) {
+                    System.out.println("TimeOut...");
+                } else {
+                    if (response.getErrorStatus() == PDU.noError) {
+                        Vector<? extends VariableBinding> vbs = response.getVariableBindings();
+                        System.out.println(vbs);
+                    } else {
+                        System.out.println("Error:" + response.getErrorStatusText());
+                    }
+                }
+            }
+        });
+
 
     }
 

@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mingsoft.nvssauthor.mapper.AlarmDiskInfoMapper">
+    <resultMap id="BaseResultMap" type="com.mingsoft.nvssauthor.domain.AlarmDiskInfo">
+        <!--@mbg.generated-->
+        <!--@Table alarm_disk_info-->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="ip" jdbcType="VARCHAR" property="ip"/>
+        <result column="disk_capacity_used" jdbcType="INTEGER" property="diskCapacityUsed"/>
+        <result column="disk_count_capacity" jdbcType="INTEGER" property="diskCountCapacity"/>
+        <result column="disk_count" jdbcType="INTEGER" property="diskCount"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, ip, disk_capacity_used, disk_count_capacity, disk_count
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from alarm_disk_info
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        <!--@mbg.generated-->
+        delete from alarm_disk_info
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.mingsoft.nvssauthor.domain.AlarmDiskInfo"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into alarm_disk_info (ip, disk_capacity_used, disk_count_capacity,
+        disk_count)
+        values (#{ip,jdbcType=VARCHAR}, #{diskCapacityUsed,jdbcType=INTEGER}, #{diskCountCapacity,jdbcType=INTEGER},
+        #{diskCount,jdbcType=INTEGER})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id"
+            parameterType="com.mingsoft.nvssauthor.domain.AlarmDiskInfo" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into alarm_disk_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="ip != null">
+                ip,
+            </if>
+            <if test="diskCapacityUsed != null">
+                disk_capacity_used,
+            </if>
+            <if test="diskCountCapacity != null">
+                disk_count_capacity,
+            </if>
+            <if test="diskCount != null">
+                disk_count,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="ip != null">
+                #{ip,jdbcType=VARCHAR},
+            </if>
+            <if test="diskCapacityUsed != null">
+                #{diskCapacityUsed,jdbcType=INTEGER},
+            </if>
+            <if test="diskCountCapacity != null">
+                #{diskCountCapacity,jdbcType=INTEGER},
+            </if>
+            <if test="diskCount != null">
+                #{diskCount,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.mingsoft.nvssauthor.domain.AlarmDiskInfo">
+        <!--@mbg.generated-->
+        update alarm_disk_info
+        <set>
+            <if test="ip != null">
+                ip = #{ip,jdbcType=VARCHAR},
+            </if>
+            <if test="diskCapacityUsed != null">
+                disk_capacity_used = #{diskCapacityUsed,jdbcType=INTEGER},
+            </if>
+            <if test="diskCountCapacity != null">
+                disk_count_capacity = #{diskCountCapacity,jdbcType=INTEGER},
+            </if>
+            <if test="diskCount != null">
+                disk_count = #{diskCount,jdbcType=INTEGER},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.mingsoft.nvssauthor.domain.AlarmDiskInfo">
+        <!--@mbg.generated-->
+        update alarm_disk_info
+        set ip = #{ip,jdbcType=VARCHAR},
+        disk_capacity_used = #{diskCapacityUsed,jdbcType=INTEGER},
+        disk_count_capacity = #{diskCountCapacity,jdbcType=INTEGER},
+        disk_count = #{diskCount,jdbcType=INTEGER}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <select id="findByNewDiskInfo" resultMap="BaseResultMap">
+      select id, ip, disk_capacity_used, disk_count_capacity, disk_count from alarm_disk_info where id in(select max(id) from alarm_disk_info group by ip)
+    </select>
+</mapper>

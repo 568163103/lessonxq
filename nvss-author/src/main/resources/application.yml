@@ -1,4 +1,3 @@
-
 server:
   port: 8090
 web:
@@ -6,7 +5,9 @@ web:
 #spring druid 连接池
 spring:
   datasource:
+    #10.10.24.142
     url: jdbc:mysql://10.10.24.135:3306/nvs3000?useUnicode=true&amp;characterEncoding=UTF-8&autoReconnect=true
+#    url: jdbc:mysql://101.200.123.93:3306/nvs3000?useUnicode=true&amp;characterEncoding=UTF-8&autoReconnect=true
     username: root
 #    password: 6000
     password: 1qA2wS3De

@@ -1,22 +1,18 @@
 package com.mingsoft.nvssauthor.utils;
 
-import org.apache.commons.lang3.StringUtils;
-import org.apache.http.*;
 import org.apache.http.client.config.RequestConfig;
-import org.apache.http.client.entity.UrlEncodedFormEntity;
+import org.apache.http.client.methods.CloseableHttpResponse;
+import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
+import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
-import org.apache.http.message.BasicHeader;
-import org.apache.http.message.BasicNameValuePair;
-import org.apache.http.util.EntityUtils;
-import org.apache.log4j.Logger;
+import org.apache.http.impl.conn.PoolingHttpClientConnectionManager;
 
-import java.io.IOException;
+import java.io.*;
+import java.net.HttpURLConnection;
+import java.net.URL;
 import java.nio.charset.Charset;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 /**
  * @author mac-xq
@@ -26,166 +22,219 @@ import java.util.Map;
  * @Version
  **/
 public class HttpUtils {
+    private static final int TIMEOUT_IN_MILLIONS = 5000;
 
-    private static final Logger LOGGER = Logger.getLogger(HttpUtils.class);
-
-    /**
-     * TODO 链接配置
-     * TODO 文件下载请求封装
-     * TODO GET请求封装
-     *
-     */
-
-    /**
-     * post请求
-     *
-     * @param url 请求链接
-     * @param params 请求参数
-     * @param headers 请求头
-     * @return
-     */
-    public static String post(String url, Map<String, Object> params, Map<String, Object> headers) {
-        return post(url, params, headers, null, null);
+    public interface CallBack
+    {
+        void onRequestComplete(String result);
     }
 
-    /**
-     * post请求
-     *
-     * @param url 请求链接
-     * @param params 请求参数
-     * @param headers 请求头
-     * @param hostname 请求代理域名或ip
-     * @param port 请求代理端口
-     * @return
-     */
-    public static String post(String url, Map<String, Object> params, Map<String, Object> headers, String hostname,
-                              Integer port) {
-        return post(url, params, headers, hostname, port);
-    }
 
     /**
-     * post请求
+     * 异步的Get请求
      *
-     * @param url 请求链接
-     * @param params 请求参数
-     * @param headers 请求头
-     * @param hostname 请求代理域名或ip
-     * @param port 请求代理端口
-     * @param scheme
-     * @return
+     * @param urlStr
+     * @param callBack
      */
-    public static String post(String url, Map<String, Object> params, Map<String, Object> headers, String hostname,
-                              Integer port, String scheme) {
-        HttpResponse response = null;
-        String responseBody = null;
-        try {
-            if (StringUtils.isBlank(hostname) || port == null) {
-                response = postRaw(url, params, headers, null);
-            } else {
-                HttpHost proxy = new HttpHost(hostname, port, scheme);
-                response = postRaw(url, params, headers, proxy);
-            }
-            HttpEntity entity = response.getEntity();
-            responseBody = EntityUtils.toString(entity, "UTF-8");
-        } catch (Exception e) {
-            LOGGER.error("Http post error!", e);
-        } finally {
-            if (response != null) {
-                try {
-                    EntityUtils.consume(response.getEntity());
-                } catch (IOException e) {
-                    LOGGER.error("Consume response entity error!", e);
+    public static void doGetAsyn(final String urlStr, final CallBack callBack)
+    {
+        new Thread()
+        {
+            @Override
+            public void run()
+            {
+                try
+                {
+                    String result = doGet(urlStr);
+                    if (callBack != null)
+                    {
+                        callBack.onRequestComplete(result);
+                    }
+                } catch (Exception e)
+                {
+                    e.printStackTrace();
                 }
+
+            };
+        }.start();
+    }
+
+    /**
+     * 异步的Post请求
+     * @param urlStr
+     * @param params
+     * @param callBack
+     * @throws Exception
+     */
+    public static void doPostAsyn(final String urlStr, final String params,
+                                  final CallBack callBack) throws Exception
+    {
+        new Thread()
+        {
+            @Override
+            public void run()
+            {
+                try
+                {
+                    String result = doPost(urlStr, params);
+                    if (callBack != null)
+                    {
+                        callBack.onRequestComplete(result);
+                    }
+                } catch (Exception e)
+                {
+                    e.printStackTrace();
+                }
+
+            };
+        }.start();
+
+    }
+
+    /**
+     * Get请求，获得返回数据
+     *
+     * @param urlStr
+     * @return
+     * @throws Exception
+     */
+    public static String doGet(String urlStr)
+    {
+        URL url = null;
+        HttpURLConnection conn = null;
+        InputStream is = null;
+        ByteArrayOutputStream baos = null;
+        try
+        {
+            url = new URL(urlStr);
+            conn = (HttpURLConnection) url.openConnection();
+            conn.setReadTimeout(TIMEOUT_IN_MILLIONS);
+            conn.setConnectTimeout(TIMEOUT_IN_MILLIONS);
+            conn.setRequestMethod("GET");
+            conn.setRequestProperty("accept", "*/*");
+            conn.setRequestProperty("connection", "Keep-Alive");
+            if (conn.getResponseCode() == 200)
+            {
+                is = conn.getInputStream();
+                baos = new ByteArrayOutputStream();
+                int len = -1;
+                byte[] buf = new byte[128];
+
+                while ((len = is.read(buf)) != -1)
+                {
+                    baos.write(buf, 0, len);
+                }
+                baos.flush();
+                return baos.toString();
+            } else
+            {
+                throw new RuntimeException(" responseCode is not 200 ... ");
+            }
+
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        } finally
+        {
+            try
+            {
+                if (is != null)
+                    is.close();
+            } catch (IOException e)
+            {
+            }
+            try
+            {
+                if (baos != null)
+                    baos.close();
+            } catch (IOException e)
+            {
+            }
+            conn.disconnect();
+        }
+
+        return null ;
+
+    }
+
+    /**
+     * 向指定 URL 发送POST方法的请求
+     *
+     * @param url
+     *            发送请求的 URL
+     * @param param
+     *            请求参数，请求参数应该是 name1=value1&name2=value2 的形式。
+     * @return 所代表远程资源的响应结果
+     * @throws Exception
+     */
+    public static String doPost(String url, String param)
+    {
+        PrintWriter out = null;
+        BufferedReader in = null;
+        String result = "";
+        try
+        {
+            URL realUrl = new URL(url);
+            // 打开和URL之间的连接
+            HttpURLConnection conn = (HttpURLConnection) realUrl
+                    .openConnection();
+            // 设置通用的请求属性
+            conn.setRequestProperty("accept", "*/*");
+            conn.setRequestProperty("connection", "Keep-Alive");
+            conn.setRequestMethod("POST");
+            conn.setRequestProperty("Content-Type",
+                    "application/x-www-form-urlencoded");
+            conn.setRequestProperty("charset", "utf-8");
+            conn.setUseCaches(false);
+            // 发送POST请求必须设置如下两行
+            conn.setDoOutput(true);
+            conn.setDoInput(true);
+            conn.setReadTimeout(TIMEOUT_IN_MILLIONS);
+            conn.setConnectTimeout(TIMEOUT_IN_MILLIONS);
+
+            if (param != null && !param.trim().equals(""))
+            {
+                // 获取URLConnection对象对应的输出流
+                out = new PrintWriter(conn.getOutputStream());
+                // 发送请求参数
+                out.print(param);
+                // flush输出流的缓冲
+                out.flush();
+            }
+            // 定义BufferedReader输入流来读取URL的响应
+            in = new BufferedReader(
+                    new InputStreamReader(conn.getInputStream()));
+            String line;
+            while ((line = in.readLine()) != null)
+            {
+                result += line;
+            }
+        } catch (Exception e)
+        {
+            e.printStackTrace();
+        }
+        // 使用finally块来关闭输出流、输入流
+        finally
+        {
+            try
+            {
+                if (out != null)
+                {
+                    out.close();
+                }
+                if (in != null)
+                {
+                    in.close();
+                }
+            } catch (IOException ex)
+            {
+                ex.printStackTrace();
             }
         }
-
-        return responseBody;
+        return result;
     }
 
-    /**
-     * post请求
-     *
-     * @param url 请求链接
-     * @param params 请求参数
-     * @param headers 请求头
-     * @return
-     * @throws Exception
-     */
-    public static HttpResponse postRaw(String url, Map<String, Object> params, Map<String, Object> headers) throws Exception {
-        return postRaw(url, params, headers, null);
-    }
 
-    /**
-     * post请求
-     *
-     * @param url 请求链接
-     * @param params 请求参数
-     * @param headers 请求头
-     * @param hostname 请求代理域名或ip
-     * @param port 请求代理端口
-     * @return
-     * @throws Exception
-     */
-    public static HttpResponse postRaw(String url, Map<String, Object> params, Map<String, Object> headers,
-                                       String hostname, int port) throws Exception {
-        return postRaw(url, params, headers, hostname, port, "http");
-    }
 
-    /**
-     * post请求
-     *
-     * @param url 请求链接
-     * @param params 请求参数
-     * @param headers 请求头
-     * @param hostname 请求代理域名或ip
-     * @param port 请求代理端口
-     * @param scheme 协议
-     * @return
-     * @throws Exception
-     */
-    public static HttpResponse postRaw(String url, Map<String, Object> params, Map<String, Object> headers,
-                                       String hostname, Integer port, String scheme) throws Exception {
-        HttpHost proxy = new HttpHost(hostname, port, scheme);
-        return postRaw(url, params, headers, proxy);
-    }
 
-    /**
-     * post请求
-     *
-     * @param url 请求链接
-     * @param params 请求参数
-     * @param headers 请求头
-     * @param proxy 请求代理
-     * @return
-     * @throws Exception
-     */
-    public static HttpResponse postRaw(String url, Map<String, Object> params, Map<String, Object> headers,
-                                       HttpHost proxy) throws Exception {
-        CloseableHttpClient httpClient = HttpClients.createDefault();
-        HttpPost httpPost = new HttpPost(url);
-
-        // 设置参数
-        List<NameValuePair> pairList = new ArrayList<NameValuePair>(params.size());
-        for (Map.Entry<String, Object> entry : params.entrySet()) {
-            NameValuePair pair = new BasicNameValuePair(entry.getKey(), entry.getValue().toString());
-            pairList.add(pair);
-        }
-        httpPost.setEntity(new UrlEncodedFormEntity(pairList, Charset.forName("UTF-8")));
-
-        // 设置请求头
-        List<Header> headerList = new ArrayList<Header>(headers.size());
-        for (Map.Entry<String, Object> entry : headers.entrySet()) {
-            Header header = new BasicHeader(entry.getKey(), entry.getValue().toString());
-            headerList.add(header);
-        }
-        httpPost.setHeaders(headerList.toArray(new Header[headers.size()]));
-
-        // 设置代理
-        if (proxy != null) {
-            RequestConfig config = RequestConfig.custom().setProxy(proxy).build();
-            httpPost.setConfig(config);
-        }
-
-        return httpClient.execute(httpPost);
-    }
 }
