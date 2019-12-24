@@ -325,8 +325,18 @@ function getCpuInfo() {
     let url = "/api/v1/alarm/getCpuInfo";
     axios.post(url)
         .then(res => {
+            var cpu_temperature_color ='#fdd67f';
+            var cpu_usage_rate_color='#4dd3b9';
             var cpu_temperature = parseFloat(res.data.cpu_temperature);
             var cpu_usage_rate = parseFloat(res.data.cpu_usage_rate);
+
+            if(cpu_temperature>=80.0){
+                cpu_temperature_color='#EE0000';
+            }
+
+            if(cpu_usage_rate>80.0){
+                cpu_usage_rate_color='#EE0000';
+            }
             //存储容量-左
             var myChart1 = echarts.init(document.getElementById('leftMiddle'));
 
@@ -387,7 +397,7 @@ function getCpuInfo() {
                         colorByPoint: true
                     }
                 },
-                colors: ['#4dd3b9', '#fdd67f'],
+                colors: [cpu_usage_rate_color, cpu_temperature_color],
                 series: [{
                     data: [cpu_usage_rate, cpu_temperature],
                     name: 'Cylinders',
@@ -498,7 +508,7 @@ function getServerInfo() {
                 legend: {
                     orient: 'vertical',
                     x: 'left',
-                    data: ['cms服务', 'dms服务', 'mss服务', '其他服务'],
+                    data: ['C服务', 'D服务', 'M服务', '其他服务'],
                     textStyle: { //图例文字的样式
                         color: '#fff',
                     }
@@ -528,21 +538,21 @@ function getServerInfo() {
                         }
                     },
                     data: [
-                        {value: res.data.serverStatistics.cmsCount, name: 'cms服务'},
-                        {value: res.data.serverStatistics.dmsCount, name: 'dms服务'},
-                        {value: res.data.serverStatistics.mssCount, name: 'mss服务'},
+                        {value: res.data.serverStatistics.cmsCount, name: 'C服务'},
+                        {value: res.data.serverStatistics.dmsCount, name: 'D服务'},
+                        {value: res.data.serverStatistics.mssCount, name: 'M服务'},
                         {value: 0, name: '其他服务'},
                         // { value: 1548, name: '搜索引擎' }
                     ]
                 }]
             }
             myChart6.setOption(option6);
-            $('#cms').text("cms节点:" + res.data.serverStatistics.cmsCount);
-            $('#dms').text("dms节点:" + res.data.serverStatistics.dmsCount);
-            $('#mss').text("mss节点:" + res.data.serverStatistics.mssCount);
-            $('#cms_server').text("cms服务:" + res.data.serverStatistics.cmsCount);
-            $('#dms_server').text("dms服务:" + res.data.serverStatistics.dmsCount);
-            $('#mss_server').text("mss服务:" + res.data.serverStatistics.mssCount);
+            $('#cms').text("cms节点:" + res.data.serverStatistics.cmsCount+'/'+res.data.serverStatistics.cmsOnline+'/'+res.data.serverStatistics.cmsOffOnline);
+            $('#dms').text("dms节点:" + res.data.serverStatistics.dmsCount+'/'+res.data.serverStatistics.dmsOnline+'/'+res.data.serverStatistics.dmsOffOnline);
+            $('#mss').text("mss节点:" + res.data.serverStatistics.mssCount+'/'+res.data.serverStatistics.mmsOnline+'/'+res.data.serverStatistics.mmsOffOnline);
+            $('#cms_server').text("C服务:" + res.data.serverStatistics.cmsCount+'/'+res.data.serverStatistics.cmsOnline+'/'+res.data.serverStatistics.cmsOffOnline);
+            $('#dms_server').text("D服务:" + res.data.serverStatistics.dmsCount+'/'+res.data.serverStatistics.dmsOnline+'/'+res.data.serverStatistics.dmsOffOnline);
+            $('#mss_server').text("M服务:" + res.data.serverStatistics.mssCount+'/'+res.data.serverStatistics.mssOnline+'/'+res.data.serverStatistics.mssOffOnline);
             $('#online').text("在线: " + (res.data.serverStatistics.mssOnline + res.data.serverStatistics.dmsOnline + res.data.serverStatistics.cmsOnline));
             $('#offline').text("离线: " + (res.data.serverStatistics.mssOffOnline + res.data.serverStatistics.dmsOffOnline + res.data.serverStatistics.cmsOffOnline));
             $('#online1').text("在线: " + (res.data.serverStatistics.mssOnline + res.data.serverStatistics.dmsOnline + res.data.serverStatistics.cmsOnline));
@@ -561,9 +571,21 @@ function getDiskCapacity(){
         let params = new URLSearchParams();
         axios.post(url,params)
         .then(res => {
+
+            var disk_remainingCapacity_color='#4dd3b9';
+            var disk_usedCapacity_color='#fdd67f';
+        
+
             var disk_remainingCapacity = parseFloat(res.data.remainingCapacity);
             var disk_usedCapacity = parseFloat(res.data.usedCapacity);
             var disk_countCapacity = parseFloat(res.data.countCapacity);
+            if(disk_countCapacity!=0){
+               var temp = disk_usedCapacity/disk_countCapacity;
+                if(temp>0.8){
+                    disk_remainingCapacity_color ='#EE0000' 
+                }
+            }
+
             var chart = Highcharts.chart('leftMiddle1', {
                 chart: {
                     backgroundColor: 'rgba(0,0,0,0)',
@@ -598,7 +620,7 @@ function getDiskCapacity(){
                         }
                     }
                 },
-                colors: ['#4dd3b9', '#fdd67f'],
+                colors: [disk_remainingCapacity_color,disk_usedCapacity_color],
                 series: [{
                     type: 'pie',
                     name: '硬盘使用占比',
@@ -610,15 +632,15 @@ function getDiskCapacity(){
             });
             $('#diskinfo').html('');
             var diskHtml = '';
+            diskHtml += "<span id='yinpan3' >总容量:" + disk_countCapacity + "GB</span>";
             diskHtml += "<span id='yinpan1' class='color1'><span class='circle'></span>未使用:" + disk_remainingCapacity + "GB</span>";
             diskHtml += "<span id='yinpan2' class='color2'><span class='circle'></span>已使用:" + disk_usedCapacity + "GB</span>";
-            diskHtml += "<span id='yinpan3' >总容量:" + disk_countCapacity + "GB</span>";
             $('#diskinfo').append(diskHtml);
 
             $('#diskcount').html('');
             var diskCountHtml ='';
             diskCountHtml+="<span id='countyinpan' ></span>总硬盘:"+res.data.diskCount+"</span>";
-            diskCountHtml+="<span id='jiedian' ></span>总节点:"+6+"</span>";
+            // diskCountHtml+="<span id='jiedian' ></span>总节点:"+6+"</span>";
             $('#diskcount').append(diskCountHtml);
         })
         .catch(err => {

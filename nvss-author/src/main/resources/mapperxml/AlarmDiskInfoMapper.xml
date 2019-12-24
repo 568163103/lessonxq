@@ -98,4 +98,7 @@
     <select id="findByNewDiskInfo" resultMap="BaseResultMap">
       select id, ip, disk_capacity_used, disk_count_capacity, disk_count from alarm_disk_info where id in(select max(id) from alarm_disk_info group by ip)
     </select>
+    <delete id="delAllAlarmDiskInfo">
+        delete from alarm_disk_info;
+    </delete>
 </mapper>

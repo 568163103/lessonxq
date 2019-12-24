@@ -18,4 +18,6 @@ public interface AlarmCpuInfoMapper {
     int updateByPrimaryKey(AlarmCpuInfo record);
 
     AlarmCpuInfo findNewCpuInfo();
+
+    int delAllCpuInfo();
 }

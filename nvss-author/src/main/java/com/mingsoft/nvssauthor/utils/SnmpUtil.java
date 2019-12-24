@@ -1,6 +1,7 @@
 package com.mingsoft.nvssauthor.utils;
 
 import com.alibaba.fastjson.JSON;
+import org.apache.commons.lang3.StringUtils;
 import org.omg.CORBA.OBJ_ADAPTER;
 import org.snmp4j.CommunityTarget;
 import org.snmp4j.PDU;
@@ -138,10 +139,14 @@ public class SnmpUtil {
                 } else {
                     if (response.getErrorStatus() == PDU.noError) {
                         Vector<? extends VariableBinding> vbs = response.getVariableBindings();
-                        StringBuffer sb = new StringBuffer();
-                        String str = "cpu_usage=" + vbs.get(0).toValueString() + "&cpu_temperature=" + vbs.get(1).toValueString();
-                        sb.append(str);
-                        HttpUtils.doPost("http://localhost:8090/api/v1/alarm/helloWorld", sb.toString());
+                        if (vbs!=null) {
+                            if (StringUtils.isNotBlank(vbs.get(0).toValueString()) && StringUtils.isNotBlank(vbs.get(1).toValueString())) {
+                                StringBuffer sb = new StringBuffer();
+                                String str = "cpu_usage=" + vbs.get(0).toValueString() + "&cpu_temperature=" + vbs.get(1).toValueString();
+                                sb.append(str);
+                                HttpUtils.doPost("http://localhost:8090/api/v1/alarm/helloWorld", sb.toString());
+                            }
+                        }
 
                     } else {
                         System.out.println("Error:" + response.getErrorStatusText());
@@ -191,6 +196,9 @@ public class SnmpUtil {
         for (TableEvent e : l) {
             System.out.println(e);
         }
+    }
+    public static boolean isNumeric(String str) {
+        return str.matches("-?[0-9]+.*[0-9]*");
     }
 
 }

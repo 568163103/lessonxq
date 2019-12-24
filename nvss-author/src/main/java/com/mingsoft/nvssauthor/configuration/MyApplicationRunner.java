@@ -8,6 +8,7 @@ import org.snmp4j.mp.SnmpConstants;
 import org.snmp4j.smi.OctetString;
 import org.snmp4j.smi.UdpAddress;
 import org.snmp4j.transport.DefaultUdpTransportMapping;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
@@ -18,7 +19,7 @@ import java.util.concurrent.TimeUnit;
 public class MyApplicationRunner implements ApplicationRunner {
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        String ip = "10.10.24.201";
+        String ip = "192.168.8.230";
         Snmp snmp = new Snmp(new DefaultUdpTransportMapping());
         CommunityTarget target = new CommunityTarget();
         target.setCommunity(new OctetString("private"));

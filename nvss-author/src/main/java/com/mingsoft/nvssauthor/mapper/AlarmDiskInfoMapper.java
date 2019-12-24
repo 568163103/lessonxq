@@ -18,4 +18,6 @@ public interface AlarmDiskInfoMapper {
     int updateByPrimaryKey(AlarmDiskInfo record);
 
     List<AlarmDiskInfo> findByNewDiskInfo();
+
+    int delAllAlarmDiskInfo();
 }

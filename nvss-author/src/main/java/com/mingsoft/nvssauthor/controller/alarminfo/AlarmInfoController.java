@@ -41,22 +41,22 @@ public class AlarmInfoController {
                           @RequestParam(value = "oids", required = false) String[] oids
     ) throws IOException, InterruptedException {
         Map<String, Object> result = new HashMap<>(16);
-        ip = "10.10.24.201";
-//        HttpUtils.post("", JSON.toJSONString("{}"));
-
-        Snmp snmp = new Snmp(new DefaultUdpTransportMapping());
-        oids = new String[]{Constant.CPU_USAGE_RATE, Constant.CPU_TEMPERATURE};
-        CommunityTarget target = new CommunityTarget();
-        target.setCommunity(new OctetString("private"));
-        target.setVersion(SnmpConstants.version2c);
-        target.setAddress(new UdpAddress(ip + "/161"));
-        target.setTimeout(3000);
-        target.setRetries(1);
-        snmp.listen();
-        while (true) {
-            TimeUnit.SECONDS.sleep(5);
-            SnmpUtil.sendCpuAsyncRequest(snmp, SnmpUtil.createGetPduList(new String[]{Constant.CPU_USAGE_RATE, Constant.CPU_TEMPERATURE}), target);
-        }
+//        ip = "10.10.24.201";
+////        HttpUtils.post("", JSON.toJSONString("{}"));
+//
+//        Snmp snmp = new Snmp(new DefaultUdpTransportMapping());
+//        oids = new String[]{Constant.CPU_USAGE_RATE, Constant.CPU_TEMPERATURE};
+//        CommunityTarget target = new CommunityTarget();
+//        target.setCommunity(new OctetString("private"));
+//        target.setVersion(SnmpConstants.version2c);
+//        target.setAddress(new UdpAddress(ip + "/161"));
+//        target.setTimeout(3000);
+//        target.setRetries(1);
+//        snmp.listen();
+//        while (true) {
+//            TimeUnit.SECONDS.sleep(5);
+//            SnmpUtil.sendCpuAsyncRequest(snmp, SnmpUtil.createGetPduList(new String[]{Constant.CPU_USAGE_RATE, Constant.CPU_TEMPERATURE}), target);
+//        }
 
     }
 
@@ -183,8 +183,8 @@ public class AlarmInfoController {
 
 
     @RequestMapping(value = "helloWorld")
-    public Map<String, Object> helloWorld(@RequestParam(value = "cpu_usage", required = false) String cpu_usage,
-                                          @RequestParam(value = "cpu_temperature", required = false) String cpu_temperature
+    public Map<String, Object> helloWorld(@RequestParam(value = "cpu_usage", required = true) String cpu_usage,
+                                          @RequestParam(value = "cpu_temperature", required = true) String cpu_temperature
     ) {
         Map<String, Object> map = new HashMap<>();
         AlarmCpuInfo alarmCpuInfo = new AlarmCpuInfo();

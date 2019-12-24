@@ -75,4 +75,8 @@
     <select id="findNewCpuInfo" resultMap="BaseResultMap">
     select * from alarm_cpu_info ORDER BY id desc LIMIT 1;
   </select>
+
+    <delete id="delAllCpuInfo">
+        delete from alarm_cpu_info;
+    </delete>
 </mapper>

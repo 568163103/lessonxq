@@ -19,6 +19,8 @@ public class ServerStatistics {
         return mssOffOnline;
     }
 
+
+
     public ServerStatistics(int mssCount, int mssOnline) {
         this.mssCount = mssCount;
         this.mssOnline = mssOnline;
