@@ -2,6 +2,7 @@ package com.xq.jdk8;
 
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Function;
 
 public class Test3 {
 
@@ -21,8 +22,9 @@ public class Test3 {
 //        stringList.forEach(item->stringList2.add(item.toUpperCase()));
 //        stringList2.forEach(s -> System.out.println(s));
 //        stringList.stream().map(item->item.toUpperCase()).forEach(s -> System.out.println(s));
-          stringList.stream().map(String::toUpperCase).forEach(s -> System.out.println(s));
-
+//          stringList.stream().map(String::toUpperCase).forEach(s -> System.out.println(s));
+        Function<String,String> function = String::toUpperCase;
+        System.out.println(function.getClass().getInterfaces()[0]);
     }
 
     public static List<String> add(List<String> list, String value) {

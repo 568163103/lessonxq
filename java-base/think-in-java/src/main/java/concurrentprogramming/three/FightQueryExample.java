@@ -4,8 +4,10 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
+
 /**
  * {@link FightQueryTask} 实现Thread 业务
+ *
  * @author xq
  * @date 2019/12/11 00:46:55
  * @description 查询航班集合
@@ -20,7 +22,7 @@ public class FightQueryExample {
         results.forEach(System.out::println);
 
     }
-    
+
     private static List<String> search(String original, String dest) {
         final List<String> result = new ArrayList<>();
         //创建航班信息的线程列表
