@@ -1,4 +1,4 @@
-package concurrentprogramming.eleven;
+package concurrentprogramming.ten;
 
 import java.util.ArrayList;
 import java.util.List;

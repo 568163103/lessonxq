@@ -1,4 +1,4 @@
-package concurrentprogramming.eleven;
+package concurrentprogramming.ten;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
@@ -13,7 +13,7 @@ public class MyClassLoaderTest {
 
     public static void main(String[] args) throws ClassNotFoundException, IllegalAccessException, InstantiationException, NoSuchMethodException, InvocationTargetException {
         MyClassLoader myClassLoader = new MyClassLoader();
-        Class<?> myClass = myClassLoader.loadClass("concurrentprogramming.eleven.HelloWorld");
+        Class<?> myClass = myClassLoader.loadClass("concurrentprogramming.ten.HelloWorld");
         System.out.println(myClass.getClassLoader());
 
         Object helloWorld = myClass.newInstance();

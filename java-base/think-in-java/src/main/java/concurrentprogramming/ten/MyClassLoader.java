@@ -1,4 +1,4 @@
-package concurrentprogramming.eleven;
+package concurrentprogramming.ten;
 
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
