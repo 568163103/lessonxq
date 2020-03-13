@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mingsoft.nvssauthor.mapper.PlatformResMapper">
+  <resultMap id="BaseResultMap" type="com.mingsoft.nvssauthor.domain.PlatformRes">
+    <!--@mbg.generated-->
+    <!--@Table platform_res-->
+    <id column="id" jdbcType="CHAR" property="id" />
+    <result column="name" jdbcType="CHAR" property="name" />
+    <result column="parent_id" jdbcType="CHAR" property="parentId" />
+    <result column="server_id" jdbcType="CHAR" property="serverId" />
+    <result column="subnum" jdbcType="INTEGER" property="subnum" />
+    <result column="has_ptz" jdbcType="INTEGER" property="hasPtz" />
+    <result column="codec" jdbcType="INTEGER" property="codec" />
+    <result column="longitude" jdbcType="DOUBLE" property="longitude" />
+    <result column="latitude" jdbcType="DOUBLE" property="latitude" />
+    <result column="status" jdbcType="BOOLEAN" property="status" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="location" jdbcType="VARCHAR" property="location" />
+    <result column="purpose" jdbcType="VARCHAR" property="purpose" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, `name`, parent_id, server_id, subnum, has_ptz, codec, longitude, latitude, `status`, 
+    description, `location`, purpose
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from platform_res
+    where id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from platform_res
+    where id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.mingsoft.nvssauthor.domain.PlatformRes">
+    <!--@mbg.generated-->
+    insert into platform_res (id, `name`, parent_id, server_id, 
+      subnum, has_ptz, codec, 
+      longitude, latitude, `status`, 
+      description, `location`, purpose
+      )
+    values (#{id,jdbcType=CHAR}, #{name,jdbcType=CHAR}, #{parentId,jdbcType=CHAR}, #{serverId,jdbcType=CHAR}, 
+      #{subnum,jdbcType=INTEGER}, #{hasPtz,jdbcType=INTEGER}, #{codec,jdbcType=INTEGER}, 
+      #{longitude,jdbcType=DOUBLE}, #{latitude,jdbcType=DOUBLE}, #{status,jdbcType=BOOLEAN}, 
+      #{description,jdbcType=VARCHAR}, #{location,jdbcType=VARCHAR}, #{purpose,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.mingsoft.nvssauthor.domain.PlatformRes">
+    <!--@mbg.generated-->
+    insert into platform_res
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="parentId != null">
+        parent_id,
+      </if>
+      <if test="serverId != null">
+        server_id,
+      </if>
+      <if test="subnum != null">
+        subnum,
+      </if>
+      <if test="hasPtz != null">
+        has_ptz,
+      </if>
+      <if test="codec != null">
+        codec,
+      </if>
+      <if test="longitude != null">
+        longitude,
+      </if>
+      <if test="latitude != null">
+        latitude,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="location != null">
+        `location`,
+      </if>
+      <if test="purpose != null">
+        purpose,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=CHAR},
+      </if>
+      <if test="parentId != null">
+        #{parentId,jdbcType=CHAR},
+      </if>
+      <if test="serverId != null">
+        #{serverId,jdbcType=CHAR},
+      </if>
+      <if test="subnum != null">
+        #{subnum,jdbcType=INTEGER},
+      </if>
+      <if test="hasPtz != null">
+        #{hasPtz,jdbcType=INTEGER},
+      </if>
+      <if test="codec != null">
+        #{codec,jdbcType=INTEGER},
+      </if>
+      <if test="longitude != null">
+        #{longitude,jdbcType=DOUBLE},
+      </if>
+      <if test="latitude != null">
+        #{latitude,jdbcType=DOUBLE},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=BOOLEAN},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="location != null">
+        #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="purpose != null">
+        #{purpose,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mingsoft.nvssauthor.domain.PlatformRes">
+    <!--@mbg.generated-->
+    update platform_res
+    <set>
+      <if test="name != null">
+        `name` = #{name,jdbcType=CHAR},
+      </if>
+      <if test="parentId != null">
+        parent_id = #{parentId,jdbcType=CHAR},
+      </if>
+      <if test="serverId != null">
+        server_id = #{serverId,jdbcType=CHAR},
+      </if>
+      <if test="subnum != null">
+        subnum = #{subnum,jdbcType=INTEGER},
+      </if>
+      <if test="hasPtz != null">
+        has_ptz = #{hasPtz,jdbcType=INTEGER},
+      </if>
+      <if test="codec != null">
+        codec = #{codec,jdbcType=INTEGER},
+      </if>
+      <if test="longitude != null">
+        longitude = #{longitude,jdbcType=DOUBLE},
+      </if>
+      <if test="latitude != null">
+        latitude = #{latitude,jdbcType=DOUBLE},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=BOOLEAN},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="location != null">
+        `location` = #{location,jdbcType=VARCHAR},
+      </if>
+      <if test="purpose != null">
+        purpose = #{purpose,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mingsoft.nvssauthor.domain.PlatformRes">
+    <!--@mbg.generated-->
+    update platform_res
+    set `name` = #{name,jdbcType=CHAR},
+      parent_id = #{parentId,jdbcType=CHAR},
+      server_id = #{serverId,jdbcType=CHAR},
+      subnum = #{subnum,jdbcType=INTEGER},
+      has_ptz = #{hasPtz,jdbcType=INTEGER},
+      codec = #{codec,jdbcType=INTEGER},
+      longitude = #{longitude,jdbcType=DOUBLE},
+      latitude = #{latitude,jdbcType=DOUBLE},
+      `status` = #{status,jdbcType=BOOLEAN},
+      description = #{description,jdbcType=VARCHAR},
+      `location` = #{location,jdbcType=VARCHAR},
+      purpose = #{purpose,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=CHAR}
+  </update>
+</mapper>

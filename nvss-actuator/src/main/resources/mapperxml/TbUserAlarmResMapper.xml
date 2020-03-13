@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mingsoft.nvssauthor.mapper.TbUserAlarmResMapper">
+  <resultMap id="BaseResultMap" type="com.mingsoft.nvssauthor.domain.TbUserAlarmRes">
+    <!--@mbg.generated-->
+    <!--@Table tb_user_alarm_res-->
+    <id column="user_id" jdbcType="CHAR" property="userId" />
+    <id column="alarm_res_id" jdbcType="INTEGER" property="alarmResId" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    <!--@mbg.generated-->
+    delete from tb_user_alarm_res
+    where user_id = #{userId,jdbcType=CHAR}
+      and alarm_res_id = #{alarmResId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mingsoft.nvssauthor.domain.TbUserAlarmRes">
+    <!--@mbg.generated-->
+    insert into tb_user_alarm_res (user_id, alarm_res_id)
+    values (#{userId,jdbcType=CHAR}, #{alarmResId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mingsoft.nvssauthor.domain.TbUserAlarmRes">
+    <!--@mbg.generated-->
+    insert into tb_user_alarm_res
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        user_id,
+      </if>
+      <if test="alarmResId != null">
+        alarm_res_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userId != null">
+        #{userId,jdbcType=CHAR},
+      </if>
+      <if test="alarmResId != null">
+        #{alarmResId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

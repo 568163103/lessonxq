@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mingsoft.nvssauthor.mapper.TerminalMapper">
+  <resultMap id="BaseResultMap" type="com.mingsoft.nvssauthor.domain.Terminal">
+    <!--@mbg.generated-->
+    <!--@Table terminal-->
+    <id column="id" jdbcType="CHAR" property="id" />
+    <result column="name" jdbcType="CHAR" property="name" />
+    <result column="enabled" jdbcType="BOOLEAN" property="enabled" />
+    <result column="ip" jdbcType="CHAR" property="ip" />
+    <result column="address" jdbcType="CHAR" property="address" />
+    <result column="unlock_key" jdbcType="CHAR" property="unlockKey" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, `name`, enabled, ip, address, unlock_key, description
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from terminal
+    where id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from terminal
+    where id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.mingsoft.nvssauthor.domain.Terminal">
+    <!--@mbg.generated-->
+    insert into terminal (id, `name`, enabled, 
+      ip, address, unlock_key, description
+      )
+    values (#{id,jdbcType=CHAR}, #{name,jdbcType=CHAR}, #{enabled,jdbcType=BOOLEAN}, 
+      #{ip,jdbcType=CHAR}, #{address,jdbcType=CHAR}, #{unlockKey,jdbcType=CHAR}, #{description,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.mingsoft.nvssauthor.domain.Terminal">
+    <!--@mbg.generated-->
+    insert into terminal
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="enabled != null">
+        enabled,
+      </if>
+      <if test="ip != null">
+        ip,
+      </if>
+      <if test="address != null">
+        address,
+      </if>
+      <if test="unlockKey != null">
+        unlock_key,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=CHAR},
+      </if>
+      <if test="enabled != null">
+        #{enabled,jdbcType=BOOLEAN},
+      </if>
+      <if test="ip != null">
+        #{ip,jdbcType=CHAR},
+      </if>
+      <if test="address != null">
+        #{address,jdbcType=CHAR},
+      </if>
+      <if test="unlockKey != null">
+        #{unlockKey,jdbcType=CHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mingsoft.nvssauthor.domain.Terminal">
+    <!--@mbg.generated-->
+    update terminal
+    <set>
+      <if test="name != null">
+        `name` = #{name,jdbcType=CHAR},
+      </if>
+      <if test="enabled != null">
+        enabled = #{enabled,jdbcType=BOOLEAN},
+      </if>
+      <if test="ip != null">
+        ip = #{ip,jdbcType=CHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=CHAR},
+      </if>
+      <if test="unlockKey != null">
+        unlock_key = #{unlockKey,jdbcType=CHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mingsoft.nvssauthor.domain.Terminal">
+    <!--@mbg.generated-->
+    update terminal
+    set `name` = #{name,jdbcType=CHAR},
+      enabled = #{enabled,jdbcType=BOOLEAN},
+      ip = #{ip,jdbcType=CHAR},
+      address = #{address,jdbcType=CHAR},
+      unlock_key = #{unlockKey,jdbcType=CHAR},
+      description = #{description,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=CHAR}
+  </update>
+</mapper>

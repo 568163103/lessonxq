@@ -1,0 +1,439 @@
+/**common**/
+html,
+body {
+    -webkit-text-size-adjust: none;
+}
+body{
+  min-width: 1200px;
+}
+blockquote,
+body,
+button,
+dd,
+dl,
+dt,
+fieldset,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+input,
+legend,
+li,
+ol,
+p,
+pre,
+td,
+textarea,
+th,
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+body,
+button,
+input,
+select,
+textarea {
+    font: 12px/1.5 "Microsoft YaHei", tahoma, arial, 'Hiragino Sans GB';
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: 100%;
+}
+
+address,
+cite,
+dfn,
+em,
+var,
+i {
+    font-style: normal;
+}
+
+small {
+    font-size: 12px;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+img {
+    border: 0;
+    vertical-align: middle;
+}
+
+input {
+    outline: none;
+}
+
+a {
+    color: #666;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #25a8ff;
+    text-decoration: none;
+}
+
+sup {
+    vertical-align: text-top;
+}
+
+sub {
+    vertical-align: text-bottom;
+}
+
+legend {
+    color: #000;
+}
+
+fieldset,
+img {
+    border: 0;
+}
+
+button,
+input,
+select,
+textarea {
+    font-size: 100%;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+.table{
+  width: 100%;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.al {
+    text-align: left;
+}
+
+.ac {
+    text-align: center;
+}
+
+.ar {
+    text-align: right;
+}
+
+.hide {
+    display: none;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+.clearfix:after {
+    content: '\20';
+    display: block;
+    height: 0;
+    clear: both;
+}
+
+
+/**图标**/
+.ico{
+  display: inline-block;
+  background: url(../images/ico.png) no-repeat;
+}
+.ico-1{
+  width: 26px;
+  height: 24px;
+  background-position: 0 0;
+  vertical-align: -6px;
+}
+.ico-2{
+  width: 26px;
+  height: 24px;
+  background-position: 0 -24px;
+  vertical-align: -6px;
+}
+.ico-3{
+  width: 26px;
+  height: 24px;
+  background-position: 0 -48px;
+  vertical-align: -6px;
+}
+.ico-4{
+  width: 26px;
+  height: 24px;
+  background-position: 0 -72px;
+  vertical-align: -6px;
+}
+.ico-5{
+  width: 26px;
+  height: 24px;
+  background-position: 0 -96px;
+  vertical-align: -6px;
+}
+.ico-6{
+  width: 26px;
+  height: 24px;
+  background-position: 0 -120px;
+  vertical-align: -6px;
+}
+.ico-7{
+  width: 26px;
+  height: 24px;
+  background-position: 0 -144px;
+  vertical-align: -6px;
+}
+.ico-8{
+  width: 26px;
+  height: 24px;
+  background-position: 0 -168px;
+  vertical-align: -6px;
+}
+
+
+/**背景**/
+.page-sidebar-fixed{
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background: #083e64 url(../images/bg.png) no-repeat;
+}
+
+.header{
+  width: 100%;
+  height: 66px;
+  height: 66px;
+  line-height: 66px;
+  color: #999;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+}
+.header-bg{
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 5;
+  width: 100%;
+  height: 100%;
+  background: #11619e;
+  opacity: .49; 
+  filter: alpha(opacity=49); 
+}
+.header-con{
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 10;
+  width: 100%;
+  height: 100%;
+  line-height: 66px;
+}
+.header-tit{
+  font-size: 24px;
+  color: #fff;
+  text-align: center;
+}
+
+
+.header-ctrl{
+  position: absolute;
+  right: 30px;
+  top: 0;
+  height: 66px;
+}
+.header-ctrl > div{
+  float: left;
+}
+.ctrl-user{
+  color: #fff;
+  font-size: 14px;
+  margin-right: 30px;
+}
+.ctrl-user img{
+  width: 34px;
+  height: 34px;
+  margin-right: 5px;
+}
+.ctrl-out{
+  font-size: 14px;
+  color: #ff5151;
+  cursor: pointer;
+}
+
+
+.page-sidebar-wrap {
+  width: 183px;
+  padding-right: 10px;
+  position: relative;
+}
+.page-sidebar-fixed .page-sidebar-wrap {
+  position: fixed;
+  left: 0;
+  top: 66px;
+  z-index: 777;
+}
+.page-sidebar {
+  background: url(../images/sidebar-bg.png);
+}
+.page-sidebar > ul > li {
+  font-size: 16px;
+  color: #fff;
+  line-height: 40px;
+  position: relative;
+}
+.page-sidebar > ul > li.current > a{
+  color: #f34541;
+}
+.page-sidebar > ul > li > a {
+  color: #666;
+  padding-left: 50px;
+  display: block;
+  height: 40px;
+  color: #fff;
+}
+.page-sidebar > ul > li > a i.ico {
+  position: absolute;
+  left: 15px;
+  top: 10px;
+}
+.page-sidebar > ul > li > a .nav-arrow {
+  background: url(../images/ico.png) no-repeat;
+  position: absolute;
+  right: 15px;
+  top: 16px;
+  height: 11px;
+  width: 7px;
+  background-position: -46px 0;
+}
+.page-sidebar > ul > li.open .sub-menu {
+  display: block;
+}
+.page-sidebar > ul > li.open .nav-arrow {
+  width: 11px;
+  height: 7px;
+  background-position: -58px 0;
+}
+.page-sidebar .sub-menu {
+  display: none;
+}
+.page-sidebar .sub-menu.open {
+  display: block;
+}
+.page-sidebar .sub-menu li {
+  line-height: 40px;
+}
+.page-sidebar .sub-menu li a {
+  display: block;
+  padding-left: 50px;
+  color: #fff;
+  font-size: 14px;
+}
+.page-sidebar .sub-menu li a:hover,
+.page-sidebar .sub-menu li.current a{
+  color: #fff;
+}
+
+.page-content-wrap {
+  margin-left: 183px;
+}
+.page-content {
+  position: absolute;
+  left: 183px;
+  top: 66px;
+  right: 0px;
+  bottom: 0px;
+  overflow: hidden;
+}
+.page-iframe {
+  width: 100%;
+}
+
+
+
+
+/*
+ * webkit-scroll
+ * 2016-04-01 11:29:56
+ */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+::-webkit-scrollbar-button {
+  width: 0;
+  height: 0;
+}
+::-webkit-scrollbar-button:start:increment,
+::-webkit-scrollbar-button:end:decrement {
+  display: none;
+}
+::-webkit-scrollbar-corner {
+  display: block;
+}
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.2);
+}
+::-webkit-scrollbar-thumb:hover {
+  -webkit-border-radius: 8px;
+  border-radius: 8px;
+  background-color: rgba(0, 0, 0, 0.5);
+}
+::-webkit-scrollbar-track,
+::-webkit-scrollbar-thumb {
+  border-right: 1px solid transparent;
+  border-left: 1px solid transparent;
+}
+::-webkit-scrollbar-track:hover {
+  background-color: rgba(0, 0, 0, 0.15);
+}
+::-webkit-scrollbar-button:start {
+  width: 10px;
+  height: 10px;
+  background: url("../images/scrollbar_arrow.png") no-repeat 0 0;
+}
+::-webkit-scrollbar-button:start:hover {
+  background: url("../images/scrollbar_arrow.png") no-repeat -15px 0;
+}
+::-webkit-scrollbar-button:start:active {
+  background: url("../images/scrollbar_arrow.png") no-repeat -30px 0;
+}
+::-webkit-scrollbar-button:end {
+  width: 10px;
+  height: 10px;
+  background: url("../images/scrollbar_arrow.png") no-repeat 0 -18px;
+}
+::-webkit-scrollbar-button:end:hover {
+  background: url("../images/scrollbar_arrow.png") no-repeat -15px -18px;
+}
+::-webkit-scrollbar-button:end:active {
+  background: url("../images/scrollbar_arrow.png") no-repeat -30px -18px;
+}

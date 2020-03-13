@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mingsoft.nvssauthor.mapper.ChannelSnapshotMapper">
+  <resultMap id="BaseResultMap" type="com.mingsoft.nvssauthor.domain.ChannelSnapshot">
+    <!--@mbg.generated-->
+    <!--@Table channel_snapshot-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="ot_id" jdbcType="VARCHAR" property="otId" />
+    <result column="res_id" jdbcType="CHAR" property="resId" />
+    <result column="event_type" jdbcType="CHAR" property="eventType" />
+    <result column="create_time" jdbcType="CHAR" property="createTime" />
+    <result column="url" jdbcType="CHAR" property="url" />
+    <result column="upload_time" jdbcType="TIMESTAMP" property="uploadTime" />
+    <result column="remark" jdbcType="LONGVARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, ot_id, res_id, event_type, create_time, url, upload_time, remark
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from channel_snapshot
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from channel_snapshot
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.mingsoft.nvssauthor.domain.ChannelSnapshot" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into channel_snapshot (ot_id, res_id, event_type, 
+      create_time, url, upload_time, 
+      remark)
+    values (#{otId,jdbcType=VARCHAR}, #{resId,jdbcType=CHAR}, #{eventType,jdbcType=CHAR}, 
+      #{createTime,jdbcType=CHAR}, #{url,jdbcType=CHAR}, #{uploadTime,jdbcType=TIMESTAMP}, 
+      #{remark,jdbcType=LONGVARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.mingsoft.nvssauthor.domain.ChannelSnapshot" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into channel_snapshot
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="otId != null">
+        ot_id,
+      </if>
+      <if test="resId != null">
+        res_id,
+      </if>
+      <if test="eventType != null">
+        event_type,
+      </if>
+      <if test="createTime != null">
+        create_time,
+      </if>
+      <if test="url != null">
+        url,
+      </if>
+      <if test="uploadTime != null">
+        upload_time,
+      </if>
+      <if test="remark != null">
+        remark,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="otId != null">
+        #{otId,jdbcType=VARCHAR},
+      </if>
+      <if test="resId != null">
+        #{resId,jdbcType=CHAR},
+      </if>
+      <if test="eventType != null">
+        #{eventType,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null">
+        #{createTime,jdbcType=CHAR},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=CHAR},
+      </if>
+      <if test="uploadTime != null">
+        #{uploadTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mingsoft.nvssauthor.domain.ChannelSnapshot">
+    <!--@mbg.generated-->
+    update channel_snapshot
+    <set>
+      <if test="otId != null">
+        ot_id = #{otId,jdbcType=VARCHAR},
+      </if>
+      <if test="resId != null">
+        res_id = #{resId,jdbcType=CHAR},
+      </if>
+      <if test="eventType != null">
+        event_type = #{eventType,jdbcType=CHAR},
+      </if>
+      <if test="createTime != null">
+        create_time = #{createTime,jdbcType=CHAR},
+      </if>
+      <if test="url != null">
+        url = #{url,jdbcType=CHAR},
+      </if>
+      <if test="uploadTime != null">
+        upload_time = #{uploadTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="remark != null">
+        remark = #{remark,jdbcType=LONGVARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mingsoft.nvssauthor.domain.ChannelSnapshot">
+    <!--@mbg.generated-->
+    update channel_snapshot
+    set ot_id = #{otId,jdbcType=VARCHAR},
+      res_id = #{resId,jdbcType=CHAR},
+      event_type = #{eventType,jdbcType=CHAR},
+      create_time = #{createTime,jdbcType=CHAR},
+      url = #{url,jdbcType=CHAR},
+      upload_time = #{uploadTime,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=LONGVARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

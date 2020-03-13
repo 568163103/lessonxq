@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mingsoft.nvssauthor.mapper.DuMapper">
+  <resultMap id="BaseResultMap" type="com.mingsoft.nvssauthor.domain.Du">
+    <!--@mbg.generated-->
+    <!--@Table du-->
+    <id column="id" jdbcType="CHAR" property="id" />
+    <result column="name" jdbcType="CHAR" property="name" />
+    <result column="enabled" jdbcType="BOOLEAN" property="enabled" />
+    <result column="model" jdbcType="CHAR" property="model" />
+    <result column="ip" jdbcType="CHAR" property="ip" />
+    <result column="port" jdbcType="SMALLINT" property="port" />
+    <result column="username" jdbcType="CHAR" property="username" />
+    <result column="password" jdbcType="CHAR" property="password" />
+    <result column="channel_count" jdbcType="INTEGER" property="channelCount" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+    <result column="status" jdbcType="BOOLEAN" property="status" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, `name`, enabled, model, ip, port, username, `password`, channel_count, description, 
+    `status`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from du
+    where id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from du
+    where id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.mingsoft.nvssauthor.domain.Du">
+    <!--@mbg.generated-->
+    insert into du (id, `name`, enabled, 
+      model, ip, port, username, 
+      `password`, channel_count, description, 
+      `status`)
+    values (#{id,jdbcType=CHAR}, #{name,jdbcType=CHAR}, #{enabled,jdbcType=BOOLEAN}, 
+      #{model,jdbcType=CHAR}, #{ip,jdbcType=CHAR}, #{port,jdbcType=SMALLINT}, #{username,jdbcType=CHAR}, 
+      #{password,jdbcType=CHAR}, #{channelCount,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR}, 
+      #{status,jdbcType=BOOLEAN})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mingsoft.nvssauthor.domain.Du">
+    <!--@mbg.generated-->
+    insert into du
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="enabled != null">
+        enabled,
+      </if>
+      <if test="model != null">
+        model,
+      </if>
+      <if test="ip != null">
+        ip,
+      </if>
+      <if test="port != null">
+        port,
+      </if>
+      <if test="username != null">
+        username,
+      </if>
+      <if test="password != null">
+        `password`,
+      </if>
+      <if test="channelCount != null">
+        channel_count,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=CHAR},
+      </if>
+      <if test="enabled != null">
+        #{enabled,jdbcType=BOOLEAN},
+      </if>
+      <if test="model != null">
+        #{model,jdbcType=CHAR},
+      </if>
+      <if test="ip != null">
+        #{ip,jdbcType=CHAR},
+      </if>
+      <if test="port != null">
+        #{port,jdbcType=SMALLINT},
+      </if>
+      <if test="username != null">
+        #{username,jdbcType=CHAR},
+      </if>
+      <if test="password != null">
+        #{password,jdbcType=CHAR},
+      </if>
+      <if test="channelCount != null">
+        #{channelCount,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=BOOLEAN},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mingsoft.nvssauthor.domain.Du">
+    <!--@mbg.generated-->
+    update du
+    <set>
+      <if test="name != null">
+        `name` = #{name,jdbcType=CHAR},
+      </if>
+      <if test="enabled != null">
+        enabled = #{enabled,jdbcType=BOOLEAN},
+      </if>
+      <if test="model != null">
+        model = #{model,jdbcType=CHAR},
+      </if>
+      <if test="ip != null">
+        ip = #{ip,jdbcType=CHAR},
+      </if>
+      <if test="port != null">
+        port = #{port,jdbcType=SMALLINT},
+      </if>
+      <if test="username != null">
+        username = #{username,jdbcType=CHAR},
+      </if>
+      <if test="password != null">
+        `password` = #{password,jdbcType=CHAR},
+      </if>
+      <if test="channelCount != null">
+        channel_count = #{channelCount,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=BOOLEAN},
+      </if>
+    </set>
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mingsoft.nvssauthor.domain.Du">
+    <!--@mbg.generated-->
+    update du
+    set `name` = #{name,jdbcType=CHAR},
+      enabled = #{enabled,jdbcType=BOOLEAN},
+      model = #{model,jdbcType=CHAR},
+      ip = #{ip,jdbcType=CHAR},
+      port = #{port,jdbcType=SMALLINT},
+      username = #{username,jdbcType=CHAR},
+      `password` = #{password,jdbcType=CHAR},
+      channel_count = #{channelCount,jdbcType=INTEGER},
+      description = #{description,jdbcType=VARCHAR},
+      `status` = #{status,jdbcType=BOOLEAN}
+    where id = #{id,jdbcType=CHAR}
+  </update>
+</mapper>

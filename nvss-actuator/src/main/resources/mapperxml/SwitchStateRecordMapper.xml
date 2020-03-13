@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mingsoft.nvssauthor.mapper.SwitchStateRecordMapper">
+  <resultMap id="BaseResultMap" type="com.mingsoft.nvssauthor.domain.SwitchStateRecord">
+    <!--@mbg.generated-->
+    <!--@Table switch_state_record-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="switchid" jdbcType="CHAR" property="switchid" />
+    <result column="memory" jdbcType="VARCHAR" property="memory" />
+    <result column="cpu" jdbcType="VARCHAR" property="cpu" />
+    <result column="portNum" jdbcType="VARCHAR" property="portnum" />
+    <result column="recordTime" jdbcType="VARCHAR" property="recordtime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, switchid, memory, cpu, portNum, recordTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from switch_state_record
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from switch_state_record
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.mingsoft.nvssauthor.domain.SwitchStateRecord" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into switch_state_record (switchid, memory, cpu, 
+      portNum, recordTime)
+    values (#{switchid,jdbcType=CHAR}, #{memory,jdbcType=VARCHAR}, #{cpu,jdbcType=VARCHAR}, 
+      #{portnum,jdbcType=VARCHAR}, #{recordtime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.mingsoft.nvssauthor.domain.SwitchStateRecord" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into switch_state_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="switchid != null">
+        switchid,
+      </if>
+      <if test="memory != null">
+        memory,
+      </if>
+      <if test="cpu != null">
+        cpu,
+      </if>
+      <if test="portnum != null">
+        portNum,
+      </if>
+      <if test="recordtime != null">
+        recordTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="switchid != null">
+        #{switchid,jdbcType=CHAR},
+      </if>
+      <if test="memory != null">
+        #{memory,jdbcType=VARCHAR},
+      </if>
+      <if test="cpu != null">
+        #{cpu,jdbcType=VARCHAR},
+      </if>
+      <if test="portnum != null">
+        #{portnum,jdbcType=VARCHAR},
+      </if>
+      <if test="recordtime != null">
+        #{recordtime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mingsoft.nvssauthor.domain.SwitchStateRecord">
+    <!--@mbg.generated-->
+    update switch_state_record
+    <set>
+      <if test="switchid != null">
+        switchid = #{switchid,jdbcType=CHAR},
+      </if>
+      <if test="memory != null">
+        memory = #{memory,jdbcType=VARCHAR},
+      </if>
+      <if test="cpu != null">
+        cpu = #{cpu,jdbcType=VARCHAR},
+      </if>
+      <if test="portnum != null">
+        portNum = #{portnum,jdbcType=VARCHAR},
+      </if>
+      <if test="recordtime != null">
+        recordTime = #{recordtime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mingsoft.nvssauthor.domain.SwitchStateRecord">
+    <!--@mbg.generated-->
+    update switch_state_record
+    set switchid = #{switchid,jdbcType=CHAR},
+      memory = #{memory,jdbcType=VARCHAR},
+      cpu = #{cpu,jdbcType=VARCHAR},
+      portNum = #{portnum,jdbcType=VARCHAR},
+      recordTime = #{recordtime,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

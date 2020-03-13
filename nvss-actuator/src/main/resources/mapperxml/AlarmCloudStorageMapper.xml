@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mingsoft.nvssauthor.mapper.AlarmCloudStorageMapper">
+  <resultMap id="BaseResultMap" type="com.mingsoft.nvssauthor.domain.AlarmCloudStorage">
+    <!--@mbg.generated-->
+    <!--@Table alarm_cloud_storage-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="type" jdbcType="VARCHAR" property="type" />
+    <result column="level" jdbcType="INTEGER" property="level" />
+    <result column="current_time" jdbcType="VARCHAR" property="currentTime" />
+    <result column="content" jdbcType="VARCHAR" property="content" />
+    <result column="ip" jdbcType="VARCHAR" property="ip" />
+    <result column="spare1" jdbcType="VARCHAR" property="spare1" />
+    <result column="spare2" jdbcType="VARCHAR" property="spare2" />
+    <result column="spare3" jdbcType="VARCHAR" property="spare3" />
+    <result column="spare4" jdbcType="VARCHAR" property="spare4" />
+    <result column="spare5" jdbcType="VARCHAR" property="spare5" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, `type`, `level`, `current_time`, content, ip, spare1, spare2, spare3, spare4, 
+    spare5
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from alarm_cloud_storage
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from alarm_cloud_storage
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.mingsoft.nvssauthor.domain.AlarmCloudStorage" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into alarm_cloud_storage (`type`, `level`, `current_time`, 
+      content, ip, spare1, 
+      spare2, spare3, spare4, 
+      spare5)
+    values (#{type,jdbcType=VARCHAR}, #{level,jdbcType=INTEGER}, #{currentTime,jdbcType=VARCHAR}, 
+      #{content,jdbcType=VARCHAR}, #{ip,jdbcType=VARCHAR}, #{spare1,jdbcType=VARCHAR}, 
+      #{spare2,jdbcType=VARCHAR}, #{spare3,jdbcType=VARCHAR}, #{spare4,jdbcType=VARCHAR}, 
+      #{spare5,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.mingsoft.nvssauthor.domain.AlarmCloudStorage" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into alarm_cloud_storage
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="type != null">
+        `type`,
+      </if>
+      <if test="level != null">
+        `level`,
+      </if>
+      <if test="currentTime != null">
+        `current_time`,
+      </if>
+      <if test="content != null">
+        content,
+      </if>
+      <if test="ip != null">
+        ip,
+      </if>
+      <if test="spare1 != null">
+        spare1,
+      </if>
+      <if test="spare2 != null">
+        spare2,
+      </if>
+      <if test="spare3 != null">
+        spare3,
+      </if>
+      <if test="spare4 != null">
+        spare4,
+      </if>
+      <if test="spare5 != null">
+        spare5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="type != null">
+        #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null">
+        #{level,jdbcType=INTEGER},
+      </if>
+      <if test="currentTime != null">
+        #{currentTime,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null">
+        #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="spare1 != null">
+        #{spare1,jdbcType=VARCHAR},
+      </if>
+      <if test="spare2 != null">
+        #{spare2,jdbcType=VARCHAR},
+      </if>
+      <if test="spare3 != null">
+        #{spare3,jdbcType=VARCHAR},
+      </if>
+      <if test="spare4 != null">
+        #{spare4,jdbcType=VARCHAR},
+      </if>
+      <if test="spare5 != null">
+        #{spare5,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mingsoft.nvssauthor.domain.AlarmCloudStorage">
+    <!--@mbg.generated-->
+    update alarm_cloud_storage
+    <set>
+      <if test="type != null">
+        `type` = #{type,jdbcType=VARCHAR},
+      </if>
+      <if test="level != null">
+        `level` = #{level,jdbcType=INTEGER},
+      </if>
+      <if test="currentTime != null">
+        `current_time` = #{currentTime,jdbcType=VARCHAR},
+      </if>
+      <if test="content != null">
+        content = #{content,jdbcType=VARCHAR},
+      </if>
+      <if test="ip != null">
+        ip = #{ip,jdbcType=VARCHAR},
+      </if>
+      <if test="spare1 != null">
+        spare1 = #{spare1,jdbcType=VARCHAR},
+      </if>
+      <if test="spare2 != null">
+        spare2 = #{spare2,jdbcType=VARCHAR},
+      </if>
+      <if test="spare3 != null">
+        spare3 = #{spare3,jdbcType=VARCHAR},
+      </if>
+      <if test="spare4 != null">
+        spare4 = #{spare4,jdbcType=VARCHAR},
+      </if>
+      <if test="spare5 != null">
+        spare5 = #{spare5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mingsoft.nvssauthor.domain.AlarmCloudStorage">
+    <!--@mbg.generated-->
+    update alarm_cloud_storage
+    set `type` = #{type,jdbcType=VARCHAR},
+      `level` = #{level,jdbcType=INTEGER},
+      `current_time` = #{currentTime,jdbcType=VARCHAR},
+      content = #{content,jdbcType=VARCHAR},
+      ip = #{ip,jdbcType=VARCHAR},
+      spare1 = #{spare1,jdbcType=VARCHAR},
+      spare2 = #{spare2,jdbcType=VARCHAR},
+      spare3 = #{spare3,jdbcType=VARCHAR},
+      spare4 = #{spare4,jdbcType=VARCHAR},
+      spare5 = #{spare5,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <select id="findNewAlarmInfo" resultMap="BaseResultMap">
+    select a.id,a.ip,a.type,a.level,a.content,a.current_time
+    from alarm_cloud_storage a order by a.id desc LIMIT 0,6
+  </select>
+</mapper>

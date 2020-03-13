@@ -1,0 +1,363 @@
+/**common**/
+html,
+body {
+    -webkit-text-size-adjust: none;
+}
+
+blockquote,
+body,
+button,
+dd,
+dl,
+dt,
+fieldset,
+form,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+hr,
+input,
+legend,
+li,
+ol,
+p,
+pre,
+td,
+textarea,
+th,
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+body,
+button,
+input,
+select,
+textarea {
+    font: 12px/1.5 "Microsoft YaHei", tahoma, arial, 'Hiragino Sans GB';
+}
+
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-size: 100%;
+}
+
+address,
+cite,
+dfn,
+em,
+var,
+i {
+    font-style: normal;
+}
+
+small {
+    font-size: 12px;
+}
+
+ol,
+ul {
+    list-style: none;
+}
+
+img {
+    border: 0;
+    vertical-align: middle;
+}
+
+input {
+    outline: none;
+}
+
+a {
+    color: #666;
+    text-decoration: none;
+}
+
+a:hover {
+    color: #25a8ff;
+    text-decoration: none;
+}
+
+sup {
+    vertical-align: text-top;
+}
+
+sub {
+    vertical-align: text-bottom;
+}
+
+legend {
+    color: #000;
+}
+
+fieldset,
+img {
+    border: 0;
+}
+
+button,
+input,
+select,
+textarea {
+    font-size: 100%;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+.table {
+    width: 100%;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.al {
+    text-align: left;
+}
+
+.ac {
+    text-align: center;
+}
+
+.ar {
+    text-align: right;
+}
+
+.hide {
+    display: none;
+}
+
+.clearfix {
+    *zoom: 1;
+}
+
+.clearfix:after {
+    content: '\20';
+    display: block;
+    height: 0;
+    clear: both;
+}
+
+
+* {
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+}
+
+
+
+body {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background: #083e64 url(../images/bg.png) no-repeat;
+    overflow: hidden;
+}
+
+
+.title {
+    height: 80px;
+    font-size: 34px;
+    text-align: center;
+    line-height: 80px;
+    color: #fff;
+}
+
+.wrap {
+    position: absolute;
+    top: 80px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    padding: 1% 2%;
+    overflow: hidden;
+}
+
+.content-left {
+    float: left;
+    width: 49%;
+    height: 100%;
+/*    margin-right: 1.5%;*/
+}
+
+.content>div {
+    padding: 10px 15px 15px;
+    height: 48%;
+    margin-bottom: 2%;
+    border: 1px solid rgba(255, 255, 255, .5);
+}
+
+.content>div:last-child {
+    margin-bottom: 0;
+}
+
+.leftbottom {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.leftbottom>div {
+    width: 33.3%;
+    text-align: center;
+    color: #fff;
+}
+
+.leftbottom-1 img {
+    width: 80px;
+    height: 50px;
+}
+
+.leftbottom-1 p {
+    margin-top: 5px;
+}
+
+
+
+.content-middle {
+    float: left;
+    width: 37%;
+    height: 100%;
+    margin-right: 1.5%;
+}
+
+.content-middle>div {
+    padding: 10px 15px 15px;
+    height: 47.45%;
+    margin-bottom: 3.5%;
+    border: 1px solid rgba(255, 255, 255, .5);
+}
+
+.content-middle>div:last-child {
+    margin-bottom: 0;
+}
+
+
+
+.content-right {
+    float: right;
+    height: 100%;
+    width: 49%;
+}
+
+
+.content-title {
+    font-size: 22px;
+    color: #fff;
+    margin-bottom: 15px;
+}
+
+.note {
+    text-align: center;
+    font-size: 14px;
+    color: #fff;
+    margin-top: -15px;
+}
+
+.note span {
+    padding: 0 5px;
+}
+
+.leftTopnote {
+    font-size: 14px;
+    color: #fff;
+}
+
+.chart-note>div {
+    float: left;
+    height: 100%;
+}
+
+.txtMarquee-top {
+    overflow: hidden;
+    position: relative;
+}
+
+
+.txtMarquee-top .hd .prev,
+.txtMarquee-top .hd .next {
+    display: block;
+    width: 9px;
+    height: 5px;
+    float: right;
+    margin-right: 5px;
+    margin-top: 10px;
+    overflow: hidden;
+    cursor: pointer;
+    background: url("../images/arrow.png") 0 -100px no-repeat;
+}
+
+.txtMarquee-top .hd .next {
+    background-position: 0 -140px;
+}
+
+.txtMarquee-top .hd .prevStop {
+    background-position: -60px -100px;
+}
+
+.txtMarquee-top .hd .nextStop {
+    background-position: -60px -140px;
+}
+
+.txtMarquee-top .bd {
+
+}
+
+.txtMarquee-top .infoList li {
+    height: 30px;
+    line-height: 30px;
+    color: red;
+    font-size: 14px;
+    overflow: hidden;
+    text-overflow:ellipsis;
+    white-space: nowrap;
+}
+
+.txtMarquee-top .infoList li .date {
+    float: right;
+    color: #999;
+}
+
+
+span.color1{
+    color: #4dd3b9;
+}
+span.color1 span.circle{
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #4dd3b9;
+    margin-right: 5px;
+}
+
+span.color2{
+    color: #fdd67f;
+}
+span.color2 span.circle{
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: #fdd67f;
+    margin-right: 5px;
+}

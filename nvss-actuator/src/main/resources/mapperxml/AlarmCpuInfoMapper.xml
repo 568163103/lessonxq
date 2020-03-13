@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mingsoft.nvssauthor.mapper.AlarmCpuInfoMapper">
+    <resultMap id="BaseResultMap" type="com.mingsoft.nvssauthor.domain.AlarmCpuInfo">
+        <!--@mbg.generated-->
+        <!--@Table alarm_cpu_info-->
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="cpu_temperature" jdbcType="VARCHAR" property="cpuTemperature"/>
+        <result column="cpu_usage" jdbcType="VARCHAR" property="cpuUsage"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, cpu_temperature, cpu_usage
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from alarm_cpu_info
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        <!--@mbg.generated-->
+        delete from alarm_cpu_info
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.mingsoft.nvssauthor.domain.AlarmCpuInfo"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into alarm_cpu_info (cpu_temperature, cpu_usage)
+        values (#{cpuTemperature,jdbcType=VARCHAR}, #{cpuUsage,jdbcType=VARCHAR})
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id"
+            parameterType="com.mingsoft.nvssauthor.domain.AlarmCpuInfo" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into alarm_cpu_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="cpuTemperature != null">
+                cpu_temperature,
+            </if>
+            <if test="cpuUsage != null">
+                cpu_usage,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="cpuTemperature != null">
+                #{cpuTemperature,jdbcType=VARCHAR},
+            </if>
+            <if test="cpuUsage != null">
+                #{cpuUsage,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.mingsoft.nvssauthor.domain.AlarmCpuInfo">
+        <!--@mbg.generated-->
+        update alarm_cpu_info
+        <set>
+            <if test="cpuTemperature != null">
+                cpu_temperature = #{cpuTemperature,jdbcType=VARCHAR},
+            </if>
+            <if test="cpuUsage != null">
+                cpu_usage = #{cpuUsage,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.mingsoft.nvssauthor.domain.AlarmCpuInfo">
+        <!--@mbg.generated-->
+        update alarm_cpu_info
+        set cpu_temperature = #{cpuTemperature,jdbcType=VARCHAR},
+        cpu_usage = #{cpuUsage,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+
+    <select id="findNewCpuInfo" resultMap="BaseResultMap">
+    select * from alarm_cpu_info ORDER BY id desc LIMIT 1;
+  </select>
+
+    <delete id="delAllCpuInfo">
+        delete from alarm_cpu_info;
+    </delete>
+</mapper>
