@@ -9,7 +9,7 @@
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.mingsoft</groupId>
-	<artifactId>nvss-actuatoractuator</artifactId>
+	<artifactId>nvss-actuator</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>nvss-actuator</name>
 	<description>Demo project for Spring Boot</description>
