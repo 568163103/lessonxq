@@ -4,7 +4,7 @@ import com.mingsoft.nvssauthor.constant.Constant;
 import com.mingsoft.nvssauthor.domain.Channel;
 import com.mingsoft.nvssauthor.domain.Encoder;
 import com.mingsoft.nvssauthor.service.ChannelService;
-import com.mingsoft.nvssauthor.tempentiry.ChannelStatistics;
+import com.mingsoft.nvssauthor.entiry.ChannelStatistics;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;

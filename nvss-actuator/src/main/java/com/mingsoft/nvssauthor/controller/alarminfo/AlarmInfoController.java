@@ -1,13 +1,16 @@
 package com.mingsoft.nvssauthor.controller.alarminfo;
 
+import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
 import com.mingsoft.nvssauthor.constant.Constant;
 import com.mingsoft.nvssauthor.domain.AlarmCloudStorage;
 import com.mingsoft.nvssauthor.domain.AlarmCpuInfo;
 import com.mingsoft.nvssauthor.domain.AlarmDiskInfo;
+import com.mingsoft.nvssauthor.domain.CpuMemoryInfo;
 import com.mingsoft.nvssauthor.mapper.AlarmCloudStorageMapper;
 import com.mingsoft.nvssauthor.mapper.AlarmCpuInfoMapper;
 import com.mingsoft.nvssauthor.mapper.AlarmDiskInfoMapper;
+import com.mingsoft.nvssauthor.service.ServerService;
 import com.mingsoft.nvssauthor.utils.SnmpUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.snmp4j.CommunityTarget;
@@ -38,6 +41,10 @@ public class AlarmInfoController {
     private AlarmCpuInfoMapper alarmCpuInfoMapper;
     @Autowired
     private AlarmDiskInfoMapper diskInfoMapper;
+    @Autowired
+    private RestTemplate restTemplate;
+    @Autowired
+    private ServerService serverService;
 
     @RequestMapping(value = "/alarmInfo", method = RequestMethod.POST)
     public void alarmInfo(@RequestParam(value = "ip", required = false) String ip,
@@ -224,21 +231,30 @@ public class AlarmInfoController {
     }
 
 
-    @RequestMapping(value = "getCpuTotal", method = RequestMethod.POST)
-    public JSONObject getCpuTotal() {
-//        Map<String, Object> result = new ConcurrentHashMap<>();
-//        StringBuffer sb = new StringBuffer();
-//        String str = "query=cpu";
-//        sb.append(str);
-//        String result=  HttpUtils.doPost("http://101.200.220.47:6666/api/query", sb.toString());
-        String url ="http://101.200.220.47:6666/api/query";
-        JSONObject postData = new JSONObject();
-        postData.put("query", "cpu");
-        RestTemplate client = new RestTemplate();
+    @RequestMapping(value = "getCpuTotalAndMemory", method = RequestMethod.POST)
+    public Map<String, Object> getCpuTotal() throws IOException {
+        Map<String, Object> result = new HashMap<>();
+        CpuMemoryInfo cpuMemoryInfo = serverService.getCpuAndMemoryInfo();
+        if (cpuMemoryInfo != null) {
+            result.put("code", 0);
+            result.put("cpu_memory_info", cpuMemoryInfo);
+        } else {
+            result.put("code", 1);
+        }
+        return result;
+    }
 
-        JSONObject jsonObject = client.postForEntity(url,postData,JSONObject.class).getBody();
-        System.out.println(jsonObject.toString());
-        return jsonObject;
+    @RequestMapping(value = "getServerInfo", method = RequestMethod.POST)
+    public String getServerInfo() {
+
+
+        return "ok";
+    }
+
+    private JSONObject getHttpJsonObject(String url, String param) {
+        url = url + param;
+        JSONObject serverJson = restTemplate.getForEntity(url, JSONObject.class).getBody();
+        return serverJson;
     }
 
 

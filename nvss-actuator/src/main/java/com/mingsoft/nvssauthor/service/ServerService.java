@@ -1,7 +1,10 @@
 package com.mingsoft.nvssauthor.service;
 
+import com.mingsoft.nvssauthor.domain.CpuMemoryInfo;
 import com.mingsoft.nvssauthor.domain.Server;
+import com.mingsoft.nvssauthor.domain.ServerStatusInfo;
 
+import java.text.ParseException;
 import java.util.List;
 
 /**
@@ -21,6 +24,10 @@ public interface ServerService {
      * @return
      */
       List<Server> findServerAndType();
+
+      List<ServerStatusInfo> initServerStatus() throws ParseException;
+
+      CpuMemoryInfo getCpuAndMemoryInfo();
 
 
 }

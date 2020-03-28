@@ -108,5 +108,39 @@ public class Constant {
      */
     public static final String CPU_TYPE_FS = "fs";
 
+    //===========微服务==========
+    /**
+     * web微服务
+     */
+    public static final String MicroService_WEB = "web";
+    /**
+     * 管理微服务
+     */
+    public static final String MicroService_CMS = "cms";
+    /**
+     * web微服务
+     */
+    public static final String MicroService_DMS = "dms";
+    /**
+     * 存储微服务
+     */
+    public static final String MicroService_MSS = "mss";
+    /**
+     * 调度微服务
+     */
+    public static final String MicroService_MASTER = "master";
+    /**
+     * 正在运行
+     */
+    public static final String RUNNING_LIST = "running_list";
+    /**
+     * 停止运行
+     */
+    public static final String TERMINATED_LIST ="terminated_list";
+    /**
+     * 等待运行
+     */
+    public static final String WAITING_LIST ="waiting_list";
+
 
 }

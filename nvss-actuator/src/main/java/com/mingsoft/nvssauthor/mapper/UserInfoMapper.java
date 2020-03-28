@@ -2,6 +2,9 @@ package com.mingsoft.nvssauthor.mapper;
 
 import com.mingsoft.nvssauthor.domain.UserInfo;
 
+import java.util.List;
+
+
 public interface UserInfoMapper {
     int deleteByPrimaryKey(String id);
 
@@ -14,4 +17,8 @@ public interface UserInfoMapper {
     int updateByPrimaryKeySelective(UserInfo record);
 
     int updateByPrimaryKey(UserInfo record);
+
+    List<UserInfo> userInfoAndUser();
+
+
 }

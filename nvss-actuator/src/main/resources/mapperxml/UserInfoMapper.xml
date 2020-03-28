@@ -1,257 +1,271 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.mingsoft.nvssauthor.mapper.UserInfoMapper">
-  <resultMap id="BaseResultMap" type="com.mingsoft.nvssauthor.domain.UserInfo">
-    <!--@mbg.generated-->
-    <!--@Table user_info-->
-    <id column="id" jdbcType="CHAR" property="id" />
-    <result column="alias" jdbcType="CHAR" property="alias" />
-    <result column="ptz_level" jdbcType="INTEGER" property="ptzLevel" />
-    <result column="av_level" jdbcType="INTEGER" property="avLevel" />
-    <result column="user_type" jdbcType="INTEGER" property="userType" />
-    <result column="active_begin_time" jdbcType="CHAR" property="activeBeginTime" />
-    <result column="active_end_time" jdbcType="CHAR" property="activeEndTime" />
-    <result column="phone" jdbcType="CHAR" property="phone" />
-    <result column="mail" jdbcType="CHAR" property="mail" />
-    <result column="last_login_time" jdbcType="CHAR" property="lastLoginTime" />
-    <result column="description" jdbcType="VARCHAR" property="description" />
-    <result column="status" jdbcType="BOOLEAN" property="status" />
-    <result column="tb_dept" jdbcType="CHAR" property="tbDept" />
-    <result column="user_level" jdbcType="INTEGER" property="userLevel" />
-    <result column="max_camera_num" jdbcType="INTEGER" property="maxCameraNum" />
-    <result column="ptz_lock_time" jdbcType="INTEGER" property="ptzLockTime" />
-    <result column="active_time" jdbcType="CHAR" property="activeTime" />
-    <result column="prohibited_status" jdbcType="INTEGER" property="prohibitedStatus" />
-  </resultMap>
-  <sql id="Base_Column_List">
-    <!--@mbg.generated-->
-    id, `alias`, ptz_level, av_level, user_type, active_begin_time, active_end_time, 
-    phone, mail, last_login_time, description, `status`, tb_dept, user_level, max_camera_num, 
-    ptz_lock_time, active_time, prohibited_status
-  </sql>
-  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
-    <!--@mbg.generated-->
-    select 
-    <include refid="Base_Column_List" />
-    from user_info
-    where id = #{id,jdbcType=CHAR}
-  </select>
-  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-    <!--@mbg.generated-->
-    delete from user_info
-    where id = #{id,jdbcType=CHAR}
-  </delete>
-  <insert id="insert" parameterType="com.mingsoft.nvssauthor.domain.UserInfo">
-    <!--@mbg.generated-->
-    insert into user_info (id, `alias`, ptz_level, 
-      av_level, user_type, active_begin_time, 
-      active_end_time, phone, mail, 
-      last_login_time, description, `status`, 
-      tb_dept, user_level, max_camera_num, 
-      ptz_lock_time, active_time, prohibited_status
-      )
-    values (#{id,jdbcType=CHAR}, #{alias,jdbcType=CHAR}, #{ptzLevel,jdbcType=INTEGER}, 
-      #{avLevel,jdbcType=INTEGER}, #{userType,jdbcType=INTEGER}, #{activeBeginTime,jdbcType=CHAR}, 
-      #{activeEndTime,jdbcType=CHAR}, #{phone,jdbcType=CHAR}, #{mail,jdbcType=CHAR}, 
-      #{lastLoginTime,jdbcType=CHAR}, #{description,jdbcType=VARCHAR}, #{status,jdbcType=BOOLEAN}, 
-      #{tbDept,jdbcType=CHAR}, #{userLevel,jdbcType=INTEGER}, #{maxCameraNum,jdbcType=INTEGER}, 
-      #{ptzLockTime,jdbcType=INTEGER}, #{activeTime,jdbcType=CHAR}, #{prohibitedStatus,jdbcType=INTEGER}
-      )
-  </insert>
-  <insert id="insertSelective" parameterType="com.mingsoft.nvssauthor.domain.UserInfo">
-    <!--@mbg.generated-->
-    insert into user_info
-    <trim prefix="(" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        id,
-      </if>
-      <if test="alias != null">
-        `alias`,
-      </if>
-      <if test="ptzLevel != null">
-        ptz_level,
-      </if>
-      <if test="avLevel != null">
-        av_level,
-      </if>
-      <if test="userType != null">
-        user_type,
-      </if>
-      <if test="activeBeginTime != null">
-        active_begin_time,
-      </if>
-      <if test="activeEndTime != null">
-        active_end_time,
-      </if>
-      <if test="phone != null">
-        phone,
-      </if>
-      <if test="mail != null">
-        mail,
-      </if>
-      <if test="lastLoginTime != null">
-        last_login_time,
-      </if>
-      <if test="description != null">
-        description,
-      </if>
-      <if test="status != null">
-        `status`,
-      </if>
-      <if test="tbDept != null">
-        tb_dept,
-      </if>
-      <if test="userLevel != null">
-        user_level,
-      </if>
-      <if test="maxCameraNum != null">
-        max_camera_num,
-      </if>
-      <if test="ptzLockTime != null">
-        ptz_lock_time,
-      </if>
-      <if test="activeTime != null">
-        active_time,
-      </if>
-      <if test="prohibitedStatus != null">
-        prohibited_status,
-      </if>
-    </trim>
-    <trim prefix="values (" suffix=")" suffixOverrides=",">
-      <if test="id != null">
-        #{id,jdbcType=CHAR},
-      </if>
-      <if test="alias != null">
-        #{alias,jdbcType=CHAR},
-      </if>
-      <if test="ptzLevel != null">
-        #{ptzLevel,jdbcType=INTEGER},
-      </if>
-      <if test="avLevel != null">
-        #{avLevel,jdbcType=INTEGER},
-      </if>
-      <if test="userType != null">
-        #{userType,jdbcType=INTEGER},
-      </if>
-      <if test="activeBeginTime != null">
-        #{activeBeginTime,jdbcType=CHAR},
-      </if>
-      <if test="activeEndTime != null">
-        #{activeEndTime,jdbcType=CHAR},
-      </if>
-      <if test="phone != null">
-        #{phone,jdbcType=CHAR},
-      </if>
-      <if test="mail != null">
-        #{mail,jdbcType=CHAR},
-      </if>
-      <if test="lastLoginTime != null">
-        #{lastLoginTime,jdbcType=CHAR},
-      </if>
-      <if test="description != null">
-        #{description,jdbcType=VARCHAR},
-      </if>
-      <if test="status != null">
-        #{status,jdbcType=BOOLEAN},
-      </if>
-      <if test="tbDept != null">
-        #{tbDept,jdbcType=CHAR},
-      </if>
-      <if test="userLevel != null">
-        #{userLevel,jdbcType=INTEGER},
-      </if>
-      <if test="maxCameraNum != null">
-        #{maxCameraNum,jdbcType=INTEGER},
-      </if>
-      <if test="ptzLockTime != null">
-        #{ptzLockTime,jdbcType=INTEGER},
-      </if>
-      <if test="activeTime != null">
-        #{activeTime,jdbcType=CHAR},
-      </if>
-      <if test="prohibitedStatus != null">
-        #{prohibitedStatus,jdbcType=INTEGER},
-      </if>
-    </trim>
-  </insert>
-  <update id="updateByPrimaryKeySelective" parameterType="com.mingsoft.nvssauthor.domain.UserInfo">
-    <!--@mbg.generated-->
-    update user_info
-    <set>
-      <if test="alias != null">
-        `alias` = #{alias,jdbcType=CHAR},
-      </if>
-      <if test="ptzLevel != null">
+    <resultMap id="BaseResultMap" type="com.mingsoft.nvssauthor.domain.UserInfo">
+        <!--@mbg.generated-->
+        <!--@Table user_info-->
+        <id column="id" jdbcType="CHAR" property="id"/>
+        <result column="alias" jdbcType="CHAR" property="alias"/>
+        <result column="ptz_level" jdbcType="INTEGER" property="ptzLevel"/>
+        <result column="av_level" jdbcType="INTEGER" property="avLevel"/>
+        <result column="user_type" jdbcType="INTEGER" property="userType"/>
+        <result column="active_begin_time" jdbcType="CHAR" property="activeBeginTime"/>
+        <result column="active_end_time" jdbcType="CHAR" property="activeEndTime"/>
+        <result column="phone" jdbcType="CHAR" property="phone"/>
+        <result column="mail" jdbcType="CHAR" property="mail"/>
+        <result column="last_login_time" jdbcType="CHAR" property="lastLoginTime"/>
+        <result column="description" jdbcType="VARCHAR" property="description"/>
+        <result column="status" jdbcType="BOOLEAN" property="status"/>
+        <result column="tb_dept" jdbcType="CHAR" property="tbDept"/>
+        <result column="user_level" jdbcType="INTEGER" property="userLevel"/>
+        <result column="max_camera_num" jdbcType="INTEGER" property="maxCameraNum"/>
+        <result column="ptz_lock_time" jdbcType="INTEGER" property="ptzLockTime"/>
+        <result column="active_time" jdbcType="CHAR" property="activeTime"/>
+        <result column="prohibited_status" jdbcType="INTEGER" property="prohibitedStatus"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, `alias`, ptz_level, av_level, user_type, active_begin_time, active_end_time,
+        phone, mail, last_login_time, description, `status`, tb_dept, user_level, max_camera_num,
+        ptz_lock_time, active_time, prohibited_status
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from user_info
+        where id = #{id,jdbcType=CHAR}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+        <!--@mbg.generated-->
+        delete from user_info
+        where id = #{id,jdbcType=CHAR}
+    </delete>
+    <insert id="insert" parameterType="com.mingsoft.nvssauthor.domain.UserInfo">
+        <!--@mbg.generated-->
+        insert into user_info (id, `alias`, ptz_level,
+        av_level, user_type, active_begin_time,
+        active_end_time, phone, mail,
+        last_login_time, description, `status`,
+        tb_dept, user_level, max_camera_num,
+        ptz_lock_time, active_time, prohibited_status
+        )
+        values (#{id,jdbcType=CHAR}, #{alias,jdbcType=CHAR}, #{ptzLevel,jdbcType=INTEGER},
+        #{avLevel,jdbcType=INTEGER}, #{userType,jdbcType=INTEGER}, #{activeBeginTime,jdbcType=CHAR},
+        #{activeEndTime,jdbcType=CHAR}, #{phone,jdbcType=CHAR}, #{mail,jdbcType=CHAR},
+        #{lastLoginTime,jdbcType=CHAR}, #{description,jdbcType=VARCHAR}, #{status,jdbcType=BOOLEAN},
+        #{tbDept,jdbcType=CHAR}, #{userLevel,jdbcType=INTEGER}, #{maxCameraNum,jdbcType=INTEGER},
+        #{ptzLockTime,jdbcType=INTEGER}, #{activeTime,jdbcType=CHAR}, #{prohibitedStatus,jdbcType=INTEGER}
+        )
+    </insert>
+    <insert id="insertSelective" parameterType="com.mingsoft.nvssauthor.domain.UserInfo">
+        <!--@mbg.generated-->
+        insert into user_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="alias != null">
+                `alias`,
+            </if>
+            <if test="ptzLevel != null">
+                ptz_level,
+            </if>
+            <if test="avLevel != null">
+                av_level,
+            </if>
+            <if test="userType != null">
+                user_type,
+            </if>
+            <if test="activeBeginTime != null">
+                active_begin_time,
+            </if>
+            <if test="activeEndTime != null">
+                active_end_time,
+            </if>
+            <if test="phone != null">
+                phone,
+            </if>
+            <if test="mail != null">
+                mail,
+            </if>
+            <if test="lastLoginTime != null">
+                last_login_time,
+            </if>
+            <if test="description != null">
+                description,
+            </if>
+            <if test="status != null">
+                `status`,
+            </if>
+            <if test="tbDept != null">
+                tb_dept,
+            </if>
+            <if test="userLevel != null">
+                user_level,
+            </if>
+            <if test="maxCameraNum != null">
+                max_camera_num,
+            </if>
+            <if test="ptzLockTime != null">
+                ptz_lock_time,
+            </if>
+            <if test="activeTime != null">
+                active_time,
+            </if>
+            <if test="prohibitedStatus != null">
+                prohibited_status,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=CHAR},
+            </if>
+            <if test="alias != null">
+                #{alias,jdbcType=CHAR},
+            </if>
+            <if test="ptzLevel != null">
+                #{ptzLevel,jdbcType=INTEGER},
+            </if>
+            <if test="avLevel != null">
+                #{avLevel,jdbcType=INTEGER},
+            </if>
+            <if test="userType != null">
+                #{userType,jdbcType=INTEGER},
+            </if>
+            <if test="activeBeginTime != null">
+                #{activeBeginTime,jdbcType=CHAR},
+            </if>
+            <if test="activeEndTime != null">
+                #{activeEndTime,jdbcType=CHAR},
+            </if>
+            <if test="phone != null">
+                #{phone,jdbcType=CHAR},
+            </if>
+            <if test="mail != null">
+                #{mail,jdbcType=CHAR},
+            </if>
+            <if test="lastLoginTime != null">
+                #{lastLoginTime,jdbcType=CHAR},
+            </if>
+            <if test="description != null">
+                #{description,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=BOOLEAN},
+            </if>
+            <if test="tbDept != null">
+                #{tbDept,jdbcType=CHAR},
+            </if>
+            <if test="userLevel != null">
+                #{userLevel,jdbcType=INTEGER},
+            </if>
+            <if test="maxCameraNum != null">
+                #{maxCameraNum,jdbcType=INTEGER},
+            </if>
+            <if test="ptzLockTime != null">
+                #{ptzLockTime,jdbcType=INTEGER},
+            </if>
+            <if test="activeTime != null">
+                #{activeTime,jdbcType=CHAR},
+            </if>
+            <if test="prohibitedStatus != null">
+                #{prohibitedStatus,jdbcType=INTEGER},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.mingsoft.nvssauthor.domain.UserInfo">
+        <!--@mbg.generated-->
+        update user_info
+        <set>
+            <if test="alias != null">
+                `alias` = #{alias,jdbcType=CHAR},
+            </if>
+            <if test="ptzLevel != null">
+                ptz_level = #{ptzLevel,jdbcType=INTEGER},
+            </if>
+            <if test="avLevel != null">
+                av_level = #{avLevel,jdbcType=INTEGER},
+            </if>
+            <if test="userType != null">
+                user_type = #{userType,jdbcType=INTEGER},
+            </if>
+            <if test="activeBeginTime != null">
+                active_begin_time = #{activeBeginTime,jdbcType=CHAR},
+            </if>
+            <if test="activeEndTime != null">
+                active_end_time = #{activeEndTime,jdbcType=CHAR},
+            </if>
+            <if test="phone != null">
+                phone = #{phone,jdbcType=CHAR},
+            </if>
+            <if test="mail != null">
+                mail = #{mail,jdbcType=CHAR},
+            </if>
+            <if test="lastLoginTime != null">
+                last_login_time = #{lastLoginTime,jdbcType=CHAR},
+            </if>
+            <if test="description != null">
+                description = #{description,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                `status` = #{status,jdbcType=BOOLEAN},
+            </if>
+            <if test="tbDept != null">
+                tb_dept = #{tbDept,jdbcType=CHAR},
+            </if>
+            <if test="userLevel != null">
+                user_level = #{userLevel,jdbcType=INTEGER},
+            </if>
+            <if test="maxCameraNum != null">
+                max_camera_num = #{maxCameraNum,jdbcType=INTEGER},
+            </if>
+            <if test="ptzLockTime != null">
+                ptz_lock_time = #{ptzLockTime,jdbcType=INTEGER},
+            </if>
+            <if test="activeTime != null">
+                active_time = #{activeTime,jdbcType=CHAR},
+            </if>
+            <if test="prohibitedStatus != null">
+                prohibited_status = #{prohibitedStatus,jdbcType=INTEGER},
+            </if>
+        </set>
+        where id = #{id,jdbcType=CHAR}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.mingsoft.nvssauthor.domain.UserInfo">
+        <!--@mbg.generated-->
+        update user_info
+        set `alias` = #{alias,jdbcType=CHAR},
         ptz_level = #{ptzLevel,jdbcType=INTEGER},
-      </if>
-      <if test="avLevel != null">
         av_level = #{avLevel,jdbcType=INTEGER},
-      </if>
-      <if test="userType != null">
         user_type = #{userType,jdbcType=INTEGER},
-      </if>
-      <if test="activeBeginTime != null">
         active_begin_time = #{activeBeginTime,jdbcType=CHAR},
-      </if>
-      <if test="activeEndTime != null">
         active_end_time = #{activeEndTime,jdbcType=CHAR},
-      </if>
-      <if test="phone != null">
         phone = #{phone,jdbcType=CHAR},
-      </if>
-      <if test="mail != null">
         mail = #{mail,jdbcType=CHAR},
-      </if>
-      <if test="lastLoginTime != null">
         last_login_time = #{lastLoginTime,jdbcType=CHAR},
-      </if>
-      <if test="description != null">
         description = #{description,jdbcType=VARCHAR},
-      </if>
-      <if test="status != null">
         `status` = #{status,jdbcType=BOOLEAN},
-      </if>
-      <if test="tbDept != null">
         tb_dept = #{tbDept,jdbcType=CHAR},
-      </if>
-      <if test="userLevel != null">
         user_level = #{userLevel,jdbcType=INTEGER},
-      </if>
-      <if test="maxCameraNum != null">
         max_camera_num = #{maxCameraNum,jdbcType=INTEGER},
-      </if>
-      <if test="ptzLockTime != null">
         ptz_lock_time = #{ptzLockTime,jdbcType=INTEGER},
-      </if>
-      <if test="activeTime != null">
         active_time = #{activeTime,jdbcType=CHAR},
-      </if>
-      <if test="prohibitedStatus != null">
-        prohibited_status = #{prohibitedStatus,jdbcType=INTEGER},
-      </if>
-    </set>
-    where id = #{id,jdbcType=CHAR}
-  </update>
-  <update id="updateByPrimaryKey" parameterType="com.mingsoft.nvssauthor.domain.UserInfo">
-    <!--@mbg.generated-->
-    update user_info
-    set `alias` = #{alias,jdbcType=CHAR},
-      ptz_level = #{ptzLevel,jdbcType=INTEGER},
-      av_level = #{avLevel,jdbcType=INTEGER},
-      user_type = #{userType,jdbcType=INTEGER},
-      active_begin_time = #{activeBeginTime,jdbcType=CHAR},
-      active_end_time = #{activeEndTime,jdbcType=CHAR},
-      phone = #{phone,jdbcType=CHAR},
-      mail = #{mail,jdbcType=CHAR},
-      last_login_time = #{lastLoginTime,jdbcType=CHAR},
-      description = #{description,jdbcType=VARCHAR},
-      `status` = #{status,jdbcType=BOOLEAN},
-      tb_dept = #{tbDept,jdbcType=CHAR},
-      user_level = #{userLevel,jdbcType=INTEGER},
-      max_camera_num = #{maxCameraNum,jdbcType=INTEGER},
-      ptz_lock_time = #{ptzLockTime,jdbcType=INTEGER},
-      active_time = #{activeTime,jdbcType=CHAR},
-      prohibited_status = #{prohibitedStatus,jdbcType=INTEGER}
-    where id = #{id,jdbcType=CHAR}
-  </update>
+        prohibited_status = #{prohibitedStatus,jdbcType=INTEGER}
+        where id = #{id,jdbcType=CHAR}
+    </update>
+
+
+    <select id="userInfoAndUser" resultMap="BaseResultMap">
+        select us.id as id, ui.status as status, ui.tb_dept
+        from user us
+        left join user_info ui
+        on us.id = ui.id
+        left join t_user_role tur
+        on tur.amid = ui.id
+        where tur.rid!=1
+        and tur.rid!=2
+        and ui.alias !='everybody'
+
+    </select>
 </mapper>

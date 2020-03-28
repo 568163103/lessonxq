@@ -2,7 +2,7 @@ package com.mingsoft.nvssauthor.domain;
 
 public class UserInfo {
     /**
-    * @see User.ID
+    * @see
     */
     private String id;
 

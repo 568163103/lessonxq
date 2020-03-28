@@ -3,6 +3,8 @@ package com.mingsoft.nvssauthor.mapper;
 import com.mingsoft.nvssauthor.domain.User;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
+
 @Component
 public interface UserMapper {
     int deleteByPrimaryKey(String id);
@@ -18,4 +20,6 @@ public interface UserMapper {
     int updateByPrimaryKey(User record);
 
     User findByUserName(String userName);
+
+    List<User> findAll();
 }

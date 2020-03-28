@@ -1,4 +1,4 @@
-package com.mingsoft.nvssauthor.tempentiry;
+package com.mingsoft.nvssauthor.entiry;
 
 public class ChannelStatistics {
 

@@ -83,4 +83,12 @@
   where
   name = #{userName}
   </select>
+
+  <select id="findAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"></include>
+    from user
+  </select>
+
+
 </mapper>
