@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mingsoft.nvssauthor.mapper.DuChannelMapper">
+  <resultMap id="BaseResultMap" type="com.mingsoft.nvssauthor.domain.DuChannel">
+    <!--@mbg.generated-->
+    <!--@Table du_channel-->
+    <id column="id" jdbcType="CHAR" property="id" />
+    <result column="name" jdbcType="CHAR" property="name" />
+    <result column="enabled" jdbcType="BOOLEAN" property="enabled" />
+    <result column="du_id" jdbcType="CHAR" property="duId" />
+    <result column="num" jdbcType="INTEGER" property="num" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, `name`, enabled, du_id, num, description
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from du_channel
+    where id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from du_channel
+    where id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.mingsoft.nvssauthor.domain.DuChannel">
+    <!--@mbg.generated-->
+    insert into du_channel (id, `name`, enabled, 
+      du_id, num, description
+      )
+    values (#{id,jdbcType=CHAR}, #{name,jdbcType=CHAR}, #{enabled,jdbcType=BOOLEAN}, 
+      #{duId,jdbcType=CHAR}, #{num,jdbcType=INTEGER}, #{description,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.mingsoft.nvssauthor.domain.DuChannel">
+    <!--@mbg.generated-->
+    insert into du_channel
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="enabled != null">
+        enabled,
+      </if>
+      <if test="duId != null">
+        du_id,
+      </if>
+      <if test="num != null">
+        num,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=CHAR},
+      </if>
+      <if test="enabled != null">
+        #{enabled,jdbcType=BOOLEAN},
+      </if>
+      <if test="duId != null">
+        #{duId,jdbcType=CHAR},
+      </if>
+      <if test="num != null">
+        #{num,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mingsoft.nvssauthor.domain.DuChannel">
+    <!--@mbg.generated-->
+    update du_channel
+    <set>
+      <if test="name != null">
+        `name` = #{name,jdbcType=CHAR},
+      </if>
+      <if test="enabled != null">
+        enabled = #{enabled,jdbcType=BOOLEAN},
+      </if>
+      <if test="duId != null">
+        du_id = #{duId,jdbcType=CHAR},
+      </if>
+      <if test="num != null">
+        num = #{num,jdbcType=INTEGER},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mingsoft.nvssauthor.domain.DuChannel">
+    <!--@mbg.generated-->
+    update du_channel
+    set `name` = #{name,jdbcType=CHAR},
+      enabled = #{enabled,jdbcType=BOOLEAN},
+      du_id = #{duId,jdbcType=CHAR},
+      num = #{num,jdbcType=INTEGER},
+      description = #{description,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=CHAR}
+  </update>
+</mapper>

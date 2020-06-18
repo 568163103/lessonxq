@@ -1,0 +1,178 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mingsoft.nvssauthor.mapper.TMenuMapper">
+  <resultMap id="BaseResultMap" type="com.mingsoft.nvssauthor.domain.TMenu">
+    <!--@mbg.generated-->
+    <!--@Table t_menu-->
+    <id column="mid" jdbcType="INTEGER" property="mid" />
+    <result column="preid" jdbcType="INTEGER" property="preid" />
+    <result column="full_mid" jdbcType="VARCHAR" property="fullMid" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="url" jdbcType="VARCHAR" property="url" />
+    <result column="icon_path" jdbcType="VARCHAR" property="iconPath" />
+    <result column="is_func" jdbcType="TINYINT" property="isFunc" />
+    <result column="lel" jdbcType="TINYINT" property="lel" />
+    <result column="status" jdbcType="TINYINT" property="status" />
+    <result column="serial_no" jdbcType="INTEGER" property="serialNo" />
+    <result column="dmlflag" jdbcType="TINYINT" property="dmlflag" />
+    <result column="dmltime" jdbcType="TIMESTAMP" property="dmltime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    mid, preid, full_mid, `name`, url, icon_path, is_func, lel, `status`, serial_no, 
+    dmlflag, dmltime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from t_menu
+    where mid = #{mid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from t_menu
+    where mid = #{mid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="mid" keyProperty="mid" parameterType="com.mingsoft.nvssauthor.domain.TMenu" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_menu (preid, full_mid, `name`, 
+      url, icon_path, is_func, 
+      lel, `status`, serial_no, 
+      dmlflag, dmltime)
+    values (#{preid,jdbcType=INTEGER}, #{fullMid,jdbcType=VARCHAR}, #{name,jdbcType=VARCHAR}, 
+      #{url,jdbcType=VARCHAR}, #{iconPath,jdbcType=VARCHAR}, #{isFunc,jdbcType=TINYINT}, 
+      #{lel,jdbcType=TINYINT}, #{status,jdbcType=TINYINT}, #{serialNo,jdbcType=INTEGER}, 
+      #{dmlflag,jdbcType=TINYINT}, #{dmltime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="mid" keyProperty="mid" parameterType="com.mingsoft.nvssauthor.domain.TMenu" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_menu
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="preid != null">
+        preid,
+      </if>
+      <if test="fullMid != null">
+        full_mid,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="url != null">
+        url,
+      </if>
+      <if test="iconPath != null">
+        icon_path,
+      </if>
+      <if test="isFunc != null">
+        is_func,
+      </if>
+      <if test="lel != null">
+        lel,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="serialNo != null">
+        serial_no,
+      </if>
+      <if test="dmlflag != null">
+        dmlflag,
+      </if>
+      <if test="dmltime != null">
+        dmltime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="preid != null">
+        #{preid,jdbcType=INTEGER},
+      </if>
+      <if test="fullMid != null">
+        #{fullMid,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="iconPath != null">
+        #{iconPath,jdbcType=VARCHAR},
+      </if>
+      <if test="isFunc != null">
+        #{isFunc,jdbcType=TINYINT},
+      </if>
+      <if test="lel != null">
+        #{lel,jdbcType=TINYINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=TINYINT},
+      </if>
+      <if test="serialNo != null">
+        #{serialNo,jdbcType=INTEGER},
+      </if>
+      <if test="dmlflag != null">
+        #{dmlflag,jdbcType=TINYINT},
+      </if>
+      <if test="dmltime != null">
+        #{dmltime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mingsoft.nvssauthor.domain.TMenu">
+    <!--@mbg.generated-->
+    update t_menu
+    <set>
+      <if test="preid != null">
+        preid = #{preid,jdbcType=INTEGER},
+      </if>
+      <if test="fullMid != null">
+        full_mid = #{fullMid,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="url != null">
+        url = #{url,jdbcType=VARCHAR},
+      </if>
+      <if test="iconPath != null">
+        icon_path = #{iconPath,jdbcType=VARCHAR},
+      </if>
+      <if test="isFunc != null">
+        is_func = #{isFunc,jdbcType=TINYINT},
+      </if>
+      <if test="lel != null">
+        lel = #{lel,jdbcType=TINYINT},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=TINYINT},
+      </if>
+      <if test="serialNo != null">
+        serial_no = #{serialNo,jdbcType=INTEGER},
+      </if>
+      <if test="dmlflag != null">
+        dmlflag = #{dmlflag,jdbcType=TINYINT},
+      </if>
+      <if test="dmltime != null">
+        dmltime = #{dmltime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where mid = #{mid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mingsoft.nvssauthor.domain.TMenu">
+    <!--@mbg.generated-->
+    update t_menu
+    set preid = #{preid,jdbcType=INTEGER},
+      full_mid = #{fullMid,jdbcType=VARCHAR},
+      `name` = #{name,jdbcType=VARCHAR},
+      url = #{url,jdbcType=VARCHAR},
+      icon_path = #{iconPath,jdbcType=VARCHAR},
+      is_func = #{isFunc,jdbcType=TINYINT},
+      lel = #{lel,jdbcType=TINYINT},
+      `status` = #{status,jdbcType=TINYINT},
+      serial_no = #{serialNo,jdbcType=INTEGER},
+      dmlflag = #{dmlflag,jdbcType=TINYINT},
+      dmltime = #{dmltime,jdbcType=TIMESTAMP}
+    where mid = #{mid,jdbcType=INTEGER}
+  </update>
+</mapper>

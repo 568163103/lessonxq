@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mingsoft.nvssauthor.mapper.EncoderModelMapper">
+  <resultMap id="BaseResultMap" type="com.mingsoft.nvssauthor.domain.EncoderModel">
+    <!--@mbg.generated-->
+    <!--@Table encoder_model-->
+    <id column="model" jdbcType="CHAR" property="model" />
+    <result column="provider" jdbcType="CHAR" property="provider" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    model, provider
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from encoder_model
+    where model = #{model,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from encoder_model
+    where model = #{model,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.mingsoft.nvssauthor.domain.EncoderModel">
+    <!--@mbg.generated-->
+    insert into encoder_model (model, provider)
+    values (#{model,jdbcType=CHAR}, #{provider,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mingsoft.nvssauthor.domain.EncoderModel">
+    <!--@mbg.generated-->
+    insert into encoder_model
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="model != null">
+        model,
+      </if>
+      <if test="provider != null">
+        provider,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="model != null">
+        #{model,jdbcType=CHAR},
+      </if>
+      <if test="provider != null">
+        #{provider,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mingsoft.nvssauthor.domain.EncoderModel">
+    <!--@mbg.generated-->
+    update encoder_model
+    <set>
+      <if test="provider != null">
+        provider = #{provider,jdbcType=CHAR},
+      </if>
+    </set>
+    where model = #{model,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mingsoft.nvssauthor.domain.EncoderModel">
+    <!--@mbg.generated-->
+    update encoder_model
+    set provider = #{provider,jdbcType=CHAR}
+    where model = #{model,jdbcType=CHAR}
+  </update>
+
+  <select id="findAll" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List"></include>
+    from
+    encoder_model
+  </select>
+</mapper>

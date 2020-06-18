@@ -1,0 +1,218 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+
+<head>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <meta http-equiv="Cache-Control" content="no-siteapp"/>
+    <meta name="browsermode" content="application">
+    <meta name="apple-mobile-web-app-capable" content="yes"/>
+    <meta name="apple-mobile-web-app-status-bar-style" content="black"/>
+    <meta name="format-detection" content="telephone=no, email=no"/>
+    <title>运维系统客户端</title>
+    <meta name="keywords" content="铁路综合运维系统"/>
+    <meta name="description" content="铁路综合运维系统"/>
+    <link rel="stylesheet" type="text/css" href="../static/index/css/common.css">
+    <script type="text/javascript" src="../static/js/lib/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="../static/index/js/echarts.js"></script>
+    <script src="../static/index/js/highcharts.js"></script>
+    <script src="../static/index/js/highcharts-3d.js"></script>
+    <script src="../static/index/js/exporting.js"></script>
+    <script src="../static/index/js/oldie.js"></script>
+    <script src="../static/index/js/cylinder.js"></script>
+    <script type="text/javascript" src="../static/index/js/jquery.SuperSlide.2.1.3.js"></script>
+    <script type="text/javascript" src="../static/index/js/index.js"></script>
+    <script type="text/javascript" src="../static/js/lib/axios.js"></script>
+    <style>
+        [v-cloak] {
+            display: none;
+        }
+    </style>
+
+
+</head>
+
+<body>
+<div class="title">
+    运维系统客户端
+</div>
+<div class="wrap clearfix">
+    <div class="content content-left">
+        <div class="left-top">
+            <div class="content-title">
+                重要告警
+            </div>
+            <div class="txtMarquee-top" style="width: 100%;height: 85%">
+                <div class="hd">
+                    <a class="next"></a>
+                    <a class="prev"></a>
+                </div>
+                <div id="infoList" class="bd">
+                    <ul class="infoList">
+                        <li v-for='(item,index) in getalarmInfoList'>{{(index+1)+'.'}}节点&nbsp;{{item.ip+'于'}}&nbsp;{{
+                            item.currentTime }}&nbsp;&nbsp;{{ item.content +'硬盘已拔出'}}
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="left-middle">
+            <div class="content-title">
+                云存储
+            </div>
+            <div class="clearfix" style="width:100%;height: 85%;">
+                <div style="width: 50%; height: 100%; float: left;">
+                    <div id="leftMiddle" style="width: 100%;height: 80%">
+                    </div>
+                    <div id="cpuinfo" class="note" style="margin-top: 5px;">
+                        <!-- <span id="cpu1" class="color1"><span class="circle"></span>cpu使用率:10%</span>
+                        <span id="cpu2" class="color2"><span class="circle"></span>cpu温度:35</span> -->
+                    </div>
+                </div>
+                <div style="width: 50%; height: 100%; float: left;">
+                    <div id="diskinfo" class="note">
+                        <!-- <span id="yinpan1" class="color1"><span class="circle"></span>未使用:30GB</span>
+                        <span id="yinpan2" class="color2"><span class="circle"></span>已使用:70GB</span>
+                        <span id="yinpan3" >总容量:100GB</span> -->
+                    </div>
+                    <div id="leftMiddle1" style="width: 100%;height: 80%">
+                    </div>
+                    <div id="diskcount" class="note">
+                        <!-- <span id="countyinpan" ></span>总硬盘:10</span>
+                        <span id='jiedian' ></span>总节点:6</span> -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <!-- <div class="content-middle">
+        <div class="middle-top">
+            <div class="content-title">
+                北京南站铁路状况
+            </div>
+            <div id="middleTop" style="width: 100%;height: 85%;">
+            </div>
+        </div>
+        <div class="middle-bottom">
+            <div class="content-title">
+                节点运行状态
+            </div>
+
+            <div class="chart-note clearfix" style="height: 72%">
+                <div id="middleBottom" style="width: 100%;height: 85%">
+                </div>
+
+                <div class="leftTopnote" style="width: 20%;">
+                    <p id="online"></p>
+                    <p id="offline"></p>
+                </div>
+            </div>
+
+            <div class="note">
+                <span id="cms">cms节点:0</span>
+                <span id="dms">dms节点:0</span>
+                <span id="mss">mss节点:0</span>
+                <span>其他节点:0</span>
+            </div>
+        </div>
+    </div> -->
+    <div class="content content-right">
+        <div class="left-bottom">
+            <div class="content-title">
+                摄像机
+            </div>
+            <div class="chart-note clearfix" style="height: 78%">
+                <div id="leftTop" style="width: 80%;">
+                </div>
+                <div class="leftTopnote" style="width: 20%;">
+                    <p id="channelOnline"></p>
+                    <p id="channelOfOnline"></p>
+                </div>
+            </div>
+            <div class="note">
+                <span id="fix">固定摄像机:0</span>
+                <span id="fix1">云台摄像机:0</span>
+                <span id="fix2">固定IP摄像机:0</span>
+                <span id="fix3">云台IP摄像机:0</span>
+                <span>其他:0</span>
+            </div>
+        </div>
+        <!-- <div class="right-top">
+            <div class="content-title">
+                录像诊断
+            </div>
+            <div id="rightTop" style="width: 100%;height: 85%">
+            </div>
+        </div> -->
+        <!--        <div class="right-middle">-->
+        <!--            <div class="content-title">-->
+        <!--                网络异常统计-->
+        <!--            </div>-->
+        <!--&lt;!&ndash;            <div id="rightMiddle" style="width: 100%;height: 85%">&ndash;&gt;-->
+        <!--&lt;!&ndash;            </div>&ndash;&gt;-->
+        <!--        </div>-->
+        <div class="right-bottom">
+            <div class="content-title">
+                自定义微服务统计
+            </div>
+            <div class="chart-note clearfix" style="height: 78%">
+                <div id="rightBottom" style="width: 80%;">
+                </div>
+                <div class="leftTopnote" style="width: 20%;">
+                    <p id="online1"></p>
+                    <p id="offline1"></p>
+                </div>
+            </div>
+            <div class="note">
+                <span id="cms_server">cms服务:0</span>
+                <span id="dms_server">dms服务:0</span>
+                <span id="mss_server">mss服务:0</span>
+                <span>其他服务:0/0/0</span>
+            </div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript" src="../static/js/lib/vue.min.js"></script>
+<script>
+    var infoList = new Vue({
+        el: '#infoList',
+        data() {
+            return {
+                alarmInfoList: [],
+            }
+        },
+        created() {
+            this.getDataList();
+        },
+        mounted() {
+            this.timer = setInterval(this.getDataList, 6000);
+        },
+        methods: {
+            getDataList() {
+                let url = '/api/v1/alarm/getInfoList';
+                axios.post(url)
+                    .then(res => {
+
+                        infoList.alarmInfoList = res.data.data;
+
+
+                    })
+                    .catch(err => {
+                        console.error(err);
+
+                    })
+            },
+        },
+        computed: {
+            getalarmInfoList() {
+                return this.alarmInfoList;
+            }
+        },
+    })
+</script>
+</body>
+
+</html>

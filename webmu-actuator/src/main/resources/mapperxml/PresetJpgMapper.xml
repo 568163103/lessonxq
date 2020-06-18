@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mingsoft.nvssauthor.mapper.PresetJpgMapper">
+  <resultMap id="BaseResultMap" type="com.mingsoft.nvssauthor.domain.PresetJpg">
+    <!--@mbg.generated-->
+    <!--@Table preset_jpg-->
+    <result column="channel_id" jdbcType="CHAR" property="channelId" />
+    <result column="num" jdbcType="INTEGER" property="num" />
+    <result column="data_len" jdbcType="INTEGER" property="dataLen" />
+    <result column="data_buffer" jdbcType="BLOB" property="dataBuffer" />
+  </resultMap>
+  <insert id="insert" parameterType="com.mingsoft.nvssauthor.domain.PresetJpg">
+    <!--@mbg.generated-->
+    insert into preset_jpg (channel_id, num, data_len, 
+      data_buffer)
+    values (#{channelId,jdbcType=CHAR}, #{num,jdbcType=INTEGER}, #{dataLen,jdbcType=INTEGER}, 
+      #{dataBuffer,jdbcType=BLOB})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mingsoft.nvssauthor.domain.PresetJpg">
+    <!--@mbg.generated-->
+    insert into preset_jpg
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="channelId != null">
+        channel_id,
+      </if>
+      <if test="num != null">
+        num,
+      </if>
+      <if test="dataLen != null">
+        data_len,
+      </if>
+      <if test="dataBuffer != null">
+        data_buffer,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="channelId != null">
+        #{channelId,jdbcType=CHAR},
+      </if>
+      <if test="num != null">
+        #{num,jdbcType=INTEGER},
+      </if>
+      <if test="dataLen != null">
+        #{dataLen,jdbcType=INTEGER},
+      </if>
+      <if test="dataBuffer != null">
+        #{dataBuffer,jdbcType=BLOB},
+      </if>
+    </trim>
+  </insert>
+</mapper>

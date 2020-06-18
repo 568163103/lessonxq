@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mingsoft.nvssauthor.mapper.TUserTraceMapper">
+  <resultMap id="BaseResultMap" type="com.mingsoft.nvssauthor.domain.TUserTrace">
+    <!--@mbg.generated-->
+    <!--@Table t_user_trace-->
+    <id column="auid" jdbcType="INTEGER" property="auid" />
+    <result column="user_name" jdbcType="VARCHAR" property="userName" />
+    <result column="amid" jdbcType="CHAR" property="amid" />
+    <result column="user_type" jdbcType="SMALLINT" property="userType" />
+    <result column="mid" jdbcType="INTEGER" property="mid" />
+    <result column="menu_name" jdbcType="VARCHAR" property="menuName" />
+    <result column="terminal_ip" jdbcType="CHAR" property="terminalIp" />
+    <result column="user_trace" jdbcType="LONGVARCHAR" property="userTrace" />
+    <result column="operate_date" jdbcType="TIMESTAMP" property="operateDate" />
+    <result column="operate_status" jdbcType="SMALLINT" property="operateStatus" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    auid, user_name, amid, user_type, mid, menu_name, terminal_ip, user_trace, operate_date, 
+    operate_status
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from t_user_trace
+    where auid = #{auid,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from t_user_trace
+    where auid = #{auid,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="auid" keyProperty="auid" parameterType="com.mingsoft.nvssauthor.domain.TUserTrace" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_user_trace (user_name, amid, user_type, 
+      mid, menu_name, terminal_ip, 
+      user_trace, operate_date, operate_status
+      )
+    values (#{userName,jdbcType=VARCHAR}, #{amid,jdbcType=CHAR}, #{userType,jdbcType=SMALLINT}, 
+      #{mid,jdbcType=INTEGER}, #{menuName,jdbcType=VARCHAR}, #{terminalIp,jdbcType=CHAR}, 
+      #{userTrace,jdbcType=LONGVARCHAR}, #{operateDate,jdbcType=TIMESTAMP}, #{operateStatus,jdbcType=SMALLINT}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="auid" keyProperty="auid" parameterType="com.mingsoft.nvssauthor.domain.TUserTrace" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_user_trace
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="userName != null">
+        user_name,
+      </if>
+      <if test="amid != null">
+        amid,
+      </if>
+      <if test="userType != null">
+        user_type,
+      </if>
+      <if test="mid != null">
+        mid,
+      </if>
+      <if test="menuName != null">
+        menu_name,
+      </if>
+      <if test="terminalIp != null">
+        terminal_ip,
+      </if>
+      <if test="userTrace != null">
+        user_trace,
+      </if>
+      <if test="operateDate != null">
+        operate_date,
+      </if>
+      <if test="operateStatus != null">
+        operate_status,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="userName != null">
+        #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="amid != null">
+        #{amid,jdbcType=CHAR},
+      </if>
+      <if test="userType != null">
+        #{userType,jdbcType=SMALLINT},
+      </if>
+      <if test="mid != null">
+        #{mid,jdbcType=INTEGER},
+      </if>
+      <if test="menuName != null">
+        #{menuName,jdbcType=VARCHAR},
+      </if>
+      <if test="terminalIp != null">
+        #{terminalIp,jdbcType=CHAR},
+      </if>
+      <if test="userTrace != null">
+        #{userTrace,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="operateDate != null">
+        #{operateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operateStatus != null">
+        #{operateStatus,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mingsoft.nvssauthor.domain.TUserTrace">
+    <!--@mbg.generated-->
+    update t_user_trace
+    <set>
+      <if test="userName != null">
+        user_name = #{userName,jdbcType=VARCHAR},
+      </if>
+      <if test="amid != null">
+        amid = #{amid,jdbcType=CHAR},
+      </if>
+      <if test="userType != null">
+        user_type = #{userType,jdbcType=SMALLINT},
+      </if>
+      <if test="mid != null">
+        mid = #{mid,jdbcType=INTEGER},
+      </if>
+      <if test="menuName != null">
+        menu_name = #{menuName,jdbcType=VARCHAR},
+      </if>
+      <if test="terminalIp != null">
+        terminal_ip = #{terminalIp,jdbcType=CHAR},
+      </if>
+      <if test="userTrace != null">
+        user_trace = #{userTrace,jdbcType=LONGVARCHAR},
+      </if>
+      <if test="operateDate != null">
+        operate_date = #{operateDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="operateStatus != null">
+        operate_status = #{operateStatus,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where auid = #{auid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mingsoft.nvssauthor.domain.TUserTrace">
+    <!--@mbg.generated-->
+    update t_user_trace
+    set user_name = #{userName,jdbcType=VARCHAR},
+      amid = #{amid,jdbcType=CHAR},
+      user_type = #{userType,jdbcType=SMALLINT},
+      mid = #{mid,jdbcType=INTEGER},
+      menu_name = #{menuName,jdbcType=VARCHAR},
+      terminal_ip = #{terminalIp,jdbcType=CHAR},
+      user_trace = #{userTrace,jdbcType=LONGVARCHAR},
+      operate_date = #{operateDate,jdbcType=TIMESTAMP},
+      operate_status = #{operateStatus,jdbcType=SMALLINT}
+    where auid = #{auid,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mingsoft.nvssauthor.mapper.DmuAlarmResMapper">
+  <resultMap id="BaseResultMap" type="com.mingsoft.nvssauthor.domain.DmuAlarmRes">
+    <!--@mbg.generated-->
+    <!--@Table dmu_alarm_res-->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="res_id" jdbcType="CHAR" property="resId" />
+    <result column="alarm_type" jdbcType="CHAR" property="alarmType" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="sid" jdbcType="CHAR" property="sid" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, res_id, alarm_type, `name`, sid, description
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from dmu_alarm_res
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from dmu_alarm_res
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.mingsoft.nvssauthor.domain.DmuAlarmRes" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into dmu_alarm_res (res_id, alarm_type, `name`, 
+      sid, description)
+    values (#{resId,jdbcType=CHAR}, #{alarmType,jdbcType=CHAR}, #{name,jdbcType=VARCHAR}, 
+      #{sid,jdbcType=CHAR}, #{description,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.mingsoft.nvssauthor.domain.DmuAlarmRes" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into dmu_alarm_res
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="resId != null">
+        res_id,
+      </if>
+      <if test="alarmType != null">
+        alarm_type,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="sid != null">
+        sid,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="resId != null">
+        #{resId,jdbcType=CHAR},
+      </if>
+      <if test="alarmType != null">
+        #{alarmType,jdbcType=CHAR},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sid != null">
+        #{sid,jdbcType=CHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mingsoft.nvssauthor.domain.DmuAlarmRes">
+    <!--@mbg.generated-->
+    update dmu_alarm_res
+    <set>
+      <if test="resId != null">
+        res_id = #{resId,jdbcType=CHAR},
+      </if>
+      <if test="alarmType != null">
+        alarm_type = #{alarmType,jdbcType=CHAR},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="sid != null">
+        sid = #{sid,jdbcType=CHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mingsoft.nvssauthor.domain.DmuAlarmRes">
+    <!--@mbg.generated-->
+    update dmu_alarm_res
+    set res_id = #{resId,jdbcType=CHAR},
+      alarm_type = #{alarmType,jdbcType=CHAR},
+      `name` = #{name,jdbcType=VARCHAR},
+      sid = #{sid,jdbcType=CHAR},
+      description = #{description,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mingsoft.nvssauthor.mapper.ServerEncoderMapper">
+  <resultMap id="BaseResultMap" type="com.mingsoft.nvssauthor.domain.ServerEncoder">
+    <!--@mbg.generated-->
+    <!--@Table server_encoder-->
+    <id column="server_id" jdbcType="CHAR" property="serverId" />
+    <id column="encoder_id" jdbcType="CHAR" property="encoderId" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    <!--@mbg.generated-->
+    delete from server_encoder
+    where server_id = #{serverId,jdbcType=CHAR}
+      and encoder_id = #{encoderId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.mingsoft.nvssauthor.domain.ServerEncoder">
+    <!--@mbg.generated-->
+    insert into server_encoder (server_id, encoder_id)
+    values (#{serverId,jdbcType=CHAR}, #{encoderId,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mingsoft.nvssauthor.domain.ServerEncoder">
+    <!--@mbg.generated-->
+    insert into server_encoder
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="serverId != null">
+        server_id,
+      </if>
+      <if test="encoderId != null">
+        encoder_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="serverId != null">
+        #{serverId,jdbcType=CHAR},
+      </if>
+      <if test="encoderId != null">
+        #{encoderId,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

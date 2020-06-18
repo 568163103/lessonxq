@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mingsoft.nvssauthor.mapper.TDictMapper">
+  <resultMap id="BaseResultMap" type="com.mingsoft.nvssauthor.domain.TDict">
+    <!--@mbg.generated-->
+    <!--@Table t_dict-->
+    <id column="did" jdbcType="INTEGER" property="did" />
+    <result column="pre_id" jdbcType="INTEGER" property="preId" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="value" jdbcType="VARCHAR" property="value" />
+    <result column="descr" jdbcType="VARCHAR" property="descr" />
+    <result column="status" jdbcType="BOOLEAN" property="status" />
+    <result column="dmlflag" jdbcType="TINYINT" property="dmlflag" />
+    <result column="dmltime" jdbcType="TIMESTAMP" property="dmltime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    did, pre_id, `name`, `value`, descr, `status`, dmlflag, dmltime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from t_dict
+    where did = #{did,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from t_dict
+    where did = #{did,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="did" keyProperty="did" parameterType="com.mingsoft.nvssauthor.domain.TDict" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_dict (pre_id, `name`, `value`, 
+      descr, `status`, dmlflag, 
+      dmltime)
+    values (#{preId,jdbcType=INTEGER}, #{name,jdbcType=VARCHAR}, #{value,jdbcType=VARCHAR}, 
+      #{descr,jdbcType=VARCHAR}, #{status,jdbcType=BOOLEAN}, #{dmlflag,jdbcType=TINYINT}, 
+      #{dmltime,jdbcType=TIMESTAMP})
+  </insert>
+  <insert id="insertSelective" keyColumn="did" keyProperty="did" parameterType="com.mingsoft.nvssauthor.domain.TDict" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into t_dict
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="preId != null">
+        pre_id,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+      <if test="value != null">
+        `value`,
+      </if>
+      <if test="descr != null">
+        descr,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="dmlflag != null">
+        dmlflag,
+      </if>
+      <if test="dmltime != null">
+        dmltime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="preId != null">
+        #{preId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null">
+        #{value,jdbcType=VARCHAR},
+      </if>
+      <if test="descr != null">
+        #{descr,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=BOOLEAN},
+      </if>
+      <if test="dmlflag != null">
+        #{dmlflag,jdbcType=TINYINT},
+      </if>
+      <if test="dmltime != null">
+        #{dmltime,jdbcType=TIMESTAMP},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mingsoft.nvssauthor.domain.TDict">
+    <!--@mbg.generated-->
+    update t_dict
+    <set>
+      <if test="preId != null">
+        pre_id = #{preId,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        `name` = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="value != null">
+        `value` = #{value,jdbcType=VARCHAR},
+      </if>
+      <if test="descr != null">
+        descr = #{descr,jdbcType=VARCHAR},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=BOOLEAN},
+      </if>
+      <if test="dmlflag != null">
+        dmlflag = #{dmlflag,jdbcType=TINYINT},
+      </if>
+      <if test="dmltime != null">
+        dmltime = #{dmltime,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where did = #{did,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mingsoft.nvssauthor.domain.TDict">
+    <!--@mbg.generated-->
+    update t_dict
+    set pre_id = #{preId,jdbcType=INTEGER},
+      `name` = #{name,jdbcType=VARCHAR},
+      `value` = #{value,jdbcType=VARCHAR},
+      descr = #{descr,jdbcType=VARCHAR},
+      `status` = #{status,jdbcType=BOOLEAN},
+      dmlflag = #{dmlflag,jdbcType=TINYINT},
+      dmltime = #{dmltime,jdbcType=TIMESTAMP}
+    where did = #{did,jdbcType=INTEGER}
+  </update>
+
+  <select id="findChannelTypeDict" parameterType="int" resultMap="BaseResultMap">
+    select td.pre_id,td.name,td.value
+    from
+    t_dict td
+    where
+    td.pre_id = #{preId}
+
+  </select>
+</mapper>

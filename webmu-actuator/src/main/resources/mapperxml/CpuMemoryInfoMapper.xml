@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mingsoft.nvssauthor.mapper.CpuMemoryInfoMapper">
+    <resultMap id="BaseResultMap" type="com.mingsoft.nvssauthor.domain.CpuMemoryInfo">
+        <!--@mbg.generated-->
+        <!--@Table cpu_memory_info-->
+        <id column="id" jdbcType="BIGINT" property="id"/>
+        <result column="memory_use_count" jdbcType="VARCHAR" property="memoryUseCount"/>
+        <result column="memory_count" jdbcType="BIGINT" property="memoryCount"/>
+        <result column="cpu_total" jdbcType="INTEGER" property="cpuTotal"/>
+        <result column="cpu_use_count" jdbcType="VARCHAR" property="cpuUseCount"/>
+        <result column="spare1" jdbcType="INTEGER" property="spare1"/>
+        <result column="spare2" jdbcType="VARCHAR" property="spare2"/>
+        <result column="spare3" jdbcType="VARCHAR" property="spare3"/>
+        <result column="spare4" jdbcType="INTEGER" property="spare4"/>
+        <result column="spare5" jdbcType="VARCHAR" property="spare5"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        <!--@mbg.generated-->
+        id, memory_use_count, memory_count, cpu_total, cpu_use_count, spare1, spare2, spare3,
+        spare4, spare5
+    </sql>
+    <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+        <!--@mbg.generated-->
+        select
+        <include refid="Base_Column_List"/>
+        from cpu_memory_info
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+        <!--@mbg.generated-->
+        delete from cpu_memory_info
+        where id = #{id,jdbcType=BIGINT}
+    </delete>
+    <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.mingsoft.nvssauthor.domain.CpuMemoryInfo"
+            useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into cpu_memory_info (memory_use_count, memory_count, cpu_total,
+        cpu_use_count, spare1, spare2,
+        spare3, spare4, spare5
+        )
+        values (#{memoryUseCount,jdbcType=VARCHAR}, #{memoryCount,jdbcType=BIGINT}, #{cpuTotal,jdbcType=INTEGER},
+        #{cpuUseCount,jdbcType=VARCHAR}, #{spare1,jdbcType=INTEGER}, #{spare2,jdbcType=VARCHAR},
+        #{spare3,jdbcType=VARCHAR}, #{spare4,jdbcType=INTEGER}, #{spare5,jdbcType=VARCHAR}
+        )
+    </insert>
+    <insert id="insertSelective" keyColumn="id" keyProperty="id"
+            parameterType="com.mingsoft.nvssauthor.domain.CpuMemoryInfo" useGeneratedKeys="true">
+        <!--@mbg.generated-->
+        insert into cpu_memory_info
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="memoryUseCount != null">
+                memory_use_count,
+            </if>
+            <if test="memoryCount != null">
+                memory_count,
+            </if>
+            <if test="cpuTotal != null">
+                cpu_total,
+            </if>
+            <if test="cpuUseCount != null">
+                cpu_use_count,
+            </if>
+            <if test="spare1 != null">
+                spare1,
+            </if>
+            <if test="spare2 != null">
+                spare2,
+            </if>
+            <if test="spare3 != null">
+                spare3,
+            </if>
+            <if test="spare4 != null">
+                spare4,
+            </if>
+            <if test="spare5 != null">
+                spare5,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="memoryUseCount != null">
+                #{memoryUseCount,jdbcType=VARCHAR},
+            </if>
+            <if test="memoryCount != null">
+                #{memoryCount,jdbcType=BIGINT},
+            </if>
+            <if test="cpuTotal != null">
+                #{cpuTotal,jdbcType=INTEGER},
+            </if>
+            <if test="cpuUseCount != null">
+                #{cpuUseCount,jdbcType=VARCHAR},
+            </if>
+            <if test="spare1 != null">
+                #{spare1,jdbcType=INTEGER},
+            </if>
+            <if test="spare2 != null">
+                #{spare2,jdbcType=VARCHAR},
+            </if>
+            <if test="spare3 != null">
+                #{spare3,jdbcType=VARCHAR},
+            </if>
+            <if test="spare4 != null">
+                #{spare4,jdbcType=INTEGER},
+            </if>
+            <if test="spare5 != null">
+                #{spare5,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.mingsoft.nvssauthor.domain.CpuMemoryInfo">
+        <!--@mbg.generated-->
+        update cpu_memory_info
+        <set>
+            <if test="memoryUseCount != null">
+                memory_use_count = #{memoryUseCount,jdbcType=VARCHAR},
+            </if>
+            <if test="memoryCount != null">
+                memory_count = #{memoryCount,jdbcType=BIGINT},
+            </if>
+            <if test="cpuTotal != null">
+                cpu_total = #{cpuTotal,jdbcType=INTEGER},
+            </if>
+            <if test="cpuUseCount != null">
+                cpu_use_count = #{cpuUseCount,jdbcType=VARCHAR},
+            </if>
+            <if test="spare1 != null">
+                spare1 = #{spare1,jdbcType=INTEGER},
+            </if>
+            <if test="spare2 != null">
+                spare2 = #{spare2,jdbcType=VARCHAR},
+            </if>
+            <if test="spare3 != null">
+                spare3 = #{spare3,jdbcType=VARCHAR},
+            </if>
+            <if test="spare4 != null">
+                spare4 = #{spare4,jdbcType=INTEGER},
+            </if>
+            <if test="spare5 != null">
+                spare5 = #{spare5,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.mingsoft.nvssauthor.domain.CpuMemoryInfo">
+        <!--@mbg.generated-->
+        update cpu_memory_info
+        set memory_use_count = #{memoryUseCount,jdbcType=VARCHAR},
+        memory_count = #{memoryCount,jdbcType=BIGINT},
+        cpu_total = #{cpuTotal,jdbcType=INTEGER},
+        cpu_use_count = #{cpuUseCount,jdbcType=VARCHAR},
+        spare1 = #{spare1,jdbcType=INTEGER},
+        spare2 = #{spare2,jdbcType=VARCHAR},
+        spare3 = #{spare3,jdbcType=VARCHAR},
+        spare4 = #{spare4,jdbcType=INTEGER},
+        spare5 = #{spare5,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+
+    <select id="getNewCpuMemoryInfo" resultMap="BaseResultMap">
+        select id,
+               memory_use_count,
+               memory_count,
+               cpu_total,
+               cpu_use_count
+        from cpu_memory_info
+        ORDER BY id DESC
+        LIMIT 0,1
+    </select>
+</mapper>

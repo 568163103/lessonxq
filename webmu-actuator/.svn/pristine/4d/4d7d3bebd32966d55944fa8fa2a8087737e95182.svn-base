@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mingsoft.nvssauthor.mapper.AlarmPreSchemeMapper">
+  <resultMap id="BaseResultMap" type="com.mingsoft.nvssauthor.domain.AlarmPreScheme">
+    <!--@mbg.generated-->
+    <!--@Table alarm_pre_scheme-->
+    <result column="source_id" jdbcType="CHAR" property="sourceId" />
+    <result column="alarm_type" jdbcType="INTEGER" property="alarmType" />
+    <result column="schema_id" jdbcType="INTEGER" property="schemaId" />
+  </resultMap>
+  <insert id="insert" parameterType="com.mingsoft.nvssauthor.domain.AlarmPreScheme">
+    <!--@mbg.generated-->
+    insert into alarm_pre_scheme (source_id, alarm_type, schema_id
+      )
+    values (#{sourceId,jdbcType=CHAR}, #{alarmType,jdbcType=INTEGER}, #{schemaId,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.mingsoft.nvssauthor.domain.AlarmPreScheme">
+    <!--@mbg.generated-->
+    insert into alarm_pre_scheme
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sourceId != null">
+        source_id,
+      </if>
+      <if test="alarmType != null">
+        alarm_type,
+      </if>
+      <if test="schemaId != null">
+        schema_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sourceId != null">
+        #{sourceId,jdbcType=CHAR},
+      </if>
+      <if test="alarmType != null">
+        #{alarmType,jdbcType=INTEGER},
+      </if>
+      <if test="schemaId != null">
+        #{schemaId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+</mapper>

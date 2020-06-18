@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mingsoft.nvssauthor.mapper.EncoderStateRecordMapper">
+  <resultMap id="BaseResultMap" type="com.mingsoft.nvssauthor.domain.EncoderStateRecord">
+    <!--@mbg.generated-->
+    <!--@Table encoder_state_record-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="encoderid" jdbcType="CHAR" property="encoderid" />
+    <result column="type" jdbcType="CHAR" property="type" />
+    <result column="codeType" jdbcType="VARCHAR" property="codetype" />
+    <result column="streamType" jdbcType="VARCHAR" property="streamtype" />
+    <result column="mainStreamRateType" jdbcType="VARCHAR" property="mainstreamratetype" />
+    <result column="mainStreamResolution" jdbcType="VARCHAR" property="mainstreamresolution" />
+    <result column="mainStreamFrameRate" jdbcType="VARCHAR" property="mainstreamframerate" />
+    <result column="mainStreamGOP" jdbcType="VARCHAR" property="mainstreamgop" />
+    <result column="childStreamResolution" jdbcType="CHAR" property="childstreamresolution" />
+    <result column="recordTime" jdbcType="VARCHAR" property="recordtime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, encoderid, `type`, codeType, streamType, mainStreamRateType, mainStreamResolution, 
+    mainStreamFrameRate, mainStreamGOP, childStreamResolution, recordTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from encoder_state_record
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from encoder_state_record
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.mingsoft.nvssauthor.domain.EncoderStateRecord" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into encoder_state_record (encoderid, `type`, codeType, 
+      streamType, mainStreamRateType, mainStreamResolution, 
+      mainStreamFrameRate, mainStreamGOP, childStreamResolution, 
+      recordTime)
+    values (#{encoderid,jdbcType=CHAR}, #{type,jdbcType=CHAR}, #{codetype,jdbcType=VARCHAR}, 
+      #{streamtype,jdbcType=VARCHAR}, #{mainstreamratetype,jdbcType=VARCHAR}, #{mainstreamresolution,jdbcType=VARCHAR}, 
+      #{mainstreamframerate,jdbcType=VARCHAR}, #{mainstreamgop,jdbcType=VARCHAR}, #{childstreamresolution,jdbcType=CHAR}, 
+      #{recordtime,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.mingsoft.nvssauthor.domain.EncoderStateRecord" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into encoder_state_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="encoderid != null">
+        encoderid,
+      </if>
+      <if test="type != null">
+        `type`,
+      </if>
+      <if test="codetype != null">
+        codeType,
+      </if>
+      <if test="streamtype != null">
+        streamType,
+      </if>
+      <if test="mainstreamratetype != null">
+        mainStreamRateType,
+      </if>
+      <if test="mainstreamresolution != null">
+        mainStreamResolution,
+      </if>
+      <if test="mainstreamframerate != null">
+        mainStreamFrameRate,
+      </if>
+      <if test="mainstreamgop != null">
+        mainStreamGOP,
+      </if>
+      <if test="childstreamresolution != null">
+        childStreamResolution,
+      </if>
+      <if test="recordtime != null">
+        recordTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="encoderid != null">
+        #{encoderid,jdbcType=CHAR},
+      </if>
+      <if test="type != null">
+        #{type,jdbcType=CHAR},
+      </if>
+      <if test="codetype != null">
+        #{codetype,jdbcType=VARCHAR},
+      </if>
+      <if test="streamtype != null">
+        #{streamtype,jdbcType=VARCHAR},
+      </if>
+      <if test="mainstreamratetype != null">
+        #{mainstreamratetype,jdbcType=VARCHAR},
+      </if>
+      <if test="mainstreamresolution != null">
+        #{mainstreamresolution,jdbcType=VARCHAR},
+      </if>
+      <if test="mainstreamframerate != null">
+        #{mainstreamframerate,jdbcType=VARCHAR},
+      </if>
+      <if test="mainstreamgop != null">
+        #{mainstreamgop,jdbcType=VARCHAR},
+      </if>
+      <if test="childstreamresolution != null">
+        #{childstreamresolution,jdbcType=CHAR},
+      </if>
+      <if test="recordtime != null">
+        #{recordtime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mingsoft.nvssauthor.domain.EncoderStateRecord">
+    <!--@mbg.generated-->
+    update encoder_state_record
+    <set>
+      <if test="encoderid != null">
+        encoderid = #{encoderid,jdbcType=CHAR},
+      </if>
+      <if test="type != null">
+        `type` = #{type,jdbcType=CHAR},
+      </if>
+      <if test="codetype != null">
+        codeType = #{codetype,jdbcType=VARCHAR},
+      </if>
+      <if test="streamtype != null">
+        streamType = #{streamtype,jdbcType=VARCHAR},
+      </if>
+      <if test="mainstreamratetype != null">
+        mainStreamRateType = #{mainstreamratetype,jdbcType=VARCHAR},
+      </if>
+      <if test="mainstreamresolution != null">
+        mainStreamResolution = #{mainstreamresolution,jdbcType=VARCHAR},
+      </if>
+      <if test="mainstreamframerate != null">
+        mainStreamFrameRate = #{mainstreamframerate,jdbcType=VARCHAR},
+      </if>
+      <if test="mainstreamgop != null">
+        mainStreamGOP = #{mainstreamgop,jdbcType=VARCHAR},
+      </if>
+      <if test="childstreamresolution != null">
+        childStreamResolution = #{childstreamresolution,jdbcType=CHAR},
+      </if>
+      <if test="recordtime != null">
+        recordTime = #{recordtime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mingsoft.nvssauthor.domain.EncoderStateRecord">
+    <!--@mbg.generated-->
+    update encoder_state_record
+    set encoderid = #{encoderid,jdbcType=CHAR},
+      `type` = #{type,jdbcType=CHAR},
+      codeType = #{codetype,jdbcType=VARCHAR},
+      streamType = #{streamtype,jdbcType=VARCHAR},
+      mainStreamRateType = #{mainstreamratetype,jdbcType=VARCHAR},
+      mainStreamResolution = #{mainstreamresolution,jdbcType=VARCHAR},
+      mainStreamFrameRate = #{mainstreamframerate,jdbcType=VARCHAR},
+      mainStreamGOP = #{mainstreamgop,jdbcType=VARCHAR},
+      childStreamResolution = #{childstreamresolution,jdbcType=CHAR},
+      recordTime = #{recordtime,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

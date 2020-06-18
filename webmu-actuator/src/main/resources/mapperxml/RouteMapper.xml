@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mingsoft.nvssauthor.mapper.RouteMapper">
+  <resultMap id="BaseResultMap" type="com.mingsoft.nvssauthor.domain.Route">
+    <!--@mbg.generated-->
+    <!--@Table route-->
+    <id column="route_id" jdbcType="INTEGER" property="routeId" />
+    <result column="terminal_id" jdbcType="CHAR" property="terminalId" />
+    <result column="server_id" jdbcType="CHAR" property="serverId" />
+    <result column="hop" jdbcType="INTEGER" property="hop" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    route_id, terminal_id, server_id, hop
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from route
+    where route_id = #{routeId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from route
+    where route_id = #{routeId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" keyColumn="route_id" keyProperty="routeId" parameterType="com.mingsoft.nvssauthor.domain.Route" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into route (terminal_id, server_id, hop
+      )
+    values (#{terminalId,jdbcType=CHAR}, #{serverId,jdbcType=CHAR}, #{hop,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="route_id" keyProperty="routeId" parameterType="com.mingsoft.nvssauthor.domain.Route" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into route
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="terminalId != null">
+        terminal_id,
+      </if>
+      <if test="serverId != null">
+        server_id,
+      </if>
+      <if test="hop != null">
+        hop,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="terminalId != null">
+        #{terminalId,jdbcType=CHAR},
+      </if>
+      <if test="serverId != null">
+        #{serverId,jdbcType=CHAR},
+      </if>
+      <if test="hop != null">
+        #{hop,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mingsoft.nvssauthor.domain.Route">
+    <!--@mbg.generated-->
+    update route
+    <set>
+      <if test="terminalId != null">
+        terminal_id = #{terminalId,jdbcType=CHAR},
+      </if>
+      <if test="serverId != null">
+        server_id = #{serverId,jdbcType=CHAR},
+      </if>
+      <if test="hop != null">
+        hop = #{hop,jdbcType=INTEGER},
+      </if>
+    </set>
+    where route_id = #{routeId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mingsoft.nvssauthor.domain.Route">
+    <!--@mbg.generated-->
+    update route
+    set terminal_id = #{terminalId,jdbcType=CHAR},
+      server_id = #{serverId,jdbcType=CHAR},
+      hop = #{hop,jdbcType=INTEGER}
+    where route_id = #{routeId,jdbcType=INTEGER}
+  </update>
+</mapper>

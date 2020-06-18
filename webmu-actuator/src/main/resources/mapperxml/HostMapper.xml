@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mingsoft.nvssauthor.mapper.HostMapper">
+  <resultMap id="BaseResultMap" type="com.mingsoft.nvssauthor.domain.Host">
+    <!--@mbg.generated-->
+    <!--@Table host-->
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="server_name" jdbcType="VARCHAR" property="serverName" />
+    <result column="ip1" jdbcType="VARCHAR" property="ip1" />
+    <result column="ip2" jdbcType="VARCHAR" property="ip2" />
+    <result column="ip3" jdbcType="VARCHAR" property="ip3" />
+    <result column="ip4" jdbcType="VARCHAR" property="ip4" />
+    <result column="server_position" jdbcType="VARCHAR" property="serverPosition" />
+    <result column="system_version" jdbcType="VARCHAR" property="systemVersion" />
+    <result column="cpu_core_count" jdbcType="BIGINT" property="cpuCoreCount" />
+    <result column="memory_count" jdbcType="BIGINT" property="memoryCount" />
+    <result column="disk_count" jdbcType="BIGINT" property="diskCount" />
+    <result column="status" jdbcType="INTEGER" property="status" />
+    <result column="Insertion_time" jdbcType="VARCHAR" property="insertionTime" />
+    <result column="update_time" jdbcType="VARCHAR" property="updateTime" />
+    <result column="spare1" jdbcType="VARCHAR" property="spare1" />
+    <result column="spare2" jdbcType="BIGINT" property="spare2" />
+    <result column="spare3" jdbcType="VARCHAR" property="spare3" />
+    <result column="spare4" jdbcType="BIGINT" property="spare4" />
+    <result column="spare5" jdbcType="VARCHAR" property="spare5" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, `server_name`, ip1, ip2, ip3, ip4, server_position, system_version, cpu_core_count, 
+    memory_count, disk_count, `status`, Insertion_time, update_time, spare1, spare2, 
+    spare3, spare4, spare5
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from host
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from host
+    where id = #{id,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="com.mingsoft.nvssauthor.domain.Host">
+    <!--@mbg.generated-->
+    insert into host (id, `server_name`, ip1, 
+      ip2, ip3, ip4, server_position, 
+      system_version, cpu_core_count, memory_count, 
+      disk_count, `status`, Insertion_time, 
+      update_time, spare1, spare2, 
+      spare3, spare4, spare5
+      )
+    values (#{id,jdbcType=VARCHAR}, #{serverName,jdbcType=VARCHAR}, #{ip1,jdbcType=VARCHAR}, 
+      #{ip2,jdbcType=VARCHAR}, #{ip3,jdbcType=VARCHAR}, #{ip4,jdbcType=VARCHAR}, #{serverPosition,jdbcType=VARCHAR}, 
+      #{systemVersion,jdbcType=VARCHAR}, #{cpuCoreCount,jdbcType=BIGINT}, #{memoryCount,jdbcType=BIGINT}, 
+      #{diskCount,jdbcType=BIGINT}, #{status,jdbcType=INTEGER}, #{insertionTime,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=VARCHAR}, #{spare1,jdbcType=VARCHAR}, #{spare2,jdbcType=BIGINT}, 
+      #{spare3,jdbcType=VARCHAR}, #{spare4,jdbcType=BIGINT}, #{spare5,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.mingsoft.nvssauthor.domain.Host">
+    <!--@mbg.generated-->
+    insert into host
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="serverName != null">
+        `server_name`,
+      </if>
+      <if test="ip1 != null">
+        ip1,
+      </if>
+      <if test="ip2 != null">
+        ip2,
+      </if>
+      <if test="ip3 != null">
+        ip3,
+      </if>
+      <if test="ip4 != null">
+        ip4,
+      </if>
+      <if test="serverPosition != null">
+        server_position,
+      </if>
+      <if test="systemVersion != null">
+        system_version,
+      </if>
+      <if test="cpuCoreCount != null">
+        cpu_core_count,
+      </if>
+      <if test="memoryCount != null">
+        memory_count,
+      </if>
+      <if test="diskCount != null">
+        disk_count,
+      </if>
+      <if test="status != null">
+        `status`,
+      </if>
+      <if test="insertionTime != null">
+        Insertion_time,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="spare1 != null">
+        spare1,
+      </if>
+      <if test="spare2 != null">
+        spare2,
+      </if>
+      <if test="spare3 != null">
+        spare3,
+      </if>
+      <if test="spare4 != null">
+        spare4,
+      </if>
+      <if test="spare5 != null">
+        spare5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=VARCHAR},
+      </if>
+      <if test="serverName != null">
+        #{serverName,jdbcType=VARCHAR},
+      </if>
+      <if test="ip1 != null">
+        #{ip1,jdbcType=VARCHAR},
+      </if>
+      <if test="ip2 != null">
+        #{ip2,jdbcType=VARCHAR},
+      </if>
+      <if test="ip3 != null">
+        #{ip3,jdbcType=VARCHAR},
+      </if>
+      <if test="ip4 != null">
+        #{ip4,jdbcType=VARCHAR},
+      </if>
+      <if test="serverPosition != null">
+        #{serverPosition,jdbcType=VARCHAR},
+      </if>
+      <if test="systemVersion != null">
+        #{systemVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="cpuCoreCount != null">
+        #{cpuCoreCount,jdbcType=BIGINT},
+      </if>
+      <if test="memoryCount != null">
+        #{memoryCount,jdbcType=BIGINT},
+      </if>
+      <if test="diskCount != null">
+        #{diskCount,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        #{status,jdbcType=INTEGER},
+      </if>
+      <if test="insertionTime != null">
+        #{insertionTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="spare1 != null">
+        #{spare1,jdbcType=VARCHAR},
+      </if>
+      <if test="spare2 != null">
+        #{spare2,jdbcType=BIGINT},
+      </if>
+      <if test="spare3 != null">
+        #{spare3,jdbcType=VARCHAR},
+      </if>
+      <if test="spare4 != null">
+        #{spare4,jdbcType=BIGINT},
+      </if>
+      <if test="spare5 != null">
+        #{spare5,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mingsoft.nvssauthor.domain.Host">
+    <!--@mbg.generated-->
+    update host
+    <set>
+      <if test="serverName != null">
+        `server_name` = #{serverName,jdbcType=VARCHAR},
+      </if>
+      <if test="ip1 != null">
+        ip1 = #{ip1,jdbcType=VARCHAR},
+      </if>
+      <if test="ip2 != null">
+        ip2 = #{ip2,jdbcType=VARCHAR},
+      </if>
+      <if test="ip3 != null">
+        ip3 = #{ip3,jdbcType=VARCHAR},
+      </if>
+      <if test="ip4 != null">
+        ip4 = #{ip4,jdbcType=VARCHAR},
+      </if>
+      <if test="serverPosition != null">
+        server_position = #{serverPosition,jdbcType=VARCHAR},
+      </if>
+      <if test="systemVersion != null">
+        system_version = #{systemVersion,jdbcType=VARCHAR},
+      </if>
+      <if test="cpuCoreCount != null">
+        cpu_core_count = #{cpuCoreCount,jdbcType=BIGINT},
+      </if>
+      <if test="memoryCount != null">
+        memory_count = #{memoryCount,jdbcType=BIGINT},
+      </if>
+      <if test="diskCount != null">
+        disk_count = #{diskCount,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        `status` = #{status,jdbcType=INTEGER},
+      </if>
+      <if test="insertionTime != null">
+        Insertion_time = #{insertionTime,jdbcType=VARCHAR},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=VARCHAR},
+      </if>
+      <if test="spare1 != null">
+        spare1 = #{spare1,jdbcType=VARCHAR},
+      </if>
+      <if test="spare2 != null">
+        spare2 = #{spare2,jdbcType=BIGINT},
+      </if>
+      <if test="spare3 != null">
+        spare3 = #{spare3,jdbcType=VARCHAR},
+      </if>
+      <if test="spare4 != null">
+        spare4 = #{spare4,jdbcType=BIGINT},
+      </if>
+      <if test="spare5 != null">
+        spare5 = #{spare5,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mingsoft.nvssauthor.domain.Host">
+    <!--@mbg.generated-->
+    update host
+    set `server_name` = #{serverName,jdbcType=VARCHAR},
+      ip1 = #{ip1,jdbcType=VARCHAR},
+      ip2 = #{ip2,jdbcType=VARCHAR},
+      ip3 = #{ip3,jdbcType=VARCHAR},
+      ip4 = #{ip4,jdbcType=VARCHAR},
+      server_position = #{serverPosition,jdbcType=VARCHAR},
+      system_version = #{systemVersion,jdbcType=VARCHAR},
+      cpu_core_count = #{cpuCoreCount,jdbcType=BIGINT},
+      memory_count = #{memoryCount,jdbcType=BIGINT},
+      disk_count = #{diskCount,jdbcType=BIGINT},
+      `status` = #{status,jdbcType=INTEGER},
+      Insertion_time = #{insertionTime,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=VARCHAR},
+      spare1 = #{spare1,jdbcType=VARCHAR},
+      spare2 = #{spare2,jdbcType=BIGINT},
+      spare3 = #{spare3,jdbcType=VARCHAR},
+      spare4 = #{spare4,jdbcType=BIGINT},
+      spare5 = #{spare5,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  
+  
+  <select id="findAllServerInfo" resultMap="BaseResultMap">
+   select
+   <include refid="Base_Column_List"></include>
+    from
+    host
+  </select>
+</mapper>

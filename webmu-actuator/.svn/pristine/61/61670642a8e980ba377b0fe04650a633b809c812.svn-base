@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mingsoft.nvssauthor.mapper.DuChannelConfigMapper">
+  <resultMap id="BaseResultMap" type="com.mingsoft.nvssauthor.domain.DuChannelConfig">
+    <!--@mbg.generated-->
+    <!--@Table du_channel_config-->
+    <id column="du_channel_id" jdbcType="CHAR" property="duChannelId" />
+    <result column="video_wall_id" jdbcType="INTEGER" property="videoWallId" />
+    <result column="windows_num" jdbcType="INTEGER" property="windowsNum" />
+    <result column="config_info" jdbcType="VARCHAR" property="configInfo" />
+    <result column="description" jdbcType="VARCHAR" property="description" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    du_channel_id, video_wall_id, windows_num, config_info, description
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from du_channel_config
+    where du_channel_id = #{duChannelId,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from du_channel_config
+    where du_channel_id = #{duChannelId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.mingsoft.nvssauthor.domain.DuChannelConfig">
+    <!--@mbg.generated-->
+    insert into du_channel_config (du_channel_id, video_wall_id, windows_num, 
+      config_info, description)
+    values (#{duChannelId,jdbcType=CHAR}, #{videoWallId,jdbcType=INTEGER}, #{windowsNum,jdbcType=INTEGER}, 
+      #{configInfo,jdbcType=VARCHAR}, #{description,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mingsoft.nvssauthor.domain.DuChannelConfig">
+    <!--@mbg.generated-->
+    insert into du_channel_config
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="duChannelId != null">
+        du_channel_id,
+      </if>
+      <if test="videoWallId != null">
+        video_wall_id,
+      </if>
+      <if test="windowsNum != null">
+        windows_num,
+      </if>
+      <if test="configInfo != null">
+        config_info,
+      </if>
+      <if test="description != null">
+        description,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="duChannelId != null">
+        #{duChannelId,jdbcType=CHAR},
+      </if>
+      <if test="videoWallId != null">
+        #{videoWallId,jdbcType=INTEGER},
+      </if>
+      <if test="windowsNum != null">
+        #{windowsNum,jdbcType=INTEGER},
+      </if>
+      <if test="configInfo != null">
+        #{configInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        #{description,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mingsoft.nvssauthor.domain.DuChannelConfig">
+    <!--@mbg.generated-->
+    update du_channel_config
+    <set>
+      <if test="videoWallId != null">
+        video_wall_id = #{videoWallId,jdbcType=INTEGER},
+      </if>
+      <if test="windowsNum != null">
+        windows_num = #{windowsNum,jdbcType=INTEGER},
+      </if>
+      <if test="configInfo != null">
+        config_info = #{configInfo,jdbcType=VARCHAR},
+      </if>
+      <if test="description != null">
+        description = #{description,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where du_channel_id = #{duChannelId,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mingsoft.nvssauthor.domain.DuChannelConfig">
+    <!--@mbg.generated-->
+    update du_channel_config
+    set video_wall_id = #{videoWallId,jdbcType=INTEGER},
+      windows_num = #{windowsNum,jdbcType=INTEGER},
+      config_info = #{configInfo,jdbcType=VARCHAR},
+      description = #{description,jdbcType=VARCHAR}
+    where du_channel_id = #{duChannelId,jdbcType=CHAR}
+  </update>
+</mapper>

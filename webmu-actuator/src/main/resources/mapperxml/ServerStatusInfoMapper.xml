@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mingsoft.nvssauthor.mapper.ServerStatusInfoMapper">
+  <resultMap id="BaseResultMap" type="com.mingsoft.nvssauthor.domain.ServerStatusInfo">
+    <!--@mbg.generated-->
+    <!--@Table server_status_info-->
+    <id column="server_id" jdbcType="BIGINT" property="serverId" />
+    <result column="server_ip" jdbcType="VARCHAR" property="serverIp" />
+    <result column="server_online" jdbcType="INTEGER" property="serverOnline" />
+    <result column="server_offonline" jdbcType="INTEGER" property="serverOffonline" />
+    <result column="server_count" jdbcType="INTEGER" property="serverCount" />
+    <result column="spare1" jdbcType="VARCHAR" property="spare1" />
+    <result column="spare2" jdbcType="VARCHAR" property="spare2" />
+    <result column="spare3" jdbcType="VARCHAR" property="spare3" />
+    <result column="spare4" jdbcType="INTEGER" property="spare4" />
+    <result column="spare5" jdbcType="INTEGER" property="spare5" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    server_id, server_ip, server_online, server_offonline, server_count, spare1, spare2, 
+    spare3, spare4, spare5
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from server_status_info
+    where server_id = #{serverId,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from server_status_info
+    where server_id = #{serverId,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="server_id" keyProperty="serverId" parameterType="com.mingsoft.nvssauthor.domain.ServerStatusInfo" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into server_status_info (server_ip, server_online, server_offonline, 
+      server_count, spare1, spare2, 
+      spare3, spare4, spare5
+      )
+    values (#{serverIp,jdbcType=VARCHAR}, #{serverOnline,jdbcType=INTEGER}, #{serverOffonline,jdbcType=INTEGER}, 
+      #{serverCount,jdbcType=INTEGER}, #{spare1,jdbcType=VARCHAR}, #{spare2,jdbcType=VARCHAR}, 
+      #{spare3,jdbcType=VARCHAR}, #{spare4,jdbcType=INTEGER}, #{spare5,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="server_id" keyProperty="serverId" parameterType="com.mingsoft.nvssauthor.domain.ServerStatusInfo" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into server_status_info
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="serverIp != null">
+        server_ip,
+      </if>
+      <if test="serverOnline != null">
+        server_online,
+      </if>
+      <if test="serverOffonline != null">
+        server_offonline,
+      </if>
+      <if test="serverCount != null">
+        server_count,
+      </if>
+      <if test="spare1 != null">
+        spare1,
+      </if>
+      <if test="spare2 != null">
+        spare2,
+      </if>
+      <if test="spare3 != null">
+        spare3,
+      </if>
+      <if test="spare4 != null">
+        spare4,
+      </if>
+      <if test="spare5 != null">
+        spare5,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="serverIp != null">
+        #{serverIp,jdbcType=VARCHAR},
+      </if>
+      <if test="serverOnline != null">
+        #{serverOnline,jdbcType=INTEGER},
+      </if>
+      <if test="serverOffonline != null">
+        #{serverOffonline,jdbcType=INTEGER},
+      </if>
+      <if test="serverCount != null">
+        #{serverCount,jdbcType=INTEGER},
+      </if>
+      <if test="spare1 != null">
+        #{spare1,jdbcType=VARCHAR},
+      </if>
+      <if test="spare2 != null">
+        #{spare2,jdbcType=VARCHAR},
+      </if>
+      <if test="spare3 != null">
+        #{spare3,jdbcType=VARCHAR},
+      </if>
+      <if test="spare4 != null">
+        #{spare4,jdbcType=INTEGER},
+      </if>
+      <if test="spare5 != null">
+        #{spare5,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mingsoft.nvssauthor.domain.ServerStatusInfo">
+    <!--@mbg.generated-->
+    update server_status_info
+    <set>
+      <if test="serverIp != null">
+        server_ip = #{serverIp,jdbcType=VARCHAR},
+      </if>
+      <if test="serverOnline != null">
+        server_online = #{serverOnline,jdbcType=INTEGER},
+      </if>
+      <if test="serverOffonline != null">
+        server_offonline = #{serverOffonline,jdbcType=INTEGER},
+      </if>
+      <if test="serverCount != null">
+        server_count = #{serverCount,jdbcType=INTEGER},
+      </if>
+      <if test="spare1 != null">
+        spare1 = #{spare1,jdbcType=VARCHAR},
+      </if>
+      <if test="spare2 != null">
+        spare2 = #{spare2,jdbcType=VARCHAR},
+      </if>
+      <if test="spare3 != null">
+        spare3 = #{spare3,jdbcType=VARCHAR},
+      </if>
+      <if test="spare4 != null">
+        spare4 = #{spare4,jdbcType=INTEGER},
+      </if>
+      <if test="spare5 != null">
+        spare5 = #{spare5,jdbcType=INTEGER},
+      </if>
+    </set>
+    where server_id = #{serverId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mingsoft.nvssauthor.domain.ServerStatusInfo">
+    <!--@mbg.generated-->
+    update server_status_info
+    set server_ip = #{serverIp,jdbcType=VARCHAR},
+      server_online = #{serverOnline,jdbcType=INTEGER},
+      server_offonline = #{serverOffonline,jdbcType=INTEGER},
+      server_count = #{serverCount,jdbcType=INTEGER},
+      spare1 = #{spare1,jdbcType=VARCHAR},
+      spare2 = #{spare2,jdbcType=VARCHAR},
+      spare3 = #{spare3,jdbcType=VARCHAR},
+      spare4 = #{spare4,jdbcType=INTEGER},
+      spare5 = #{spare5,jdbcType=INTEGER}
+    where server_id = #{serverId,jdbcType=BIGINT}
+  </update>
+
+  <select id="initServerStatus" resultMap="BaseResultMap">
+    SELECT  s.server_online,s.server_offonline,server_count FROM server_status_info s order by server_id desc  LIMIT 0,1;
+  </select>
+</mapper>

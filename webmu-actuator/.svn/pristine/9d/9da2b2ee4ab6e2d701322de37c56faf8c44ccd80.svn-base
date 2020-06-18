@@ -1,0 +1,121 @@
+body {
+    margin: 0;
+}
+
+#playBox {
+    width: 600px;
+    position: relative;
+    margin: 20px auto 0;
+    z-index: 90;
+    background-color: black;
+}
+
+.video-js {
+    margin: 0 auto;
+    width: 96%;
+    height: 100%;
+    display: block;
+}
+
+.vjs-volume-menu-button {
+    visibility: hidden;
+}
+
+.vjs-live-display {
+    display: none;
+}
+
+.vjs-progress-control {
+    visibility: hidden;
+}
+
+.vjs-remaining-time-display {
+    display: none;
+}
+
+.vjs-big-play-button {
+    visibility: hidden;
+}
+
+.vjs-modal-dialog-content {
+    visibility: hidden;
+}
+
+#example-video {
+    width: 600px;
+    height: 400px;
+    padding: 0;
+}
+
+@media screen and (max-width: 900px) {
+    #example-video {
+        width: 100%;
+        height: 60vw;
+    }
+}
+
+.vjs-error .vjs-error-display {
+    display: none;
+}
+
+#buffer, #error ,#pause{
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    -webkit-background-size: 100% 100%;
+    background-size: 100% 100%;
+}
+
+#buffer{
+    background-image: url(../images/buff.gif);
+}
+#pause{
+    background-image: url(../images/pause.png);
+}
+
+#buffer ,#pause{
+    width: 70px;
+    height: 70px;
+    z-index: 95;
+    display: none;
+}
+
+#error {
+    width: 200px;
+    height: 154px;
+    background-image: url(../images/error.png);
+    z-index: 95;
+    display: none;
+}
+
+.vjs-loading-spinner {
+    visibility: hidden;
+}
+
+.video-js .vjs-control-bar {
+    height: 30px;
+    background-color: rgba(0, 0, 0, 0.3);
+}
+
+#switcher {
+    position: absolute;
+    right: 50px;
+    bottom: 5px;
+    z-index: 95;
+    color: white;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+#switcher:hover {
+    text-shadow: 0 0 4px white;
+}
+
+.noFlash{
+    text-align: center;
+    font-size: 30px;
+    color: #fff;
+}

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mingsoft.nvssauthor.mapper.DiskStateRecordMapper">
+  <resultMap id="BaseResultMap" type="com.mingsoft.nvssauthor.domain.DiskStateRecord">
+    <!--@mbg.generated-->
+    <!--@Table disk_state_record-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="diskid" jdbcType="CHAR" property="diskid" />
+    <result column="totalvolume" jdbcType="VARCHAR" property="totalvolume" />
+    <result column="undistributed" jdbcType="VARCHAR" property="undistributed" />
+    <result column="portNum" jdbcType="VARCHAR" property="portnum" />
+    <result column="cpu" jdbcType="VARCHAR" property="cpu" />
+    <result column="fan" jdbcType="VARCHAR" property="fan" />
+    <result column="bad" jdbcType="VARCHAR" property="bad" />
+    <result column="state" jdbcType="VARCHAR" property="state" />
+    <result column="recordTime" jdbcType="VARCHAR" property="recordtime" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, diskid, totalvolume, undistributed, portNum, cpu, fan, bad, `state`, recordTime
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from disk_state_record
+    where id = #{id,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    <!--@mbg.generated-->
+    delete from disk_state_record
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" keyColumn="id" keyProperty="id" parameterType="com.mingsoft.nvssauthor.domain.DiskStateRecord" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into disk_state_record (diskid, totalvolume, undistributed, 
+      portNum, cpu, fan, 
+      bad, `state`, recordTime
+      )
+    values (#{diskid,jdbcType=CHAR}, #{totalvolume,jdbcType=VARCHAR}, #{undistributed,jdbcType=VARCHAR}, 
+      #{portnum,jdbcType=VARCHAR}, #{cpu,jdbcType=VARCHAR}, #{fan,jdbcType=VARCHAR}, 
+      #{bad,jdbcType=VARCHAR}, #{state,jdbcType=VARCHAR}, #{recordtime,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" keyColumn="id" keyProperty="id" parameterType="com.mingsoft.nvssauthor.domain.DiskStateRecord" useGeneratedKeys="true">
+    <!--@mbg.generated-->
+    insert into disk_state_record
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="diskid != null">
+        diskid,
+      </if>
+      <if test="totalvolume != null">
+        totalvolume,
+      </if>
+      <if test="undistributed != null">
+        undistributed,
+      </if>
+      <if test="portnum != null">
+        portNum,
+      </if>
+      <if test="cpu != null">
+        cpu,
+      </if>
+      <if test="fan != null">
+        fan,
+      </if>
+      <if test="bad != null">
+        bad,
+      </if>
+      <if test="state != null">
+        `state`,
+      </if>
+      <if test="recordtime != null">
+        recordTime,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="diskid != null">
+        #{diskid,jdbcType=CHAR},
+      </if>
+      <if test="totalvolume != null">
+        #{totalvolume,jdbcType=VARCHAR},
+      </if>
+      <if test="undistributed != null">
+        #{undistributed,jdbcType=VARCHAR},
+      </if>
+      <if test="portnum != null">
+        #{portnum,jdbcType=VARCHAR},
+      </if>
+      <if test="cpu != null">
+        #{cpu,jdbcType=VARCHAR},
+      </if>
+      <if test="fan != null">
+        #{fan,jdbcType=VARCHAR},
+      </if>
+      <if test="bad != null">
+        #{bad,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="recordtime != null">
+        #{recordtime,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mingsoft.nvssauthor.domain.DiskStateRecord">
+    <!--@mbg.generated-->
+    update disk_state_record
+    <set>
+      <if test="diskid != null">
+        diskid = #{diskid,jdbcType=CHAR},
+      </if>
+      <if test="totalvolume != null">
+        totalvolume = #{totalvolume,jdbcType=VARCHAR},
+      </if>
+      <if test="undistributed != null">
+        undistributed = #{undistributed,jdbcType=VARCHAR},
+      </if>
+      <if test="portnum != null">
+        portNum = #{portnum,jdbcType=VARCHAR},
+      </if>
+      <if test="cpu != null">
+        cpu = #{cpu,jdbcType=VARCHAR},
+      </if>
+      <if test="fan != null">
+        fan = #{fan,jdbcType=VARCHAR},
+      </if>
+      <if test="bad != null">
+        bad = #{bad,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null">
+        `state` = #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="recordtime != null">
+        recordTime = #{recordtime,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mingsoft.nvssauthor.domain.DiskStateRecord">
+    <!--@mbg.generated-->
+    update disk_state_record
+    set diskid = #{diskid,jdbcType=CHAR},
+      totalvolume = #{totalvolume,jdbcType=VARCHAR},
+      undistributed = #{undistributed,jdbcType=VARCHAR},
+      portNum = #{portnum,jdbcType=VARCHAR},
+      cpu = #{cpu,jdbcType=VARCHAR},
+      fan = #{fan,jdbcType=VARCHAR},
+      bad = #{bad,jdbcType=VARCHAR},
+      `state` = #{state,jdbcType=VARCHAR},
+      recordTime = #{recordtime,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>

@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mingsoft.nvssauthor.mapper.MediaCodecMapper">
+  <resultMap id="BaseResultMap" type="com.mingsoft.nvssauthor.domain.MediaCodec">
+    <!--@mbg.generated-->
+    <!--@Table media_codec-->
+    <id column="tag" jdbcType="INTEGER" property="tag" />
+    <result column="name" jdbcType="CHAR" property="name" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    tag, `name`
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from media_codec
+    where tag = #{tag,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    <!--@mbg.generated-->
+    delete from media_codec
+    where tag = #{tag,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.mingsoft.nvssauthor.domain.MediaCodec">
+    <!--@mbg.generated-->
+    insert into media_codec (tag, `name`)
+    values (#{tag,jdbcType=INTEGER}, #{name,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mingsoft.nvssauthor.domain.MediaCodec">
+    <!--@mbg.generated-->
+    insert into media_codec
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="tag != null">
+        tag,
+      </if>
+      <if test="name != null">
+        `name`,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="tag != null">
+        #{tag,jdbcType=INTEGER},
+      </if>
+      <if test="name != null">
+        #{name,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mingsoft.nvssauthor.domain.MediaCodec">
+    <!--@mbg.generated-->
+    update media_codec
+    <set>
+      <if test="name != null">
+        `name` = #{name,jdbcType=CHAR},
+      </if>
+    </set>
+    where tag = #{tag,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mingsoft.nvssauthor.domain.MediaCodec">
+    <!--@mbg.generated-->
+    update media_codec
+    set `name` = #{name,jdbcType=CHAR}
+    where tag = #{tag,jdbcType=INTEGER}
+  </update>
+</mapper>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mingsoft.nvssauthor.mapper.TerminalUserMapper">
+  <resultMap id="BaseResultMap" type="com.mingsoft.nvssauthor.domain.TerminalUser">
+    <!--@mbg.generated-->
+    <!--@Table terminal_user-->
+    <id column="terminal_id" jdbcType="CHAR" property="terminalId" />
+    <id column="user_id" jdbcType="CHAR" property="userId" />
+  </resultMap>
+  <delete id="deleteByPrimaryKey" parameterType="map">
+    <!--@mbg.generated-->
+    delete from terminal_user
+    where terminal_id = #{terminalId,jdbcType=CHAR}
+      and user_id = #{userId,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.mingsoft.nvssauthor.domain.TerminalUser">
+    <!--@mbg.generated-->
+    insert into terminal_user (terminal_id, user_id)
+    values (#{terminalId,jdbcType=CHAR}, #{userId,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mingsoft.nvssauthor.domain.TerminalUser">
+    <!--@mbg.generated-->
+    insert into terminal_user
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="terminalId != null">
+        terminal_id,
+      </if>
+      <if test="userId != null">
+        user_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="terminalId != null">
+        #{terminalId,jdbcType=CHAR},
+      </if>
+      <if test="userId != null">
+        #{userId,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+</mapper>

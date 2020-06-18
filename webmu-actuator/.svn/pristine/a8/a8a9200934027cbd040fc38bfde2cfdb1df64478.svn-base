@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mingsoft.nvssauthor.mapper.ServerExtraMapper">
+  <resultMap id="BaseResultMap" type="com.mingsoft.nvssauthor.domain.ServerExtra">
+    <!--@mbg.generated-->
+    <!--@Table server_extra-->
+    <id column="id" jdbcType="CHAR" property="id" />
+    <result column="corp" jdbcType="CHAR" property="corp" />
+    <result column="version" jdbcType="CHAR" property="version" />
+    <result column="mac" jdbcType="CHAR" property="mac" />
+    <result column="keepAlivePeriod" jdbcType="SMALLINT" property="keepaliveperiod" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, corp, version, mac, keepAlivePeriod
+  </sql>
+  <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
+    <!--@mbg.generated-->
+    select 
+    <include refid="Base_Column_List" />
+    from server_extra
+    where id = #{id,jdbcType=CHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
+    <!--@mbg.generated-->
+    delete from server_extra
+    where id = #{id,jdbcType=CHAR}
+  </delete>
+  <insert id="insert" parameterType="com.mingsoft.nvssauthor.domain.ServerExtra">
+    <!--@mbg.generated-->
+    insert into server_extra (id, corp, version, mac, 
+      keepAlivePeriod)
+    values (#{id,jdbcType=CHAR}, #{corp,jdbcType=CHAR}, #{version,jdbcType=CHAR}, #{mac,jdbcType=CHAR}, 
+      #{keepaliveperiod,jdbcType=SMALLINT})
+  </insert>
+  <insert id="insertSelective" parameterType="com.mingsoft.nvssauthor.domain.ServerExtra">
+    <!--@mbg.generated-->
+    insert into server_extra
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        id,
+      </if>
+      <if test="corp != null">
+        corp,
+      </if>
+      <if test="version != null">
+        version,
+      </if>
+      <if test="mac != null">
+        mac,
+      </if>
+      <if test="keepaliveperiod != null">
+        keepAlivePeriod,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="id != null">
+        #{id,jdbcType=CHAR},
+      </if>
+      <if test="corp != null">
+        #{corp,jdbcType=CHAR},
+      </if>
+      <if test="version != null">
+        #{version,jdbcType=CHAR},
+      </if>
+      <if test="mac != null">
+        #{mac,jdbcType=CHAR},
+      </if>
+      <if test="keepaliveperiod != null">
+        #{keepaliveperiod,jdbcType=SMALLINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.mingsoft.nvssauthor.domain.ServerExtra">
+    <!--@mbg.generated-->
+    update server_extra
+    <set>
+      <if test="corp != null">
+        corp = #{corp,jdbcType=CHAR},
+      </if>
+      <if test="version != null">
+        version = #{version,jdbcType=CHAR},
+      </if>
+      <if test="mac != null">
+        mac = #{mac,jdbcType=CHAR},
+      </if>
+      <if test="keepaliveperiod != null">
+        keepAlivePeriod = #{keepaliveperiod,jdbcType=SMALLINT},
+      </if>
+    </set>
+    where id = #{id,jdbcType=CHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.mingsoft.nvssauthor.domain.ServerExtra">
+    <!--@mbg.generated-->
+    update server_extra
+    set corp = #{corp,jdbcType=CHAR},
+      version = #{version,jdbcType=CHAR},
+      mac = #{mac,jdbcType=CHAR},
+      keepAlivePeriod = #{keepaliveperiod,jdbcType=SMALLINT}
+    where id = #{id,jdbcType=CHAR}
+  </update>
+</mapper>
